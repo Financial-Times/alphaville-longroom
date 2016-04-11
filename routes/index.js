@@ -5,6 +5,9 @@ var router = express.Router();
 router.get('/', (req, res) => {
 	res.render('index', { title: 'Alphaville Longroom' });
 });
+router.get('/longroom', (req, res) => {
+	res.sendStatus(200);
+});
 router.get('/__gtg', (req, res) => {
 	res.sendStatus(200);
 });
