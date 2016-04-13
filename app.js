@@ -23,6 +23,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+app.use('*', (req, res, next) => {
+	console.log(req.headers);
+	next();
+});
 app.get('/assets/longroom/bower/*.(woff|svg|ttf|eot|gif|png|jpg)', (req, res) => {
 	const newPath = req.originalUrl.split('/').slice(4).join('/');
 	res.sendFile(path.join(__dirname, '/bower_components', newPath));
