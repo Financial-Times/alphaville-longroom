@@ -15,7 +15,7 @@ headerConfig.navItems.map(function (obj) {
 /* GET home page. */
 router.get('*', (req, res) {
     console.log(req.headers);
-}
+});
 router.get('/', (req, res) => {
 	res.render('index', {
 		title: 'Alphaville Longroom',
