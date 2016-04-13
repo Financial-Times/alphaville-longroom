@@ -1,0 +1,47 @@
+@import './common';
+
+// Output grid helper classes and data-attributes
+$o-grid-is-silent: false;
+
+// Output @font-face declarations
+$o-fonts-is-silent: false;
+
+// Output icon helper classes
+$o-ft-icons-is-silent: false;
+
+// Import Origami components
+@import 'o-grid/main';
+@import 'o-fonts/main';
+@import 'o-ft-icons/main';
+@import 'o-footer/main';
+@import 'o-colors/main';
+
+// Store the default FT sans-serif font stack in a variable
+$sans-serif: oFontsGetFontFamilyWithFallbacks(BentonSans);
+
+
+.core .o--if-js,
+.enhanced .o--if-no-js {
+	display: none;
+}
+
+html {
+	// The iconic pink background
+	@include oColorsFor(page, background);
+
+	// Set a font family on the whole document
+	font-family: $sans-serif;
+
+	// Prevent navigation menus from creating
+	// extra space on sides of the page
+	overflow-x: hidden;
+}
+
+body {
+	font-size: 12px;
+	margin: 0;
+}
+
+@import './page';
+
+@import 'alphaville-header/main';

@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+  	"postinstall": "gulp bower-clean && gulp bower-install && gulp bower-update && gulp obt-build",
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -12,7 +13,17 @@
     "express": "~4.13.1",
     "hjs": "~0.0.6",
     "morgan": "~1.6.1",
-    "node-sass-middleware": "0.8.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+
+    "bower": "^1.7.7",
+    "del": "^1.1.1",
+    "gulp": "^3.9.1",
+    "gulp-run": "^1.6.6",
+    "gulp-watch": "^1.1.0",
+    "origami-build-tools": "^5.0.1",
+    "request": "^2.69.0",
+    "run-sequence": "^1.0.2",
+    "serve-favicon": "~2.3.0",
+    "signed-aws-es-fetch": "^1.1.0"
   }
 }

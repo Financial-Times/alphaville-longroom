@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>{{ title }}</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>{{ title }}</h1>
-    <p>Welcome to {{ title }}</p>
-  </body>
+	<head>
+		<title>{{ title }}</title>
+		
+		<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
+
+		<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+	</head>
+	<body class="enhanced">
+		{{#headerConfig}}
+			{{> header}}
+		{{/headerConfig}}
+
+		<div class="o-grid-container">
+			<div class="o-grid-row">
+				<div data-o-grid-colspan="12">
+					<h1>{{ title }}</h1>
+					<p>Welcome to {{ title }}</p>
+				</div>
+			</div>
+		</div>
+
+		<script src="{{assetsBasePath}}/build/main.js"></script>
+	</body>
 </html>

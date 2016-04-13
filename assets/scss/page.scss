@@ -1,0 +1,17 @@
+.clearfix:after {
+	content: " "; /* Older browser do not support empty content */
+	visibility: hidden;
+	display: block;
+	height: 0;
+	clear: both;
+}
+
+a {
+	color: oColorsGetPaletteColor('blue');
+	-webkit-font-smoothing: antialiased;
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
