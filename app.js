@@ -24,7 +24,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('*', (req, res, next) => {
-	console.log(req.headers);
+	if ( req.headers['ft-access-denied'] ) {
+		console.log(req.headers);
+	}
 	next();
 });
 app.get('/assets/longroom/bower/*.(woff|svg|ttf|eot|gif|png|jpg)', (req, res) => {
