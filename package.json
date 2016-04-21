@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+  	"postinstall": "gulp bower-clean && gulp bower-install && gulp bower-update && gulp obt-build",
     "start": "node ./bin/www"
   },
   "dependencies": {
