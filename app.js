@@ -17,6 +17,11 @@ var authConfig = {
 	checkHeader: envVars.auth.header,
 	barrierView: 'barrier',
 	viewModel: {
+		assetsBasePath: '/assets/longroom',
+		basePath: '/longroom',
+
+		isTest: envVars.env === 'test' ? true : false,
+		isProd: envVars.env === 'prod' ? true : false,
 		headerConfig: headerConfig,
 		partials: {
 			header: '../bower_components/alphaville-header/main.hjs',
