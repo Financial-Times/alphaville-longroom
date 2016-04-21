@@ -43,7 +43,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use(auth(authConfig));
 app.get('/assets/longroom/bower/*.(woff|svg|ttf|eot|gif|png|jpg)', (req, res) => {
 	const newPath = req.originalUrl.split('/').slice(4).join('/');
 	res.sendFile(path.join(__dirname, '/bower_components', newPath));
@@ -53,6 +52,8 @@ app.use('/assets/longroom', express.static(path.join(__dirname, 'public')));
 app.get('/', function (req, res, next) {
 	res.redirect('/longroom');
 });
+
+app.use('/longroom', auth(authConfig));
 app.use('/longroom', routes.index);
 app.use('/', routes.__gtg);
 
