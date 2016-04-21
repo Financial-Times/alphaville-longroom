@@ -20,7 +20,7 @@ var authConfig = {
 		headerConfig: headerConfig,
 		partials: {
 			header: '../bower_components/alphaville-header/main.hjs',
-			body: '../bower_components/alphaville-barrier/main.hbs'
+			body: '../bower_components/alphaville-barrier/main.hjs'
 		}
 	}
 };
