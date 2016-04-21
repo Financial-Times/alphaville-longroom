@@ -3,7 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-  	"postinstall": "gulp bower-clean && gulp bower-install && gulp bower-update && gulp obt-build",
     "start": "node ./bin/www"
   },
   "dependencies": {
@@ -14,6 +13,7 @@
     "hjs": "~0.0.6",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0",
+	"alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#v0.0.2",
 
     "bower": "^1.7.7",
     "del": "^1.1.1",

@@ -4,10 +4,25 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var envVars = require('./env');
+var auth = require('alphaville-auth-middleware');
+var headerConfig = require('./bower_components/alphaville-header/template_config.json');
 
 var routes = {
 	index: require('./routes/index'),
 	__gtg: require('./routes/__gtg')
+};
+
+var authConfig = {
+	checkHeader: envVars.auth.header,
+	barrierView: 'barrier',
+	viewModel: {
+		headerConfig: headerConfig,
+		partials: {
+			header: '../bower_components/alphaville-header/main.hjs',
+			body: '../bower_components/alphaville-barrier/main.hbs'
+		}
+	}
 };
 
 var app = express();
@@ -23,12 +38,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('*', (req, res, next) => {
-	if ( req.headers['ft-access-denied'] ) {
-		console.log(req.headers);
-	}
-	next();
-});
+app.use(auth(authConfig));
 app.get('/assets/longroom/bower/*.(woff|svg|ttf|eot|gif|png|jpg)', (req, res) => {
 	const newPath = req.originalUrl.split('/').slice(4).join('/');
 	res.sendFile(path.join(__dirname, '/bower_components', newPath));
