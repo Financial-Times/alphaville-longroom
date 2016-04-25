@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+
+    <link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
+
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+</head>
+<body class="enhanced">
+{{#headerConfig}}
+    {{> header}}
+{{/headerConfig}}
+
+<div class="o-grid-container">
+    <div class="o-grid-row">
+        <div data-o-grid-colspan="12">
+            {{> body}}
+        </div>
+    </div>
+</div>
+
+<script src="{{assetsBasePath}}/build/main.js"></script>
+</body>
+</html>
