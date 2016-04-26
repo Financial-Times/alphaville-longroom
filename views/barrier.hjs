@@ -5,7 +5,7 @@
 
     <link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
 
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+    <script src="{{polyfillServiceUrl}}"></script>
 </head>
 <body class="enhanced">
 {{#headerConfig}}

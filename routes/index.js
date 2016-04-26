@@ -1,27 +1,18 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-const envVars = require('../env');
+const renderPage = require('alphaville-page-render');
+const headerConfig = require('alphaville-header-config');
 
-const headerConfig = require('../bower_components/alphaville-header/template_config.json');
-
-headerConfig.navItems.map(function (obj) {
-	if (obj.name.indexOf('Longroom')>-1) {
-		obj.selected = true;
-	}
-	return obj
-});
-
-/* GET home page. */
-router.get('/', (req, res) => {
+/*router.get('/', (req, res) => {
 	res.render('index', {
 		title: 'Alphaville Longroom',
 
 		assetsBasePath: '/assets/longroom',
 		basePath: '/longroom',
 
-		isTest: envVars.env === 'test' ? true : false,
-		isProd: envVars.env === 'prod' ? true : false,
+		isTest: process.env.ENVIRONMENT === 'test' ? true : false,
+		isProd: process.env.ENVIRONMENT === 'prod' ? true : false,
 
 		headerConfig: headerConfig,
 		partials: {
@@ -29,6 +20,15 @@ router.get('/', (req, res) => {
 		}
 	});
 });
+*/
+
+router.get('/', (req, res) => {
+	renderPage(res, 'index', 'longroom', {
+		title: 'Alphaville Longroom',
+		headerConfig: headerConfig.setSelected('Longroom')
+	});
+});
+
 
 
 module.exports = router;

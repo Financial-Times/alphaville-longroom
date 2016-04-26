@@ -3,7 +3,6 @@ const obt = require('origami-build-tools');
 const del = require('del');
 const runSequence = require('run-sequence');
 const run = require('gulp-run');
-const envVars = require('./env');
 
 
 gulp.task('bower-update', function (callback) {
@@ -34,7 +33,7 @@ gulp.task('obt-build-main', function () {
 		sass: './assets/scss/main.scss',
 		buildJs: 'main.js',
 		buildCss: 'main.css',
-		env: envVars.env === 'prod' ? 'production' : 'development'
+		env: process.env.ENVIRONMENT === 'prod' ? 'production' : 'development'
 	});
 });
 
