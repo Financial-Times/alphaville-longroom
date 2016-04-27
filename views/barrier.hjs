@@ -1,25 +1,34 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>{{ title }}</title>
+<html class="{{ctmCoreClass}}">
+	<head>
+		<title>{{ title }}</title>
 
-    <link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
+		<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
 
-    <script src="{{polyfillServiceUrl}}"></script>
-</head>
-<body class="enhanced">
-{{#headerConfig}}
-    {{> header}}
-{{/headerConfig}}
+		{{> ctm}}
 
-<div class="o-grid-container">
-    <div class="o-grid-row">
-        <div data-o-grid-colspan="12">
-            {{> body}}
-        </div>
-    </div>
-</div>
+		<script src="{{polyfillServiceUrl}}"></script>
 
-<script src="{{assetsBasePath}}/build/main.js"></script>
-</body>
+		<script>
+			(function () {
+				ctmLoadScript({
+					src: "{{assetsBasePath}}/build/main.js",
+					async: true
+				});
+			}());
+		</script>
+	</head>
+	<body>
+		{{#headerConfig}}
+			{{> header}}
+		{{/headerConfig}}
+
+		<div class="o-grid-container">
+			<div class="o-grid-row">
+				<div data-o-grid-colspan="12">
+					{{> body}}
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

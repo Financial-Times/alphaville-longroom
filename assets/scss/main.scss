@@ -19,12 +19,6 @@ $o-ft-icons-is-silent: false;
 // Store the default FT sans-serif font stack in a variable
 $sans-serif: oFontsGetFontFamilyWithFallbacks(BentonSans);
 
-
-.core .o--if-js,
-.enhanced .o--if-no-js {
-	display: none;
-}
-
 html {
 	// The iconic pink background
 	@include oColorsFor(page, background);

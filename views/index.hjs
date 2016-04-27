@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="{{ctmCoreClass}}">
 	<head>
 		<title>{{ title }}</title>
 
@@ -8,9 +8,20 @@
 		
 		<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
 
+		{{> ctm}}
+
 		<script src="{{polyfillServiceUrl}}"></script>
+
+		<script>
+			(function () {
+				ctmLoadScript({
+					src: "{{assetsBasePath}}/build/main.js",
+					async: true
+				});
+			}());
+		</script>
 	</head>
-	<body class="enhanced">
+	<body>
 		{{#headerConfig}}
 			{{> header}}
 		{{/headerConfig}}
@@ -23,8 +34,6 @@
 				</div>
 			</div>
 		</div>
-
-		<script src="{{assetsBasePath}}/build/main.js"></script>
 
 		{{> footer}}
 	</body>
