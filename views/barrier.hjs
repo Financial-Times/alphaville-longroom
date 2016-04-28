@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html class="{{ctmCoreClass}}">
-	<head>
-		<title>{{ title }}</title>
+<head>
+    <title>{{ title }}</title>
 
-		<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
+    <link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
 
-		{{> ctm}}
+    {{> ctm}}
 
-		<script src="{{polyfillServiceUrl}}"></script>
+    <script src="{{polyfillServiceUrl}}"></script>
 
-		<script>
-			(function () {
-				ctmLoadScript({
-					src: "{{assetsBasePath}}/build/main.js",
-					async: true
-				});
-			}());
-		</script>
-	</head>
-	<body>
-		{{#headerConfig}}
-			{{> header}}
-		{{/headerConfig}}
+    <script>
+        (function () {
+            ctmLoadScript({
+                src: "{{assetsBasePath}}/build/main.js",
+                async: true
+            });
+        }());
+    </script>
+</head>
+<body>
+{{#headerConfig}}
+    {{> header}}
+{{/headerConfig}}
 
 <div class="o-grid-container">
     <div class="o-grid-row">
@@ -32,5 +32,8 @@
         </div>
     </div>
 </div>
+
+{{> footer}}
+
 </body>
 </html>
