@@ -12,6 +12,7 @@ const authConfig = {
 
 router.use('/', auth(authConfig), (req, res, next) => {
 	if (req.hasOwnProperty('isAuthenticated') && req.isAuthenticated === false ) {
+        res.set('Vary', 'No-Access');
 		return renderPage(res, 'barrier', 'index', {
 			title: 'FT Alphaville',
 			barrierModel: req.barrierModel,
