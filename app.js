@@ -4,30 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var auth = require('alphaville-auth-middleware');
-const headerConfig = require('alphaville-header-config');
 
 var routes = {
 	index: require('./routes/index'),
 	__gtg: require('./routes/__gtg')
-};
-
-var authConfig = {
-	checkHeader: process.env['AUTH_HEADER'],
-	barrierView: 'barrier',
-	viewModel: {
-		assetsBasePath: '/assets/longroom',
-		basePath: '/longroom',
-
-		isTest: process.env.ENVIRONMENT === 'test' ? true : false,
-		isProd: process.env.ENVIRONMENT === 'prod' ? true : false,
-
-		headerConfig: headerConfig.setSelected('Longroom'),
-		partials: {
-			header: '../bower_components/alphaville-header/main.hjs',
-			body: '../bower_components/alphaville-barrier/main.hjs'
-		}
-	}
 };
 
 var app = express();
@@ -53,7 +33,6 @@ app.get('/', function (req, res, next) {
 	res.redirect('/longroom');
 });
 
-app.use('/longroom', auth(authConfig));
 app.use('/longroom', routes.index);
 app.use('/', routes.__gtg);
 

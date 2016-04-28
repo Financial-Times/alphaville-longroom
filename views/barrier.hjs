@@ -23,12 +23,14 @@
 			{{> header}}
 		{{/headerConfig}}
 
-		<div class="o-grid-container">
-			<div class="o-grid-row">
-				<div data-o-grid-colspan="12">
-					{{> body}}
-				</div>
-			</div>
-		</div>
-	</body>
+<div class="o-grid-container">
+    <div class="o-grid-row">
+        <div data-o-grid-colspan="12">
+            {{#barrierModel}}
+                {{> barrier}}
+            {{/barrierModel}}
+        </div>
+    </div>
+</div>
+</body>
 </html>
