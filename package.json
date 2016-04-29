@@ -9,7 +9,7 @@
   "dependencies": {
     "debug": "~2.2.0",
 
-    "alphaville-express": "Financial-Times/alphaville-express#0.1.5",
+    "alphaville-express": "Financial-Times/alphaville-express#0.1.6",
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#0.1.0",
     "alphaville-coding-standards": "Financial-Times/alphaville-coding-standards#0.1.2",
 
