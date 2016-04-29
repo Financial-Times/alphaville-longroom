@@ -16,6 +16,7 @@
     "alphaville-page-render": "Financial-Times/alphaville-page-render#0.2.5",
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#0.1.0",
     "alphaville-header-config": "Financial-Times/alphaville-header-config",
+    "alphaville-coding-standards": "Financial-Times/alphaville-coding-standards#0.1.2",
 
     "bower": "^1.7.7",
     "del": "^1.1.1",

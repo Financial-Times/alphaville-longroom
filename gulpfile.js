@@ -3,6 +3,7 @@ const obt = require('origami-build-tools');
 const del = require('del');
 const runSequence = require('run-sequence');
 const run = require('gulp-run');
+const path = require('path');
 
 
 gulp.task('bower-update', function (callback) {
@@ -21,8 +22,12 @@ gulp.task('clean-build', function (callback) {
 	del(['./public/build'], callback);
 });
 
-gulp.task('verify', function() {
-	return obt.verify(gulp);
+gulp.task('obt-verify', function() {
+	return obt.verify(gulp, {
+		scssLintPath: path.join(__dirname, './node_modules/alphaville-coding-standards/scss-lint.yml'),
+		esLintPath: path.join(__dirname, './node_modules/alphaville-coding-standards/.eslintrc'),
+		editorconfigPath: path.join(__dirname, './node_modules/alphaville-coding-standards/.editorconfig')
+	});
 });
 
 gulp.task('obt-build-main', function () {
@@ -39,13 +44,14 @@ gulp.task('obt-build-main', function () {
 
 gulp.task('obt-build', ['obt-build-main']);
 
+gulp.task('verify', ['obt-verify']);
 gulp.task('build', function (callback) {
 	runSequence('clean-build', 'obt-build', callback);
 });
 
 gulp.task('obt', ['verify', 'build']);
 gulp.task('default', function (callback) {
-	runSequence('bower_update', 'bower_install', 'obt', callback);
+	runSequence('bower-update', 'bower-install', 'obt', callback);
 });
 
 gulp.task('watch', function() {
