@@ -3,19 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-  	"postinstall": "gulp bower-clean && gulp bower-install && gulp bower-update && gulp obt-build",
+  	"postinstall": "gulp",
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "body-parser": "~1.13.2",
-    "cookie-parser": "~1.3.5",
     "debug": "~2.2.0",
-    "express": "~4.13.1",
-    "hjs": "~0.0.6",
-    "morgan": "~1.6.1",
-    "alphaville-page-render": "Financial-Times/alphaville-page-render#0.2.5",
+
+    "alphaville-express": "Financial-Times/alphaville-express#0.1.5",
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#0.1.0",
-    "alphaville-header-config": "Financial-Times/alphaville-header-config",
     "alphaville-coding-standards": "Financial-Times/alphaville-coding-standards#0.1.2",
 
     "bower": "^1.7.7",
@@ -25,8 +20,6 @@
     "gulp-watch": "^1.1.0",
     "origami-build-tools": "^5.0.1",
     "request": "^2.69.0",
-    "run-sequence": "^1.0.2",
-    "serve-favicon": "~2.3.0",
-    "signed-aws-es-fetch": "^1.1.0"
+    "run-sequence": "^1.0.2"
   }
 }

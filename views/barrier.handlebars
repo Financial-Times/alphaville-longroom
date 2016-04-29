@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html class="{{ctmCoreClass}}">
-<head>
-    <title>{{ title }}</title>
-
+{{#contentFor "head"}}
     <link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
-
-    {{> ctm}}
-
-    <script src="{{polyfillServiceUrl}}"></script>
 
     <script>
         (function () {
@@ -17,11 +9,7 @@
             });
         }());
     </script>
-</head>
-<body>
-{{#headerConfig}}
-    {{> header}}
-{{/headerConfig}}
+{{/contentFor}}
 
 <div class="o-grid-container">
     <div class="o-grid-row">
@@ -32,8 +20,3 @@
         </div>
     </div>
 </div>
-
-{{> footer}}
-
-</body>
-</html>

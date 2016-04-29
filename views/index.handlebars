@@ -1,0 +1,21 @@
+{{#contentFor "head"}}
+	<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
+
+	<script>
+		(function () {
+			ctmLoadScript({
+				src: "{{assetsBasePath}}/build/main.js",
+				async: true
+			});
+		}());
+	</script>
+{{/contentFor}}
+
+<div class="o-grid-container">
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12">
+			<h1>{{ title }}</h1>
+			<p>Welcome to {{ title }}</p>
+		</div>
+	</div>
+</div>

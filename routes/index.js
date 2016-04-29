@@ -1,9 +1,11 @@
 const express = require('express');
 const router = new express.Router();
+const fs = require('fs');
+const path = require('path');
 
-
-const renderPage = require('alphaville-page-render');
-const headerConfig = require('alphaville-header-config');
+const externalPartials = {
+	barrier: fs.readFileSync(path.join(__dirname, '../bower_components/alphaville-barrier/main.handlebars'), 'utf-8')
+};
 
 const authConfig = {
 	checkHeader: process.env['AUTH_HEADER'],
@@ -15,20 +17,18 @@ router.use('/', (req, res, next) => {
 	if(req.get(authConfig.checkHeader) === authConfig.access) {
 		return next();
 	}
-	return renderPage(res, 'barrier', 'index', {
+	return res.render('barrier', {
 		title: 'FT Alphaville',
 		barrierModel: req.barrierModel,
-		headerConfig: headerConfig.setSelected('Longroom'),
 		partials: {
-			barrier: '../bower_components/alphaville-barrier/main.hjs'
+			barrier: externalPartials.barrier
 		}
 	});
 });
 
 router.get('/', (req, res) => {
-	renderPage(res, 'index', 'longroom', {
-		title: 'Alphaville Longroom',
-		headerConfig: headerConfig.setSelected('Longroom')
+	res.render('index', {
+		title: 'Alphaville Longroom'
 	});
 });
 

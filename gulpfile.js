@@ -1,9 +1,72 @@
+"use strict";
+
 const gulp = require('gulp');
 const obt = require('origami-build-tools');
 const del = require('del');
 const runSequence = require('run-sequence');
 const run = require('gulp-run');
+const fs = require('fs');
 const path = require('path');
+
+
+const env = process.env.ENVIRONMENT || 'test';
+
+
+function ensureDirectoryExistence (filePath) {
+	const dirname = path.dirname(filePath);
+
+	if (directoryExists(dirname)) {
+		return true;
+	}
+
+	ensureDirectoryExistence(dirname);
+	fs.mkdirSync(dirname);
+}
+
+function directoryExists(path) {
+	try {
+		return fs.statSync(path).isDirectory();
+	} catch (err) {
+		return false;
+	}
+}
+
+function generateRandomString(length) {
+	let text = "";
+	const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+	for (let i = 0; i < length; i++) {
+		text += possible.charAt(Math.floor(Math.random() * possible.length));
+	}
+
+	return text;
+}
+
+
+gulp.task('build-config-dir', function () {
+	ensureDirectoryExistence('build_config/js/test.js');
+	ensureDirectoryExistence('build_config/scss/test.scss');
+});
+
+gulp.task('fingerprint', function(callback) {
+	const fingerprint = generateRandomString(10);
+
+	fs.writeFileSync('build_config/js/fingerprint.js', `module.exports="${fingerprint}";`);
+	fs.writeFileSync('build_config/scss/fingerprint.scss', `$fingerprint: '${fingerprint}';`);
+	callback();
+});
+
+gulp.task('assets-domain-config', function(callback) {
+	let assetsDomain = '';
+	if (env === 'prod') {
+		assetsDomain = '//alphaville-h2.ft.com';
+	}
+
+	fs.writeFileSync('build_config/js/assetsDomain.js', `module.exports="${assetsDomain}";`);
+	fs.writeFileSync('build_config/scss/assetsDomain.scss', `$assets-domain: '${assetsDomain}';`);
+
+	callback();
+});
 
 
 gulp.task('bower-update', function (callback) {
@@ -38,7 +101,7 @@ gulp.task('obt-build-main', function () {
 		sass: './assets/scss/main.scss',
 		buildJs: 'main.js',
 		buildCss: 'main.css',
-		env: process.env.ENVIRONMENT === 'prod' ? 'production' : 'development'
+		env: env === 'prod' ? 'production' : 'development'
 	});
 });
 
@@ -46,7 +109,7 @@ gulp.task('obt-build', ['obt-build-main']);
 
 gulp.task('verify', ['obt-verify']);
 gulp.task('build', function (callback) {
-	runSequence('clean-build', 'obt-build', callback);
+	runSequence('clean-build', 'build-config-dir', 'fingerprint', 'assets-domain-config', 'obt-build', callback);
 });
 
 gulp.task('obt', ['verify', 'build']);

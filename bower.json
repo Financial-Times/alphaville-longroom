@@ -24,12 +24,13 @@
     "o-fonts": "^2.0.0",
     "o-ft-icons": "^3.3.0",
     "o-autoinit": "^1.2.0",
-    "alphaville-header": "git+https://github.com/Financial-Times/alphaville-header.git#^0.1.4",
-    "alphaville-footer": "git+https://github.com/Financial-Times/alphaville-footer.git#^0.0.1",
-    "alphaville-barrier": "git+https://github.com/Financial-Times/alphaville-barrier.git#^0.0.3"
+    "alphaville-header": "git+https://github.com/Financial-Times/alphaville-header.git#^0.2.0",
+    "alphaville-footer": "git+https://github.com/Financial-Times/alphaville-footer.git#^0.2.0",
+    "alphaville-barrier": "git+https://github.com/Financial-Times/alphaville-barrier.git#^0.1.0"
   },
   "resolutions": {
     "o-ft-icons": "^3.3.0",
-    "o-assets": "^3.0.0"
+    "o-assets": "^3.0.0",
+    "o-fonts": "^2.0.0"
   }
 }

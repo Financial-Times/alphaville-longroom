@@ -1,32 +1,18 @@
-const express = require('express');
-const path = require('path');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
+const alphavilleExpress = require('alphaville-express');
+const fingerprint = require('./build_config/js/fingerprint');
+
+const app = alphavilleExpress({
+	directory: __dirname,
+	appBasePath: 'longroom',
+	navSelected: 'Longroom',
+	fingerprint: fingerprint
+});
 
 const routes = {
 	index: require('./routes/index'),
 	__gtg: require('./routes/__gtg')
 };
 
-const app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hjs');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-
-app.get('/assets/longroom/bower/*.(woff|svg|ttf|eot|gif|png|jpg)', (req, res) => {
-	const newPath = req.originalUrl.split('/').slice(4).join('/');
-	res.sendFile(path.join(__dirname, '/bower_components', newPath));
-});
-app.use('/assets/longroom', express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
 	res.redirect('/longroom');
