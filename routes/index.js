@@ -5,28 +5,7 @@ const path = require('path');
 const auth = require('alphaville-auth-middleware');
 const multer = require('multer');
 
-const externalPartials = {
-	barrier: fs.readFileSync(path.join(__dirname, '../bower_components/alphaville-barrier/main.handlebars'), 'utf-8')
-};
-
-const authConfig = {
-	checkHeader: process.env['AUTH_HEADER'],
-	checkHeaderValue: process.env['AUTH_HEADER_VALUE']
-};
-
-router.use('/', auth(authConfig), (req, res, next) => {
-	if (req.hasOwnProperty('isAuthenticated') && req.isAuthenticated === false ) {
-		return res.render('barrier', {
-			title: 'Longroom ',
-			barrierModel: req.barrierModel,
-			partials: {
-				barrier: externalPartials.barrier
-			}
-		});
-	}
-
-	return next();
-});
+router.use('/', auth());
 
 router.get('/', (req, res) => {
 	res.render('index', {
