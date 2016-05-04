@@ -16,6 +16,12 @@ $o-ft-icons-is-silent: false;
 @import 'o-footer/main';
 @import 'o-colors/main';
 
+$o-forms-is-silent: false;
+@import 'o-forms/main';
+
+$o-buttons-is-silent: false;
+@import 'o-buttons/main';
+
 // Store the default FT sans-serif font stack in a variable
 $sans-serif: oFontsGetFontFamilyWithFallbacks(BentonSans);
 
@@ -40,3 +46,5 @@ body {
 
 @import 'alphaville-header/main';
 @import 'alphaville-barrier/main';
+
+@import '../modules/file_upload/file_upload';

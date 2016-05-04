@@ -1,0 +1,125 @@
+.enhanced {
+	.lr-upload.draganddrop {
+		position: relative;
+		width: 100%;
+		
+		.lr-upload-dropzone {
+			font-size: 22px;
+			color: grey;
+			text-align: center;
+			margin: 0 auto;
+			padding: 0 10px;
+			display: table-cell;
+			vertical-align: middle;
+			border: 4px dashed grey;
+			box-sizing: border-box;
+			height: 100px;
+			cursor: pointer;
+
+			&.drag-over {
+				border: 4px dashed green;
+				background-color: olivegreen;
+			}
+		}
+
+		.lr-upload-preview {
+			list-style: none;
+			margin: 0;
+			padding: 10px 0;
+
+			&:after {
+				visibility: hidden;
+				display: block;
+				font-size: 0;
+				content: " ";
+				clear: both;
+				height: 0;
+			}
+
+			li {
+				float: left;
+				width: 100px;
+				padding: 0 10px;
+			}
+
+
+			.lr-upload-file-name {
+				padding-top: 10px;
+			}
+
+			.lr-upload-preview-image {
+				/* lt ie8 */
+				-ms-background-position-x: center;
+				-ms-background-position-y: bottom;
+				background-position: center bottom;
+
+				/* scale bg image proportionately */
+				background-size: cover;
+
+				/* prevent scaling past src width (or not) */
+				width: 100px;
+				height: 100px;
+			}
+
+			.lr-upload-preview-ext-avi {
+				background-image: url($assets-global-path + 'images/file_extension_icons/avi.png');
+			}
+
+			.lr-upload-preview-ext-mp3 {
+				background-image: url($assets-global-path + 'images/file_extension_icons/mp3.png');
+			}
+
+			.lr-upload-preview-ext-mp4 {
+				background-image: url($assets-global-path + 'images/file_extension_icons/mp4.png');
+			}
+
+			.lr-upload-preview-ext-mpg {
+				background-image: url($assets-global-path + 'images/file_extension_icons/mpg.png');
+			}
+
+			.lr-upload-preview-ext-doc {
+				background-image: url($assets-global-path + 'images/file_extension_icons/doc.png');
+			}
+
+			.lr-upload-preview-ext-gif {
+				background-image: url($assets-global-path + 'images/file_extension_icons/gif.png');
+			}
+
+			.lr-upload-preview-ext-pdf {
+				background-image: url($assets-global-path + 'images/file_extension_icons/pdf.png');
+			}
+
+			.lr-upload-preview-ext-mpg {
+				background-image: url($assets-global-path + 'images/file_extension_icons/mpg.png');
+			}
+
+			.lr-upload-preview-ext-ppt {
+				background-image: url($assets-global-path + 'images/file_extension_icons/ppt.png');
+			}
+
+			.lr-upload-preview-ext-rtf {
+				background-image: url($assets-global-path + 'images/file_extension_icons/rtf.png');
+			}
+
+			.lr-upload-preview-ext-txt {
+				background-image: url($assets-global-path + 'images/file_extension_icons/txt.png');
+			}
+
+			.lr-upload-preview-ext-wav {
+				background-image: url($assets-global-path + 'images/file_extension_icons/wav.png');
+			}
+
+			.lr-upload-preview-ext-xls {
+				background-image: url($assets-global-path + 'images/file_extension_icons/xls.png');
+			}
+
+			.lr-upload-preview-ext-xlsx {
+				background-image: url($assets-global-path + 'images/file_extension_icons/xlsx.png');
+			}
+
+			.lr-upload-preview-ext-xml {
+				background-image: url($assets-global-path + 'images/file_extension_icons/xml.png');
+			}
+		}
+	}
+}

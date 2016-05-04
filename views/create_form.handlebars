@@ -1,0 +1,48 @@
+{{#contentFor "head"}}
+	<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
+
+	<script>
+		(function () {
+			ctmLoadScript({
+				src: "{{assetsBasePath}}/build/main.js",
+				async: true
+			});
+		}());
+	</script>
+{{/contentFor}}
+
+<div class="o-grid-container">
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12">
+			<h1>{{ h1 }}</h1>
+			<form action="{{basePath}}/create" method="POST" enctype="multipart/form-data" class="longroom-create-post">
+				<div class="o-forms-group">
+					<label class="o-forms-label" for="post-title">Title of your post</label>
+					<input type="text" class="o-forms-text" name="post-title" id="post-title" />
+				</div>
+
+				<div class="o-forms-group">
+					<label class="o-forms-label" for="post-content">Content</label>
+					<textarea class="o-forms-textarea" name="post-content" id="post-content"></textarea>
+				</div>
+
+				<div class="o-forms-group">
+					<label class="o-forms-label">Attached files and images</label>
+					
+					<div class="longroom-file-upload">
+						<input type="file" name="post-file" id="post-file" class="o--if-no-js" multiple="true" />
+					</div>
+				</div>
+
+				<div class="o-forms-group">
+					<p>
+						<small>By publishing this post I confirm that I have read and agreed to the <a href="http://www.ft.com/servicestools/help/terms">FT Terms and Conditions</a></small>
+					</p>
+
+					<button class="o-buttons" name="post-draft">Save Draft</button>
+					<button class="o-buttons o-buttons--standout" name="post-publish">Publish</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

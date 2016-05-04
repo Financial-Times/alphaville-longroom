@@ -3,16 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-  	"postinstall": "gulp",
+    "postinstall": "gulp",
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "alphaville-express": "Financial-Times/alphaville-express#0.1.10",
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#0.1.0",
     "alphaville-build-tools": "Financial-Times/alphaville-build-tools#0.1.2",
-
-    "debug": "~2.2.0",
+    "alphaville-express": "Financial-Times/alphaville-express#0.1.10",
     "bower": "^1.7.7",
-    "gulp": "^3.9.1"
+    "debug": "~2.2.0",
+    "gulp": "^3.9.1",
+    "multer": "^1.1.0"
   }
 }
