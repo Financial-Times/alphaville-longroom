@@ -1,1 +1,5 @@
-$o-assets-global-path: '/assets/longroom/bower/';
+@import '../../build_config/scss/assetsDomain';
+@import '../../build_config/scss/fingerprint';
+
+$o-assets-global-path: $assets-domain + '/assets/longroom/bower/' + $fingerprint + '/';
+@import 'o-assets/main';
