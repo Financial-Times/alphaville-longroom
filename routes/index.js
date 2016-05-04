@@ -40,11 +40,11 @@ if (!fs.existsSync(storageDirPath)) {
 }
 
 router.post('/create', upload.array('post-file'), (req, res) => {
-	/*setTimeout(function () {
+	setTimeout(function () {
 		req.files.forEach((file) => {
 			fs.unlinkSync(file.path);
 		});
-	}, 100);*/
+	}, 100);
 
 	if (req.xhr) {
 		res.json({
