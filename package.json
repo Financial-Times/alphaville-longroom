@@ -7,12 +7,14 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "alphaville-express": "Financial-Times/alphaville-express#0.1.11",
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#0.2.0",
     "alphaville-build-tools": "Financial-Times/alphaville-build-tools#0.1.2",
+    "alphaville-express": "Financial-Times/alphaville-express#0.1.11",
+    "bluebird": "^3.3.5",
     "bower": "^1.7.7",
     "debug": "~2.2.0",
     "gulp": "^3.9.1",
+    "massive": "^2.2.0",
     "multer": "^1.1.0"
   }
 }
