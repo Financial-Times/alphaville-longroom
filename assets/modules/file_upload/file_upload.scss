@@ -22,6 +22,11 @@
 			}
 		}
 
+		.lr-upload-preview-msg {
+			font-style: italic;
+			display: none;
+		}
+
 		.lr-upload-preview {
 			list-style: none;
 			margin: 0;
@@ -40,6 +45,7 @@
 				float: left;
 				width: 100px;
 				padding: 0 10px;
+				cursor: pointer;
 			}
 
 

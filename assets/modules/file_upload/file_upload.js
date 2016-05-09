@@ -1,4 +1,12 @@
-function LongroomFileUpload (el) {
+const Delegate = require('dom-delegate');
+const hogan = require('hogan');
+
+function LongroomFileUpload (el, config) {
+	config = config || {};
+
+	const lrAlert = config.alert || window.alert;
+	const maxFiles = config.maxFiles || Infinity;
+
 	el.classList.add('lr-upload');
 
 	const input = el.querySelector('input[type="file"]');
@@ -8,32 +16,94 @@ function LongroomFileUpload (el) {
 	if (isAdvancedUpload) {
 		el.classList.add('draganddrop');
 
-		const dropzone = document.createElement('div');
-		dropzone.classList.add('lr-upload-dropzone');
-		dropzone.innerHTML = 'Drag and Drop or select file';
-		el.appendChild(dropzone);
-		const dropzoneEl = el.querySelector('.lr-upload-dropzone');
+		el.appendChild(toDOM(hogan.compile(requireText('./file_upload_advanced.html')).render()));
 
-		const previewList = document.createElement('ul');
-		previewList.classList.add('lr-upload-preview');
-		el.appendChild(previewList);
+		const dropzoneEl = el.querySelector('.lr-upload-dropzone');
 		const previewEl = el.querySelector('.lr-upload-preview');
+		const previewHintEl = el.querySelector('.lr-upload-preview-msg');
+
+		const previewDelegate = new Delegate(previewEl);
+		previewDelegate.on('click', 'li', function (evt) {
+			let liEl = getParents(evt.srcElement, 'li');
+			if (liEl && liEl.length) {
+				liEl = liEl[0];
+
+				const fileId = liEl.getAttribute('data-id');
+
+				liEl.parentNode.removeChild(liEl);
+
+				removeFile(fileId);
+
+				if (!filesToUpload.length) {
+					previewHintEl.style.display = 'none';
+				}
+
+				if (filesToUpload.length < maxFiles) {
+					dropzoneEl.style.display = 'table-cell';
+				}
+			}
+		});
 
 		dropzoneEl.addEventListener('click', () => {
 			input.click();
 		});
 
+		const getFileId = (file) => {
+			return file.name.replace(/\W/g, '_').toLowerCase() + file.size + file.type.replace(/\W/g, '_').toLowerCase();
+		};
+
+		const fileExists = (file) => {
+			for (let i = 0; i < filesToUpload.length; i++) {
+				let match = true;
+
+				['name', 'size', 'type'].forEach((key) => {
+					if (filesToUpload[i][key] !== file[key]) {
+						match = false;
+					}
+				});
+
+				if (match) {
+					return true;
+				}
+			}
+
+			return false;
+		};
+
+		const removeFile = (fileId) => {
+			for (let i = 0; i < filesToUpload.length; i++) {
+				if (fileId === getFileId(filesToUpload[i])) {
+					filesToUpload.splice(i, 1);
+					return true;
+				}
+			}
+
+			return false;
+		};
+
 		const handleNewFiles = (files) => {
 			if (files && files.length) {
+				if (files.length + filesToUpload.length > maxFiles) {
+					lrAlert(`The maximum allowed number of files (${maxFiles}) is exceeded. Please try again.`);
+					return;
+				}
+
 				for (let i = 0; i < files.length; i++) {
 					const file = files[i];
 
-					filesToUpload.push(file);
-
 					if (allowedFileTypes.indexOf(file.type) === -1) {
-						alert("File " + file.name + " has a not allowed file type.");
+						lrAlert("File " + file.name + " has a not allowed file type.");
 						continue;
 					}
+
+					if (fileExists(file)) {
+						continue;
+					}
+
+					const fileId = getFileId(file);
+
+					filesToUpload.push(file);
+
 
 					const li = document.createElement('li');
 					const imgPreview = document.createElement('div');
@@ -42,6 +112,8 @@ function LongroomFileUpload (el) {
 					imgPreview.classList.add('lr-upload-preview-image');
 					name.innerHTML = file.name;
 					name.classList.add('lr-upload-file-name');
+
+					li.setAttribute('data-id', fileId);
 
 					li.appendChild(imgPreview);
 					li.appendChild(name);
@@ -60,6 +132,12 @@ function LongroomFileUpload (el) {
 						imgPreview.classList.add(`lr-upload-preview-ext-${fileTypesIcons[file.type]}`);
 					}
 				}
+
+				if (filesToUpload.length >= maxFiles) {
+					dropzoneEl.style.display = 'none';
+				}
+
+				previewHintEl.style.display = 'block';
 			}
 		};
 
@@ -171,7 +249,25 @@ const imageTypes = [
 
 
 
-/*
+
+
+function toDOM (htmlString) {
+	const d = document;
+	let i;
+	const a = d.createElement("div");
+	const b = d.createDocumentFragment();
+
+	a.innerHTML = htmlString;
+
+	while (a.firstChild) {
+		i = a.firstChild;
+		b.appendChild(i);
+	}
+
+	return b;
+}
+
+
 function getParents (elem, selector) {
 	let firstChar;
 	const parents = [];
@@ -221,4 +317,3 @@ function getParents (elem, selector) {
 	}
 
 };
-*/

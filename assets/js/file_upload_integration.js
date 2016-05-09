@@ -11,7 +11,9 @@ document.addEventListener('o.DOMContentLoaded', () => {
 
 			if (fileUploadsEl && fileUploadsEl.length) {
 				for (let i = 0; i < fileUploadsEl.length; i++) {
-					fileUploads.push(new LongroomFileUpload(fileUploadsEl[i]));
+					fileUploads.push(new LongroomFileUpload(fileUploadsEl[i], {
+						maxFiles: 5
+					}));
 				}
 			}
 
