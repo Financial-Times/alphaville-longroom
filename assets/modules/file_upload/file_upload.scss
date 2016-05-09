@@ -17,7 +17,7 @@
 			cursor: pointer;
 
 			&.drag-over {
-				border: 4px dashed green;
+				border-color: green;
 				background-color: olivegreen;
 			}
 		}
