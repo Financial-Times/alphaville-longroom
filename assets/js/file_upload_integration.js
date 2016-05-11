@@ -36,8 +36,8 @@ document.addEventListener('o.DOMContentLoaded', () => {
 					httpRequest.post({
 						url: form.action,
 						body: formData
-					}).then(() => {
-						console.log('success');
+					}).then((data) => {
+						//console.log('data received', data);
 					}).catch((err) => {
 						console.log('error', err);
 					});

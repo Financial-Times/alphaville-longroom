@@ -32,7 +32,6 @@ function execute (config) {
 		}
 
 		if (isCrossDomain(config.url) && xhr instanceof XMLHttpRequest) {
-			console.log('cross domain');
 			xhr.open(config.type, config.url, true);
 
 			if (typeof xhr.withCredentials !== 'undefined') {
@@ -44,6 +43,8 @@ function execute (config) {
 				xhr.timeout = config.timeout || 15000;
 			}
 		}
+
+		xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
 
 		if (xhr.onload !== 'undefined') {
@@ -185,7 +186,7 @@ function isCrossDomain (requestUrl) {
 	if (typeof window.location !== 'undefined') {
 		const hostnameMatch = requestUrl.match(/((http[s]?:)|(\/\/))?\/\/([^\/]*)/);
 
-		if (hostnameMatch && hostnameMatch[2] !== window.location.hostname) {
+		if (hostnameMatch && hostnameMatch[4] !== window.location.hostname + (window.location.port ? ':' + window.location.port : '')) {
 			return true;
 		}
 	}
