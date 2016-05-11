@@ -9,7 +9,7 @@
   "dependencies": {
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#0.2.0",
     "alphaville-build-tools": "Financial-Times/alphaville-build-tools#0.1.2",
-    "alphaville-express": "Financial-Times/alphaville-express#0.1.11",
+    "alphaville-express": "Financial-Times/alphaville-express#0.1.12",
     "async": "^2.0.0-rc.4",
     "bower": "^1.7.7",
     "debug": "~2.2.0",
