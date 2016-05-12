@@ -17,9 +17,14 @@
 			cursor: pointer;
 
 			&.drag-over {
-				border: 4px dashed green;
+				border-color: green;
 				background-color: olivegreen;
 			}
+		}
+
+		.lr-upload-preview-msg {
+			font-style: italic;
+			display: none;
 		}
 
 		.lr-upload-preview {
@@ -40,6 +45,7 @@
 				float: left;
 				width: 100px;
 				padding: 0 10px;
+				cursor: pointer;
 			}
 
 

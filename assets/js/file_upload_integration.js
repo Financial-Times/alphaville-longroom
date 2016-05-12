@@ -11,7 +11,9 @@ document.addEventListener('o.DOMContentLoaded', () => {
 
 			if (fileUploadsEl && fileUploadsEl.length) {
 				for (let i = 0; i < fileUploadsEl.length; i++) {
-					fileUploads.push(new LongroomFileUpload(fileUploadsEl[i]));
+					fileUploads.push(new LongroomFileUpload(fileUploadsEl[i], {
+						maxFiles: 5
+					}));
 				}
 			}
 
@@ -34,8 +36,8 @@ document.addEventListener('o.DOMContentLoaded', () => {
 					httpRequest.post({
 						url: form.action,
 						body: formData
-					}).then(() => {
-						console.log('success');
+					}).then((data) => {
+						//console.log('data received', data);
 					}).catch((err) => {
 						console.log('error', err);
 					});
