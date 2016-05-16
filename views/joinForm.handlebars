@@ -1,0 +1,35 @@
+
+{{#contentFor "head"}}
+	<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
+
+	<script>
+		(function () {
+			ctmLoadScript({
+				src: "{{assetsBasePath}}/build/main.js",
+				async: true
+			});
+		}());
+	</script>
+{{/contentFor}}
+
+<div class="o-grid-container">
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="8">
+			<h1>{{ h1 }}</h1>
+			<form action="{{basePath}}/join" method="POST" enctype="multipart/form-data">
+				<div class="o-forms-group">
+					<label class="o-forms-label" for="location">Location</label>
+					<input type="text" class="o-forms-text" name="location" />
+				</div>
+				<div class="o-forms-group">
+					<label class="o-forms-label" for="description">About you</label>
+					<textarea class="o-forms-textarea" name="description"></textarea>
+				</div>
+
+				<div class="o-forms-group">
+					<button class="o-buttons o-buttons--standout" name="join">Join Long Room</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
