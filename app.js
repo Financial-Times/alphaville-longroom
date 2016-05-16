@@ -11,18 +11,12 @@ const app = alphavilleExpress({
 	env: env
 });
 
-const routes = {
-	index: require('./routes/index'),
-	__gtg: require('./routes/__gtg')
-};
-
+app.use('/', require('./routes/__gtg'));
+app.use('/longroom', require('./router'));
 
 app.get('/', function (req, res) {
 	res.redirect('/longroom');
 });
-
-app.use('/longroom', routes.index);
-app.use('/', routes.__gtg);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,3 +1,22 @@
-<h1>{{ message }}</h1>
-<h2>{{ error.status }}</h2>
-<pre>{{ error.stack }}</pre>
+{{#contentFor "head"}}
+	<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
+
+	<script>
+		(function () {
+			ctmLoadScript({
+				src: "{{assetsBasePath}}/build/main.js",
+				async: true
+			});
+		}());
+	</script>
+{{/contentFor}}
+
+<div class="o-grid-container">
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="8">
+      <h1>{{ message }}</h1>
+      <h2>{{ error.status }}</h2>
+      <pre>{{ error.stack }}</pre>
+    </div>
+  </div>
+</div>
