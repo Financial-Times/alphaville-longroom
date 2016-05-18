@@ -15,23 +15,29 @@
 	<div class="o-grid-row">
 		<div data-o-grid-colspan="12">
 			<h1>{{ h1 }}</h1>
+
+			<div class="lr-generic-message"></div>
+
 			<form action="{{basePath}}/create" method="POST" enctype="multipart/form-data" class="longroom-create-post">
-				<div class="o-forms-group">
+				<div class="o-forms-group {{#validation}}{{#post-title}}o-forms--error{{/post-title}}{{/validation}}">
 					<label class="o-forms-label" for="post-title">Title of your post</label>
-					<input type="text" class="o-forms-text" name="post-title" id="post-title" />
+					<input type="text" class="o-forms-text" name="post-title" id="post-title" value="{{#postData}}{{#post-title}}{{.}}{{/post-title}}{{/postData}}" required />
+					<div class="o-forms-errortext">{{#validation}}{{#post-title}}{{.}}{{/post-title}}{{/validation}}</div>
 				</div>
 
-				<div class="o-forms-group">
+				<div class="o-forms-group {{#validation}}{{#post-content}}o-forms--error{{/post-content}}{{/validation}}">
 					<label class="o-forms-label" for="post-content">Content</label>
-					<textarea class="o-forms-textarea" name="post-content" id="post-content"></textarea>
+					<textarea class="o-forms-textarea" name="post-content" id="post-content" >{{#postData}}{{#post-content}}{{.}}{{/post-content}}{{/postData}}</textarea>
+					<div class="o-forms-errortext">{{#validation}}{{#post-content}}{{.}}{{/post-content}}{{/validation}}</div>
 				</div>
 
-				<div class="o-forms-group">
+				<div class="o-forms-group {{#validation}}{{#post-file}}o-forms--error{{/post-file}}{{/validation}}">
 					<label class="o-forms-label">Attached files and images</label>
 					
-					<div class="longroom-file-upload">
+					<div class="lr-file-upload">
 						<input type="file" name="post-file" id="post-file" class="o--if-no-js" multiple="true" />
 					</div>
+					<div class="o-forms-errortext">{{#validation}}{{#post-file}}{{.}}{{/post-file}}{{/validation}}</div>
 				</div>
 
 				<div class="o-forms-group">

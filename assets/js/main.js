@@ -2,6 +2,6 @@ require('./common');
 
 require('alphaville-header');
 
-require('./file_upload_integration');
+require('./create_form');
 
 require('o-autoinit');

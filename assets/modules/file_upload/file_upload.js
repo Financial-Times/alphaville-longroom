@@ -1,5 +1,6 @@
 const Delegate = require('dom-delegate');
 const hogan = require('hogan');
+const domUtils = require('../domUtils');
 
 function LongroomFileUpload (el, config) {
 	config = config || {};
@@ -16,7 +17,7 @@ function LongroomFileUpload (el, config) {
 	if (isAdvancedUpload) {
 		el.classList.add('draganddrop');
 
-		el.appendChild(toDOM(hogan.compile(requireText('./file_upload_advanced.html')).render()));
+		el.appendChild(domUtils.toDOM(hogan.compile(requireText('./file_upload_advanced.html')).render()));
 
 		const dropzoneEl = el.querySelector('.lr-upload-dropzone');
 		const previewEl = el.querySelector('.lr-upload-preview');
@@ -24,7 +25,7 @@ function LongroomFileUpload (el, config) {
 
 		const previewDelegate = new Delegate(previewEl);
 		previewDelegate.on('click', 'li', function (evt) {
-			let liEl = getParents(evt.srcElement, 'li');
+			let liEl = domUtils.getParents(evt.srcElement, 'li');
 			if (liEl && liEl.length) {
 				liEl = liEl[0];
 
@@ -247,73 +248,3 @@ const imageTypes = [
 	"image/gif"
 ];
 
-
-
-
-
-function toDOM (htmlString) {
-	const d = document;
-	let i;
-	const a = d.createElement("div");
-	const b = d.createDocumentFragment();
-
-	a.innerHTML = htmlString;
-
-	while (a.firstChild) {
-		i = a.firstChild;
-		b.appendChild(i);
-	}
-
-	return b;
-}
-
-
-function getParents (elem, selector) {
-	let firstChar;
-	const parents = [];
-
-	if (selector) {
-		firstChar = selector.charAt(0);
-	}
-
-	// Get matches
-	for (; elem && elem !== document; elem = elem.parentNode) {
-		if (selector) {
-			// If selector is a class
-			if (firstChar === '.') {
-				if (elem.classList.contains(selector.substr(1))) {
-					parents.push(elem);
-				}
-			}
-
-			// If selector is an ID
-			if (firstChar === '#') {
-				if (elem.id === selector.substr(1)) {
-					parents.push(elem);
-				}
-			}
-
-			// If selector is a data attribute
-			if (firstChar === '[') {
-				if (elem.hasAttribute(selector.substr(1, selector.length - 1))) {
-					parents.push(elem);
-				}
-			}
-
-			// If selector is a tag
-			if (elem.tagName.toLowerCase() === selector) {
-				parents.push(elem);
-			}
-		} else {
-			parents.push(elem);
-		}
-	}
-
-	// Return parents if any exist
-	if (parents.length === 0) {
-		return null;
-	} else {
-		return parents;
-	}
-
-};

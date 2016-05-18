@@ -1,12 +1,64 @@
 const LongroomFileUpload = require('../modules/file_upload/file_upload');
 const httpRequest = require('./httpRequest');
+const domUtils = require('../modules/domUtils');
+
+function resetFormErrorStatus (form) {
+	const formGroups = form.querySelectorAll('.o-forms-group');
+	for (let j = 0; j < formGroups.length; j++) {
+		formGroups[j].classList.remove('o-forms--error');
+		const errorTextEl = formGroups[j].querySelector('.o-forms-errortext');
+		if (errorTextEl) {
+			errorTextEl.innerHTML = "";
+		}
+	}
+}
+
+function handleResponse (form, response) {
+	resetFormErrorStatus(form);
+
+	if (response.success) {
+		console.log('success');
+	} else {
+		try {
+			const keys = Object.keys(response.validation);
+			keys.forEach((key) => {
+				const inputEl = form.querySelector(`[name="${key}"]`);
+				if (inputEl) {
+					let formGroup = domUtils.getParents(inputEl, '.o-forms-group');
+					if (formGroup && formGroup.length) {
+						formGroup = formGroup[0];
+
+						formGroup.classList.add('o-forms--error');
+						let errorTextEl = formGroup.querySelector('.o-forms-errortext');
+						if (!errorTextEl) {
+							const div = document.createElement('div');
+							div.classList.add('o-forms-errortext');
+							formGroup.appendChild(div);
+							errorTextEl = formGroup.querySelector('.o-forms-errortext');
+						}
+
+						errorTextEl.textContent = response.validation[key];
+					}
+				}
+			});
+		} catch (e) {
+			console.log(e.stack);
+		}
+	}
+}
+
+function handleError (form, err) {
+	resetFormErrorStatus(form);
+
+	console.log('error', err);
+}
 
 document.addEventListener('o.DOMContentLoaded', () => {
 	const forms = document.querySelectorAll('form');
 	if (forms && forms.length) {
 		for (let i = 0; i < forms.length; i++) {
 			const form = forms[i];
-			const fileUploadsEl = form.querySelectorAll('.longroom-file-upload');
+			const fileUploadsEl = form.querySelectorAll('.lr-file-upload');
 			const fileUploads = [];
 
 			if (fileUploadsEl && fileUploadsEl.length) {
@@ -37,9 +89,9 @@ document.addEventListener('o.DOMContentLoaded', () => {
 						url: form.action,
 						body: formData
 					}).then((data) => {
-						//console.log('data received', data);
+						handleResponse(form, JSON.parse(data));
 					}).catch((err) => {
-						console.log('error', err);
+						handleError(form, err);
 					});
 				} else {
 					const target = form.getAttribute('target');
@@ -64,9 +116,7 @@ document.addEventListener('o.DOMContentLoaded', () => {
 						const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
 						const data = JSON.parse(iframeDocument.querySelector('body').textContent);
 
-						console.log(JSON.stringify(data));
-
-						// handle success/failure
+						handleResponse(form, JSON.stringify(data));
 
 						iframe.parentNode.removeChild(iframe);
 						form.setAttribute('target', target);
