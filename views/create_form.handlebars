@@ -16,9 +16,8 @@
 		<div data-o-grid-colspan="12">
 			<h1>{{ h1 }}</h1>
 
-			<div class="lr-generic-message"></div>
-
 			<form action="{{basePath}}/create" method="POST" enctype="multipart/form-data" class="longroom-create-post">
+				<div class="lr-generic-message"></div>
 				<div class="o-forms-group {{#validation}}{{#post-title}}o-forms--error{{/post-title}}{{/validation}}">
 					<label class="o-forms-label" for="post-title">Title of your post</label>
 					<input type="text" class="o-forms-text" name="post-title" id="post-title" value="{{#postData}}{{#post-title}}{{.}}{{/post-title}}{{/postData}}" required />

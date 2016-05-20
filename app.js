@@ -1,5 +1,6 @@
 const alphavilleExpress = require('alphaville-express');
 const fingerprint = require('./build_config/js/fingerprint');
+require('./lib/services/db');
 
 const env = process.env.ENVIRONMENT === 'prod' ? 'prod' : 'test';
 

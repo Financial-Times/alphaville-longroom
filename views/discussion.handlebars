@@ -1,0 +1,40 @@
+{{#contentFor "head"}}
+	<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
+
+	<script>
+		(function () {
+			ctmLoadScript({
+				src: "{{assetsBasePath}}/build/main.js",
+				async: true
+			});
+		}());
+	</script>
+{{/contentFor}}
+
+<div class="o-grid-container">
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12">
+			<h1>{{ discussion.title }}</h1>
+			<p>{{ discussion.content }}</p>
+
+			<ul>
+				{{#images}}
+				<li>
+					<img src="https://s3-eu-west-1.amazonaws.com/alphaville2-longroom-file-upload-dev/{{saved_filename}}" />
+				</li>
+				{{/images}}
+			</ul>
+
+			<ul>
+				{{#files}}
+				<li>
+					<a href="https://s3-eu-west-1.amazonaws.com/alphaville2-longroom-file-upload-dev/{{saved_filename}}">
+						<span class="lr-upload-preview-image lr-upload-preview-ext-{{icon}}"></span>
+						<span>{{original_filename}}</span>
+					</a>
+				</li>
+				{{/files}}
+			</ul>
+		</div>
+	</div>
+</div>
