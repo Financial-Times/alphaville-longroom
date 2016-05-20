@@ -9,12 +9,15 @@ $o-fonts-is-silent: false;
 // Output icon helper classes
 $o-ft-icons-is-silent: false;
 
+$o-link-list-is-silent: false;
+
 // Import Origami components
 @import 'o-grid/main';
 @import 'o-fonts/main';
 @import 'o-ft-icons/main';
 @import 'o-footer/main';
 @import 'o-colors/main';
+@import 'o-link-list/main';
 
 $o-forms-is-silent: false;
 @import 'o-forms/main';

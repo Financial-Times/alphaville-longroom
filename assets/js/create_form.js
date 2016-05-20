@@ -17,10 +17,10 @@ function handleResponse (form, response) {
 	resetFormErrorStatus(form);
 
 	if (response.success) {
-		console.log('success');
+		document.location.href = '/longroom/discussion/' + response.id;
 	} else {
 		try {
-			const keys = Object.keys(response.validation);
+			const keys = Object.keys(response.validation || {});
 			keys.forEach((key) => {
 				const inputEl = form.querySelector(`[name="${key}"]`);
 				if (inputEl) {
@@ -41,8 +41,12 @@ function handleResponse (form, response) {
 					}
 				}
 			});
+
+			if (response.genericMessage) {
+				form.querySelector('.lr-generic-message').textContent = response.genericMessage;
+			}
 		} catch (e) {
-			console.log(e.stack);
+			form.querySelector('.lr-generic-message').textContent = "An error occured.";
 		}
 	}
 }

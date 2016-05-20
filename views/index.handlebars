@@ -23,7 +23,7 @@
 				So apply for membership, pull up a (virtual) chair and join the debate.
 			</p>
 			<p>
-				Taking its cue from the original Long Room Restaurant & Bar in the City of London - close by the old Stock Exchange trading floor in Throgmorton Street and once a hub of financial chatter – the Long Room offers ideas and opinion from a broad range of analysts, financial bloggers and other self-appointed commentators on anything and everything that might be considered relevant to the financial world.
+				Taking its cue from the original Long Room Restaurant &amp; Bar in the City of London - close by the old Stock Exchange trading floor in Throgmorton Street and once a hub of financial chatter – the Long Room offers ideas and opinion from a broad range of analysts, financial bloggers and other self-appointed commentators on anything and everything that might be considered relevant to the financial world.
 			</p>
 			<p>
 				Membership is complimentary, but subject to status. Applicants are asked to complete a short FT registration process and then tell us (just a bit) about themselves.
@@ -41,9 +41,15 @@
 		</div>
 		<div data-o-grid-colspan="4" class="lr-home-create-col">
 			<a href="{{basePath}}/create" class="o-buttons">Create new discussion</a>
-		</div>
-	</div>
 
-	<div class="o-grid-row">
+			<aside class="o-link-list side-component">
+				<div class="o-link-list__aside-title">Discussions</div>
+				<ul class="o-link-list__item-container">
+					{{#discussions}}
+						<li><a class="o-link-list__item" href="{{../basePath}}/discussion/{{id}}">{{title}}</a></li>
+					{{/discussions}}
+				</ul>
+			</aside>
+		</div>
 	</div>
 </div>
