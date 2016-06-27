@@ -30,6 +30,7 @@
     "alphaville-footer": "git+https://github.com/Financial-Times/alphaville-footer.git#^0.2.0",
     "alphaville-barrier": "git+https://github.com/Financial-Times/alphaville-barrier.git#^0.1.0",
     "alphaville-marketslive-session-listener": "git+https://github.com/Financial-Times/alphaville-marketslive-session-listener.git#^0.1.0",
+    "alphaville-ads": "Financial-Times/alphaville-ads#^0.1.0",
     "dom-delegate": "ftdomdelegate#^2.0.3",
     "hogan": "twitter/hogan.js#^3.0.2"
   },
