@@ -58,7 +58,7 @@ function handleError (form, err) {
 }
 
 document.addEventListener('o.DOMContentLoaded', () => {
-	const forms = document.querySelectorAll('form');
+	const forms = document.querySelectorAll('.longroom-create-post');
 	if (forms && forms.length) {
 		for (let i = 0; i < forms.length; i++) {
 			const form = forms[i];
