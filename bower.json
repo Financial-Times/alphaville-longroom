@@ -35,9 +35,6 @@
     "hogan": "twitter/hogan.js#^3.0.2"
   },
   "resolutions": {
-    "o-ft-icons": "^3.3.0",
-    "o-assets": "^3.0.0",
-    "o-buttons": "^3.0.0",
-    "o-fonts": "^2.0.0"
+    "o-buttons": "^4.0.1"
   }
 }
