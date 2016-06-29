@@ -8,7 +8,7 @@ const app = alphavilleExpress({
 	directory: __dirname,
 	appBasePath: 'longroom',
 	headerConfig: require('alphaville-header-config'),
-	navSelected: 'The Longroom',
+	navSelected: 'The Long Room',
 	fingerprint: fingerprint,
 	env: env
 });
