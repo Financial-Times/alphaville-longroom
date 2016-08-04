@@ -26,7 +26,7 @@
     "o-forms": "^2.0.0",
     "o-buttons": "^4.0.0",
     "o-link-list": "^1.0.0",
-    "alphaville-header": "git+https://github.com/Financial-Times/alphaville-header.git#^0.8.0",
+    "alphaville-header": "git+https://github.com/Financial-Times/alphaville-header.git#^0.9.0",
     "alphaville-footer": "git+https://github.com/Financial-Times/alphaville-footer.git#^0.4.0",
     "alphaville-barrier": "git+https://github.com/Financial-Times/alphaville-barrier.git#^0.1.0",
     "alphaville-marketslive-session-listener": "git+https://github.com/Financial-Times/alphaville-marketslive-session-listener.git#^0.1.0",
