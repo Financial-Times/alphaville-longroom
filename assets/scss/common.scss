@@ -1,56 +1,14 @@
 @import './assets';
 
-// Output grid helper classes and data-attributes
-$o-grid-is-silent: false;
-
-// Output @font-face declarations
-$o-fonts-is-silent: false;
-
-// Output icon helper classes
-$o-ft-icons-is-silent: false;
-
 $o-link-list-is-silent: false;
-
-// Import Origami components
-@import 'o-grid/main';
-@import 'o-fonts/main';
-@import 'o-ft-icons/main';
-@import 'o-footer/main';
-@import 'o-colors/main';
 @import 'o-link-list/main';
 
 $o-forms-is-silent: false;
 @import 'o-forms/main';
 
-$o-buttons-is-silent: false;
-@import 'o-buttons/main';
-
-// Store the default FT sans-serif font stack in a variable
-$sans-serif: oFontsGetFontFamilyWithFallbacks(BentonSans);
-
-html {
-  // The iconic pink background
-  @include oColorsFor(page, background);
-
-  // Set a font family on the whole document
-  font-family: $sans-serif;
-
-  // Prevent navigation menus from creating
-  // extra space on sides of the page
-  overflow-x: hidden;
-}
-
-body {
-  font-size: 12px;
-  margin: 0;
-}
-
-@import './page';
-
-@import 'alphaville-header/main';
-@import 'alphaville-footer/main';
-@import 'alphaville-barrier/main';
-
+@import 'alphaville-ui/main';
 @import '../modules/file_upload/file_upload';
-@import 'alphaville-ads/main';
-@import 'alphaville-marketslive-session-notification/main';
+
+.lr-home-create-col {
+	margin-top: 1.67em;
+}

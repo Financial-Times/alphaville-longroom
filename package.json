@@ -7,9 +7,9 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#0.2.1",
+    "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#0.3.0",
     "alphaville-build-tools": "Financial-Times/alphaville-build-tools#0.1.6",
-    "alphaville-express": "Financial-Times/alphaville-express#0.5.0",
+    "alphaville-express": "Financial-Times/alphaville-express#0.6.0",
     "alphaville-header-config": "Financial-Times/alphaville-header-config#0.4.1",
     "async": "^2.0.0-rc.4",
     "aws-sdk": "^2.3.10",
