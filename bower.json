@@ -26,6 +26,7 @@
     "o-forms": "^2.0.0"
   },
   "resolutions": {
-    "o-buttons": "^4.0.1"
+    "o-buttons": "^4.0.1",
+    "o-viewport": "^3.0.0"
   }
 }
