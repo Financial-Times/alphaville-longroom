@@ -6,6 +6,9 @@
     "postinstall": "gulp",
     "start": "node ./bin/www"
   },
+  "engines": {
+    "node": "6.5.0"
+  },
   "dependencies": {
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#0.3.0",
     "alphaville-build-tools": "Financial-Times/alphaville-build-tools#0.1.6",
