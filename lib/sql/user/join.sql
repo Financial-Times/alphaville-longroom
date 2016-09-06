@@ -6,7 +6,9 @@ INSERT INTO users(
   last_name,
   industry,
   position,
-  responsibility
+  responsibility,
+  location,
+  description
 ) VALUES (
   ${user_id},
   ${email},
@@ -15,5 +17,7 @@ INSERT INTO users(
   ${last_name},
   ${industry},
   ${position},
-  ${responsibility}
+  ${responsibility},
+  ${location},
+  ${description}
 ) RETURNING user_id
