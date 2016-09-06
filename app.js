@@ -14,12 +14,12 @@ const app = alphavilleExpress({
 app.use('/', require('./routes/__gtg'));
 app.use('/longroom', require('./router'));
 
-app.get('/', function (req, res) {
+app.all('/', (req, res) => {
 	res.redirect('/longroom');
 });
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
 	const err = new Error('Not Found');
 	err.status = 404;
 	next(err);
@@ -33,7 +33,7 @@ const errorHandler = (err, req, res, next) => {
 	if (err.status === 404) {
 		res.sendStatus(404);
 	} else {
-		res.status(err.status || 503);
+		res.status(err.status || 500);
 		res.render('error', {
 			message: err.errMsg || err.message,
 			error: isNotProdEnv ? err : {}
