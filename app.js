@@ -33,7 +33,6 @@ const errorHandler = (err, req, res, next) => {
 	if (err.status === 404) {
 		res.sendStatus(404);
 	} else {
-		res.status(err.status || 500);
 		res.render('error', {
 			message: err.errMsg || err.message,
 			error: isNotProdEnv ? err : {}
