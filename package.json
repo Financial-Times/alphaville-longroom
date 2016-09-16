@@ -13,7 +13,7 @@
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#0.3.0",
     "alphaville-build-tools": "Financial-Times/alphaville-build-tools#0.1.6",
     "alphaville-express": "Financial-Times/alphaville-express#0.7.4",
-    "alphaville-header-config": "Financial-Times/alphaville-header-config#0.6.0",
+    "alphaville-header-config": "Financial-Times/alphaville-header-config#0.7.0",
     "alphaville-team-members": "Financial-Times/alphaville-team-members#0.2.1",
 
     "async": "^2.0.0-rc.4",
