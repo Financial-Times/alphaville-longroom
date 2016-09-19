@@ -31,12 +31,14 @@ const errorHandler = (err, req, res, next) => {
 		process.env.ENVIRONMENT !== 'prod';
 
 	if (err.status === 404) {
-		res.sendStatus(404);
+		res.status(404);
+		res.render('error_404');
 	} else {
+		res.status(err.status || 503);
 		res.render('error', {
 			message: err.errMsg || err.message,
 			error: isNotProdEnv ? err : {}
-		})
+		});
 	}
 };
 
