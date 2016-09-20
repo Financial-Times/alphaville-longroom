@@ -35,6 +35,7 @@ const errorHandler = (err, req, res, next) => {
 		res.render('error_404');
 	} else {
 		res.status(err.status || 503);
+		console.log('ERROR =>', err);
 		res.render('error', {
 			message: err.errMsg || err.message,
 			error: isNotProdEnv ? err : {}
