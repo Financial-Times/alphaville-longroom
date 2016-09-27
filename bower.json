@@ -18,7 +18,7 @@
     "tests"
   ],
   "dependencies": {
-    "alphaville-ui": "Financial-Times/alphaville-ui#^0.2.0",
+    "alphaville-ui": "Financial-Times/alphaville-ui#^0.3.4",
     "dom-delegate": "ftdomdelegate#^2.0.3",
     "hogan": "twitter/hogan.js#^3.0.2",
     "o-link-list": "^1.0.0",
