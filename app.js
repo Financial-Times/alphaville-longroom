@@ -6,7 +6,7 @@ const env = process.env.ENVIRONMENT === 'prod' ? 'prod' : 'test';
 const app = alphavilleExpress({
 	directory: __dirname,
 	appBasePath: 'longroom',
-	navSelected: 'The Long Room',
+	navSelected: 'Long Room',
 	fingerprint: fingerprint,
 	env: env
 });
