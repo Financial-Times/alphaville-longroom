@@ -1,0 +1,23 @@
+.lr-forms__small-label {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.lr-forms__action-link {
+	font-weight: bold;
+	color: oColorsGetPaletteColor('cold-2');
+}
+
+.lr-forms__file-upload-group {
+	margin-bottom: 5px;
+
+	[type="file"] {
+		visibility: hidden;
+		position: absolute;
+	}
+}
+
+.lr-forms__file-upload {
+	width: 100%;
+	cursor: pointer;
+}

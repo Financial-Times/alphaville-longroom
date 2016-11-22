@@ -3,11 +3,15 @@
 $o-link-list-is-silent: false;
 @import 'o-link-list/main';
 
+$o-expander-is-silent: false;
+@import 'o-expander/main';
+
 $o-forms-is-silent: false;
 @import 'o-forms/main';
 
 @import 'alphaville-ui/main';
 @import '../modules/file_upload/file_upload';
+@import './create_form';
 
 .lr-home-create-col {
 	margin-top: 1.67em;

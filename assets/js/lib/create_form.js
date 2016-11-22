@@ -1,6 +1,146 @@
-const LongroomFileUpload = require('../modules/file_upload/file_upload');
 const httpRequest = require('./httpRequest');
-const domUtils = require('../modules/domUtils');
+const domUtils = require('./domUtils');
+const uploadFileTypes = require('./upload_file_types');
+
+
+const getFileId = (file) => {
+	return file.name.replace(/\W/g, '_').toLowerCase() + file.size + file.type.replace(/\W/g, '_').toLowerCase();
+};
+
+
+function LongroomFileUpload (uploadContainer, id, el) {
+	const uploadButton = el.querySelector('.lr-forms__file-upload');
+	const fileInput = el.querySelector('input[type="file"]');
+	const fileSource = el.querySelector('.lr-forms__file-upload-source');
+	const previewArea = el.querySelector('.lr-forms__file-upload-preview');
+	const fileUploadError = el.querySelector('.lr-forms__file-upload-error');
+
+	let fileToUpload = null;
+
+	uploadButton.addEventListener('click', () => {
+		fileInput.click();
+	});
+
+	const onTypeSourceInput = () => {
+		if (fileSource.value !== "") {
+			uploadButton.removeAttribute('disabled');
+		} else {
+			uploadButton.setAttribute('disabled', 'disabled');
+		}
+	};
+
+	fileSource.addEventListener('keyup', onTypeSourceInput);
+	fileSource.addEventListener('keydown', onTypeSourceInput);
+
+	fileInput.addEventListener('change', () => {
+		const file = fileInput.files[0];
+
+		if (uploadFileTypes.allowedFileTypes.indexOf(file.type) === -1) {
+			fileUploadError.innerHTML = "File " + file.name + " has a not allowed file type.";
+			return;
+		}
+
+		if (uploadContainer.fileExists(file)) {
+			fileUploadError.innerHTML = "File " + file.name + " has already been uploaded.";
+			return;
+		}
+
+		uploadContainer.fileUploaded(id, file);
+		fileToUpload = file;
+
+		previewArea.innerHTML = file.name;
+		uploadButton.setAttribute('disabled', 'disabled');
+		fileUploadError.innerHTML = "";
+	});
+
+	this.getFile = function () {
+		return fileToUpload;
+	};
+}
+
+function LongroomFileUploadContainer (config) {
+	const container = config.container;
+	const elSelector = config.elSelector;
+	const addMoreEl = config.addMoreEl;
+	const actionButton = config.addMoreEl.querySelector('button');
+	const inputNames = config.inputNames;
+	const self = this;
+
+	const fileUploadForms = {};
+
+	let maxFiles = addMoreEl.getAttribute('data-maximum-files');
+	if (!isNaN(maxFiles)) {
+		maxFiles = parseInt(maxFiles, 10);
+	} else {
+		maxFiles = 1;
+	}
+
+	let index = 1;
+
+	const uploadForms = container.querySelectorAll(elSelector);
+	for (const uploadForm of uploadForms) {
+		fileUploadForms[index] = new LongroomFileUpload(self, index, uploadForm);
+		index++;
+	}
+
+	const template = container.querySelector(elSelector).outerHTML;
+
+
+	if (Object.keys(fileUploadForms).length < maxFiles) {
+		actionButton.addEventListener('click', onMoreUploadField);
+	} else {
+		actionButton.setAttribute('disabled', 'disabled');
+	}
+
+
+	function onMoreUploadField () {
+		if (Object.keys(fileUploadForms).length < maxFiles) {
+			let currentTemplate = template;
+			inputNames.forEach((inputName) => {
+				currentTemplate = currentTemplate.replace(`${inputName}1`, `${inputName}${index}`);
+			});
+
+			container.appendChild(domUtils.toDOM(template));
+			const fileUploadFormElements = container.querySelectorAll(elSelector);
+			fileUploadForms[index] = new LongroomFileUpload(self, index, fileUploadFormElements[fileUploadFormElements.length - 1]);
+			actionButton.setAttribute('disabled', 'disabled');
+
+			index++;
+		}
+	}
+
+
+	this.fileExists = function (file) {
+		let found = false;
+
+		Object.keys(fileUploadForms).forEach((id) => {
+			const uploadedFile = fileUploadForms[id].getFile();
+			if (uploadedFile) {
+				let match = true;
+
+				['name', 'size', 'type'].forEach((key) => {
+					if (uploadedFile[key] !== file[key]) {
+						match = false;
+					}
+				});
+
+				if (match) {
+					found = true;
+				}
+			}
+		});
+
+		return found;
+	};
+
+	this.fileUploaded = function (id) {
+		if (id === index - 1) {
+			actionButton.removeAttribute('disabled', 'disabled');
+		}
+	};
+}
+
+
 
 function resetFormErrorStatus (form) {
 	const formGroups = form.querySelectorAll('.o-forms-group');
@@ -59,6 +199,34 @@ function handleError (form, err) {
 
 document.addEventListener('o.DOMContentLoaded', () => {
 	const forms = document.querySelectorAll('.longroom-create-post');
+	if (forms && forms.length) {
+		for (let i = 0; i < forms.length; i++) {
+			const form = forms[i];
+
+			const fileUploadContainers = [];
+			const uploadContainer = form.querySelectorAll('.lr-forms__file-upload-container');
+
+			for (const uploadContainerItem of uploadContainer) {
+				fileUploadContainers.push(new LongroomFileUploadContainer({
+					container: uploadContainerItem,
+					elSelector: '.lr-forms__file-upload-group',
+					addMoreEl: document.querySelector('.lr-forms__action-link'),
+					inputNames: [
+						'post-file-source',
+						'post-file'
+					]
+				}));
+			}
+
+			form.addEventListener('submit', (e) => {
+				e.preventDefault();
+			});
+		}
+	}
+});
+
+
+	/*const forms = document.querySelectorAll('.longroom-create-post');
 	if (forms && forms.length) {
 		for (let i = 0; i < forms.length; i++) {
 			const form = forms[i];
@@ -132,7 +300,7 @@ document.addEventListener('o.DOMContentLoaded', () => {
 			});
 		}
 	}
-});
+})*/
 
 
 function serializeForm (form) {

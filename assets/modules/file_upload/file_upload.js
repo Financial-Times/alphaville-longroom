@@ -82,6 +82,10 @@ function LongroomFileUpload (el, config) {
 			return false;
 		};
 
+		const uploadFile = (file) => {
+
+		};
+
 		const handleNewFiles = (files) => {
 			if (files && files.length) {
 				if (files.length + filesToUpload.length > maxFiles) {
@@ -176,7 +180,7 @@ function LongroomFileUpload (el, config) {
 			handleNewFiles(input.files, 'input');
 		});
 	} else {
-		input.classList.remove('o--if-no-js');
+		//input.classList.remove('o--if-no-js');
 	}
 
 

@@ -11,32 +11,69 @@
 	</script>
 {{/contentFor}}
 
+{{#> lr_layout }}
 <div class="o-grid-container">
 	<div class="o-grid-row">
-		<div data-o-grid-colspan="12">
-			<h1>{{ h1 }}</h1>
-
+		<div data-o-grid-colspan="12 M8 XL7 XLoffset1">
 			<form action="{{basePath}}/create" method="POST" enctype="multipart/form-data" class="longroom-create-post">
 				<div class="lr-generic-message"></div>
-				<div class="o-forms-group {{#validation}}{{#post-title}}o-forms--error{{/post-title}}{{/validation}}">
-					<label class="o-forms-label" for="post-title">Title of your post</label>
-					<input type="text" class="o-forms-text" name="post-title" id="post-title" value="{{#postData}}{{#post-title}}{{.}}{{/post-title}}{{/postData}}" required />
-					<div class="o-forms-errortext">{{#validation}}{{#post-title}}{{.}}{{/post-title}}{{/validation}}</div>
+				<div class="o-forms-group">
+					<label class="o-forms-label" for="post-title">Title - <span class="lr-forms__small-label">this will be the headline of your publication, e.g. Haitong on B&amp;M<span></label>
+					<input type="text" class="o-forms-text o-forms-text--small" name="post-title" id="post-title" value="" />
+					<div class="o-forms-errortext"></div>
 				</div>
 
-				<div class="o-forms-group {{#validation}}{{#post-content}}o-forms--error{{/post-content}}{{/validation}}">
-					<label class="o-forms-label" for="post-content">Content</label>
-					<textarea class="o-forms-textarea" name="post-content" id="post-content" >{{#postData}}{{#post-content}}{{.}}{{/post-content}}{{/postData}}</textarea>
-					<div class="o-forms-errortext">{{#validation}}{{#post-content}}{{.}}{{/post-content}}{{/validation}}</div>
-				</div>
-
-				<div class="o-forms-group {{#validation}}{{#post-file}}o-forms--error{{/post-file}}{{/validation}}">
-					<label class="o-forms-label">Attached files and images</label>
-					
-					<div class="lr-file-upload">
-						<input type="file" name="post-file" id="post-file" class="o--if-no-js" multiple="true" />
+				<div class="o-forms-group">
+					<div class="o-grid-row">
+						<div data-o-grid-colspan="6">
+							<label class="o-forms-label">Document source - <span class="lr-forms__small-label">e.g. Haitong Research, Barclays</span></label>
+						</div>
+						<div data-o-grid-colspan="6">
+							<label class="o-forms-label">Attach document</label>
+						</div>
 					</div>
-					<div class="o-forms-errortext">{{#validation}}{{#post-file}}{{.}}{{/post-file}}{{/validation}}</div>
+
+					<div class="lr-forms__file-upload-container">
+						<div class="lr-forms__file-upload-group">
+							<div class="o-grid-row">
+								<div data-o-grid-colspan="6">
+									<input type="text" class="o-forms-text o-forms-text--small lr-forms__file-upload-source" name="post-file-source1" value="" />
+								</div>
+								<div data-o-grid-colspan="6">
+									<button class="o-buttons lr-forms__file-upload" disabled>
+										Choose file
+									</button>
+									<input type="file" name="post-file" id="post-file1" />
+								</div>
+							</div>
+							<div class="o-grid-row">
+								<div data-o-grid-colspan="12" class="lr-forms__file-upload-preview">
+								</div>
+								<div data-o-grid-colspan="12" class="lr-forms__file-upload-error o-forms-errortext">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="lr-forms__action-link" data-maximum-files="5">
+						<button class="o-buttons o-buttons--standout" disabled>+</button> Attach another document
+					</div>
+				</div>
+
+				<div class="o-forms-group">
+					<label class="o-forms-label" for="post-tags">Topic tags - <span class="lr-forms__small-label">e.g. Markets, Retail</span></label>
+					<input type="text" class="o-forms-text o-forms-text--small" name="post-tags" id="post-tags" value="" />
+					<div class="o-forms-errortext"></div>
+				</div>
+
+				<div class="o-forms-group">
+					<div data-o-component="o-expander" class="o-expander" data-o-expander-shrink-to="hidden" data-o-expander-expanded-toggle-text="Discussion summary" data-o-expander-collapsed-toggle-text="Discussion summary">
+						<label class="o-forms-label o-expander__toggle o--if-js" for="post-content">Discussion summary</label>
+						<div class="o-expander__content">
+							<textarea class="o-forms-textarea" name="post-content" id="post-content" ></textarea>
+							<div class="o-forms-errortext"></div>
+						</div>
+					</div>
 				</div>
 
 				<div class="o-forms-group">
@@ -44,10 +81,14 @@
 						<small>By publishing this post I confirm that I have read and agreed to the <a href="http://www.ft.com/servicestools/help/terms">FT Terms and Conditions</a></small>
 					</p>
 
-					<button class="o-buttons" name="post-draft">Save Draft</button>
-					<button class="o-buttons o-buttons--standout" name="post-publish">Publish</button>
+					<button type="submit" class="o-buttons" name="post-draft">Save Draft</button>
+					<button type="submit" class="o-buttons o-buttons--standout" name="post-publish">Publish</button>
 				</div>
 			</form>
 		</div>
+		<div data-o-grid-colspan="hide M4">
+			sidebar
+		</div>
 	</div>
 </div>
+{{/lr_layout}}

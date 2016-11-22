@@ -1,5 +1,5 @@
 require('./common');
 
-require('./create_form');
+require('./lib/create_form');
 
 require('o-autoinit');
