@@ -4,17 +4,17 @@
   "private": true,
   "scripts": {
     "postinstall": "gulp",
-    "start": "node ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "engines": {
     "node": "6.5.0"
   },
   "dependencies": {
-    "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#0.5.2",
+    "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#1.0.3",
     "alphaville-build-tools": "Financial-Times/alphaville-build-tools#0.1.6",
-    "alphaville-express": "Financial-Times/alphaville-express#0.7.9",
-    "alphaville-header-config": "Financial-Times/alphaville-header-config#0.7.9",
-    "alphaville-team-members": "Financial-Times/alphaville-team-members#0.3.0",
+    "alphaville-express": "Financial-Times/alphaville-express#0.7.10",
+    "alphaville-header-config": "Financial-Times/alphaville-header-config#0.7.11",
+    "alphaville-team-members": "Financial-Times/alphaville-team-members#0.3.2",
 
     "async": "^2.0.0-rc.4",
     "aws-sdk": "^2.3.10",
