@@ -85,7 +85,13 @@ function execute (config) {
 				}
 			};
 
-			xhr.onprogress = function () {}; // do nothing, we are not interested in the progress
+			xhr.onprogress = function (evt) {
+				if (typeof config.onProgress === 'function') {
+					if (evt.lengthComputable) {
+						config.onProgress(evt.loaded / evt.total);
+					}
+				}
+			};
 		} else {
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState === 4) {

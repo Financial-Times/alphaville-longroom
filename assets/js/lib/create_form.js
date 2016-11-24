@@ -32,12 +32,24 @@ function LongroomFileUpload (config) {
 		uploadButton.setAttribute('disabled', 'disabled');
 	};
 
+	const enableUploadButton = function () {
+		uploadButton.removeAttribute('disabled');
+	};
+
 	const showError = function (error) {
 		fileUploadError.innerHTML = error;
 	};
 
 	const clearError = function () {
 		fileUploadError.innerHTML = '';
+	};
+
+	const startProgress = function () {
+		previewArea.innerHTML = '<div class="alphaville-spinner"></div>';
+	};
+
+	const endProgress = function () {
+		previewArea.innerHTML = '';
 	};
 
 
@@ -47,7 +59,7 @@ function LongroomFileUpload (config) {
 		disableUploadButton();
 	}
 
-	const onTypeSourceInput = () => {
+	const onTypeSourceInput = function () {
 		if (fileSource.value !== "") {
 			uploadButton.removeAttribute('disabled');
 		} else {
@@ -55,59 +67,73 @@ function LongroomFileUpload (config) {
 		}
 	};
 
+	const clearFileInput = function () {
+		fileInput.files = null;
+		fileInput.value = null;
+	};
+
 
 	fileSource.addEventListener('keyup', onTypeSourceInput);
 	fileSource.addEventListener('keydown', onTypeSourceInput);
 
 	fileInput.addEventListener('change', () => {
+		clearError();
+		disableUploadButton();
+		startProgress();
+
 		const file = fileInput.files[0];
 
 		if (uploadFileTypes.allowedFileTypes.indexOf(file.type) === -1) {
 			showError("File " + file.name + " has a not allowed file type.");
-			fileInput.files = null;
+
+			clearFileInput();
+			endProgress();
+			enableUploadButton();
+
 			return;
 		}
 
 		if (uploadContainer.fileExists(file)) {
 			showError("File " + file.name + " has already been uploaded.");
-			fileInput.files = null;
+
+			clearFileInput();
+			endProgress();
+			enableUploadButton();
+
 			return;
 		}
 
 
-		getSignedRequest(file)
-			.then(signedRequest => {
-				return uploadFile(file, signedRequest).then(() => {
-					uploadContainer.fileUploaded(id, file);
-					fileToUpload = file;
+		uploadFile(file).then(() => {
+			endProgress();
 
-					previewArea.innerHTML = `
-						<img src="${assetsPath}/images/file_extension_icons/${uploadFileTypes.fileTypesIcons[file.type]}.png" />
-						<span class="lr-forms__file-upload--preview-info">
-							${file.name}<br/>
-							<a class="lr-forms__file-upload--delete">Delete</a>
-						</span>
-					`;
-					disableUploadButton();
-					clearError;
+			uploadContainer.fileUploaded(id, file);
+			fileToUpload = file;
 
-					previewArea.querySelector('.lr-forms__file-upload--delete').addEventListener('click', (evt) => {
-						evt.preventDefault();
+			previewArea.innerHTML = `
+				<img src="${assetsPath}/images/file_extension_icons/${uploadFileTypes.fileTypesIcons[file.type]}.png" />
+				<span class="lr-forms__file-upload--preview-info">
+					${file.name}<br/>
+					<a class="lr-forms__file-upload--delete">Delete</a>
+				</span>
+			`;
 
-						if (isNewUpload) {
-							el.parentNode.removeChild(el);
-							deleteFile(file);
-							uploadContainer.removeUploadForm(id);
-						} else {
-							uploadContainer.removeFileOnSave(el.getAttribute('data-lr-file-id'));
-						}
-					});
-				});
-			})
-			.catch(() => {
-				fileInput.files = null;
-				showError('Failed to upload the document. Please try again later.');
+			previewArea.querySelector('.lr-forms__file-upload--delete').addEventListener('click', (evt) => {
+				evt.preventDefault();
+
+				if (isNewUpload) {
+					el.parentNode.removeChild(el);
+					deleteFile(file);
+					uploadContainer.removeUploadForm(id);
+				} else {
+					uploadContainer.removeFileOnSave(el.getAttribute('data-lr-file-id'));
+				}
 			});
+		})
+		.catch(() => {
+			fileInput.files = null;
+			showError('Failed to upload the document. Please try again later.');
+		});
 	});
 
 	this.getFile = function () {
@@ -119,7 +145,7 @@ function LongroomFileUploadContainer (config) {
 	const container = config.container;
 	const elSelector = config.elSelector;
 	const addMoreEl = config.addMoreEl;
-	const actionButton = config.addMoreEl.querySelector('button');
+	const addMoreButton = config.addMoreEl.querySelector('button');
 	const inputNames = config.inputNames;
 	const self = this;
 
@@ -144,17 +170,18 @@ function LongroomFileUploadContainer (config) {
 		index++;
 	}
 
+	const disableAddMoreButton = function () {
+		addMoreButton.setAttribute('disabled', 'disabled');
+	};
+
+	const enableAddMoreButton = function () {
+		addMoreButton.removeAttribute('disabled');
+	};
+
+
 	const template = container.querySelector(elSelector).outerHTML;
 
-
-	if (Object.keys(fileUploadForms).length < maxFiles) {
-		actionButton.addEventListener('click', addMoreUploadField);
-	} else {
-		actionButton.setAttribute('disabled', 'disabled');
-	}
-
-
-	function addMoreUploadField () {
+	const addMoreUploadField = function () {
 		if (Object.keys(fileUploadForms).length < maxFiles) {
 			let currentTemplate = template;
 			inputNames.forEach((inputName) => {
@@ -168,11 +195,21 @@ function LongroomFileUploadContainer (config) {
 				id: index,
 				el: fileUploadFormElements[fileUploadFormElements.length - 1]
 			});
-			actionButton.setAttribute('disabled', 'disabled');
+			disableAddMoreButton();
 
 			index++;
 		}
+	};
+
+
+	if (Object.keys(fileUploadForms).length < maxFiles) {
+		addMoreButton.addEventListener('click', addMoreUploadField);
+	} else {
+		disableAddMoreButton();
 	}
+
+
+
 
 
 	this.fileExists = function (file) {
@@ -199,8 +236,8 @@ function LongroomFileUploadContainer (config) {
 	};
 
 	this.fileUploaded = function (id) {
-		if (id === index - 1) {
-			actionButton.removeAttribute('disabled', 'disabled');
+		if (id === index - 1 && Object.keys(fileUploadForms).length < maxFiles) {
+			enableAddMoreButton();
 		}
 	};
 
@@ -209,6 +246,8 @@ function LongroomFileUploadContainer (config) {
 
 		if (!Object.keys(fileUploadForms).length) {
 			addMoreUploadField();
+		} else if (Object.keys(fileUploadForms).length < maxFiles) {
+			enableAddMoreButton();
 		}
 	};
 }
@@ -218,6 +257,7 @@ function LongroomFileUploadContainer (config) {
 function getSignedRequest (file) {
 	return httpRequest.get({
 		url: '/longroom/s3/sign',
+		dataType: 'json',
 		query: {
 			'file-name': file.name,
 			'file-type': file.type
@@ -235,17 +275,21 @@ function getSignedRequest (file) {
 	});
 }
 
-function uploadFile (file, signedRequest) {
-	return httpRequest.put({
-		url: signedRequest,
-		body: file,
-		withCredentials: false
-	});
+function uploadFile (file) {
+	return getSignedRequest(file)
+		.then(signedRequest => httpRequest.put({
+			url: signedRequest,
+			body: file,
+			dataType: 'json',
+			withCredentials: false
+		})
+	);
 }
 
 function deleteFile (file) {
 	return httpRequest.post({
 		url: '/longroom/s3/delete',
+		dataType: 'json',
 		body: {
 			'file-name': file.name
 		}
