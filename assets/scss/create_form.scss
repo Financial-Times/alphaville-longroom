@@ -24,6 +24,7 @@
 
 .lr-forms__file-upload--preview {
 	margin: 5px 0 10px;
+	min-height: 70px;
 
 	&:empty {
 		margin: 0;
