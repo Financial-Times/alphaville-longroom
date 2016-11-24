@@ -1,19 +1,25 @@
 const httpRequest = require('./httpRequest');
 const domUtils = require('./domUtils');
 const uploadFileTypes = require('./upload_file_types');
-
+const assetsPath = require('../assets_path');
 
 const getFileId = (file) => {
 	return file.name.replace(/\W/g, '_').toLowerCase() + file.size + file.type.replace(/\W/g, '_').toLowerCase();
 };
 
 
-function LongroomFileUpload (uploadContainer, id, el) {
+function LongroomFileUpload (config) {
+	const self = this;
+
+	const uploadContainer = config.uploadContainer;
+	const id = config.id;
+	const el = config.el;
+
 	const uploadButton = el.querySelector('.lr-forms__file-upload');
 	const fileInput = el.querySelector('input[type="file"]');
-	const fileSource = el.querySelector('.lr-forms__file-upload-source');
-	const previewArea = el.querySelector('.lr-forms__file-upload-preview');
-	const fileUploadError = el.querySelector('.lr-forms__file-upload-error');
+	const fileSource = el.querySelector('.lr-forms__file-upload--source');
+	const previewArea = el.querySelector('.lr-forms__file-upload--preview');
+	const fileUploadError = el.querySelector('.lr-forms__file-upload--error');
 
 	let fileToUpload = null;
 
@@ -21,13 +27,34 @@ function LongroomFileUpload (uploadContainer, id, el) {
 		fileInput.click();
 	});
 
+
+	const disableUploadButton = function () {
+		uploadButton.setAttribute('disabled', 'disabled');
+	};
+
+	const showError = function (error) {
+		fileUploadError.innerHTML = error;
+	};
+
+	const clearError = function () {
+		fileUploadError.innerHTML = '';
+	};
+
+
+	let isNewUpload = true;
+	if (el.getAttribute('data-lr-file-id')) {
+		isNewUpload = false;
+		disableUploadButton();
+	}
+
 	const onTypeSourceInput = () => {
 		if (fileSource.value !== "") {
 			uploadButton.removeAttribute('disabled');
 		} else {
-			uploadButton.setAttribute('disabled', 'disabled');
+			disableUploadButton();
 		}
 	};
+
 
 	fileSource.addEventListener('keyup', onTypeSourceInput);
 	fileSource.addEventListener('keydown', onTypeSourceInput);
@@ -36,21 +63,51 @@ function LongroomFileUpload (uploadContainer, id, el) {
 		const file = fileInput.files[0];
 
 		if (uploadFileTypes.allowedFileTypes.indexOf(file.type) === -1) {
-			fileUploadError.innerHTML = "File " + file.name + " has a not allowed file type.";
+			showError("File " + file.name + " has a not allowed file type.");
+			fileInput.files = null;
 			return;
 		}
 
 		if (uploadContainer.fileExists(file)) {
-			fileUploadError.innerHTML = "File " + file.name + " has already been uploaded.";
+			showError("File " + file.name + " has already been uploaded.");
+			fileInput.files = null;
 			return;
 		}
 
-		uploadContainer.fileUploaded(id, file);
-		fileToUpload = file;
 
-		previewArea.innerHTML = file.name;
-		uploadButton.setAttribute('disabled', 'disabled');
-		fileUploadError.innerHTML = "";
+		getSignedRequest(file)
+			.then(signedRequest => {
+				return uploadFile(file, signedRequest).then(() => {
+					uploadContainer.fileUploaded(id, file);
+					fileToUpload = file;
+
+					previewArea.innerHTML = `
+						<img src="${assetsPath}/images/file_extension_icons/${uploadFileTypes.fileTypesIcons[file.type]}.png" />
+						<span class="lr-forms__file-upload--preview-info">
+							${file.name}<br/>
+							<a class="lr-forms__file-upload--delete">Delete</a>
+						</span>
+					`;
+					disableUploadButton();
+					clearError;
+
+					previewArea.querySelector('.lr-forms__file-upload--delete').addEventListener('click', (evt) => {
+						evt.preventDefault();
+
+						if (isNewUpload) {
+							el.parentNode.removeChild(el);
+							deleteFile(file);
+							uploadContainer.removeUploadForm(id);
+						} else {
+							uploadContainer.removeFileOnSave(el.getAttribute('data-lr-file-id'));
+						}
+					});
+				});
+			})
+			.catch(() => {
+				fileInput.files = null;
+				showError('Failed to upload the document. Please try again later.');
+			});
 	});
 
 	this.getFile = function () {
@@ -79,7 +136,11 @@ function LongroomFileUploadContainer (config) {
 
 	const uploadForms = container.querySelectorAll(elSelector);
 	for (const uploadForm of uploadForms) {
-		fileUploadForms[index] = new LongroomFileUpload(self, index, uploadForm);
+		fileUploadForms[index] = new LongroomFileUpload({
+			uploadContainer: self,
+			id: index,
+			el: uploadForm
+		});
 		index++;
 	}
 
@@ -87,13 +148,13 @@ function LongroomFileUploadContainer (config) {
 
 
 	if (Object.keys(fileUploadForms).length < maxFiles) {
-		actionButton.addEventListener('click', onMoreUploadField);
+		actionButton.addEventListener('click', addMoreUploadField);
 	} else {
 		actionButton.setAttribute('disabled', 'disabled');
 	}
 
 
-	function onMoreUploadField () {
+	function addMoreUploadField () {
 		if (Object.keys(fileUploadForms).length < maxFiles) {
 			let currentTemplate = template;
 			inputNames.forEach((inputName) => {
@@ -102,7 +163,11 @@ function LongroomFileUploadContainer (config) {
 
 			container.appendChild(domUtils.toDOM(template));
 			const fileUploadFormElements = container.querySelectorAll(elSelector);
-			fileUploadForms[index] = new LongroomFileUpload(self, index, fileUploadFormElements[fileUploadFormElements.length - 1]);
+			fileUploadForms[index] = new LongroomFileUpload({
+				uploadContainer: self,
+				id: index,
+				el: fileUploadFormElements[fileUploadFormElements.length - 1]
+			});
 			actionButton.setAttribute('disabled', 'disabled');
 
 			index++;
@@ -138,7 +203,57 @@ function LongroomFileUploadContainer (config) {
 			actionButton.removeAttribute('disabled', 'disabled');
 		}
 	};
+
+	this.removeUploadForm = function (id) {
+		delete fileUploadForms[id];
+
+		if (!Object.keys(fileUploadForms).length) {
+			addMoreUploadField();
+		}
+	};
 }
+
+
+
+function getSignedRequest (file) {
+	return httpRequest.get({
+		url: '/longroom/s3/sign',
+		query: {
+			'file-name': file.name,
+			'file-type': file.type
+		}
+	}).then((data) => {
+		if (typeof data === 'string') {
+			data = JSON.parse(data);
+		}
+
+		if (data && data.signedRequest) {
+			return data.signedRequest;
+		} else {
+			throw new Error("Failed to fetch signed request.");
+		}
+	});
+}
+
+function uploadFile (file, signedRequest) {
+	return httpRequest.put({
+		url: signedRequest,
+		body: file,
+		withCredentials: false
+	});
+}
+
+function deleteFile (file) {
+	return httpRequest.post({
+		url: '/longroom/s3/delete',
+		body: {
+			'file-name': file.name
+		}
+	});
+}
+
+
+/*  */
 
 
 
@@ -204,12 +319,12 @@ document.addEventListener('o.DOMContentLoaded', () => {
 			const form = forms[i];
 
 			const fileUploadContainers = [];
-			const uploadContainer = form.querySelectorAll('.lr-forms__file-upload-container');
+			const uploadContainer = form.querySelectorAll('.lr-forms__file-upload--container');
 
 			for (const uploadContainerItem of uploadContainer) {
 				fileUploadContainers.push(new LongroomFileUploadContainer({
 					container: uploadContainerItem,
-					elSelector: '.lr-forms__file-upload-group',
+					elSelector: '.lr-forms__file-upload--group',
 					addMoreEl: document.querySelector('.lr-forms__action-link'),
 					inputNames: [
 						'post-file-source',

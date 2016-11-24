@@ -11,5 +11,6 @@ router.use('/', require('./routes/index'));
 router.use('/', require('./routes/discussionsRouter'));
 router.use('/content', require('./routes/contentRouter'));
 router.use('/user', userMiddleware, require('./routes/userRouter'));
+router.use('/s3', require('./routes/s3Router'));
 
 module.exports = router;

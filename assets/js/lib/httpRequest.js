@@ -34,7 +34,7 @@ function execute (config) {
 		if (isCrossDomain(config.url) && xhr instanceof XMLHttpRequest) {
 			xhr.open(config.type, config.url, true);
 
-			if (typeof xhr.withCredentials !== 'undefined') {
+			if (typeof xhr.withCredentials !== 'undefined' && config.withCredentials !== false) {
 				xhr.withCredentials = true;
 			}
 		} else {
@@ -105,7 +105,8 @@ function execute (config) {
 
 		setTimeout(function () {
 			if (config.body) {
-				if (typeof FormData !== 'undefined' && config.body instanceof FormData) {
+				if ((typeof FormData !== 'undefined' && config.body instanceof FormData)
+						|| (typeof File !== 'undefined' && config.body instanceof File)) {
 					xhr.send(config.body);
 				} else {
 					let body = "";
@@ -135,6 +136,12 @@ exports.get = function (config) {
 
 exports.post = function (config) {
 	config.type = 'post';
+
+	return execute(config);
+};
+
+exports.put = function (config) {
+	config.type = 'put';
 
 	return execute(config);
 };
