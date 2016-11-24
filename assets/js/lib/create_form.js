@@ -47,7 +47,7 @@ function LongroomFileUpload (config) {
 	};
 
 	const startProgress = function () {
-		previewArea.innerHTML = '<progress max="1" value="0"></progress>';
+		previewArea.innerHTML = '<progress class="lr-forms__file-upload--progress" max="1" value="0"></progress>';
 	};
 
 	const endProgress = function () {
