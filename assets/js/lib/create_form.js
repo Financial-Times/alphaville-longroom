@@ -2,6 +2,7 @@ const httpRequest = require('./httpRequest');
 const domUtils = require('./domUtils');
 const uploadFileTypes = require('./upload_file_types');
 const assetsPath = require('../assets_path');
+const Delegate = require('dom-delegate');
 
 const fileSizeLimit = 100 * 1024 * 1024;
 
@@ -69,8 +70,8 @@ function LongroomFileUpload (config) {
 	}
 
 	const onTypeSourceInput = function () {
-		if (fileSource.value !== "") {
-			uploadButton.removeAttribute('disabled');
+		if (fileSource.value.trim() !== "" && (!fileInput.files || !fileInput.files.length)) {
+			enableUploadButton();
 		} else {
 			disableUploadButton();
 		}
@@ -197,11 +198,22 @@ function LongroomFileUploadContainer (config) {
 		addMoreButton.removeAttribute('disabled');
 	};
 
+	const hasLastUploadFormFileUploaded = function () {
+		const uploadFormKeys = Object.keys(fileUploadForms);
+		const lastUploadForm = fileUploadForms[uploadFormKeys[uploadFormKeys.length - 1]];
+
+		return !!lastUploadForm.getFile();
+	};
+
+	const isUploadFormsWithinMax = function () {
+		return Object.keys(fileUploadForms).length < maxFiles;
+	};
+
 
 	const template = container.querySelector(elSelector).outerHTML;
 
 	const addMoreUploadField = function () {
-		if (Object.keys(fileUploadForms).length < maxFiles) {
+		if (isUploadFormsWithinMax()) {
 			let currentTemplate = template;
 			inputNames.forEach((inputName) => {
 				currentTemplate = currentTemplate.replace(`${inputName}1`, `${inputName}${index}`);
@@ -221,7 +233,7 @@ function LongroomFileUploadContainer (config) {
 	};
 
 
-	if (Object.keys(fileUploadForms).length < maxFiles) {
+	if (isUploadFormsWithinMax()) {
 		addMoreButton.addEventListener('click', addMoreUploadField);
 	} else {
 		disableAddMoreButton();
@@ -255,7 +267,7 @@ function LongroomFileUploadContainer (config) {
 	};
 
 	this.fileUploaded = function (id) {
-		if (id === index - 1 && Object.keys(fileUploadForms).length < maxFiles) {
+		if (id === index - 1 && isUploadFormsWithinMax()) {
 			enableAddMoreButton();
 		}
 	};
@@ -265,11 +277,55 @@ function LongroomFileUploadContainer (config) {
 
 		if (!Object.keys(fileUploadForms).length) {
 			addMoreUploadField();
-		} else if (Object.keys(fileUploadForms).length < maxFiles) {
+		} else if (isUploadFormsWithinMax() && hasLastUploadFormFileUploaded()) {
 			enableAddMoreButton();
 		}
 	};
 }
+
+
+function TagAutocomplete (config) {
+	const container = config.container;
+	const dataSourceUrl = config.dataSourceUrl;
+
+	const input = container.querySelector('.lr-forms__tags--input');
+	const tagList = container.querySelector('.lr-forms__tags--list');
+
+	const tags = [];
+
+	for (const tag of tagList.querySelectorAll('.lr-forms__tags--tag')) {
+		tags.push(tag.querySelector('.lr-forms__tags--value').innerHTML);
+	}
+
+
+	const addTag = function (tag) {
+		tags.push(tag);
+		tagList.appendChild(domUtils.toDOM(
+			`<li class="lr-forms__tags--tag">
+				<span class="lr-forms__tags--value">${tag}</span>
+			</li>`
+		));
+	};
+
+
+
+	const dataSource = [
+		'option1',
+		'option2',
+		'option3'
+	];
+
+	const onTypeInput = function (evt) {
+		if (evt.key === ',' || evt.key === 'Enter') {
+			addTag(input.value.replace(',', ''));
+			input.value = '';
+		}
+	};
+
+	input.addEventListener('keyup', onTypeInput);
+}
+
+
 
 
 
@@ -395,6 +451,14 @@ document.addEventListener('o.DOMContentLoaded', () => {
 						'post-file'
 					]
 				}));
+			}
+
+			const tagAutocompleteContainers = form.querySelectorAll('.lr-forms__tags--container');
+			for (const tagAutocompleteContainer of tagAutocompleteContainers) {
+				new TagAutocomplete({
+					container: tagAutocompleteContainer,
+					dataSourceUrl: ''
+				});
 			}
 
 			form.addEventListener('submit', (e) => {
