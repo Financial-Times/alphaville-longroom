@@ -3,6 +3,8 @@ const domUtils = require('./domUtils');
 const uploadFileTypes = require('./upload_file_types');
 const assetsPath = require('../assets_path');
 
+const fileSizeLimit = 100 * 1024 * 1024;
+
 const getFileId = (file) => {
 	return file.name.replace(/\W/g, '_').toLowerCase() + file.size + file.type.replace(/\W/g, '_').toLowerCase();
 };
@@ -102,6 +104,16 @@ function LongroomFileUpload (config) {
 
 		if (uploadContainer.fileExists(file)) {
 			showError("File " + file.name + " has already been uploaded.");
+
+			clearFileInput();
+			endProgress();
+			enableUploadButton();
+
+			return;
+		}
+
+		if (file.size > fileSizeLimit) {
+			showError("File " + file.name + " exceeded the 100 Mb limit.");
 
 			clearFileInput();
 			endProgress();
