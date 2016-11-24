@@ -45,11 +45,18 @@ function LongroomFileUpload (config) {
 	};
 
 	const startProgress = function () {
-		previewArea.innerHTML = '<div class="alphaville-spinner"></div>';
+		previewArea.innerHTML = '<progress max="1" value="0"></progress>';
 	};
 
 	const endProgress = function () {
 		previewArea.innerHTML = '';
+	};
+
+	const onProgress = function (percentage) {
+		const progress = previewArea.querySelector('progress');
+		if (progress) {
+			progress.value = percentage;
+		}
 	};
 
 
@@ -83,8 +90,6 @@ function LongroomFileUpload (config) {
 
 		const file = fileInput.files[0];
 
-		console.log(file);
-
 		if (uploadFileTypes.allowedFileTypes.indexOf(file.type) === -1) {
 			showError("File " + file.name + " has a not allowed file type.");
 
@@ -106,7 +111,7 @@ function LongroomFileUpload (config) {
 		}
 
 
-		uploadFile(file).then(() => {
+		uploadFile(file, onProgress).then(() => {
 			endProgress();
 
 			uploadContainer.fileUploaded(id, file);
@@ -277,13 +282,14 @@ function getSignedRequest (file) {
 	});
 }
 
-function uploadFile (file) {
+function uploadFile (file, onProgress) {
 	return getSignedRequest(file)
 		.then(signedRequest => httpRequest.put({
 			url: signedRequest,
 			body: file,
 			dataType: 'json',
-			withCredentials: false
+			withCredentials: false,
+			onProgress: onProgress
 		})
 	);
 }

@@ -92,6 +92,14 @@ function execute (config) {
 					}
 				}
 			};
+
+			xhr.upload.onprogress = function (evt) {
+				if (typeof config.onProgress === 'function') {
+					if (evt.lengthComputable) {
+						config.onProgress(evt.loaded / evt.total);
+					}
+				}
+			};
 		} else {
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState === 4) {
