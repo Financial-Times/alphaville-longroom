@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS files (
 	type varchar(255) NOT NULL,
 	source varchar(1000),
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	user_id varchar(255) NOT NULL,
 	post_id integer
 );
 CREATE INDEX files_post_id ON files (post_id);
