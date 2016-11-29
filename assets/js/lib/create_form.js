@@ -1,295 +1,35 @@
-const httpRequest = require('./httpRequest');
 const domUtils = require('./domUtils');
-const uploadFileTypes = require('./upload_file_types');
-const assetsPath = require('../assets_path');
-const Delegate = require('dom-delegate');
+
+const LongroomCreateForm = require('./LongroomCreateForm');
 
 const fileSizeLimit = 100 * 1024 * 1024;
 
-const getFileId = (file) => {
-	return file.name.replace(/\W/g, '_').toLowerCase() + file.size + file.type.replace(/\W/g, '_').toLowerCase();
-};
 
 
-function LongroomFileUpload (config) {
-	const self = this;
+document.addEventListener('o.DOMContentLoaded', () => {
+	const forms = document.querySelectorAll('.longroom-create-post');
+	if (forms && forms.length) {
+		for (let i = 0; i < forms.length; i++) {
+			const form = forms[i];
 
-	const uploadContainer = config.uploadContainer;
-	const id = config.id;
-	const el = config.el;
-
-	const uploadButton = el.querySelector('.lr-forms__file-upload');
-	const fileInput = el.querySelector('input[type="file"]');
-	const fileSource = el.querySelector('.lr-forms__file-upload--source');
-	const previewArea = el.querySelector('.lr-forms__file-upload--preview');
-	const fileUploadError = el.querySelector('.lr-forms__file-upload--error');
-
-	let fileToUpload = null;
-
-	uploadButton.addEventListener('click', () => {
-		fileInput.click();
-	});
-
-
-	const disableUploadButton = function () {
-		uploadButton.setAttribute('disabled', 'disabled');
-	};
-
-	const enableUploadButton = function () {
-		uploadButton.removeAttribute('disabled');
-	};
-
-	const showError = function (error) {
-		fileUploadError.innerHTML = error;
-	};
-
-	const clearError = function () {
-		fileUploadError.innerHTML = '';
-	};
-
-	const startProgress = function () {
-		previewArea.innerHTML = '<progress class="lr-forms__file-upload--progress" max="1" value="0"></progress>';
-	};
-
-	const endProgress = function () {
-		previewArea.innerHTML = '';
-	};
-
-	const onProgress = function (percentage) {
-		const progress = previewArea.querySelector('progress');
-		if (progress) {
-			progress.value = percentage;
+			new LongroomCreateForm(form, fileSizeLimit);
 		}
-	};
-
-
-	let isNewUpload = true;
-	if (el.getAttribute('data-lr-file-id')) {
-		isNewUpload = false;
-		disableUploadButton();
 	}
+});
 
-	const onTypeSourceInput = function () {
-		if (fileSource.value.trim() !== "" && (!fileInput.files || !fileInput.files.length)) {
-			enableUploadButton();
-		} else {
-			disableUploadButton();
-		}
-	};
-
-	const clearFileInput = function () {
-		fileInput.files = null;
-		fileInput.value = null;
-	};
-
-
-	fileSource.addEventListener('keyup', onTypeSourceInput);
-	fileSource.addEventListener('keydown', onTypeSourceInput);
-
-	fileInput.addEventListener('change', () => {
-		clearError();
-		disableUploadButton();
-		startProgress();
-
-		const file = fileInput.files[0];
-
-		if (uploadFileTypes.allowedFileTypes.indexOf(file.type) === -1) {
-			showError("File " + file.name + " has a not allowed file type.");
-
-			clearFileInput();
-			endProgress();
-			enableUploadButton();
-
-			return;
-		}
-
-		if (uploadContainer.fileExists(file)) {
-			showError("File " + file.name + " has already been uploaded.");
-
-			clearFileInput();
-			endProgress();
-			enableUploadButton();
-
-			return;
-		}
-
-		if (file.size > fileSizeLimit) {
-			showError("File " + file.name + " exceeded the 100 Mb limit.");
-
-			clearFileInput();
-			endProgress();
-			enableUploadButton();
-
-			return;
-		}
-
-
-		uploadFile(file, onProgress).then(() => {
-			endProgress();
-
-			uploadContainer.fileUploaded(id, file);
-			fileToUpload = file;
-
-			previewArea.innerHTML = `
-				<img src="${assetsPath}/images/file_extension_icons/${uploadFileTypes.fileTypesIcons[file.type]}.png" />
-				<span class="lr-forms__file-upload--preview-info">
-					${file.name}<br/>
-					<a class="lr-forms__file-upload--delete">Delete</a>
-				</span>
-			`;
-
-			previewArea.querySelector('.lr-forms__file-upload--delete').addEventListener('click', (evt) => {
-				evt.preventDefault();
-
-				if (isNewUpload) {
-					el.parentNode.removeChild(el);
-					deleteFile(file);
-					uploadContainer.removeUploadForm(id);
-				} else {
-					uploadContainer.removeFileOnSave(el.getAttribute('data-lr-file-id'));
-				}
-			});
-		})
-		.catch(() => {
-			fileInput.files = null;
-			showError('Failed to upload the document. Please try again later.');
-		});
-	});
-
-	this.getFile = function () {
-		return fileToUpload;
-	};
-}
-
-function LongroomFileUploadContainer (config) {
-	const container = config.container;
-	const elSelector = config.elSelector;
-	const addMoreEl = config.addMoreEl;
-	const addMoreButton = config.addMoreEl.querySelector('button');
-	const inputNames = config.inputNames;
-	const self = this;
-
-	const fileUploadForms = {};
-
-	let maxFiles = addMoreEl.getAttribute('data-maximum-files');
-	if (!isNaN(maxFiles)) {
-		maxFiles = parseInt(maxFiles, 10);
-	} else {
-		maxFiles = 1;
-	}
-
-	let index = 1;
-
-	const uploadForms = container.querySelectorAll(elSelector);
-	for (const uploadForm of uploadForms) {
-		fileUploadForms[index] = new LongroomFileUpload({
-			uploadContainer: self,
-			id: index,
-			el: uploadForm
-		});
-		index++;
-	}
-
-	const disableAddMoreButton = function () {
-		addMoreButton.setAttribute('disabled', 'disabled');
-	};
-
-	const enableAddMoreButton = function () {
-		addMoreButton.removeAttribute('disabled');
-	};
-
-	const hasLastUploadFormFileUploaded = function () {
-		const uploadFormKeys = Object.keys(fileUploadForms);
-		const lastUploadForm = fileUploadForms[uploadFormKeys[uploadFormKeys.length - 1]];
-
-		return !!lastUploadForm.getFile();
-	};
-
-	const isUploadFormsWithinMax = function () {
-		return Object.keys(fileUploadForms).length < maxFiles;
-	};
-
-
-	const template = container.querySelector(elSelector).outerHTML;
-
-	const addMoreUploadField = function () {
-		if (isUploadFormsWithinMax()) {
-			let currentTemplate = template;
-			inputNames.forEach((inputName) => {
-				currentTemplate = currentTemplate.replace(`${inputName}1`, `${inputName}${index}`);
-			});
-
-			container.appendChild(domUtils.toDOM(template));
-			const fileUploadFormElements = container.querySelectorAll(elSelector);
-			fileUploadForms[index] = new LongroomFileUpload({
-				uploadContainer: self,
-				id: index,
-				el: fileUploadFormElements[fileUploadFormElements.length - 1]
-			});
-			disableAddMoreButton();
-
-			index++;
-		}
-	};
-
-
-	if (isUploadFormsWithinMax()) {
-		addMoreButton.addEventListener('click', addMoreUploadField);
-	} else {
-		disableAddMoreButton();
-	}
-
-
-
-
-
-	this.fileExists = function (file) {
-		let found = false;
-
-		Object.keys(fileUploadForms).forEach((id) => {
-			const uploadedFile = fileUploadForms[id].getFile();
-			if (uploadedFile) {
-				let match = true;
-
-				['name', 'size', 'type'].forEach((key) => {
-					if (uploadedFile[key] !== file[key]) {
-						match = false;
-					}
-				});
-
-				if (match) {
-					found = true;
-				}
-			}
-		});
-
-		return found;
-	};
-
-	this.fileUploaded = function (id) {
-		if (id === index - 1 && isUploadFormsWithinMax()) {
-			enableAddMoreButton();
-		}
-	};
-
-	this.removeUploadForm = function (id) {
-		delete fileUploadForms[id];
-
-		if (!Object.keys(fileUploadForms).length) {
-			addMoreUploadField();
-		} else if (isUploadFormsWithinMax() && hasLastUploadFormFileUploaded()) {
-			enableAddMoreButton();
-		}
-	};
-}
-
-
-function TagAutocomplete (config) {
+/*function TagAutocomplete (config) {
 	const container = config.container;
 	const dataSourceUrl = config.dataSourceUrl;
 
+
 	const input = container.querySelector('.lr-forms__tags--input');
 	const tagList = container.querySelector('.lr-forms__tags--list');
+	container.appendChild(domUtils.toDOM(
+		`<select class="lr-forms__tags--autocomplete o-forms-select" multiple></select>`
+	));
+	const autocomplete = container.querySelector('.lr-forms__tags--autocomplete');
+
+	const autocompleteDelegate = new Delegate(autocomplete);
 
 	const tags = [];
 
@@ -302,7 +42,7 @@ function TagAutocomplete (config) {
 		tags.push(tag);
 		tagList.appendChild(domUtils.toDOM(
 			`<li class="lr-forms__tags--tag">
-				<span class="lr-forms__tags--value">${tag}</span>
+				<span class="o-buttons lr-forms__tags--value">${tag}</span>
 			</li>`
 		));
 	};
@@ -316,61 +56,71 @@ function TagAutocomplete (config) {
 	];
 
 	const onTypeInput = function (evt) {
-		if (evt.key === ',' || evt.key === 'Enter') {
-			addTag(input.value.replace(',', ''));
-			input.value = '';
+		let autocompleteOptions;
+
+		switch (evt.key) {
+			case ',':
+			case 'Enter':
+				addTag(input.value.replace(',', ''));
+				input.value = '';
+				autocomplete.style.display = 'none';
+				break;
+
+			case 'ArrowDown':
+				autocompleteOptions = autocomplete.querySelectorAll('option');
+				if (autocompleteOptions.length) {
+					for (const autocompleteOption of autocompleteOptions) {
+						autocompleteOption.selected = false;
+					}
+
+					autocompleteOptions[0].selected = true;
+					autocomplete.focus();
+				}
+				break;
+
+			case 'ArrowUp':
+				autocompleteOptions = autocomplete.querySelectorAll('option');
+				if (autocompleteOptions.length) {
+					for (const autocompleteOption of autocompleteOptions) {
+						autocompleteOption.selected = false;
+					}
+
+					autocompleteOptions[autocompleteOptions.length - 1].selected = true;
+					autocomplete.focus();
+				}
+				break;
+
+			default:
+				if (input.value.length > 1) {
+					autocomplete.style.display = 'block';
+					autocomplete.innerHTML = '';
+					dataSource.forEach(tag => {
+						autocomplete.appendChild(domUtils.toDOM(
+							`<option value="${tag}">${tag}</option>`
+						));
+					});
+				} else {
+					autocomplete.style.display = 'none';
+				}
 		}
 	};
-
-	input.addEventListener('keyup', onTypeInput);
-}
+	input.addEventListener('change', onTypeInput);
 
 
+	const onKeypressAutocomplete = function (evt) {
+		console.log(evt);
+	};
+	autocomplete.addEventListener('select', onKeypressAutocomplete);
 
+	autocompleteDelegate.on('click', 'option', function () {
 
-
-function getSignedRequest (file) {
-	return httpRequest.get({
-		url: '/longroom/s3/sign',
-		dataType: 'json',
-		query: {
-			'file-name': file.name,
-			'file-type': file.type
-		}
-	}).then((data) => {
-		if (typeof data === 'string') {
-			data = JSON.parse(data);
-		}
-
-		if (data && data.signedRequest) {
-			return data.signedRequest;
-		} else {
-			throw new Error("Failed to fetch signed request.");
-		}
 	});
-}
 
-function uploadFile (file, onProgress) {
-	return getSignedRequest(file)
-		.then(signedRequest => httpRequest.put({
-			url: signedRequest,
-			body: file,
-			dataType: 'json',
-			withCredentials: false,
-			onProgress: onProgress
-		})
-	);
-}
 
-function deleteFile (file) {
-	return httpRequest.post({
-		url: '/longroom/s3/delete',
-		dataType: 'json',
-		body: {
-			'file-name': file.name
-		}
-	});
-}
+	this.getTags = function () {
+		return tags;
+	};
+}*/
 
 
 /*  */
@@ -432,41 +182,7 @@ function handleError (form, err) {
 	console.log('error', err);
 }
 
-document.addEventListener('o.DOMContentLoaded', () => {
-	const forms = document.querySelectorAll('.longroom-create-post');
-	if (forms && forms.length) {
-		for (let i = 0; i < forms.length; i++) {
-			const form = forms[i];
 
-			const fileUploadContainers = [];
-			const uploadContainer = form.querySelectorAll('.lr-forms__file-upload--container');
-
-			for (const uploadContainerItem of uploadContainer) {
-				fileUploadContainers.push(new LongroomFileUploadContainer({
-					container: uploadContainerItem,
-					elSelector: '.lr-forms__file-upload--group',
-					addMoreEl: document.querySelector('.lr-forms__action-link'),
-					inputNames: [
-						'post-file-source',
-						'post-file'
-					]
-				}));
-			}
-
-			const tagAutocompleteContainers = form.querySelectorAll('.lr-forms__tags--container');
-			for (const tagAutocompleteContainer of tagAutocompleteContainers) {
-				new TagAutocomplete({
-					container: tagAutocompleteContainer,
-					dataSourceUrl: ''
-				});
-			}
-
-			form.addEventListener('submit', (e) => {
-				e.preventDefault();
-			});
-		}
-	}
-});
 
 
 	/*const forms = document.querySelectorAll('.longroom-create-post');

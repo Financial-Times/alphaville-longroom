@@ -24,7 +24,8 @@
     "o-link-list": "^1.0.0",
     "o-autoinit": "^1.2.0",
     "o-forms": "^2.0.0",
-    "o-expander": "^4.0.0"
+    "o-expander": "^4.0.0",
+    "awesomplete": "^1.1.1"
   },
   "resolutions": {
     "o-buttons": "^4.0.1",

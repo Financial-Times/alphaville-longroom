@@ -8,9 +8,9 @@ const userMiddleware = require('./lib/middlewares/user');
 router.use('/', auth());
 
 router.use('/', require('./routes/index'));
-router.use('/', require('./routes/discussionsRouter'));
 router.use('/content', require('./routes/contentRouter'));
 router.use('/user', userMiddleware, require('./routes/userRouter'));
-router.use('/s3', require('./routes/s3Router'));
+router.use('/files', userMiddleware, require('./routes/fileRouter'));
+router.use('/suggestions', require('./routes/suggestionRouter'));
 
 module.exports = router;
