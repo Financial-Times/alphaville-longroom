@@ -354,7 +354,7 @@ function LongroomFileUploadItem (config) {
 		const file = fileInput.files[0];
 
 		if (uploadFileTypes.allowedFileTypes.indexOf(file.type) === -1) {
-			showError("The file uploaded has a not allowed file type.");
+			showError("The selected document type is not allowed.");
 
 			clearFileInput();
 			endProgress();
