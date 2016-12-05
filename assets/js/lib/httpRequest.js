@@ -120,7 +120,13 @@ function execute (config) {
 		setTimeout(function () {
 			if (config.body) {
 				if ((typeof FormData !== 'undefined' && config.body instanceof FormData)
-						|| (typeof File !== 'undefined' && config.body instanceof File)) {
+						|| (typeof File !== 'undefined' && config.body instanceof File)
+						|| (config.contentType && config.contentType !== "application/x-www-form-urlencoded")) {
+
+					if (config.contentType) {
+						xhr.setRequestHeader("Content-type", config.contentType);
+					}
+
 					xhr.send(config.body);
 				} else {
 					let body = "";

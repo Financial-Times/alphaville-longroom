@@ -3,6 +3,7 @@ const domUtils = require('./domUtils');
 function LongroomFormInput (config) {
 	const input = config.input;
 	const label = config.label;
+	const labelPlural = config.labelPlural;
 	const required = typeof config.required === 'boolean' ? config.required : true;
 
 	let formGroup = domUtils.getParents(input, '.o-forms-group');
@@ -10,21 +11,10 @@ function LongroomFormInput (config) {
 		formGroup = formGroup[0];
 	}
 
-	let labelPlural = false;
-	let labelText = null;
-
-
-	if (label) {
-		if (label.getAttribute('data-label-plural') === 'true') {
-			labelPlural = true;
-		}
-		labelText = label.innerHTML;
-	}
-
 	let errorEl;
 
 	if (formGroup) {
-		errorEl = input.querySelector('.o-forms-errortext');
+		errorEl = formGroup.querySelector('.o-forms-errortext');
 	}
 
 
@@ -58,8 +48,8 @@ function LongroomFormInput (config) {
 		}
 
 		if (!input.value) {
-			if (labelText) {
-				showError(`${labelText} ${labelPlural ? 'are' : 'is'} required.`);
+			if (label) {
+				showError(`${label} ${labelPlural ? 'are' : 'is'} required.`);
 			} else {
 				showError("The field is required.");
 			}
@@ -69,6 +59,13 @@ function LongroomFormInput (config) {
 		clearError();
 		return true;
 	};
+
+	this.handleValidation = function (validationMessage) {
+		showError(validationMessage);
+	};
+
+	this.showError = showError;
+	this.clearError = clearError;
 }
 
 module.exports = LongroomFormInput;

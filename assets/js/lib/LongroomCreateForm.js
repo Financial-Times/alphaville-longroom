@@ -1,33 +1,35 @@
 const LongroomFileUpload = require('./LongroomFileUpload');
 const LongroomFormInput = require('./LongroomFormInput');
+const httpRequest = require('./httpRequest');
 
 function LongroomCreateForm (formEl, fileSizeLimit) {
 	const postType = formEl.getAttribute('data-lr-post-type');
 
-	const fileUploadContainers = [];
-	const uploadContainer = formEl.querySelectorAll('.lr-forms__file-upload--container');
+	let fileUploadContainer = null;
+	const uploadContainer = formEl.querySelector('.lr-forms__file-upload--container');
 
 	const titleInput = new LongroomFormInput({
 		input: formEl.querySelector('input[name="post-title"]'),
-		label: formEl.querySelector('label[for="post-title"]'),
+		label: 'Title',
 		required: true
 	});
 
 	const tagsInput = new LongroomFormInput({
 		input: formEl.querySelector('input[name="post-tags"]'),
-		label: formEl.querySelector('label[for="post-tags"]'),
+		label: 'Topic tags',
+		labelPlural: true,
 		required: true
 	});
 
 	const summaryInput = new LongroomFormInput({
 		input: formEl.querySelector('textarea[name="post-summary"]'),
-		label: formEl.querySelector('label[for="post-summary"]'),
+		label: 'Summary',
 		required: postType === 'post' ? true : false
 	});
 
-	for (const uploadContainerItem of uploadContainer) {
-		fileUploadContainers.push(new LongroomFileUpload({
-			container: uploadContainerItem,
+	if (uploadContainer) {
+		fileUploadContainer = new LongroomFileUpload({
+			container: uploadContainer,
 			elSelector: '.lr-forms__file-upload--group',
 			addMoreEl: document.querySelector('.lr-forms__action-link'),
 			inputNames: [
@@ -36,7 +38,7 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 			],
 			fileSizeLimit: fileSizeLimit,
 			required: postType === 'document' ? true : false
-		}));
+		});
 	}
 
 	const draftButton = formEl.querySelector('[name="post-draft"]');
@@ -46,24 +48,20 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 	const serializeForm = function () {
 		let filesUploaded = [];
 
-		fileUploadContainers.forEach((fileUploadContainer) => {
-			filesUploaded = filesUploaded.concat(fileUploadContainer.getFiles());
-		});
+		filesUploaded = fileUploadContainer.getFiles();
 
 		return {
 			title: titleInput.getValue(),
 			tags: tagsInput.getValue(),
 			summary: summaryInput.getValue(),
-			filesUploaded: filesUploaded
+			files: filesUploaded
 		};
 	};
 
 	const validate = function () {
 		let valid = true;
-		fileUploadContainers.forEach((fileUploadContainer) => {
-			valid = fileUploadContainer.validate() && valid;
-		});
 
+		valid = fileUploadContainer.validate() && valid;
 		valid = titleInput.validate() && valid;
 		valid = tagsInput.validate() && valid;
 		valid = summaryInput.validate() && valid;
@@ -71,15 +69,60 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 		return valid;
 	};
 
+	const resetValidationErrors = function () {
+		titleInput.clearError();
+		tagsInput.clearError();
+		summaryInput.clearError();
+		fileUploadContainer.clearErrors();
+	};
+
 	const submitForm = function (publish) {
+		resetValidationErrors();
+
 		const valid = validate();
-		console.log('valid', valid);
 
 		if (valid) {
 			const formSerialized = serializeForm();
 			formSerialized.postType = postType;
+			formSerialized.publish = publish;
 
-			console.log(formSerialized, publish);
+			draftButton.setAttribute('disabled', 'disabled');
+			publishButton.setAttribute('disabled', 'disabled');
+
+			httpRequest.post({
+				url: '/longroom/content/create',
+				dataType: 'json',
+				contentType: 'application/json',
+				body: JSON.stringify(formSerialized)
+			}).then(data => {
+				if (data.success) {
+					window.location.href = data.url;
+				} else {
+					draftButton.removeAttribute('disabled');
+					publishButton.removeAttribute('disabled');
+
+					if (data.validation) {
+						if (data.validation.title) {
+							titleInput.handleValidation(data.validation.title);
+						}
+
+						if (data.validation.tags) {
+							tagsInput.handleValidation(data.validation.tags);
+						}
+
+						if (data.validation.summary) {
+							summaryInput.handleValidation(data.validation.summary);
+						}
+
+						if (data.validation.files) {
+							fileUploadContainer.handleValidation(data.validation.files);
+						}
+					}
+				}
+			}).catch(err => {
+				console.log(err);
+				alert("Save failed. Please try again later.");
+			});
 		}
 	};
 

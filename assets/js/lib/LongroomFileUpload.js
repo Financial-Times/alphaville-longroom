@@ -193,9 +193,9 @@ function LongroomFileUpload (config) {
 			const fileUploadForm = fileUploadForms[id];
 			const fileInfo = fileUploadForm.getFile();
 
-			if (fileInfo && fileInfo.id && fileUploadForm.getSource()) {
+			if (fileInfo || fileUploadForm.getSource()) {
 				files.push({
-					fileId: fileInfo.id,
+					fileId: fileInfo ? fileInfo.id : null,
 					source: fileUploadForm.getSource(),
 					fileUploadFormElId: id
 				});
@@ -239,6 +239,21 @@ function LongroomFileUpload (config) {
 		}
 
 		return valid;
+	};
+
+	this.handleValidation = function (validation) {
+		if (typeof validation === 'string') {
+			self.showErrors(validation, true);
+		} else {
+			const validationIds = Object.keys(validation);
+			if (validationIds.length) {
+				validationIds.forEach(id => {
+					if (fileUploadForms[id]) {
+						fileUploadForms[id].showError(validation[id]);
+					}
+				});
+			}
+		}
 	};
 }
 
@@ -339,7 +354,7 @@ function LongroomFileUploadItem (config) {
 		const file = fileInput.files[0];
 
 		if (uploadFileTypes.allowedFileTypes.indexOf(file.type) === -1) {
-			showError("File " + file.name + " has a not allowed file type.");
+			showError("The file uploaded has a not allowed file type.");
 
 			clearFileInput();
 			endProgress();
