@@ -5,6 +5,8 @@ const httpRequest = require('./httpRequest');
 function LongroomCreateForm (formEl, fileSizeLimit) {
 	const postType = formEl.getAttribute('data-lr-post-type');
 
+	const genericErrorMsgEl = formEl.querySelector('.lr-generic-message');
+
 	let fileUploadContainer = null;
 	const uploadContainer = formEl.querySelector('.lr-forms__file-upload--container');
 
@@ -74,6 +76,7 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 		tagsInput.clearError();
 		summaryInput.clearError();
 		fileUploadContainer.clearErrors();
+		genericErrorMsgEl.innerHTML = "";
 	};
 
 	const submitForm = function (publish) {
@@ -117,6 +120,10 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 						if (data.validation.files) {
 							fileUploadContainer.handleValidation(data.validation.files);
 						}
+					}
+
+					if (data.genericMessage) {
+						genericErrorMsgEl.innerHTML = data.genericMessage;
 					}
 				}
 			}).catch(err => {

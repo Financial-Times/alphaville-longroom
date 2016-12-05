@@ -78,3 +78,9 @@
 .lr-forms__tags--container {
 	position: relative;
 }
+
+.lr-generic-message {
+	margin: 10px 0 0 10px;
+	font-weight: bold;
+	color: oColorsGetPaletteColor('red');
+}
