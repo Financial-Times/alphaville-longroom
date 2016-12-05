@@ -19,9 +19,9 @@ CREATE INDEX tags_name ON tags (name);
 CREATE TABLE IF NOT EXISTS posts (
 	id SERIAL PRIMARY KEY,
 	title varchar(255) NOT NULL,
-	summary varchar(5000) NOT NULL,
+	summary varchar(5000) NULL,
 	post_type varchar(255) NOT NULL,
-	user_id integer NOT NULL,
+	user_id varchar(255) NOT NULL,
 	published BOOLEAN,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	published_at TIMESTAMP
