@@ -19,11 +19,15 @@ $o-forms-is-silent: false;
 .lr-icon--upload {
 	@include oIconsGetIcon('upload', oColorsGetPaletteColor('teal-1'), 23, $iconset-version: 1);
 	margin: -5px;
+	position: relative;
+	top: 1px;
 }
 
 .lr-icon--written-text {
 	@include oIconsGetIcon('written-text', oColorsGetPaletteColor('teal-1'), 23, $iconset-version: 1);
 	margin: -5px;
+	position: relative;
+	top: 1px;
 }
 
 .lr-navbar {
@@ -52,11 +56,21 @@ $o-forms-is-silent: false;
 			display: inline-block;
 			padding: 0 3px;
 			line-height: 27px;
+			font-weight: bold;
+
+			a {
+				color: oColorsGetPaletteColor('grey-tint5');
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
 		}
 	}
 
 	@include oGridRespondTo(M) {
-		margin-left: -10px;
+		margin-left: -20px;
+
 		ul {
 			width: 110%;
 		}
