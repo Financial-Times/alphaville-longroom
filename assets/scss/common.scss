@@ -34,7 +34,11 @@ $o-forms-is-silent: false;
 	background-color: #ebe0d1;
 	width: 100%;
 	height: 27px;
-	padding: 5px 0;
+	padding: 5px 10px 5px 0;
+
+	@include oGridRespondTo(M) {
+		padding-right: 0;
+	}
 }
 
 .lr-navbar--title {
@@ -44,6 +48,22 @@ $o-forms-is-silent: false;
 
 .lr-navbar--cta {
 	text-align: center;
+
+	.lr-cta--active {
+		$activeColor: #174549;
+
+		background-color: oColorsGetPaletteColor('teal-2');
+		color: $activeColor;
+		border-color: $activeColor;
+
+		.lr-icon--upload {
+			@include oIconsGetIcon('upload', $activeColor, 23, $iconset-version: 1);
+		}
+
+		.lr-icon--written-text {
+			@include oIconsGetIcon('written-text', $activeColor, 23, $iconset-version: 1);
+		}
+	}
 }
 
 .lr-navbar--nav {
@@ -51,6 +71,7 @@ $o-forms-is-silent: false;
 		list-style: none;
 		margin: 0 -3px 0 0;
 		padding: 0;
+		text-align: right;
 
 		li {
 			display: inline-block;
@@ -78,5 +99,9 @@ $o-forms-is-silent: false;
 
 	@include oGridRespondTo(L) {
 		margin-left: 0;
+
+		ul {
+			width: 100%;
+		}
 	}
 }
