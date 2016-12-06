@@ -29,7 +29,8 @@ CREATE TABLE IF NOT EXISTS posts (
 
 CREATE TABLE IF NOT EXISTS tags_to_posts (
 	tag_id integer NOT NULL,
-	post_id integer NOT NULL
+	post_id integer NOT NULL,
+	index integer NOT NULL
 );
 CREATE INDEX tags_to_posts_tag_id ON tags_to_posts (tag_id);
 CREATE INDEX tags_to_posts_post_id ON tags_to_posts (post_id);
