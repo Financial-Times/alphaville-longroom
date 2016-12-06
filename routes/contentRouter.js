@@ -14,5 +14,3 @@ router.post('/create', controllers.create.post);
 router.route('/:id').get(controllers.view);
 
 module.exports = router;
-
-module.exports = router;
