@@ -1,10 +1,12 @@
 SELECT
 	p.*,
 	t.name tag_name,
+	t.id tag_id,
+	ttp.index tag_index,
 	f.name file_name,
 	f.size file_size,
 	f.type file_type,
-	f.source file_source,
+	f.source file_source
 FROM
 	posts p,
 	tags_to_posts ttp,

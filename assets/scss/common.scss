@@ -9,6 +9,9 @@ $o-expander-is-silent: false;
 $o-forms-is-silent: false;
 @import 'o-forms/main';
 
+$o-card-is-silent: false;
+@import 'o-card/main';
+
 @import 'alphaville-ui/main';
 @import './create_form';
 
@@ -30,23 +33,11 @@ $o-forms-is-silent: false;
 	top: 1px;
 }
 
-.lr-forms__attach-doc-info {
-	border-radius: 20px;
-	padding: 0;
-	line-height: 10px;
-	min-width: 20px;
-	min-height: 20px;
-}
-
 .lr-navbar {
 	background-color: #ebe0d1;
 	width: 100%;
 	height: 27px;
-	padding: 5px 10px 5px 0;
-
-	@include oGridRespondTo(M) {
-		padding-right: 0;
-	}
+	padding: 5px 10px;
 }
 
 .lr-navbar--title {
@@ -98,7 +89,7 @@ $o-forms-is-silent: false;
 	}
 
 	@include oGridRespondTo(M) {
-		margin-left: -20px;
+		margin-left: -25px;
 
 		ul {
 			width: 110%;
@@ -111,5 +102,19 @@ $o-forms-is-silent: false;
 		ul {
 			width: 100%;
 		}
+	}
+}
+
+.lr-card {
+	padding: 10px;
+	border-bottom: 1px solid oColorsGetPaletteColor('pink-tint3');
+
+	&:last-child {
+		border-bottom: 0;
+	}
+
+	.lr-card__file-icon {
+		max-width: 50px;
+		text-align: center;
 	}
 }

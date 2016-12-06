@@ -1,0 +1,23 @@
+<div class="o-card o-card--landscape lr-card" data-o-component="o-card" data-article-id="{{id}}">
+	<div class="o-card__content">
+
+		<div class="o-card__meta">
+			<a href="/longroom/tags/{{primaryTag.id}}" class="o-card__tag" data-trackable="theme">{{primaryTag.name}}</a>
+		</div>
+
+		<h3 class="o-card__heading">
+			<a href="/longroom/content/{{id}}" data-trackable="heading">{{title}}</a>
+		</h3>
+
+		<div class="o-grid-row">
+			{{#files}}
+				<div data-o-grid-colspan="4">
+					<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png">
+					<div>{{name}}</div>
+				</div>
+			{{/files}}
+		</div>
+
+		<time data-o-component="o-date" class="o-date o-card__timestamp" datetime="{{published_at}}">{{published_at}}</time>
+	</div>
+</div>
