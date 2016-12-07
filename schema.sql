@@ -34,3 +34,40 @@ CREATE TABLE IF NOT EXISTS tags_to_posts (
 );
 CREATE INDEX tags_to_posts_tag_id ON tags_to_posts (tag_id);
 CREATE INDEX tags_to_posts_post_id ON tags_to_posts (post_id);
+
+CREATE TYPE status AS ENUM (
+	'pending',
+	'approved',
+	'rejected',
+	'revoked'
+);
+
+CREATE TABLE IF NOT EXISTS users (
+	user_id uuid NOT NULL,
+	status status DEFAULT 'pending'::status,
+	added_at timestamp without time zone DEFAULT now(),
+	eid bigint,
+	is_editor boolean DEFAULT false,
+	location character varying(256),
+	description text
+);
+
+CREATE TABLE IF NOT EXISTS user_details (
+	user_id uuid NOT NULL,
+	first_name character varying(256),
+	last_name character varying(256),
+	phone character varying(256),
+	email character varying(256),
+	industry character varying(256),
+	"position" character varying(256),
+	responsibility character varying(256)
+);
+
+ALTER TABLE ONLY user_details
+	ADD CONSTRAINT user_details_pkey PRIMARY KEY (user_id);
+
+ALTER TABLE ONLY users
+	ADD CONSTRAINT users_pkey PRIMARY KEY (user_id);
+
+ALTER TABLE ONLY user_details
+	ADD CONSTRAINT user_details_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE;
