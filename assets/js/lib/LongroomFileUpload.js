@@ -38,7 +38,8 @@ function uploadFile (file, onProgress) {
 			}).then(() => {
 				return {
 					url: data.url,
-					id: data.fileId
+					id: data.fileId,
+					savedName: data.savedFileName
 				};
 			});
 		}
@@ -390,7 +391,8 @@ function LongroomFileUploadItem (config) {
 			uploadContainer.fileUploaded(id, file);
 			fileToUpload = {
 				id: result.id,
-				file
+				file,
+				savedName: result.savedName
 			};
 
 			previewArea.innerHTML = `
