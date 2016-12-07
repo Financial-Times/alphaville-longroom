@@ -364,7 +364,7 @@ function LongroomFileUploadItem (config) {
 		}
 
 		if (uploadContainer.fileExists(file)) {
-			showError("File " + file.name + " has already been uploaded.");
+			showError("The selected document is already uploaded.");
 
 			clearFileInput();
 			endProgress();
@@ -374,7 +374,7 @@ function LongroomFileUploadItem (config) {
 		}
 
 		if (file.size > fileSizeLimit) {
-			showError("File " + file.name + " exceeded the 100 Mb limit.");
+			showError("The selected document is too large.");
 
 			clearFileInput();
 			endProgress();
@@ -438,7 +438,7 @@ function LongroomFileUploadItem (config) {
 		}
 
 		if (fileToUpload && !fileSource.value) {
-			showError("Please name a source for the uploaded file.", true);
+			showError("Document source is required.", true);
 			return false;
 		}
 
