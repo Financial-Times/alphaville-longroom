@@ -26,7 +26,8 @@
     "o-forms": "^2.0.0",
     "o-expander": "^4.0.0",
     "awesomplete": "^1.1.1",
-    "o-card": "^2.2.3"
+    "o-card": "^2.2.3",
+    "tinymce": "^4.5.1"
   },
   "resolutions": {
     "o-buttons": "^4.0.1",

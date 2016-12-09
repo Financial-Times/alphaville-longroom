@@ -4,6 +4,11 @@
 	<script>
 		(function () {
 			ctmLoadScript({
+				src: "{{assetsBowerBasePath}}/tinymce/tinymce.min.js",
+				async: true
+			});
+
+			ctmLoadScript({
 				src: "{{assetsBasePath}}/build/main.js",
 				async: true
 			});

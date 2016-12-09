@@ -26,7 +26,8 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 	const summaryInput = new LongroomFormInput({
 		input: formEl.querySelector('textarea[name="post-summary"]'),
 		label: 'Summary',
-		required: postType === 'post' ? true : false
+		required: postType === 'post' ? true : false,
+		wysiwyg: true
 	});
 
 	if (uploadContainer) {

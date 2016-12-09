@@ -1,6 +1,26 @@
+/* global tinymce */
+
 const domUtils = require('./domUtils');
+const randomString = require('./utils/randomString');
+
+const pollForTinymce = function () {
+	return new Promise(resolve => {
+		const checkTinymce = function () {
+			if (window.tinymce) {
+				resolve();
+				return;
+			}
+
+			setTimeout(checkTinymce, 100);
+		};
+
+		checkTinymce();
+	});
+};
 
 function LongroomFormInput (config) {
+	const self = this;
+
 	const input = config.input;
 	const label = config.label;
 	const labelPlural = config.labelPlural;
@@ -15,6 +35,26 @@ function LongroomFormInput (config) {
 
 	if (formGroup) {
 		errorEl = formGroup.querySelector('.o-forms-errortext');
+	}
+
+	if (config.wysiwyg) {
+		if (!input.id) {
+			input.id = randomString();
+		}
+
+		pollForTinymce().then(() => {
+			tinymce.init({
+				selector: `#${input.id}`,
+				height: 300,
+				menubar: false,
+				plugins: [
+					'advlist autolink lists link charmap print preview anchor',
+					'searchreplace visualblocks code',
+					'insertdatetime table contextmenu paste'
+				],
+				toolbar: 'undo redo | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link'
+			});
+		});
 	}
 
 
@@ -39,7 +79,11 @@ function LongroomFormInput (config) {
 	};
 
 	this.getValue = function () {
-		return input.value;
+		if (config.wysiwyg) {
+			return window.tinymce.get(input.id).getContent();
+		} else {
+			return input.value;
+		}
 	};
 
 	this.validate = function () {
@@ -47,7 +91,7 @@ function LongroomFormInput (config) {
 			return true;
 		}
 
-		if (!input.value) {
+		if (!self.getValue()) {
 			if (label) {
 				showError(`${label} ${labelPlural ? 'are' : 'is'} required.`);
 			} else {
