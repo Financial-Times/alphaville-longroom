@@ -8,13 +8,10 @@ SELECT
 	f.type file_type,
 	f.source file_source
 FROM
-	posts p,
-	tags_to_posts ttp,
-	tags t,
-	files f
+	posts p
+	LEFT JOIN tags_to_posts ttp ON ttp.post_id = p.id
+	JOIN tags t ON t.id = ttp.tag_id
+	LEFT JOIN files f ON f.post_id = p.id
 WHERE
-	ttp.post_id = p.id AND
-	t.id = ttp.tag_id AND
-	f.post_id = p.id AND
 	p.published != false
 ORDER BY p.published_at DESC
