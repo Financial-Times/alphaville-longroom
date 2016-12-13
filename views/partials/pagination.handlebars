@@ -1,0 +1,25 @@
+<div class="alphaville-pagination" data-trackable="pagination">
+	{{#left}}
+		<a href="{{../baseUrl}}page={{page}}" class="o-buttons o-buttons-icon o-buttons-icon--arrow-left o-buttons-icon--icon-only" data-trackable="link">
+			<span class="o-buttons-icon__label">Newer results</span>
+		</a>
+	{{/left}}
+	{{^left}}
+		<button class="o-buttons o-buttons-icon o-buttons-icon--arrow-left o-buttons-icon--icon-only" disabled data-trackable="link">
+			<span class="o-buttons-icon__label">Newer results</span>
+		</button>
+	{{/left}}
+
+	<span class="alphaville-pagination-label">You are on page <strong>{{currentPage}}</strong></span>
+
+	{{#right}}
+		<a href="{{../baseUrl}}page={{page}}" class="o-buttons o-buttons-icon o-buttons-icon--arrow-right o-buttons-icon--icon-only" data-trackable="link">
+			<span class="o-buttons-icon__label">Older results</span>
+		</a>
+	{{/right}}
+	{{^right}}
+		<button class="o-buttons o-buttons-icon o-buttons-icon--arrow-right o-buttons-icon--icon-only" disabled data-trackable="link">
+			<span class="o-buttons-icon__label">Older results</span>
+		</button>
+	{{/right}}
+</div>
