@@ -5,7 +5,7 @@ SELECT
 	ttp.index tag_index,
 	f.name file_name,
 	f.size file_size,
-	f.type file_type,
+	f.ext file_ext,
 	f.source file_source
 FROM
 	posts p

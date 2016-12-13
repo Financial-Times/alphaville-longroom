@@ -5,7 +5,7 @@ SELECT
 	ttp.index tag_index,
 	f.name file_name,
 	f.size file_size,
-	f.type file_type,
+	f.ext file_ext,
 	f.source file_source
 FROM
 	posts p
@@ -14,3 +14,6 @@ FROM
 	LEFT JOIN files f ON f.post_id = p.id
 WHERE
 	user_id = ${user_id}
+ORDER BY p.published_at DESC
+OFFSET ${offset}
+LIMIT ${limit}

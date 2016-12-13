@@ -2,10 +2,10 @@ CREATE TABLE IF NOT EXISTS files (
 	id SERIAL PRIMARY KEY,
 	name varchar(255) NOT NULL,
 	size integer NOT NULL,
-	type varchar(255) NOT NULL,
+	ext varchar(255) NOT NULL,
 	source varchar(1000),
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	user_id varchar(255) NOT NULL,
+	user_id uuid NOT NULL,
 	post_id integer
 );
 CREATE INDEX files_post_id ON files (post_id);
@@ -19,9 +19,9 @@ CREATE INDEX tags_name ON tags (name);
 CREATE TABLE IF NOT EXISTS posts (
 	id SERIAL PRIMARY KEY,
 	title varchar(255) NOT NULL,
-	summary varchar(5000) NULL,
+	summary text NULL,
 	post_type varchar(255) NOT NULL,
-	user_id varchar(255) NOT NULL,
+	user_id uuid NOT NULL,
 	published BOOLEAN,
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	published_at TIMESTAMP

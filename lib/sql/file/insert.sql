@@ -1,11 +1,11 @@
 INSERT INTO files (
 	name,
 	size,
-	type,
+	ext,
 	user_id
 ) VALUES (
 	${name},
 	${size},
-	${type},
+	${ext},
 	${user_id}
 ) RETURNING id
