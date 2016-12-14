@@ -9,15 +9,6 @@
 			<a href="/longroom/content/{{id}}" data-trackable="heading">{{title}}</a>
 		</h3>
 
-		<div class="o-grid-row">
-			{{#files}}
-				<div data-o-grid-colspan="4">
-					<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png">
-					<div>{{name}}</div>
-				</div>
-			{{/files}}
-		</div>
-
 		<time data-o-component="o-date" class="o-date o-card__timestamp" datetime="{{published_at}}">{{published_at}}</time>
 	</div>
 </div>

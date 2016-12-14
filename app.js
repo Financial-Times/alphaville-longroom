@@ -1,7 +1,10 @@
 const alphavilleExpress = require('alphaville-express');
 const fingerprint = require('./build_config/js/fingerprint');
+const _ = require('lodash');
 
 const env = process.env.ENVIRONMENT === 'prod' ? 'prod' : 'test';
+
+console.log(env);
 
 const app = alphavilleExpress({
 	directory: __dirname,
@@ -9,6 +12,20 @@ const app = alphavilleExpress({
 	navSelected: 'Long Room',
 	fingerprint: fingerprint,
 	env: env
+});
+
+app.use(function (req, res, next ) {
+	const _render = res.render;
+	res.render = function( view, options, fn ) {
+		options = options || {};
+
+		_.merge(options, {
+			appUrl: process.env.APP_URL
+		});
+
+		_render.call(this, view, options, fn);
+	};
+	next();
 });
 
 app.use('/', require('./routes/__gtg'));

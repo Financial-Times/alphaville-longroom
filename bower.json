@@ -27,10 +27,13 @@
     "o-expander": "^4.0.0",
     "awesomplete": "^1.1.1",
     "o-card": "^2.2.3",
-    "tinymce": "^4.5.1"
+    "tinymce": "^4.5.1",
+    "o-comments": "^3.4.7",
+    "o-comment-count": "^0.3.1"
   },
   "resolutions": {
     "o-buttons": "^4.0.1",
-    "o-viewport": "^3.0.0"
+    "o-viewport": "^3.0.0",
+    "fticons": "v1.4.0"
   }
 }

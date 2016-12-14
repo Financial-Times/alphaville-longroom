@@ -13,4 +13,5 @@ FROM
 	JOIN tags t ON t.id = ttp.tag_id
 	LEFT JOIN files f ON f.post_id = p.id
 WHERE
-	id = ${id}
+	p.id = ${id}
+	AND p.published != false

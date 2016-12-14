@@ -12,14 +12,16 @@
 {{/contentFor}}
 
 {{#> lr_layout }}
-	{{#posts}}
-		{{> card}}
-	{{/posts}}
+	<div class="lr-list">
+		{{#posts}}
+			{{> card}}
+		{{/posts}}
+	</div>
 
 	<div class="o-grid-row">
 		<div data-o-grid-colspan="12">
 			{{#pagination}}
-				{{> pagination}}
+				{{> alphaville-ui/pagination/main}}
 			{{/pagination}}
 		</div>
 	</div>
