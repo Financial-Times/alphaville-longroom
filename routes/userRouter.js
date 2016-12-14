@@ -2,11 +2,13 @@
 
 const router = require('express').Router();
 const userCtrl = require('../lib/controllers/user');
+const userFormValidator = require('../lib/middlewares/userFromValidator');
+
+router.route('/applied')
+	.get(userCtrl.applied);
 
 router.route('/join')
-	.get((req, res) => {
-		res.render('joinForm');
-	})
-	.post(userCtrl.join);
+	.get(userCtrl.get)
+	.post(userFormValidator(), userCtrl.join);
 
 module.exports = router;
