@@ -1,23 +1,11 @@
 INSERT INTO users(
-  user_id,
-  email,
-  title,
-  first_name,
-  last_name,
-  industry,
-  position,
-  responsibility,
-  location,
-  description
+    user_id,
+    location,
+    description,
+    summary
 ) VALUES (
-  ${user_id},
-  ${email},
-  ${title},
-  ${first_name},
-  ${last_name},
-  ${industry},
-  ${position},
-  ${responsibility},
-  ${location},
-  ${description}
+    ${user_id},
+    ${location},
+    ${description},
+    ${summary}
 ) RETURNING user_id
