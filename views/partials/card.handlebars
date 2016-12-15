@@ -1,14 +1,21 @@
-<div class="o-card o-card--landscape lr-card" data-o-component="o-card" data-article-id="{{id}}">
-	<div class="o-card__content">
+<div class="alphaville-card-container">
+	<div class="alphaville-card alphaville-card--list" data-o-component="o-card" data-article-id="{{_id}}">
+		<div class="alphaville-card__content">
+			<div class="alphaville-card__theme">
+				<a href="/longroom/tags/{{primaryTag.id}}" class="alphaville-card__tag" data-trackable="theme">{{primaryTag.name}}</a>
+			</div>
 
-		<div class="o-card__meta">
-			<a href="/longroom/tags/{{primaryTag.id}}" class="o-card__tag" data-trackable="theme">{{primaryTag.name}}</a>
+			<h3 class="alphaville-card__heading">
+				<a href="/longroom/content/{{id}}" data-trackable="heading">{{title}}</a>
+			</h3>
+
+			<div>
+				Author: 
+			</div>
+
+			<div class="alphaville-card__footer">
+				{{> timestamp}}
+			</div>
 		</div>
-
-		<h3 class="o-card__heading">
-			<a href="/longroom/content/{{id}}" data-trackable="heading">{{title}}</a>
-		</h3>
-
-		<time data-o-component="o-date" class="o-date o-card__timestamp" datetime="{{published_at}}">{{published_at}}</time>
 	</div>
 </div>
