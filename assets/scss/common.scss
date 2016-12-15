@@ -36,9 +36,9 @@ $o-card-is-silent: false;
 
 .lr-navbar {
 	background-color: #ebe0d1;
-	width: 100%;
+	width: 98%;
 	height: 27px;
-	padding: 5px 10px;
+	padding: 5px 1%;
 }
 
 .lr-navbar--title {
@@ -86,6 +86,14 @@ $o-card-is-silent: false;
 					text-decoration: underline;
 				}
 			}
+		}
+	}
+
+	.lr-edit-my-posts {
+		display: none;
+
+		@include oGridRespondTo(M) {
+			display: inline-block;
 		}
 	}
 
