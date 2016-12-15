@@ -13,7 +13,13 @@ FROM
 	JOIN tags t ON t.id = ttp.tag_id
 	LEFT JOIN files f ON f.post_id = p.id
 WHERE
-	p.published != false
+	p.id IN (
+		SELECT id
+		FROM posts
+		WHERE
+			p.published != false
+		ORDER BY p.published_at DESC
+		OFFSET ${offset}
+		LIMIT ${limit}
+	)
 ORDER BY p.published_at DESC
-OFFSET ${offset}
-LIMIT ${limit}
