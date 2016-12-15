@@ -114,19 +114,8 @@ $o-card-is-silent: false;
 	}
 }
 
-.lr-card {
-	padding: 10px;
-
-	.lr-list & {
-		border-bottom: 1px solid oColorsGetPaletteColor('pink-tint3');
-
-		&:last-child {
-			border-bottom: 0;
-		}
-	}
-
-	.lr-card__file-icon {
-		max-width: 50px;
-		text-align: center;
+.lr-post {
+	.alphaville-card__heading {
+		margin-bottom: 0;
 	}
 }

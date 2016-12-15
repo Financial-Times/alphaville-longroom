@@ -13,34 +13,47 @@
 
 {{#> lr_layout }}
 	{{#article}}
-		<div class="o-card o-card--landscape lr-card" data-o-component="o-card" data-article-id="{{id}}">
-			<div class="o-card__content">
+		<article class="lr-post alphaville-card-container">
+			<div class="alphaville-card alphaville-card--list" data-o-component="o-card" data-article-id="{{_id}}">
+				<div class="alphaville-card__content">
+					<div class="alphaville-card__theme">
+						<a href="/longroom/tags/{{primaryTag.id}}" class="alphaville-card__tag" data-trackable="theme">{{primaryTag.name}}</a>
+					</div>
 
-				<div class="o-card__meta">
-					<a href="/longroom/tags/{{primaryTag.id}}" class="o-card__tag" data-trackable="theme">{{primaryTag.name}}</a>
-				</div>
+					<h3 class="alphaville-card__heading">
+						{{title}}
+					</h3>
 
-				<h3 class="o-card__heading">
-					{{title}}
-				</h3>
+					<div class="alphaville-card__footer">
+						{{> timestamp}}
+					</div>
 
-				<time data-o-component="o-date" class="o-date o-card__timestamp" datetime="{{published_at}}">{{published_at}}</time>
+					<div>
+						Author: 
+					</div>
 
-				<p>Author:</p>
+					<div class="alphaville-card__standfirst">
+						{{{summary}}}
+					</div>
 
-				{{{summary}}}
-
-				<div class="o-grid-row">
-					{{#files}}
-						<div data-o-grid-colspan="4">
-							<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png">
-							<div>{{name}}</div>
-						</div>
-					{{/files}}
+					<div class="o-grid-row">
+						{{#files}}
+							<div data-o-grid-colspan="4">
+								<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png">
+								<div>{{name}}</div>
+							</div>
+						{{/files}}
+					</div>
 				</div>
 			</div>
-		</div>
+		</article>
 	{{/article}}
+
+	<footer class="n-content-copyright">
+		<small>
+			<a href="http://www.ft.com/servicestools/help/copyright" data-trackable="link-copyright">Copyright</a> The Financial Times Limited 2016. All rights reserved. You may share using our article tools. Please don't cut articles from FT.com and redistribute by email or post to the web.
+		</small>
+	</footer>
 
 	{{> alphaville-ui/share/main position='bottom'}}
 
