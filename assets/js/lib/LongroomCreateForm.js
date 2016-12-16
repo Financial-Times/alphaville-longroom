@@ -80,6 +80,7 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 		genericErrorMsgEl.innerHTML = "";
 	};
 
+	let safeRedirect = false;
 	const submitForm = function (publish) {
 		resetValidationErrors();
 
@@ -100,6 +101,8 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 				body: JSON.stringify(formSerialized)
 			}).then(data => {
 				if (data.success) {
+					safeRedirect = true;
+
 					window.location.href = data.url;
 				} else {
 					draftButton.removeAttribute('disabled');
@@ -153,6 +156,16 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 			submitForm(true);
 		});
 	}
+
+	window.onbeforeunload = function(e) {
+		const formValues = serializeForm();
+		if (!safeRedirect &&
+				(formValues.title || formValues.tags || formValues.summary || formValues.files.length)) {
+			const dialogText = 'Changes you made may not be saved.';
+			e.returnValue = dialogText;
+			return dialogText;
+		}
+	};
 }
 
 module.exports = LongroomCreateForm;
