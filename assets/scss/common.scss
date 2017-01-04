@@ -123,4 +123,27 @@ $o-card-is-silent: false;
 		padding-left: 0;
 		margin-bottom: 20px;
 	}
+
+	.lr-card__file-icon {
+		max-width: 50px;
+	}
+
+	.lr-post--files {
+		margin: 10px 0;
+	}
+}
+
+
+.lr-action-container {
+	float: right;
+
+	.lr-action--delete {
+		color: oColorsGetPaletteColor('teal-1');
+		font-weight: bold;
+	}
+
+	.lr-action--button {
+		display: inline-block;
+		min-width: 70px;
+	}
 }

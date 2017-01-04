@@ -18,6 +18,11 @@
 		<article class="lr-post alphaville-card-container">
 			<div class="alphaville-card alphaville-card--list" data-o-component="o-card" data-article-id="{{_id}}">
 				<div class="alphaville-card__content">
+					<div class="lr-action-container">
+						<a href="#" class="lr-action--delete lr-action--button">Delete</a>
+						<a href="/longroom/content/{{id}}/edit" class="lr-action--edit lr-action--button o-buttons o-buttons--standout">Edit</a>
+					</div>
+
 					<div class="alphaville-card__theme">
 						<a href="/longroom/tags/{{primaryTag.id}}" class="alphaville-card__tag" data-trackable="theme">{{primaryTag.name}}</a>
 					</div>
@@ -40,7 +45,7 @@
 
 					<div class="o-grid-row">
 						{{#files}}
-							<div data-o-grid-colspan="4">
+							<div class="lr-post--files" data-o-grid-colspan="6 M4">
 								<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png">
 								<div>{{name}}</div>
 							</div>
