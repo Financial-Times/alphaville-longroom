@@ -12,6 +12,8 @@
 {{/contentFor}}
 
 {{#> lr_layout }}
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12 L11 Loffset1">
 	{{#article}}
 		<article class="lr-post alphaville-card-container">
 			<div class="alphaville-card alphaville-card--list" data-o-component="o-card" data-article-id="{{_id}}">
@@ -29,7 +31,7 @@
 					</div>
 
 					<div>
-						Author: {{user.pseudonym}}
+						Author: {{user.pseudonym}} - {{user_summary}}
 					</div>
 
 					<div class="alphaville-card__standfirst">
