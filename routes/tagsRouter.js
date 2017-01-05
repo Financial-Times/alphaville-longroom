@@ -4,6 +4,6 @@ const express = require('express');
 const router = new express.Router();
 const tagsCtrl = require('../lib/controllers/tags');
 
-router.get('/:name', tagsCtrl);
+router.get('/:id', tagsCtrl);
 
 module.exports = router;
