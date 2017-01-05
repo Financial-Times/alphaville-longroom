@@ -23,9 +23,17 @@
 			</div>
 		</div>
 	</div>
-</div>
 
-<div class="o-grid-container">
+	{{#flashMessage}}
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12">
+			<div class="lr-message lr-message-{{type}}">
+				{{msg}}
+			</div>
+		</div>
+	</div>
+	{{/flashMessage}}
+
 	<div class="o-grid-row">
 		<div data-o-grid-colspan="12 M8">
 			{{> @partial-block }}

@@ -1,4 +1,5 @@
 const alphavilleExpress = require('alphaville-express');
+const flashMessageMiddleware = require('./lib/middlewares/flashMessage');
 const fingerprint = require('./build_config/js/fingerprint');
 const _ = require('lodash');
 
@@ -27,6 +28,8 @@ app.use(function (req, res, next ) {
 	};
 	next();
 });
+
+app.use(flashMessageMiddleware);
 
 app.use('/', require('./routes/__gtg'));
 app.use('/longroom', require('./router'));
