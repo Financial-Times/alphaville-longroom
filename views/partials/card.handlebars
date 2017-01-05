@@ -2,7 +2,7 @@
 	<div class="alphaville-card alphaville-card--list" data-o-component="o-card" data-article-id="{{_id}}">
 		<div class="alphaville-card__content">
 			<div class="alphaville-card__theme">
-				<a href="/longroom/tags/{{primaryTag.id}}" class="alphaville-card__tag" data-trackable="theme">{{primaryTag.name}}</a>
+				<a href="/longroom/topic/{{primaryTag.id}}" class="alphaville-card__tag" data-trackable="theme">{{primaryTag.name}}</a>
 			</div>
 
 			<h3 class="alphaville-card__heading">
@@ -10,7 +10,7 @@
 			</h3>
 
 			<div>
-				Author: {{user.pseudonym}}
+				Author: <a href="/longroom/author/{{user_id}}">{{user.pseudonym}}</a>
 			</div>
 
 			<div class="alphaville-card__footer">
