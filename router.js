@@ -13,5 +13,7 @@ router.use('/files', auth(), userMiddleware, require('./routes/fileRouter'));
 router.use('/suggestions', require('./routes/suggestionRouter'));
 router.use('/topic', auth(), require('./routes/tagsRouter'));
 router.use('/author', auth(), require('./routes/authorRouter'));
+router.use('/faq', auth(), require('./routes/faqRouter'));
+router.use('/house-rules', auth(), require('./routes/houseRulesRouter'));
 
 module.exports = router;

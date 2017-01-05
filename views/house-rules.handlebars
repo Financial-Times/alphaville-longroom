@@ -1,0 +1,29 @@
+{{#contentFor "head"}}
+	<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
+
+	<script>
+		(function () {
+			ctmLoadScript({
+				src: "{{assetsBasePath}}/build/main.js",
+				async: true
+			});
+		}());
+	</script>
+{{/contentFor}}
+
+{{#> lr_layout }}
+	<div class="alphaville-article-list" data-trackable="faq">
+		<h1>{{article.title}}</h1>
+		<div class="body">
+		{{{article.body}}}
+		</div>
+	</div>
+
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12">
+			{{#pagination}}
+				{{> alphaville-ui/pagination/main}}
+			{{/pagination}}
+		</div>
+	</div>
+{{/lr_layout}}
