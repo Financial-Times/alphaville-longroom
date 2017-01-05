@@ -11,5 +11,6 @@ router.use('/content', auth(), require('./routes/contentRouter'));
 router.use('/user', auth(), userMiddleware, require('./routes/userRouter'));
 router.use('/files', auth(), userMiddleware, require('./routes/fileRouter'));
 router.use('/suggestions', require('./routes/suggestionRouter'));
+router.use('/tags', auth(), require('./routes/tagsRouter'));
 
 module.exports = router;
