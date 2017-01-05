@@ -3,6 +3,7 @@ SELECT
    t.name tag_name,
    t.id tag_id,
    ttp.index tag_index,
+   f.id file_id,
    f.name file_name,
    f.size file_size,
    f.ext file_ext,
