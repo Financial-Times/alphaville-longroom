@@ -20,10 +20,10 @@ WHERE
         SELECT pi.id
         FROM posts pi
         WHERE
-            pi.published != false AND
+            pi.published = ${published} AND
             pi.user_id = ${user_id}
-        ORDER BY pi.published_at DESC
+        ORDER BY pi.${orderBy^} DESC
         OFFSET ${offset}
         LIMIT ${limit}
     )
-ORDER BY p.published_at DESC
+ORDER BY p.${orderBy^} DESC
