@@ -3,5 +3,5 @@ SELECT
 FROM
    posts p
 WHERE
-   p.published != false AND
+   p.published = ${published} AND
    p.user_id = ${user_id}
