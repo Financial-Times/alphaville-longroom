@@ -44,6 +44,10 @@ $o-card-is-silent: false;
 .lr-navbar--title {
 	@include oTypographySerif(m);
 	line-height: 27px;
+
+	a {
+		color: oColorsGetPaletteColor('cold-2');
+	}
 }
 
 .lr-navbar--cta {

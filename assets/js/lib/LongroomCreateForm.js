@@ -91,11 +91,16 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 			formSerialized.postType = postType;
 			formSerialized.publish = publish;
 
-			draftButton.setAttribute('disabled', 'disabled');
-			publishButton.setAttribute('disabled', 'disabled');
+			if (draftButton) {
+				draftButton.setAttribute('disabled', 'disabled');
+			}
+
+			if (publishButton) {
+				publishButton.setAttribute('disabled', 'disabled');
+			}
 
 			httpRequest.post({
-				url: '/longroom/content/create',
+				url: formEl.getAttribute('action'),
 				dataType: 'json',
 				contentType: 'application/json',
 				body: JSON.stringify(formSerialized)
@@ -105,8 +110,13 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 
 					window.location.href = data.url;
 				} else {
-					draftButton.removeAttribute('disabled');
-					publishButton.removeAttribute('disabled');
+					if (draftButton) {
+						draftButton.removeAttribute('disabled');
+					}
+
+					if (publishButton) {
+						publishButton.removeAttribute('disabled');
+					}
 
 					if (data.validation) {
 						if (data.validation.title) {

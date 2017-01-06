@@ -101,7 +101,7 @@ function LongroomFileUpload (config) {
 		const uploadFormKeys = Object.keys(fileUploadForms);
 		const lastUploadForm = fileUploadForms[uploadFormKeys[uploadFormKeys.length - 1]];
 
-		return !!lastUploadForm.getFile();
+		return !!lastUploadForm.getContent().file;
 	};
 
 	const isUploadFormsWithinMax = function () {
@@ -151,12 +151,12 @@ function LongroomFileUpload (config) {
 		let found = false;
 
 		Object.keys(fileUploadForms).forEach((id) => {
-			const uploadedFile = fileUploadForms[id].getFile();
-			if (uploadedFile) {
+			const uploadedFile = fileUploadForms[id].getContent().file;
+			if (uploadedFile && uploadedFile.fileObj) {
 				let match = true;
 
 				['name', 'size', 'type'].forEach((key) => {
-					if (uploadedFile.file[key] !== file[key]) {
+					if (uploadedFile.fileObj[key] !== file[key]) {
 						match = false;
 					}
 				});
@@ -192,12 +192,13 @@ function LongroomFileUpload (config) {
 
 		Object.keys(fileUploadForms).forEach((id) => {
 			const fileUploadForm = fileUploadForms[id];
-			const fileInfo = fileUploadForm.getFile();
+			const fileInfo = fileUploadForm.getContent();
 
-			if (fileInfo || fileUploadForm.getSource()) {
+			if (fileInfo && fileInfo.file) {
 				files.push({
-					fileId: fileInfo ? fileInfo.id : null,
-					source: fileUploadForm.getSource(),
+					fileId: fileInfo.file.id,
+					source: fileInfo.source,
+					fileStatus: fileInfo.status,
 					fileUploadFormElId: id
 				});
 			}
@@ -259,13 +260,42 @@ function LongroomFileUpload (config) {
 }
 
 function LongroomFileUploadItem (config) {
+	const self = this;
+
+	let content = {
+		status: 'new',
+		file: null
+	};
+
 	const uploadContainer = config.uploadContainer;
 	const id = config.id;
 	const el = config.el;
 	const fileSizeLimit = config.fileSizeLimit;
 
-	const uploadButton = el.querySelector('.lr-forms__file-upload');
-	const fileInput = el.querySelector('input[type="file"]');
+	let uploadButton;
+	let fileInput;
+
+	let existingFile = false;
+	const fileId = el.getAttribute('data-file-id');
+	if (fileId && !isNaN(fileId)) {
+		existingFile = true;
+		content.status = 'existing';
+		content.file = {
+			id: parseInt(fileId, 10)
+		};
+	}
+
+	if (!existingFile) {
+		uploadButton = el.querySelector('.lr-forms__file-upload');
+		fileInput = el.querySelector('input[type="file"]');
+
+		uploadButton.addEventListener('click', (evt) => {
+			evt.preventDefault();
+
+			fileInput.click();
+		});
+	}
+
 	const fileSource = el.querySelector('.lr-forms__file-upload--source');
 	const previewArea = el.querySelector('.lr-forms__file-upload--preview');
 	const fileUploadError = el.querySelector('.lr-forms__file-upload--error');
@@ -275,13 +305,22 @@ function LongroomFileUploadItem (config) {
 		formGroup = formGroup[0];
 	}
 
-	let fileToUpload = null;
 
-	uploadButton.addEventListener('click', (evt) => {
-		evt.preventDefault();
+	const attachPreviewAreaEvents = function () {
+		previewArea.querySelector('.lr-forms__file-upload--delete').addEventListener('click', (evt) => {
+			evt.preventDefault();
 
-		fileInput.click();
-	});
+			if (!existingFile) {
+				el.parentNode.removeChild(el);
+				deleteFile(content.file.id);
+				uploadContainer.removeUploadForm(id);
+			} else {
+				content.status = 'remove';
+
+				el.parentNode.removeChild(el);
+			}
+		});
+	};
 
 
 	const disableUploadButton = function () {
@@ -323,13 +362,6 @@ function LongroomFileUploadItem (config) {
 		}
 	};
 
-
-	let isNewUpload = true;
-	if (el.getAttribute('data-lr-file-name')) {
-		isNewUpload = false;
-		disableUploadButton();
-	}
-
 	const onTypeSourceInput = function () {
 		if (fileSource.value.trim() !== "" && (!fileInput.files || !fileInput.files.length)) {
 			enableUploadButton();
@@ -344,104 +376,99 @@ function LongroomFileUploadItem (config) {
 	};
 
 
-	fileSource.addEventListener('keyup', onTypeSourceInput);
-	fileSource.addEventListener('keydown', onTypeSourceInput);
+	if (existingFile) {
+		attachPreviewAreaEvents();
+	} else {
+		fileSource.addEventListener('keyup', onTypeSourceInput);
+		fileSource.addEventListener('keydown', onTypeSourceInput);
 
-	fileInput.addEventListener('change', () => {
-		clearError();
-		disableUploadButton();
-		startProgress();
+		fileInput.addEventListener('change', () => {
+			clearError();
+			disableUploadButton();
+			startProgress();
 
-		const file = fileInput.files[0];
+			const file = fileInput.files[0];
 
-		if (uploadFileTypes.allowedFileTypes.indexOf(file.type) === -1) {
-			showError("The selected document type is not allowed.");
+			if (uploadFileTypes.allowedFileTypes.indexOf(file.type) === -1) {
+				showError("The selected document type is not allowed.");
 
-			clearFileInput();
-			endProgress();
-			enableUploadButton();
+				clearFileInput();
+				endProgress();
+				enableUploadButton();
 
-			return;
-		}
+				return;
+			}
 
-		if (uploadContainer.fileExists(file)) {
-			showError("The selected document is already uploaded.");
+			if (uploadContainer.fileExists(file)) {
+				showError("The selected document is already uploaded.");
 
-			clearFileInput();
-			endProgress();
-			enableUploadButton();
+				clearFileInput();
+				endProgress();
+				enableUploadButton();
 
-			return;
-		}
+				return;
+			}
 
-		if (file.size > fileSizeLimit) {
-			showError("The selected document is too large.");
+			if (file.size > fileSizeLimit) {
+				showError("The selected document is too large.");
 
-			clearFileInput();
-			endProgress();
-			enableUploadButton();
+				clearFileInput();
+				endProgress();
+				enableUploadButton();
 
-			return;
-		}
+				return;
+			}
 
 
-		uploadFile(file, onProgress).then((result) => {
-			endProgress();
+			uploadFile(file, onProgress).then((result) => {
+				endProgress();
 
-			uploadContainer.fileUploaded(id, file);
-			fileToUpload = {
-				id: result.id,
-				file,
-				savedName: result.savedName
-			};
+				uploadContainer.fileUploaded(id, file);
+				content.file = {
+					id: result.id,
+					fileObj: file,
+					savedName: result.savedName
+				};
 
-			previewArea.innerHTML = `
-				<img src="${assetsPath}/images/file_extension_icons/${uploadFileTypes.fileTypesIcons[file.type]}.png" />
-				<span class="lr-forms__file-upload--preview-info">
-					${file.name}<br/>
-					<a class="lr-forms__file-upload--delete">Delete</a>
-				</span>
-			`;
+				previewArea.innerHTML = `
+					<img src="${assetsPath}/images/file_extension_icons/${uploadFileTypes.fileTypesIcons[file.type]}.png" />
+					<span class="lr-forms__file-upload--preview-info">
+						${file.name}<br/>
+						<a class="lr-forms__file-upload--delete">Delete</a>
+					</span>
+				`;
 
-			previewArea.querySelector('.lr-forms__file-upload--delete').addEventListener('click', (evt) => {
-				evt.preventDefault();
+				attachPreviewAreaEvents();
+			})
+			.catch(() => {
+				fileInput.files = null;
+				showError('Failed to upload the document. Please try again later.');
 
-				if (isNewUpload) {
-					el.parentNode.removeChild(el);
-					deleteFile(fileToUpload.id);
-					uploadContainer.removeUploadForm(id);
-				} else {
-					uploadContainer.removeFileOnSave(el.getAttribute('data-lr-file-name'));
-				}
+				clearFileInput();
+				endProgress();
+				enableUploadButton();
 			});
-		})
-		.catch(() => {
-			fileInput.files = null;
-			showError('Failed to upload the document. Please try again later.');
-
-			clearFileInput();
-			endProgress();
-			enableUploadButton();
 		});
-	});
+	}
 
-	this.getFile = function () {
-		return fileToUpload;
-	};
 
-	this.getSource = function () {
-		return fileSource.value;
+	this.getContent = function () {
+		return Object.assign({}, content, {
+			source: fileSource.value
+		});
 	};
 
 	this.validate = function () {
-		if (fileSource.value && !fileToUpload) {
-			showError("Please upload a file.");
-			return false;
-		}
+		if (content.status !== 'remove') {
+			if (content.status === 'new' && fileSource.value && !content.file) {
+				showError("Please upload a file.");
+				return false;
+			}
 
-		if (fileToUpload && !fileSource.value) {
-			showError("Document source is required.", true);
-			return false;
+			if (content.file && !fileSource.value) {
+				showError("Document source is required.", true);
+				return false;
+			}
 		}
 
 		clearError();
