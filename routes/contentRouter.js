@@ -12,13 +12,13 @@ const userMiddleware = require('../lib/middlewares/user');
 
 router.get('/write-post', userMiddleware, controllers.create.getWriteAPostForm);
 router.get('/upload-document', userMiddleware, controllers.create.getUploadDocumentForm);
-router.post('/create', controllers.create.post);
+router.post('/create', userMiddleware, controllers.create.post);
 
 router.route('/:id')
 	.get(userMiddleware, controllers.view);
 
 router.route('/:id/delete').get(userMiddleware, controllers.delete);
 router.route('/:id/edit').get(userMiddleware, controllers.edit.getForm);
-router.route('/:id/edit').post(controllers.edit.process);
+router.route('/:id/edit').post(userMiddleware, controllers.edit.process);
 
 module.exports = router;
