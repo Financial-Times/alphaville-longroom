@@ -20,6 +20,7 @@ WHERE
        SELECT pi.id
        FROM posts pi
        WHERE
+           pi.published != false AND
            pi.id IN (
                SELECT ttpi.post_id FROM tags_to_posts ttpi
                WHERE ttpi.tag_id = ${tag_id}

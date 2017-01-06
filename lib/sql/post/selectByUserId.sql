@@ -20,6 +20,7 @@ WHERE
         SELECT pi.id
         FROM posts pi
         WHERE
+            pi.published != false AND
             pi.user_id = ${user_id}
         ORDER BY pi.published_at DESC
         OFFSET ${offset}
