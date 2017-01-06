@@ -17,4 +17,3 @@ FROM
     LEFT JOIN users u ON u.user_id = p.user_id
 WHERE
 	p.id = ${id}
-	AND p.published != false
