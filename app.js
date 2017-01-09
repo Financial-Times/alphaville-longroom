@@ -21,7 +21,8 @@ app.use(function (req, res, next ) {
 		options = options || {};
 
 		_.merge(options, {
-			appUrl: process.env.APP_URL
+			appUrl: process.env.APP_URL,
+			adZone: 'alphaville.long.room'
 		});
 
 		_render.call(this, view, options, fn);
