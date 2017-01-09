@@ -9,10 +9,10 @@ const updateUserSummaryCtrl = require('../lib/controllers/updateUserSummary');
 
 const userMiddleware = require('../lib/middlewares/user');
 
-router.route('/')
+router.route('/', userMiddleware, mypostsCtrl)
 	.get(userMiddleware, mypostsCtrl);
 
-router.route('/update')
+router.post('/update')
 	.get(userMiddleware, updateUserSummaryCtrl);
 
 module.exports = router;
