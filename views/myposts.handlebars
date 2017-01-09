@@ -13,7 +13,20 @@
 
 {{#> lr_layout }}
 	<h2>MY SUMMARY</h2>
-
+		{{#userDetails}}
+			<div class="alphaville-list-category o-grid-row">
+				<div data-o-grid-colspan="12 M3"><b>Author</b></div>
+				<div data-o-grid-colspan="12 M9">{{pseudonym}}</div>
+			</div>
+			<div class="alphaville-list-category o-grid-row">
+				<div data-o-grid-colspan="12 M3"><b>Summary</b></div>
+				<div data-o-grid-colspan="12 M9">{{summary}}</div>
+			</div>
+			<div class="alphaville-list-category o-grid-row">
+				<div data-o-grid-colspan="12 M3"></div>
+				<div data-o-grid-colspan="12 M9"><a href="#" class="lr-action--edit lr-action--button o-buttons o-buttons--standout">Edit</a></div>
+			</div>
+		{{/userDetails}}
 	<h2>MY DRAFTS</h2>
 	<div class="alphaville-article-list" data-trackable="author-draft-list">
 		{{#drafts}}
