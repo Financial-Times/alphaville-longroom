@@ -17,6 +17,10 @@
 	}
 }
 
+.lr-forms__file-upload--group--template {
+	display: none;
+}
+
 .lr-forms__file-upload {
 	width: 100%;
 	cursor: pointer;
@@ -95,4 +99,10 @@
 	line-height: 10px;
 	min-width: 20px;
 	min-height: 20px;
+}
+
+.lr-link--cancel {
+	color: oColorsGetPaletteColor('teal-1');
+	margin-right: 10px;
+	font-weight: bold;
 }

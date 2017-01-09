@@ -45,23 +45,25 @@
 			</div>
 		{{/postFiles}}
 
-		<div class="lr-forms__file-upload--group o-forms-group">
-			<div class="o-grid-row">
-				<div data-o-grid-colspan="6">
-					<input type="text" class="o-forms-text o-forms-text--small lr-forms__file-upload--source" name="post-file-source1" value="" />
+		<script type="text/template" class="lr-forms__file-upload--group--template">
+			<div class="lr-forms__file-upload--group o-forms-group">
+				<div class="o-grid-row">
+					<div data-o-grid-colspan="6">
+						<input type="text" class="o-forms-text o-forms-text--small lr-forms__file-upload--source" name="post-file-source1" value="" />
+					</div>
+					<div data-o-grid-colspan="6">
+						<button type="button" class="o-buttons lr-forms__file-upload" disabled>
+							Choose file
+						</button>
+						<input type="file" name="post-file" id="post-file1" />
+					</div>
 				</div>
-				<div data-o-grid-colspan="6">
-					<button type="button" class="o-buttons lr-forms__file-upload" disabled>
-						Choose file
-					</button>
-					<input type="file" name="post-file" id="post-file1" />
+				<div class="o-grid-row">
+					<div data-o-grid-colspan="12" class="lr-forms__file-upload--preview"></div>
+					<div data-o-grid-colspan="12" class="lr-forms__file-upload--error o-forms-errortext"></div>
 				</div>
 			</div>
-			<div class="o-grid-row">
-				<div data-o-grid-colspan="12" class="lr-forms__file-upload--preview"></div>
-				<div data-o-grid-colspan="12" class="lr-forms__file-upload--error o-forms-errortext"></div>
-			</div>
-		</div>
+		</script>
 	</div>
 
 	<div class="o-forms-group">
