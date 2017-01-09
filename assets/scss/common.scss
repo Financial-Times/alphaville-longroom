@@ -140,6 +140,11 @@ $o-card-is-silent: false;
 
 .lr-action-container {
 	float: right;
+	display: none;
+
+	@include oGridRespondTo(M) {
+		display: block;
+	};
 
 	.lr-action--delete {
 		color: oColorsGetPaletteColor('teal-1');
