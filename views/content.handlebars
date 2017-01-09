@@ -43,15 +43,19 @@
 
 					<div class="alphaville-card__standfirst">
 						{{{summary}}}
+
+						<div>
+							{{> alphaville-ui/ads/templates/longroom_tablet_leaderboard longroom_tablet_leaderboard_index=1}}
+						</div>
 					</div>
 
 					<div class="alphaville-in-article-ad1">
-                        {{> alphaville-ui/ads/templates/mpu_mobile mpu_mobile_index=1}}
-                    </div>
+						{{> alphaville-ui/ads/templates/longroom_mobile_mpu longroom_mobile_mpu_index=1}}
+					</div>
 
-                    <div class="alphaville-in-article-ad2">
-                        {{> alphaville-ui/ads/templates/mpu_mobile mpu_mobile_index=2}}
-                    </div>
+					<div class="alphaville-in-article-ad2">
+						{{> alphaville-ui/ads/templates/longroom_mobile_mpu longroom_mobile_mpu_index=2}}
+					</div>
 
 					<div class="o-grid-row">
 						{{#files}}

@@ -27,6 +27,10 @@
 	</div>
 </div>
 
-{{#adAfter}}
-	{{> alphaville-ui/ads/templates/stream index=.}}
-{{/adAfter}}
+{{#mobileAdAfter}}
+	{{> alphaville-ui/ads/templates/longroom_mobile_mpu longroom_mobile_mpu_index=.}}
+{{/mobileAdAfter}}
+
+{{#tabletAdAfter}}
+	{{> alphaville-ui/ads/templates/longroom_tablet_leaderboard longroom_tablet_leaderboard_index=.}}
+{{/tabletAdAfter}}

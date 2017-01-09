@@ -12,10 +12,22 @@
 {{/contentFor}}
 
 {{#> lr_layout }}
-	<div class="alphaville-article-list" data-trackable="faq">
+	<div class="alphaville-article-list lr-faq-page" data-trackable="faq">
 		<h1>{{article.title}}</h1>
 		<div class="body">
-		{{{article.body}}}
+			{{{article.body}}}
+
+			<div>
+				{{> alphaville-ui/ads/templates/longroom_mobile_mpu longroom_mobile_mpu_index=2}}
+			</div>
+		</div>
+
+		<div class="alphaville-in-faq-ad1">
+			{{> alphaville-ui/ads/templates/longroom_mobile_mpu longroom_mobile_mpu_index=1}}
+		</div>
+
+		<div class="alphaville-in-faq-ad2">
+			{{> alphaville-ui/ads/templates/longroom_tablet_leaderboard longroom_tablet_leaderboard_index=1}}
 		</div>
 	</div>
 
