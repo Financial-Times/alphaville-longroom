@@ -34,6 +34,7 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 		fileUploadContainer = new LongroomFileUpload({
 			container: uploadContainer,
 			elSelector: '.lr-forms__file-upload--group',
+			templateSelector: '.lr-forms__file-upload--group--template',
 			addMoreEl: document.querySelector('.lr-forms__action-link'),
 			inputNames: [
 				'post-file-source',

@@ -61,6 +61,7 @@ function LongroomFileUpload (config) {
 
 	const container = config.container;
 	const elSelector = config.elSelector;
+	const templateSelector = config.templateSelector;
 	const addMoreEl = config.addMoreEl;
 	const addMoreButton = config.addMoreEl.querySelector('button');
 	const inputNames = config.inputNames;
@@ -97,19 +98,40 @@ function LongroomFileUpload (config) {
 		addMoreButton.removeAttribute('disabled');
 	};
 
-	const hasLastUploadFormFileUploaded = function () {
+	const hasLastUploadFormFileUploaded = function (index) {
 		const uploadFormKeys = Object.keys(fileUploadForms);
-		const lastUploadForm = fileUploadForms[uploadFormKeys[uploadFormKeys.length - 1]];
 
-		return !!lastUploadForm.getContent().file;
+		if (index === undefined) {
+			index = uploadFormKeys.length - 1;
+		}
+
+		if (index < 0) {
+			return false;
+		}
+
+		const lastUploadForm = fileUploadForms[uploadFormKeys[index]];
+		const content = lastUploadForm.getContent();
+
+		if (content.file && index >= 0) {
+			if (content.status === 'remove') {
+				return hasLastUploadFormFileUploaded(index - 1);
+			} else {
+				return true;
+			}
+		} else {
+			return false;
+		}
+	};
+
+	const getFileUploadedCount = function () {
+		return self.getFiles().filter(file => file.fileStatus !== 'remove').length;
 	};
 
 	const isUploadFormsWithinMax = function () {
-		return Object.keys(fileUploadForms).length < maxFiles;
+		return getFileUploadedCount() < maxFiles;
 	};
 
-
-	const template = container.querySelector(elSelector).outerHTML;
+	const template = container.querySelector(templateSelector).innerHTML;
 
 	const addMoreUploadField = function (evt) {
 		if (evt && typeof evt.preventDefault === 'function') {
@@ -135,15 +157,6 @@ function LongroomFileUpload (config) {
 			index++;
 		}
 	};
-
-
-	if (isUploadFormsWithinMax()) {
-		addMoreButton.addEventListener('click', addMoreUploadField);
-	} else {
-		disableAddMoreButton();
-	}
-
-
 
 
 
@@ -177,9 +190,11 @@ function LongroomFileUpload (config) {
 	};
 
 	this.removeUploadForm = function (id) {
-		delete fileUploadForms[id];
+		if (fileUploadForms[id].getContent().status !== 'remove') {
+			delete fileUploadForms[id];
+		}
 
-		if (!Object.keys(fileUploadForms).length) {
+		if (!container.querySelectorAll(elSelector).length) {
 			addMoreUploadField();
 		} else if (isUploadFormsWithinMax() && hasLastUploadFormFileUploaded()) {
 			enableAddMoreButton();
@@ -236,7 +251,7 @@ function LongroomFileUpload (config) {
 			}
 		});
 
-		if (required && !self.getFiles().length) {
+		if (required && !getFileUploadedCount()) {
 			self.showErrors("It is mandatory to upload at least one document.", true);
 		}
 
@@ -257,6 +272,15 @@ function LongroomFileUpload (config) {
 			}
 		}
 	};
+
+
+	if (!isUploadFormsWithinMax()) {
+		disableAddMoreButton();
+	} else if (hasLastUploadFormFileUploaded()) {
+		enableAddMoreButton();
+	}
+
+	addMoreButton.addEventListener('click', addMoreUploadField);
 }
 
 function LongroomFileUploadItem (config) {
@@ -315,9 +339,9 @@ function LongroomFileUploadItem (config) {
 				deleteFile(content.file.id);
 				uploadContainer.removeUploadForm(id);
 			} else {
-				content.status = 'remove';
-
 				el.parentNode.removeChild(el);
+				content.status = 'remove';
+				uploadContainer.removeUploadForm(id);
 			}
 		});
 	};
@@ -423,12 +447,12 @@ function LongroomFileUploadItem (config) {
 			uploadFile(file, onProgress).then((result) => {
 				endProgress();
 
-				uploadContainer.fileUploaded(id, file);
 				content.file = {
 					id: result.id,
 					fileObj: file,
 					savedName: result.savedName
 				};
+				uploadContainer.fileUploaded(id, file);
 
 				previewArea.innerHTML = `
 					<img src="${assetsPath}/images/file_extension_icons/${uploadFileTypes.fileTypesIcons[file.type]}.png" />
