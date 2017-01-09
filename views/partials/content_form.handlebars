@@ -25,25 +25,45 @@
 	</div>
 
 	<div class="lr-forms__file-upload--container">
-		{{#postFiles}}
-			<div class="lr-forms__file-upload--group o-forms-group" data-file-id="{{id}}">
+		{{#if postFiles}}
+			{{#postFiles}}
+				<div class="lr-forms__file-upload--group o-forms-group" data-file-id="{{id}}">
+					<div class="o-grid-row">
+						<div data-o-grid-colspan="12">
+							<input type="text" class="o-forms-text o-forms-text--small lr-forms__file-upload--source" name="post-file-source1" value="{{source}}" />
+						</div>
+					</div>
+					<div class="o-grid-row">
+						<div data-o-grid-colspan="12" class="lr-forms__file-upload--preview">
+							<img src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png" />
+							<span class="lr-forms__file-upload--preview-info">
+								{{name}}<br/>
+								<a class="lr-forms__file-upload--delete">Delete</a>
+							</span>
+						</div>
+						<div data-o-grid-colspan="12" class="lr-forms__file-upload--error o-forms-errortext"></div>
+					</div>
+				</div>
+			{{/postFiles}}
+		{{else}}
+			<div class="lr-forms__file-upload--group o-forms-group">
 				<div class="o-grid-row">
-					<div data-o-grid-colspan="12">
-						<input type="text" class="o-forms-text o-forms-text--small lr-forms__file-upload--source" name="post-file-source1" value="{{source}}" />
+					<div data-o-grid-colspan="6">
+						<input type="text" class="o-forms-text o-forms-text--small lr-forms__file-upload--source" name="post-file-source1" value="" />
+					</div>
+					<div data-o-grid-colspan="6">
+						<button type="button" class="o-buttons lr-forms__file-upload" disabled>
+							Choose file
+						</button>
+						<input type="file" name="post-file" id="post-file1" />
 					</div>
 				</div>
 				<div class="o-grid-row">
-					<div data-o-grid-colspan="12" class="lr-forms__file-upload--preview">
-						<img src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png" />
-						<span class="lr-forms__file-upload--preview-info">
-							{{name}}<br/>
-							<a class="lr-forms__file-upload--delete">Delete</a>
-						</span>
-					</div>
+					<div data-o-grid-colspan="12" class="lr-forms__file-upload--preview"></div>
 					<div data-o-grid-colspan="12" class="lr-forms__file-upload--error o-forms-errortext"></div>
 				</div>
 			</div>
-		{{/postFiles}}
+		{{/if}}
 
 		<script type="text/template" class="lr-forms__file-upload--group--template">
 			<div class="lr-forms__file-upload--group o-forms-group">
