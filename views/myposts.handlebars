@@ -18,14 +18,22 @@
 				<div data-o-grid-colspan="12 M3"><b>Author</b></div>
 				<div data-o-grid-colspan="12 M9">{{pseudonym}}</div>
 			</div>
-			<div class="alphaville-list-category o-grid-row">
-				<div data-o-grid-colspan="12 M3"><b>Summary</b></div>
-				<div data-o-grid-colspan="12 M9">{{summary}}</div>
+			<form method="post" action="/longroom/myposts/update">
+			<div class="o-grid-container o-grid-container--bleed">
+				<div class="alphaville-list-category o-grid-row o-grid-row--compact">
+					<div data-o-grid-colspan="12 M3"><b>Summary</b></div>
+					<div data-o-grid-colspan="12 M9">
+						<div class="o-forms-group">
+							<textarea name="summary" class="o-forms-textarea">{{summary}}</textarea>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="alphaville-list-category o-grid-row">
 				<div data-o-grid-colspan="12 M3"></div>
-				<div data-o-grid-colspan="12 M9"><a href="#" class="lr-action--edit lr-action--button o-buttons o-buttons--standout">Edit</a></div>
+				<div data-o-grid-colspan="12 M9"><button class="lr-action--Save lr-action--button o-buttons o-buttons--standout" type="submit">Save</button></div>
 			</div>
+			</form>
 		{{/userDetails}}
 	<h2>MY DRAFTS</h2>
 	<div class="alphaville-article-list" data-trackable="author-draft-list">
