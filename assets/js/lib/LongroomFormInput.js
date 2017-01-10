@@ -82,7 +82,7 @@ function LongroomFormInput (config) {
 		if (config.wysiwyg) {
 			return window.tinymce.get(input.id).getContent();
 		} else {
-			return input.value;
+			return input.value.trim();
 		}
 	};
 

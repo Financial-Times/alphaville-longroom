@@ -478,18 +478,22 @@ function LongroomFileUploadItem (config) {
 
 	this.getContent = function () {
 		return Object.assign({}, content, {
-			source: fileSource.value
+			source: self.getSource()
 		});
+	};
+
+	this.getSource = function () {
+		return fileSource.value.trim();
 	};
 
 	this.validate = function () {
 		if (content.status !== 'remove') {
-			if (content.status === 'new' && fileSource.value && !content.file) {
+			if (content.status === 'new' && self.getSource() && !content.file) {
 				showError("Please upload a file.");
 				return false;
 			}
 
-			if (content.file && !fileSource.value) {
+			if (content.file && !self.getSource()) {
 				showError("Document source is required.", true);
 				return false;
 			}
