@@ -133,10 +133,16 @@ $o-card-is-silent: false;
 	}
 
 	.lr-post--files {
-		margin: 10px 0;
+		padding: 10px 0;
 
 		span {
 			color: oColorGetPaletteColor(grey-tint5);
+		}
+	}
+
+	.lr-post--file-source {
+		span {
+			font-weight: bold;
 		}
 	}
 }
