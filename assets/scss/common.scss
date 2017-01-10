@@ -134,6 +134,10 @@ $o-card-is-silent: false;
 
 	.lr-post--files {
 		margin: 10px 0;
+
+		span {
+			color: oColorGetPaletteColor(grey-tint5);
+		}
 	}
 }
 

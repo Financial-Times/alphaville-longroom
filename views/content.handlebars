@@ -57,14 +57,14 @@
 						{{> alphaville-ui/ads/templates/longroom_mobile_mpu longroom_mobile_mpu_index=2}}
 					</div>
 
-					<div class="o-grid-row">
-						{{#files}}
-							<div class="lr-post--files" data-o-grid-colspan="6 M4">
+					{{#files}}
+						<div class="lr-post--files">
+							<a href="{{@root/basePath}}/files/{{name}}" target="_blank">
 								<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png">
-								<div>{{name}}</div>
-							</div>
-						{{/files}}
-					</div>
+								<span>{{name}}</span>
+							</a>
+						</div>
+					{{/files}}
 				</div>
 			</div>
 		</article>

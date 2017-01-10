@@ -6,5 +6,6 @@ const fileCtrl = require('../lib/controllers/file');
 
 router.get('/sign', fileCtrl.sign);
 router.post('/delete', fileCtrl.delete);
+router.route('/:fileName').get(fileCtrl.download);
 
 module.exports = router;
