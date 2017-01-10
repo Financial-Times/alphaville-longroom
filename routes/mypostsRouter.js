@@ -12,7 +12,6 @@ const userMiddleware = require('../lib/middlewares/user');
 router.route('/', userMiddleware, mypostsCtrl)
 	.get(userMiddleware, mypostsCtrl);
 
-router.post('/update')
-	.get(userMiddleware, updateUserSummaryCtrl);
+router.post('/update', userMiddleware, updateUserSummaryCtrl);
 
 module.exports = router;
