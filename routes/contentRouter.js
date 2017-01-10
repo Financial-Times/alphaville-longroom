@@ -8,17 +8,16 @@ const controllers = {
 	delete: require('../lib/controllers/delete'),
 	edit: require('../lib/controllers/edit')
 };
-const userMiddleware = require('../lib/middlewares/user');
 
-router.get('/write-post', userMiddleware, controllers.create.getWriteAPostForm);
-router.get('/upload-document', userMiddleware, controllers.create.getUploadDocumentForm);
-router.post('/create', userMiddleware, controllers.create.post);
+router.get('/write-post', controllers.create.getWriteAPostForm);
+router.get('/upload-document', controllers.create.getUploadDocumentForm);
+router.post('/create', controllers.create.post);
 
 router.route('/:id')
-	.get(userMiddleware, controllers.view);
+	.get(controllers.view);
 
-router.route('/:id/delete').get(userMiddleware, controllers.delete);
-router.route('/:id/edit').get(userMiddleware, controllers.edit.getForm);
-router.route('/:id/edit').post(userMiddleware, controllers.edit.process);
+router.route('/:id/delete').get(controllers.delete);
+router.route('/:id/edit').get(controllers.edit.getForm);
+router.route('/:id/edit').post(controllers.edit.process);
 
 module.exports = router;
