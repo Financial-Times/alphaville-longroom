@@ -34,6 +34,14 @@ $o-card-is-silent: false;
 @import 'partials/navbar';
 @import 'partials/card';
 @import 'partials/post';
+@import 'partials/myposts';
+
+.lr-page-heading {
+	@include oTypographySansData(l);
+	margin:0 0 20px;
+	padding:0;
+
+}
 
 .lr-home-create-col {
 	margin-top: 1.67em;
