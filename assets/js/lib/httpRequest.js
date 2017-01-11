@@ -124,7 +124,7 @@ function execute (config) {
 						|| (config.contentType && config.contentType !== "application/x-www-form-urlencoded")) {
 
 					if (config.contentType) {
-						xhr.setRequestHeader("Content-Type", config.contentType);
+						xhr.setRequestHeader("Content-type", config.contentType);
 					}
 
 					xhr.send(config.body);
@@ -138,7 +138,7 @@ function execute (config) {
 						body += key + '=' + config.body[key];
 					});
 
-					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+					xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 					xhr.send(body);
 				}
 			} else {
