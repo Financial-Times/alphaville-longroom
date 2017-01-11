@@ -16,6 +16,23 @@ $o-card-is-silent: false;
 @import './create_form';
 @import 'o-comments/main';
 
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+@import 'partials/banner';
+@import 'partials/navbar';
+
 .lr-home-create-col {
 	margin-top: 1.67em;
 }
@@ -34,21 +51,8 @@ $o-card-is-silent: false;
 	top: 1px;
 }
 
-.lr-navbar {
-	background-color: #ebe0d1;
-	width: 98%;
-	height: 27px;
-	padding: 5px 1%;
-}
 
-.lr-navbar--title {
-	@include oTypographySerif(m);
-	line-height: 27px;
 
-	a {
-		color: oColorsGetPaletteColor('cold-2');
-	}
-}
 
 .lr-navbar--cta {
 	text-align: center;
@@ -70,53 +74,7 @@ $o-card-is-silent: false;
 	}
 }
 
-.lr-navbar--nav {
-	ul {
-		list-style: none;
-		margin: 0 -3px 0 0;
-		padding: 0;
-		text-align: right;
 
-		li {
-			display: inline-block;
-			padding: 0 3px;
-			line-height: 27px;
-			font-weight: bold;
-
-			a {
-				color: oColorsGetPaletteColor('grey-tint5');
-
-				&:hover {
-					text-decoration: underline;
-				}
-			}
-		}
-	}
-
-	.lr-edit-my-posts {
-		display: none;
-
-		@include oGridRespondTo(M) {
-			display: inline-block;
-		}
-	}
-
-	@include oGridRespondTo(M) {
-		margin-left: -25px;
-
-		ul {
-			width: 110%;
-		}
-	}
-
-	@include oGridRespondTo(L) {
-		margin-left: 0;
-
-		ul {
-			width: 100%;
-		}
-	}
-}
 
 .lr-sidebar {
 	margin-top: 20px;
