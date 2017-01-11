@@ -22,6 +22,15 @@
 				}
 			}
 
+			.alphaville-card__author {
+				@include oTypographySansData(m);
+				color: oColorsGetPaletteColor('grey-tint5');
+				a {
+					@include oTypographySansDataBold(m);
+					color: oColorsGetPaletteColor('grey-tint5');
+				}
+			}
+
 		}
 	}	
 }
