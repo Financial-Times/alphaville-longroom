@@ -142,7 +142,6 @@ h2.lr-page-heading {
 .lr-action-container {
 	float: right;
 	display: none;
-	margin-top: -30px;
 
 	@include oGridRespondTo(M) {
 		display: block;
@@ -159,6 +158,13 @@ h2.lr-page-heading {
 	}
 
 }
+
+.lr-post-list {
+	.lr-action-container {
+		margin-top: -30px;
+	}
+}
+
 
 .lr-message {
 	padding: 10px;
