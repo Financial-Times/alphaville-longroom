@@ -54,25 +54,6 @@ $o-card-is-silent: false;
 
 
 
-.lr-navbar--cta {
-	text-align: center;
-
-	.lr-cta--active {
-		$activeColor: #174549;
-
-		background-color: oColorsGetPaletteColor('teal-2');
-		color: $activeColor;
-		border-color: $activeColor;
-
-		.lr-icon--upload {
-			@include oIconsGetIcon('upload', $activeColor, 23, $iconset-version: 1);
-		}
-
-		.lr-icon--written-text {
-			@include oIconsGetIcon('written-text', $activeColor, 23, $iconset-version: 1);
-		}
-	}
-}
 
 
 

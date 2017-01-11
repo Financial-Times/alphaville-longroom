@@ -14,30 +14,70 @@
 
 		@include oGridRespondTo(M) {
 			display: block;
+			padding-top: 1px;
 		}
+		span {
+			display: none;
 
+			@include oGridRespondTo(L) {
+				display: inline-block;
+			}
+
+		}
 		a {
 			@include oTypographySansData(l);
 			color: oColorsGetPaletteColor('cold-2');
 		}
 	}
 
+	.lr-navbar--cta {
+		text-align: center;
+
+		.lr-cta--active {
+			$activeColor: #174549;
+
+			background-color: oColorsGetPaletteColor('teal-2');
+			color: $activeColor;
+			border-color: $activeColor;
+
+			.lr-icon--upload {
+				@include oIconsGetIcon('upload', $activeColor, 23, $iconset-version: 1);
+			}
+
+			.lr-icon--written-text {
+				@include oIconsGetIcon('written-text', $activeColor, 23, $iconset-version: 1);
+			}
+		}
+	}
+
 	.lr-navbar--nav {
 		padding-top: 0px;
 
-		@include oGridRespondTo(M) {
+    @include oGridRespondTo(M) {
 			padding-top: 4px;
-		}
+    }
 
 		ul {
 			list-style: none;
 			margin: 0 -3px 0 0;
 			padding: 0;
-			text-align: right;
+			text-align: center;
+
+	    @include oGridRespondTo(M) {
+				text-align: right;
+	    }
 
 			li {
 				display: inline-block;
 				padding: 0 3px;
+
+				&.lr-edit-my-posts {
+					display: none;
+
+					@include oGridRespondTo(M) {
+						display: inline-block;
+					}
+				}
 
 				a {
 					@include oTypographySansDataBold(m);
@@ -50,31 +90,5 @@
 			}
 		}
 
-		.lr-edit-my-posts {
-			display: none;
-
-			@include oGridRespondTo(M) {
-				display: inline-block;
-			}
-		}
-
-		@include oGridRespondTo(M) {
-			margin-left: -25px;
-
-			ul {
-				width: 110%;
-			}
-		}
-
-		@include oGridRespondTo(L) {
-			margin-left: 0;
-
-			ul {
-				width: 100%;
-			}
-		}
 	}
-
-
-
 }
