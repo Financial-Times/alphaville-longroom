@@ -15,29 +15,37 @@
 <div class="lr-myposts">
 	<h2 class="lr-page-heading">MY SUMMARY</h2>
 		{{#userDetails}}
-		
-			<div class="alphaville-list-category o-grid-row">
-				<div data-o-grid-colspan="12 M3"><b>Author</b></div>
-				<div data-o-grid-colspan="12 M9">{{pseudonym}}</div>
+
+			<div class="o-grid-row">
+				<div data-o-grid-colspan="12 M3" class="lr-form-label">Author</div>
+				<div data-o-grid-colspan="12 M9" class="lr-form-value">
+					<div class="o-forms-group">
+						{{pseudonym}}
+						</div>
+					</div>
 			</div>
 			<form method="post" action="/longroom/myposts/update" name="editSummary">
-			<div class="o-grid-container o-grid-container--bleed">
-				<div class="alphaville-list-category o-grid-row o-grid-row--compact">
-					<div data-o-grid-colspan="12 M3"><b>Summary</b></div>
+
+				<div class="o-grid-row lr-user-summary">
+					<div data-o-grid-colspan="12 M3" class="lr-form-label">Summary</div>
 					<div data-o-grid-colspan="12 M9">
 						<div class="o-forms-group">
 							<textarea name="summary" class="o-forms-textarea">{{summary}}</textarea>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="alphaville-list-category o-grid-row">
+
+			<div class="o-grid-row lr-myposts-action">
 				<div data-o-grid-colspan="12 M3"></div>
-				<div data-o-grid-colspan="12 M9"><button class="lr-action--Save lr-action--button o-buttons o-buttons--standout" type="submit" name="save">Save</button></div>
+				<div data-o-grid-colspan="12 M9" class="lr-myposts-action--Save">
+					<div class="o-forms-group">
+						<button class="lr-action--Save lr-action--button o-buttons o-buttons--standout" type="submit" name="save">Save</button>
+					</div>
+				</div>
 			</div>
 			</form>
 		{{/userDetails}}
-	<h2 class="lr-page-heading">MY DRAFTS</h2>
+	<h2 class="lr-page-heading lr-page-heading-secondary">MY DRAFTS</h2>
 	<div class="alphaville-article-list" data-trackable="author-draft-list">
 		{{#drafts}}
 			<div class="alphaville-list-category o-grid-row">
@@ -51,7 +59,7 @@
 		{{/drafts}}
 	</div>
 
-	<h2 class="lr-page-heading">MY PUBLISHED POSTS</h2>
+	<h2 class="lr-page-heading lr-page-heading-secondary">MY PUBLISHED POSTS</h2>
 	<div class="alphaville-article-list" data-trackable="author-post-list">
 		{{#posts}}
 			<div class="alphaville-list-category o-grid-row">

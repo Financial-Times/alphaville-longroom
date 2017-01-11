@@ -1,3 +1,40 @@
 .lr-myposts {
 
+	.lr-page-heading-secondary {
+		margin-top: 25px;
+		margin-bottom: 20px;
+	}
+
+	.alphaville-card-container {
+		padding-top: 0px;
+		margin-bottom: 15px;
+		
+		.alphaville-card {
+			padding-top: 0px;
+		}
+	}
+
+	.o-forms-group {
+		padding: 0;
+		margin-bottom: 10px;
+	}
+
+	.lr-user-summary {
+		.o-forms-textarea {
+			@include oTypographySansData(m);
+			color: oColorsGetPaletteColor('grey-tint5');
+			height: 70px;
+		}
+	}
+
+	.lr-myposts-action {
+		
+		.lr-myposts-action--Save {
+			border-bottom: 1px solid #cec6b9;
+			text-align: right;
+		}
+
+	}
+
+
 }

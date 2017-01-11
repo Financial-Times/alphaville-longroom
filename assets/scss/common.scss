@@ -38,9 +38,25 @@ $o-card-is-silent: false;
 
 .lr-page-heading {
 	@include oTypographySansData(l);
+	color: oColorsGetPaletteColor('grey-tint5');
 	margin:0 0 20px;
 	padding:0;
 
+}
+
+.lr-form-label {
+	@include oTypographySansDataBold(m);
+	color: oColorsGetPaletteColor('grey-tint5');
+	text-align: left;
+
+	@include oGridRespondTo(M) {
+		text-align: right;
+	}
+
+}
+.lr-form-value {
+	@include oTypographySansDataBold(m);
+	color: oColorsGetPaletteColor('grey-tint5');
 }
 
 .lr-home-create-col {
@@ -118,6 +134,7 @@ $o-card-is-silent: false;
 .lr-action-container {
 	float: right;
 	display: none;
+	margin-top: -30px;
 
 	@include oGridRespondTo(M) {
 		display: block;
@@ -132,6 +149,7 @@ $o-card-is-silent: false;
 		display: inline-block;
 		min-width: 70px;
 	}
+
 }
 
 .lr-message {
