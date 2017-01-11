@@ -127,7 +127,17 @@ function execute (config) {
 						xhr.setRequestHeader("Content-type", config.contentType);
 					}
 
-					xhr.send(config.body);
+					if (config.body instanceof File && window.FileReader) {
+						const reader = new FileReader();
+						reader.onload = function(){
+							const arrayBuffer = this.result;
+
+							xhr.send(arrayBuffer);
+						}
+						reader.readAsArrayBuffer(config.body);
+					} else {
+						xhr.send(config.body);
+					}
 				} else {
 					let body = "";
 					Object.keys(config.body).forEach((key) => {
