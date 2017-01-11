@@ -140,7 +140,7 @@ $o-card-is-silent: false;
 		padding: 10px 0;
 
 		span {
-			color: oColorGetPaletteColor(grey-tint5);
+			color: oColorsGetPaletteColor(grey-tint5);
 		}
 	}
 
@@ -155,6 +155,12 @@ $o-card-is-silent: false;
 
 		img {
 			max-width: 100%;
+		}
+
+		blockquote {
+			border-left: 2px solid oColorsGetPaletteColor(grey-tint5);
+			margin-left: 0;
+			padding-left: 20px;
 		}
 	}
 }
