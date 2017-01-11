@@ -149,6 +149,14 @@ $o-card-is-silent: false;
 			font-weight: bold;
 		}
 	}
+
+	.lr-post-body {
+		padding-top: 10px;
+
+		img {
+			max-width: 100%;
+		}
+	}
 }
 
 
