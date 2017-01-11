@@ -12,8 +12,10 @@
 {{/contentFor}}
 
 {{#> lr_layout }}
-	<h2>MY SUMMARY</h2>
+<div class="lr-myposts">
+	<h2 class="lr-page-heading">MY SUMMARY</h2>
 		{{#userDetails}}
+		
 			<div class="alphaville-list-category o-grid-row">
 				<div data-o-grid-colspan="12 M3"><b>Author</b></div>
 				<div data-o-grid-colspan="12 M9">{{pseudonym}}</div>
@@ -35,7 +37,7 @@
 			</div>
 			</form>
 		{{/userDetails}}
-	<h2>MY DRAFTS</h2>
+	<h2 class="lr-page-heading">MY DRAFTS</h2>
 	<div class="alphaville-article-list" data-trackable="author-draft-list">
 		{{#drafts}}
 			<div class="alphaville-list-category o-grid-row">
@@ -49,7 +51,7 @@
 		{{/drafts}}
 	</div>
 
-	<h2>MY PUBLISHED POSTS</h2>
+	<h2 class="lr-page-heading">MY PUBLISHED POSTS</h2>
 	<div class="alphaville-article-list" data-trackable="author-post-list">
 		{{#posts}}
 			<div class="alphaville-list-category o-grid-row">
@@ -62,5 +64,5 @@
 			</div>
 		{{/posts}}
 	</div>
-
+</div>
 {{/lr_layout}}
