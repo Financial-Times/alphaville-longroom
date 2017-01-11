@@ -1,12 +1,36 @@
-.alphaville-card-container {
 
-	.alphaville-card__content {
-
-		.alphaville-card__theme {
-			.alphaville-card__tag {
-				margin-bottom: 5px;
-			}
-		}
-
+.alphaville-article-list {
+	.alphaville-list-time {
+		margin-top: 15px;
 	}
+	.alphaville-card-container {
+		padding: 5px 0 5px; 
+
+		.alphaville-card__content {
+
+			.alphaville-card__theme {
+				.alphaville-card__tag {
+					margin-bottom: 5px;
+				}
+			}
+
+			.alphaville-card__heading {
+				margin-bottom: 5px;
+				a {
+					@include oTypographySerifDisplay(l);
+					color: oColorsGetPaletteColor('grey-tint5');
+				}
+			}
+
+			.alphaville-card__author {
+				@include oTypographySansData(m);
+				color: oColorsGetPaletteColor('grey-tint5');
+				a {
+					@include oTypographySansDataBold(m);
+					color: oColorsGetPaletteColor('grey-tint5');
+				}
+			}
+
+		}
+	}	
 }
