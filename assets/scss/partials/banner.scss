@@ -1,0 +1,13 @@
+.lr-banner {
+	margin-top: 5px;
+	margin-bottom: 10px;
+
+	@include oGridRespondTo(M) {
+		margin-top: 15px;
+		margin-bottom: 25px;
+	}
+	img {
+		margin: 0;
+		border: 0;
+	}
+}
