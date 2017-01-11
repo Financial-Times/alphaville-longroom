@@ -124,20 +124,10 @@ function execute (config) {
 						|| (config.contentType && config.contentType !== "application/x-www-form-urlencoded")) {
 
 					if (config.contentType) {
-						xhr.setRequestHeader("Content-type", config.contentType);
+						xhr.setRequestHeader("Content-Type", config.contentType);
 					}
 
-					if (config.body instanceof File && window.FileReader) {
-						const reader = new FileReader();
-						reader.onload = function(){
-							const arrayBuffer = this.result;
-
-							xhr.send(arrayBuffer);
-						}
-						reader.readAsArrayBuffer(config.body);
-					} else {
-						xhr.send(config.body);
-					}
+					xhr.send(config.body);
 				} else {
 					let body = "";
 					Object.keys(config.body).forEach((key) => {
@@ -148,7 +138,7 @@ function execute (config) {
 						body += key + '=' + config.body[key];
 					});
 
-					xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 					xhr.send(body);
 				}
 			} else {
