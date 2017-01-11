@@ -37,11 +37,18 @@ $o-card-is-silent: false;
 @import 'partials/myposts';
 
 .lr-page-heading {
-	@include oTypographySansData(l);
 	color: oColorsGetPaletteColor('grey-tint5');
 	margin:0 0 20px;
 	padding:0;
 
+}
+
+h1.lr-page-heading {
+	@include oTypographySansData(xl);
+}
+
+h2.lr-page-heading {
+	@include oTypographySansData(l);
 }
 
 .lr-form-label {
