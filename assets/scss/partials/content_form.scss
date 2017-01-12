@@ -1,4 +1,23 @@
 .lr-content-form {
 
-	
+	.o-forms-group {
+		.o-forms-label {
+			@include oTypographySansDataBold(m);
+			font-size: 18px;
+			color: oColorsGetPaletteColor('grey-tint5');
+		}
+		.o-forms-additional-info {
+			@include oTypographySansData(m);
+			font-size: 16px;
+			color: oColorsGetPaletteColor('grey-tint5');
+
+		}
+
+		.lr-content-form-cta {
+			button	{
+				float:right;
+			}
+		}
+	}
+
 }

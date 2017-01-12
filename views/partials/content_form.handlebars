@@ -1,8 +1,9 @@
 <div class="lr-generic-message"></div>
 
 <div class="o-forms-group">
-	<label class="o-forms-label" for="post-title">Title - <span class="lr-forms__small-label">this will be the headline of your publication, e.g. Haitong on B&amp;M<span></label>
-	<input type="text" class="o-forms-text o-forms-text--small" name="post-title" id="post-title" value="{{postTitle}}" />
+	<label class="o-forms-label" for="post-title">Title</label>
+	<small class="o-forms-additional-info">this will be the headline of your publication, e.g. Haitong on B&amp;M</small>
+	<input type="text" class="o-forms-text" name="post-title" id="post-title" value="{{postTitle}}" />
 	<div class="o-forms-errortext"></div>
 </div>
 
@@ -10,7 +11,8 @@
 <div class="o-forms-group lr-forms__file-upload--labels">
 	<div class="o-grid-row">
 		<div data-o-grid-colspan="6">
-			<label class="o-forms-label">Document source - <span class="lr-forms__small-label">e.g. Haitong Research, Barclays</span></label>
+			<label class="o-forms-label">Document source</label>
+			<small class="o-forms-additional-info">e.g. Haitong Research, Barclays</small>
 		</div>
 		<div data-o-grid-colspan="6">
 			<label class="o-forms-label lr-label-with-info">
@@ -31,7 +33,7 @@
 			<div class="lr-forms__file-upload--group o-forms-group" data-file-id="{{id}}">
 				<div class="o-grid-row">
 					<div data-o-grid-colspan="12">
-						<input type="text" class="o-forms-text o-forms-text--small lr-forms__file-upload--source" name="post-file-source1" value="{{source}}" />
+						<input type="text" class="o-forms-text lr-forms__file-upload--source" name="post-file-source1" value="{{source}}" />
 					</div>
 				</div>
 				<div class="o-grid-row">
@@ -50,10 +52,10 @@
 		<div class="lr-forms__file-upload--group o-forms-group">
 			<div class="o-grid-row">
 				<div data-o-grid-colspan="6">
-					<input type="text" class="o-forms-text o-forms-text--small lr-forms__file-upload--source" name="post-file-source1" value="" />
+					<input type="text" class="o-forms-text lr-forms__file-upload--source" name="post-file-source1" value="" />
 				</div>
 				<div data-o-grid-colspan="6">
-					<button type="button" class="o-buttons lr-forms__file-upload" disabled>
+					<button type="button" class="o-buttons o-buttons--big lr-forms__file-upload" disabled>
 						Choose file
 					</button>
 					<input type="file" name="post-file" id="post-file1" />
@@ -70,10 +72,10 @@
 		<div class="lr-forms__file-upload--group o-forms-group">
 			<div class="o-grid-row">
 				<div data-o-grid-colspan="6">
-					<input type="text" class="o-forms-text o-forms-text--small lr-forms__file-upload--source" name="post-file-source1" value="" />
+					<input type="text" class="o-forms-text lr-forms__file-upload--source" name="post-file-source1" value="" />
 				</div>
 				<div data-o-grid-colspan="6">
-					<button type="button" class="o-buttons lr-forms__file-upload" disabled>
+					<button type="button" class="o-buttons o-buttons--big lr-forms__file-upload" disabled>
 						Choose file
 					</button>
 					<input type="file" name="post-file" id="post-file1" />
@@ -89,15 +91,16 @@
 
 <div class="o-forms-group">
 	<div class="lr-forms__action-link" data-maximum-files="5">
-		<button type="button" class="o-buttons o-buttons--standout" disabled>+</button> Attach another document
+		<button type="button" class="o-buttons o-buttons--standout" disabled>+</button>&nbsp; Attach another document
 	</div>
 </div>
 
 <div class="o-forms-group">
-	<label class="o-forms-label" for="post-tags">Topic tags - <span class="lr-forms__small-label">e.g. Markets, Retail</span></label>
+	<label class="o-forms-label" for="post-tags">Topic tags</label>
+	<small class="o-forms-additional-info">e.g. Markets, Retail</small>
 
 	<div class="lr-forms__tags--container">
-		<input type="text" class="o-forms-text o-forms-text--small lr-forms__tags--input" name="post-tags" id="post-tags" value="{{postTags}}" />
+		<input type="text" class="o-forms-text lr-forms__tags--input" name="post-tags" id="post-tags" value="{{postTags}}" />
 		<div class="o-forms-errortext"></div>
 	</div>
 </div>
