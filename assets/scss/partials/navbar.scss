@@ -14,7 +14,7 @@
 
 		@include oGridRespondTo(M) {
 			display: block;
-			padding-top: 1px;
+			padding-top: 4px;
 		}
 		span {
 			display: none;
@@ -54,7 +54,7 @@
 		padding-top: 0px;
 
     @include oGridRespondTo(M) {
-			padding-top: 4px;
+			padding-top: 5px;
     }
 
 		ul {
@@ -80,8 +80,9 @@
 				}
 
 				a {
-					@include oTypographySansDataBold(m);
+					@include oTypographySansDataBold(l);
 					color: oColorsGetPaletteColor('grey-tint5');
+					font-size: 18px;
 
 					&:hover {
 						text-decoration: none;

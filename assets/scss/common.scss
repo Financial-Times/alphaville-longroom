@@ -37,6 +37,7 @@ $o-card-is-silent: false;
 @import 'partials/myposts';
 @import 'partials/form';
 @import 'partials/content_form';
+@import 'partials/faq';
 
 .lr-page-heading {
 	color: oColorsGetPaletteColor('grey-tint5');
@@ -118,7 +119,6 @@ h2.lr-page-heading {
 		}
 	}
 }
-
 
 .lr-action-container {
 	float: right;
