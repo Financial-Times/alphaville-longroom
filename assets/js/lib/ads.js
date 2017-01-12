@@ -31,7 +31,7 @@ function checkInFaqAd () {
 	const inFaqAd1 = document.querySelector('.alphaville-in-faq-ad1');
 	const inFaqAd2 = document.querySelector('.alphaville-in-faq-ad2');
 
-	const linesNumber = document.querySelectorAll('.lr-faq-page .body > ul');
+	const linesNumber = document.querySelectorAll('.lr-faq-page .body dt');
 
 	if (linesNumber && inFaqAd1 && inFaqAd2) {
 		if (linesNumber.length > 0) {
