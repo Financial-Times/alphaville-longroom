@@ -14,72 +14,74 @@
 {{#> lr_layout }}
 	<div class="o-grid-row">
 		<div data-o-grid-colspan="12 L11 Loffset1">
-	{{#article}}
-		<article class="lr-post alphaville-card-container">
-			<div class="alphaville-card alphaville-card--list" data-o-component="o-card" data-article-id="{{_id}}">
-				<div class="alphaville-card__content">
-					{{#if @root/editAndDelete}}
-						<div class="lr-action-container">
-							<a href="#" class="lr-action--delete lr-action--button" data-post-id="{{id}}">Delete</a>
-							<a href="/longroom/content/{{id}}/edit" class="lr-action--edit lr-action--button o-buttons o-buttons--standout">Edit</a>
+			{{#article}}
+				<article class="lr-post alphaville-card-container">
+					<div class="alphaville-card alphaville-card--list" data-o-component="o-card" data-article-id="{{_id}}">
+						<div class="alphaville-card__content">
+							{{#if @root/editAndDelete}}
+								<div class="lr-action-container">
+									<a href="#" class="lr-action--delete lr-action--button" data-post-id="{{id}}">Delete</a>
+									<a href="/longroom/content/{{id}}/edit" class="lr-action--edit lr-action--button o-buttons o-buttons--standout">Edit</a>
+								</div>
+							{{/if}}
+							
+							<div class="alphaville-card__theme">
+								<a href="/longroom/topic/{{primaryTag.id}}" class="alphaville-card__tag" data-trackable="theme">{{primaryTag.name}}</a>
+							</div>
+
+							<h3 class="alphaville-card__heading">
+								{{title}}
+							</h3>
+
+							<div class="alphaville-card__footer">
+								{{> timestamp}}
+							</div>
+
+							<div>
+								Author: <a href="/longroom/author/{{user_id}}">{{user.pseudonym}}</a>{{#if user_summary}} - {{user_summary}}{{/if}}
+							</div>
+
+							<div class="alphaville-card__standfirst lr-post-body">
+								{{{summary}}}
+
+								<div>
+									{{> alphaville-ui/ads/templates/longroom_tablet_mpu index=1}}
+								</div>
+							</div>
+
+							<div class="alphaville-in-article-ad1">
+								{{> alphaville-ui/ads/templates/longroom_mobile_mpu longroom_mobile_mpu_index=1}}
+							</div>
+
+							<div class="alphaville-in-article-ad2">
+								{{> alphaville-ui/ads/templates/longroom_mobile_mpu longroom_mobile_mpu_index=2}}
+							</div>
+
+							{{#files}}
+								<div class="lr-post--files">
+									<a href="{{@root/basePath}}/files/{{name}}" target="_blank">
+										<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png">
+										<span>{{name}}</span>
+									</a>
+									<div class="lr-post--file-source"><span>Source</span>: {{source}}</div>
+								</div>
+							{{/files}}
 						</div>
-					{{/if}}
-					
-					<div class="alphaville-card__theme">
-						<a href="/longroom/topic/{{primaryTag.id}}" class="alphaville-card__tag" data-trackable="theme">{{primaryTag.name}}</a>
 					</div>
+				</article>
+			{{/article}}
 
-					<h3 class="alphaville-card__heading">
-						{{title}}
-					</h3>
+			<footer class="n-content-copyright">
+				<small>
+					<a href="http://www.ft.com/servicestools/help/copyright" data-trackable="link-copyright">Copyright</a> The Financial Times Limited 2016. All rights reserved. You may share using our article tools. Please don't cut articles from FT.com and redistribute by email or post to the web.
+				</small>
+			</footer>
 
-					<div class="alphaville-card__footer">
-						{{> timestamp}}
-					</div>
-
-					<div>
-						Author: <a href="/longroom/author/{{user_id}}">{{user.pseudonym}}</a>{{#if user_summary}} - {{user_summary}}{{/if}}
-					</div>
-
-					<div class="alphaville-card__standfirst lr-post-body">
-						{{{summary}}}
-
-						<div>
-							{{> alphaville-ui/ads/templates/longroom_tablet_mpu index=1}}
-						</div>
-					</div>
-
-					<div class="alphaville-in-article-ad1">
-						{{> alphaville-ui/ads/templates/longroom_mobile_mpu longroom_mobile_mpu_index=1}}
-					</div>
-
-					<div class="alphaville-in-article-ad2">
-						{{> alphaville-ui/ads/templates/longroom_mobile_mpu longroom_mobile_mpu_index=2}}
-					</div>
-
-					{{#files}}
-						<div class="lr-post--files">
-							<a href="{{@root/basePath}}/files/{{name}}" target="_blank">
-								<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png">
-								<span>{{name}}</span>
-							</a>
-							<div class="lr-post--file-source"><span>Source</span>: {{source}}</div>
-						</div>
-					{{/files}}
-				</div>
-			</div>
-		</article>
-	{{/article}}
-
-	<footer class="n-content-copyright">
-		<small>
-			<a href="http://www.ft.com/servicestools/help/copyright" data-trackable="link-copyright">Copyright</a> The Financial Times Limited 2016. All rights reserved. You may share using our article tools. Please don't cut articles from FT.com and redistribute by email or post to the web.
-		</small>
-	</footer>
-
-	{{> alphaville-ui/share/main position='bottom'}}
+			{{> alphaville-ui/share/main position='bottom'}}
 
 
-	<a name="comments"></a>
-	<div data-o-component="o-comments" data-o-comments-config-title="{{article.title}}" data-o-comments-config-url="{{@root/appUrl}}/{{article.webUrl}}" data-o-comments-config-articleId="longroom{{article.id}}"></div>
+			<a name="comments"></a>
+			<div data-o-component="o-comments" data-o-comments-config-title="{{article.title}}" data-o-comments-config-url="{{@root/appUrl}}/{{article.webUrl}}" data-o-comments-config-articleId="longroom{{article.id}}"></div>
+		</div>
+	</div>
 {{/lr_layout}}
