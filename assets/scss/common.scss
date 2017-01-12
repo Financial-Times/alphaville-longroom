@@ -35,6 +35,8 @@ $o-card-is-silent: false;
 @import 'partials/card';
 @import 'partials/post';
 @import 'partials/myposts';
+@import 'partials/form';
+@import 'partials/content_form';
 
 .lr-page-heading {
 	color: oColorsGetPaletteColor('grey-tint5');
@@ -51,20 +53,6 @@ h2.lr-page-heading {
 	@include oTypographySansData(l);
 }
 
-.lr-form-label {
-	@include oTypographySansDataBold(m);
-	color: oColorsGetPaletteColor('grey-tint5');
-	text-align: left;
-
-	@include oGridRespondTo(M) {
-		text-align: right;
-	}
-
-}
-.lr-form-value {
-	@include oTypographySansDataBold(m);
-	color: oColorsGetPaletteColor('grey-tint5');
-}
 
 .lr-home-create-col {
 	margin-top: 1.67em;

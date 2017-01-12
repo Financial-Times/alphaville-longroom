@@ -19,6 +19,21 @@
 		margin-bottom: 10px;
 	}
 
+	.lr-form-label {
+		@include oTypographySansDataBold(m);
+		color: oColorsGetPaletteColor('grey-tint5');
+		text-align: left;
+
+		@include oGridRespondTo(M) {
+			text-align: right;
+		}
+
+	}
+	.lr-form-value {
+		@include oTypographySansDataBold(m);
+		color: oColorsGetPaletteColor('grey-tint5');
+	}
+
 	.lr-user-summary {
 		.o-forms-textarea {
 			@include oTypographySansData(m);
