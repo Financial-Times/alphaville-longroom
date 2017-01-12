@@ -18,17 +18,17 @@
 
 {{#> lr_layout }}
 <div class="o-grid-row">
-	<div data-o-grid-colspan="12 M11 XL10 XLoffset2">
+	<div data-o-grid-colspan="12 M11 XL10 XLoffset2" class="lr-form lr-content-form">
 		<form action="{{basePath}}/content/create" method="POST" class="longroom-create-post" data-lr-post-type="{{postType}}">
 			{{> content_form}}
 
-			<div class="o-forms-group">
+			<div class="o-forms-group lr-content-form-cta">
 				<p>
 					<small>By publishing this post I confirm that I have read and agreed to the <a href="http://www.ft.com/servicestools/help/terms">FT Terms and Conditions</a></small>
 				</p>
 
-				<button type="button" class="o-buttons" name="post-draft">Save Draft</button>
-				<button type="submit" class="o-buttons o-buttons--standout" name="post-publish">Publish</button>
+				<button type="button" class="o-buttons o-buttons--big" name="post-draft">Save Draft</button>
+				<button type="submit" class="o-buttons o-buttons--big o-buttons--standout" name="post-publish">Publish</button>
 			</div>
 		</form>
 	</div>
