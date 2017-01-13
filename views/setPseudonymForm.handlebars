@@ -1,0 +1,32 @@
+{{#contentFor "head"}}
+	<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
+
+	<script>
+		(function () {
+			ctmLoadScript({
+				src: "{{assetsBasePath}}/build/main.js",
+				async: true
+			});
+		}());
+	</script>
+{{/contentFor}}
+
+{{#> lr_layout }}
+<div class="o-grid-row">
+	<div data-o-grid-colspan="12 M11 XL10 XLoffset2" class="lr-form lr-pseudonym-form">
+		<form action="{{basePath}}/user/setpseudonym?redirect={{redirect}}" method="POST">
+			<p>We have noticed you don't have a pseudonym. We need it to display along the posts you create on the Long Room and if you comment a post.</p>
+			<p>This pseudonym will be public. please generate one now and save it.</p>
+				
+			<div class="o-forms-group">
+				<input type="text" class="o-forms-text" name="pseudonym" value="{{pseudonym}}" />
+				{{#validation}}<div class="o-forms-errortext">{{{pseudonym}}}</div>{{/validation}}
+			</div>
+
+			<div class="o-forms-group">
+				<button type="submit" class="o-buttons o-buttons--big o-buttons--standout">Save</button>
+			</div>
+		</form>
+	</div>
+</div>
+{{/lr_layout}}
