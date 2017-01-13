@@ -1,0 +1,25 @@
+
+.lr-house_rules-page {
+	@include oTypographySerifDisplay(s);
+
+	h2 {
+		@include oTypographySansData(l);
+		margin-bottom: 0;
+	}
+	p {
+		margin-top: 15;
+	}
+	ul {
+		list-style: none;
+		margin-top: 0;
+		margin-left: 60px;
+		li {
+			b {
+				font-weight: normal;
+				font-size: 20px;
+				margin-top: 15px;
+				display: inline-block;
+			}
+		}
+	}
+}
