@@ -10,7 +10,7 @@
     "node": "^6"
   },
   "dependencies": {
-    "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#1.0.3",
+    "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#lraccess",
     "alphaville-build-tools": "Financial-Times/alphaville-build-tools#0.1.6",
     "alphaville-express": "Financial-Times/alphaville-express#0.7.12",
     "alphaville-header-config": "Financial-Times/alphaville-header-config#0.7.11",
