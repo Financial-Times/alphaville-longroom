@@ -51,7 +51,40 @@ function checkInFaqAd () {
 	}
 }
 
+function checkInHouseRulesAd () {
+	const inHouserulesAd1 = document.querySelector('.alphaville-in-houserules-ad1');
+	const inHouserulesAd2 = document.querySelector('.alphaville-in-houserules-ad2');
+	const inHouserulesAd3 = document.querySelector('.alphaville-in-houserules-ad3');
+
+	const h2Number = document.querySelectorAll('.lr-house_rules-page .body h2');
+
+	if (h2Number && inHouserulesAd1 && inHouserulesAd2 && inHouserulesAd3) {
+		if (h2Number.length > 0) {
+			if (h2Number.length > 1) {
+				const component1 = h2Number[1];
+				component1.parentNode.insertBefore(inHouserulesAd1, component1);
+				component1.parentNode.insertBefore(inHouserulesAd2, component1);
+
+				oAds.init(inHouserulesAd2);
+
+				if (h2Number.length > 3) {
+					const component2 = h2Number[3];
+					component2.parentNode.insertBefore(inHouserulesAd3, component2);
+				}
+			} else {
+				const lastLine = h2Number[h2Number.length - 1];
+				lastLine.parentNode.insertBefore(inHouserulesAd1, lastLine);
+				lastLine.parentNode.insertBefore(inHouserulesAd3, lastLine);
+			}
+		}
+
+		oAds.init(inHouserulesAd1);
+		oAds.init(inHouserulesAd3);
+	}
+}
+
 document.addEventListener('o.DOMContentLoaded', function () {
 	checkInArticleAd();
 	checkInFaqAd();
+	checkInHouseRulesAd();
 });
