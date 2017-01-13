@@ -13,37 +13,29 @@
 
 {{#> lr_layout }}
 
-		<h1 class="lr-page-heading">{{article.title}}</h1>
+	<h1 class="lr-page-heading">{{article.title}}</h1>
 
-		<div class="o-grid-row">
-			<div data-o-grid-colspan="12 M9 Moffset3">
-				<div class="alphaville-article-list lr-faq-page" data-trackable="faq">
-					<div class="body">
-						{{{article.body}}}
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12 M9 Moffset3">
+			<div class="lr-faq-page" data-trackable="faq">
+				<div class="body">
+					{{{article.body}}}
 
-						<div>
-							{{> alphaville-ui/ads/templates/longroom_mobile_mpu longroom_mobile_mpu_index=2}}
-						</div>
-					</div>
-
-					<div class="alphaville-in-faq-ad1">
-						{{> alphaville-ui/ads/templates/longroom_mobile_mpu longroom_mobile_mpu_index=1}}
-					</div>
-
-					<div class="alphaville-in-faq-ad2">
-						{{> alphaville-ui/ads/templates/longroom_tablet_mpu index=1}}
+					<div>
+						{{> alphaville-ui/ads/templates/longroom_mobile_mpu longroom_mobile_mpu_index=2}}
 					</div>
 				</div>
 
-			</div>
-		</div>
+				<div class="alphaville-in-faq-ad1">
+					{{> alphaville-ui/ads/templates/longroom_mobile_mpu longroom_mobile_mpu_index=1}}
+				</div>
 
-			
-	<div class="o-grid-row">
-		<div data-o-grid-colspan="12">
-			{{#pagination}}
-				{{> alphaville-ui/pagination/main}}
-			{{/pagination}}
+				<div class="alphaville-in-faq-ad2">
+					{{> alphaville-ui/ads/templates/longroom_tablet_mpu index=1}}
+				</div>
+			</div>
+
 		</div>
 	</div>
+
 {{/lr_layout}}
