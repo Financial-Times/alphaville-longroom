@@ -3,25 +3,26 @@
 		<div class="alphaville-card__content">
 
 			<div class="alphaville-card__theme">
-				<a href="/longroom/topic/{{primaryTag.id}}" class="alphaville-card__tag" data-trackable="theme">{{primaryTag.name}}</a>
+				<a href="{{@root/basePath}}/topic/{{primaryTag.id}}" class="alphaville-card__tag" data-trackable="theme">{{primaryTag.name}}</a>
 			</div>
 
 			<h3 class="alphaville-card__heading">
-				<a href="/longroom/content/{{id}}" data-trackable="heading">{{title}}</a>
+				<a href="{{@root/basePath}}/content/{{id}}" data-trackable="heading">{{title}}</a>
 			</h3>
 
 			<div class="alphaville-card__author">
-				Author: <a href="/longroom/author/{{user_id}}">{{user.pseudonym}}</a>
+				Author: <a href="{{@root/basePath}}/author/{{user_id}}">{{user.pseudonym}}</a>
 			</div>
 
 			<div class="alphaville-card__footer">
+				{{> commentcount}}				
 				{{> timestamp}}
 			</div>
 
 			{{#if editAndDelete}}
 				<div class="lr-action-container">
 					<a href="#" class="lr-action--delete lr-action--button" data-post-id="{{id}}">Delete</a>
-					<a href="/longroom/content/{{id}}/edit" class="lr-action--edit lr-action--button o-buttons o-buttons--standout">Edit</a>
+					<a href="{{@root/basePath}}/content/{{id}}/edit" class="lr-action--edit lr-action--button o-buttons o-buttons--standout">Edit</a>
 				</div>
 			{{/if}}
 

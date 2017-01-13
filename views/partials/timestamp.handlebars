@@ -1,1 +1,5 @@
-<time data-o-component="o-date" class="o-date o-card__timestamp" datetime="{{published_at}}">{{published_at}}</time>
+{{#if published_at}}
+	<time data-o-component="o-date" class="o-date alphaville-card__timestamp" datetime="{{published_at}}">{{published_at}}</time>
+{{else}}
+	<div class="o-date alphaville-card__timestamp">Draft</div>
+{{/if}}
