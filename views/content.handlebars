@@ -37,7 +37,7 @@
 								{{> timestamp}}
 							</div>
 
-							<div>
+							<div class="alphaville-card__author">
 								Author: <a href="/longroom/author/{{user_id}}">{{user.pseudonym}}</a>{{#if user_summary}} - {{user_summary}}{{/if}}
 							</div>
 
@@ -60,10 +60,9 @@
 							{{#files}}
 								<div class="lr-post--files">
 									<a href="{{@root/basePath}}/files/{{name}}" target="_blank">
-										<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png">
-										<span>{{name}}</span>
+										<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png" align="left">
+										<span class="lr-post--file-source"><span>Source:</span> {{source}}</span>
 									</a>
-									<div class="lr-post--file-source"><span>Source</span>: {{source}}</div>
 								</div>
 							{{/files}}
 						</div>

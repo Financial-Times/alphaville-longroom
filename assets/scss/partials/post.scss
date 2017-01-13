@@ -1,0 +1,59 @@
+article.lr-post {
+
+	.alphaville-card {
+		.alphaville-card__theme {
+			.alphaville-card__tag {
+				@include oTypographySansDataBold(m);
+			}
+		}
+
+		.alphaville-card__heading {
+			@include oTypographySerifDisplay(l);
+		}	
+
+		.alphaville-card__footer {
+
+		}
+
+		.alphaville-card__author {
+			@include oTypographySansData(m);	
+			color: oColorsGetPaletteColor('grey-tint5');
+
+			a {
+				@include oTypographySansDataBold(m);	
+				color: oColorsGetPaletteColor('grey-tint5');
+			}
+		}
+
+		.alphaville-card__standfirst {
+			&.lr-post-body {
+				@include oTypographySerifDisplay(m);
+				font-size: 18px;
+				padding-top: 15px;
+
+				p {
+					margin-top: 0;
+				}
+			}
+		}
+		.lr-post--files {
+			a {
+				display: inline-block;
+
+				span.lr-post--file-source {
+					@include oTypographySerifDisplay(xs);
+					display: inline-block;
+					font-size: 16px;
+					padding-left: 10px;
+					margin-top: 25px;
+					span {
+						@include oTypographySansDataBold(m);
+						font-size: 16px;
+
+					}
+				}
+
+			}
+		}
+	}
+}
