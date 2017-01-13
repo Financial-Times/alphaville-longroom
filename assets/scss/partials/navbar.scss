@@ -7,27 +7,37 @@
 	.lr-navbar--title {
 		display: none;
 		@include oTypographySansData(l);
+		color: oColorsGetPaletteColor('cold-2');
+		font-size: 18px;
+		padding-top: 1px;
 
 		@include oGridRespondTo(M) {
 			display: block;
-			padding-top: 4px;
 		}
+		@include oGridRespondTo(XL) {
+			padding-top: 4px;
+			font-size: 21px;
+		}
+
 		span {
 			display: none;
-
 			@include oGridRespondTo(L) {
 				display: inline-block;
 			}
-
 		}
 		a {
-			@include oTypographySansData(l);
 			color: oColorsGetPaletteColor('cold-2');
 		}
 	}
 
 	.lr-navbar--cta {
 		text-align: center;
+
+		@include oGridRespondTo(XL) {
+			.o-buttons {
+				@include oButtonsSize(big);	
+			}
+		}
 
 		.lr-cta--active {
 			$activeColor: #174549;
@@ -47,10 +57,10 @@
 	}
 
 	.lr-navbar--nav {
-		padding-top: 0px;
+		padding-top: 4px;
 
-    @include oGridRespondTo(M) {
-			padding-top: 5px;
+    @include oGridRespondTo(XL) {
+			padding-top: 10px;
     }
 
 		ul {
@@ -76,9 +86,12 @@
 				}
 
 				a {
-					@include oTypographySansDataBold(l);
+					@include oTypographySansDataBold(m);
 					color: oColorsGetPaletteColor('grey-tint5');
-					font-size: 18px;
+
+					@include oGridRespondTo(XL) {
+						font-size: 18px;
+					}
 
 					&:hover {
 						text-decoration: none;
@@ -86,6 +99,5 @@
 				}
 			}
 		}
-
 	}
 }
