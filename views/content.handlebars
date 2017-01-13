@@ -61,11 +61,11 @@
 								<div class="lr-post--files">
 									<a href="{{@root/basePath}}/files/{{name}}" target="_blank">
 										<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png">
-										<span>{{name}}</span>
+										{{#if fileNameVisible}}
+											<span>{{name}}</span>
+										{{/if}}
 									</a>
-									{{#if sourceVisible}}
-										<div class="lr-post--file-source"><span>Source</span>: {{source}}</div>
-									{{/if}}
+									<div class="lr-post--file-source"><span>Source</span>: {{source}}</div>
 								</div>
 							{{/files}}
 						</div>
