@@ -61,8 +61,6 @@ function execute (config) {
 						resolve(responseText);
 					} else {
 						if (responseText) {
-							resolve(responseText);
-						} else {
 							reject(new Error("Failed response."));
 						}
 					}

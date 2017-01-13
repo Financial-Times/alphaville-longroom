@@ -33,6 +33,7 @@ function uploadFile (file, onProgress) {
 				url: data.signedRequest,
 				body: file,
 				dataType: 'json',
+				contentType: data.fileType,
 				withCredentials: false,
 				onProgress: onProgress
 			}).then(() => {
