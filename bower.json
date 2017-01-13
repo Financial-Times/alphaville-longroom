@@ -20,6 +20,7 @@
   "dependencies": {
     "alphaville-ui": "Financial-Times/alphaville-ui#^1.0.0",
     "dom-delegate": "ftdomdelegate#^2.0.3",
+    "o-dom":"o-dom#^2.0.2",
     "hogan": "twitter/hogan.js#^3.0.2",
     "o-link-list": "^1.0.0",
     "o-autoinit": "^1.2.0",
