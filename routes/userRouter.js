@@ -11,4 +11,8 @@ router.route('/join')
 	.get(userCtrl.get)
 	.post(userFormValidator(), userCtrl.join);
 
+router.route('/setpseudonym')
+	.get(userCtrl.getSetPseudonymForm)
+	.post(userCtrl.setPseudonym);
+
 module.exports = router;
