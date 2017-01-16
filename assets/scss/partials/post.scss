@@ -46,14 +46,12 @@ article.lr-post {
 					display: inline-block;
 					font-size: 16px;
 					padding-left: 10px;
-					margin-top: 25px;
+					margin-top: 15px;
 					span {
 						@include oTypographySansDataBold(m);
 						font-size: 16px;
-
 					}
 				}
-
 			}
 		}
 	}
