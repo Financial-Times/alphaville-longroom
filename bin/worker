@@ -1,0 +1,20 @@
+const db = require('../lib/services/db').db;
+const s3 = require('../lib/services/s3');
+
+function checkOrphanFiles () {
+	db.file.selectOutdatedOrphan().then(files => {
+		if (files && files.length) {
+			files.forEach(file => {
+				s3.deleteObject(file.name).then(() => {
+					db.file.delete(file.id).then(() => {
+						console.log('deleted orphan file', file.name);
+					});
+				});
+			});
+		}
+	});
+}
+
+
+setInterval(checkOrphanFiles, 10 * 60 * 1000);
+checkOrphanFiles();
