@@ -42,9 +42,14 @@
 			a {
 				@include contentLinksBody();				
 			}
-			
+
 			a.hasImg {
 				border: 0;
+			}
+
+			b {
+				@include oTypographySansDataBold(l);
+				font-size: 18px;
 			}
 
 			&.selected {
@@ -58,10 +63,6 @@
 					padding-left: 20px;
 					li {
 						padding-bottom: 10px;
-						b {
-							@include oTypographySansDataBold(l);
-							font-size: 18px;
-						}
 						ul {
 							padding-left: 15px;
 						}
