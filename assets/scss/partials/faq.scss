@@ -1,16 +1,19 @@
 .lr-faq-page {
 	dl {
-		&:first-vhild {
+		&:first-child {
 			border: none;
 		}
 		dt {
-			@include oTypographySerifDisplay(m);
+			@include oTypographySansData(l);
 			color: oColorsGetPaletteColor('grey-tint5');
+			font-size: 20px;
 			cursor: pointer;
 
+
 			a {
-				@include oTypographySerifDisplay(m);
+				@include oTypographySansData(l);
 				color: oColorsGetPaletteColor('grey-tint5');
+				font-size: 20px;
 			}
 
 			b {
@@ -33,14 +36,39 @@
 		dd {
 			display: none;
 			@include oTypographySerif(s);
+			font-size: 18px;
 			color: oColorsGetPaletteColor('grey-tint5');
+
+			a {
+				@include contentLinksBody();				
+			}
+			
+			a.hasImg {
+				border: 0;
+			}
 
 			&.selected {
 				display: block;
 			}
+
 			div.content {
 				margin-top: 25px;
 				margin-right: 40px;
+				ol {
+					padding-left: 20px;
+					li {
+						padding-bottom: 10px;
+						b {
+							@include oTypographySansDataBold(l);
+							font-size: 18px;
+						}
+						ul {
+							padding-left: 15px;
+						}
+
+					}
+				}
+
 			}
 			div.collapse {
 				text-align: right;

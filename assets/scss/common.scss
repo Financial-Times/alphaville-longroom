@@ -30,6 +30,18 @@ $o-card-is-silent: false;
 .clearfix { display: block; }
 /* close commented backslash hack */
 
+
+@mixin contentLinksBody() {
+	@include oColorsFor(link, text);
+	border-bottom: 1px dotted oColorsGetColorFor(link, text);
+	text-decoration: none;
+	&:hover,
+	&:focus {
+		color: oColorsGetColorFor(link-hover, text);
+		border-bottom-color: transparent;
+	}
+}
+
 @import 'partials/banner';
 @import 'partials/navbar';
 @import 'partials/card';
