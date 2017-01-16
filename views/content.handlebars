@@ -63,7 +63,12 @@
 								<div class="lr-post--files">
 									<a href="{{@root/basePath}}/files/{{name}}" target="_blank">
 										<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png" align="left">
-										<span class="lr-post--file-source"><span>Source:</span> {{source}}</span>
+										<span class="lr-post--file-source">
+											<span>Source:</span> {{source}}
+											{{#if fileNameVisible}}
+											<br><span>Filename:</span> {{name}}</span>
+											{{/if}}
+										</span>
 								</div>
 							{{/files}}
 
