@@ -7,7 +7,7 @@ const userMiddleware = require('./lib/middlewares/user');
 const checkPseudonymMiddleware = require('./lib/middlewares/checkPseudonym');
 
 
-router.use('/', auth(), userMiddleware, require('./routes/index'));
+router.get('/',  auth(), userMiddleware, require('./routes/index'));
 router.use('/home', auth(), userMiddleware, checkPseudonymMiddleware, require('./routes/homeRouter'));
 router.use('/content', auth(), userMiddleware, checkPseudonymMiddleware, require('./routes/contentRouter'));
 router.use('/user', auth(), userMiddleware, require('./routes/userRouter'));
