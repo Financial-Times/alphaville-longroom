@@ -14,7 +14,7 @@
 {{#> lr_layout }}
 	<div class="alphaville-article-list lr-post-list" data-trackable="author-post-list">
 	<h1 class="lr-page-heading">{{userPseudonym}}</h1>
-	<p>{{userSummary}}</p>
+	{{#if userSummary}}<p>{{userSummary}}</p>{{/if}}
 		{{#posts}}
 			<div class="alphaville-list-category o-grid-row">
 				<div data-o-grid-colspan="12 M3">

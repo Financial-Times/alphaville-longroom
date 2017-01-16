@@ -50,31 +50,30 @@ document.addEventListener('o.DOMContentLoaded', () => {
 	const faqPage = document.querySelectorAll('.lr-faq-page');
 	if (faqPage && faqPage.length) {
 
-		const dtCollection = document.querySelectorAll('.lr-faq-page dt');
-		dtCollection.forEach((dt, index) => {
-			dt.setAttribute('data-index', index);
-			dt.innerHTML = '<a name="question_' + index + '">' + dt.innerHTML + '</a><i></i>'
-		});
+		var dtCollection = document.querySelectorAll('.lr-faq-page dt');
+		for (var i = 0; i < dtCollection.length; i++) {
+			const dt = dtCollection[i];
+			dt.setAttribute('data-index', i);
+			dt.innerHTML = '<a name="question_' + i + '">' + dt.innerHTML + '</a><i></i>'
+		}
+
 		const ddCollection = document.querySelectorAll('.lr-faq-page dd');
 
 		const selectToggle = dt => {
-
 			const dtIndex = dt.getAttribute('data-index');
-
 			const className = (dt.className.indexOf('selected')> -1)? '' : 'selected';
 			dt.className = className;
 			ddCollection[dtIndex].className = className;
-
 		};
 
-		ddCollection.forEach((dd, index) => {
+		for (var i = 0; i < ddCollection.length; i++) {
+			const dd = ddCollection[i];
 			const collapse = document.createElement('div');
-			collapse.setAttribute('data-index', index);
+			collapse.setAttribute('data-index', i);
 			collapse.className = 'collapse';
 			collapse.innerHTML = '<span>Collapse</span><i></i>';
-			
 			dd.appendChild(collapse);
-		});
+		}
 
 		const deleteDelegate = new Delegate(document.body);
 
