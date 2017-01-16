@@ -16,6 +16,8 @@ function checkInArticleAd () {
 					const eighthLine = linesNumber[8];
 					eighthLine.parentNode.insertBefore(inArticleAd2, eighthLine.nextSibling);
 					oAds.init(inArticleAd2);
+				} else {
+					inArticleAd2.style.display = 'none';
 				}
 			} else {
 				const lastLine = linesNumber[linesNumber.length - 1];
