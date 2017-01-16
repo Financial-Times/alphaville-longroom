@@ -26,7 +26,9 @@
 							{{/if}}
 							
 							<div class="alphaville-card__theme">
-								<a href="/longroom/topic/{{primaryTag.id}}" class="alphaville-card__tag" data-trackable="theme">{{primaryTag.name}}</a>
+								{{#tags}}
+									<a href="/longroom/topic/{{id}}" class="alphaville-card__tag" data-trackable="theme">{{name}}</a>&nbsp;
+								{{/tags}}
 							</div>
 
 							<h3 class="alphaville-card__heading">
@@ -37,7 +39,7 @@
 								{{> timestamp}}
 							</div>
 
-							<div>
+							<div class="alphaville-card__author">
 								Author: <a href="/longroom/author/{{user_id}}">{{user.pseudonym}}</a>{{#if user_summary}} - {{user_summary}}{{/if}}
 							</div>
 
@@ -60,14 +62,11 @@
 							{{#files}}
 								<div class="lr-post--files">
 									<a href="{{@root/basePath}}/files/{{name}}" target="_blank">
-										<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png">
-										{{#if fileNameVisible}}
-											<span>{{name}}</span>
-										{{/if}}
-									</a>
-									<div class="lr-post--file-source"><span>Source</span>: {{source}}</div>
+										<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/{{iconName}}.png" align="left">
+										<span class="lr-post--file-source"><span>Source:</span> {{source}}</span>
 								</div>
 							{{/files}}
+
 						</div>
 					</div>
 				</article>

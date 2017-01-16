@@ -4,6 +4,7 @@ article.lr-post {
 		.alphaville-card__theme {
 			.alphaville-card__tag {
 				@include oTypographySansDataBold(m);
+				display: inline-block;
 			}
 		}
 
