@@ -7,7 +7,7 @@ const auth = require('alphaville-auth-middleware');
 
 router.get('/sign', fileCtrl.sign);
 router.post('/delete', fileCtrl.delete);
-router.route('/attachment/:filePath').get(fileCtrl.oldAttachments);
+router.route('/attachment/*').get(fileCtrl.oldAttachments);
 router.route('/:fileName').get(fileCtrl.download);
 
 module.exports = router;
