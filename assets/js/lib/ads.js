@@ -4,6 +4,8 @@ function checkInArticleAd () {
 	const inArticleAd1 = document.querySelector('.alphaville-in-article-ad1');
 	const inArticleAd2 = document.querySelector('.alphaville-in-article-ad2');
 
+	inArticleAd2.style.display = 'none';
+
 	const linesNumber = document.querySelectorAll('.alphaville-card__standfirst > p');
 
 	if (linesNumber && inArticleAd1 && inArticleAd2) {
@@ -15,9 +17,8 @@ function checkInArticleAd () {
 				if (linesNumber.length > 8) {
 					const eighthLine = linesNumber[8];
 					eighthLine.parentNode.insertBefore(inArticleAd2, eighthLine.nextSibling);
+					inArticleAd2.style.display = 'block';
 					oAds.init(inArticleAd2);
-				} else {
-					inArticleAd2.style.display = 'none';
 				}
 			} else {
 				const lastLine = linesNumber[linesNumber.length - 1];
