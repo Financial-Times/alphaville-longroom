@@ -417,14 +417,15 @@ function LongroomFileUploadItem (config) {
 			startProgress();
 
 			const file = fileInput.files[0];
+			let fileType = file.type;
 
-			if (!file.type) {
+			if (!fileType) {
 				const ext = file.name.substr(file.name.lastIndexOf('.') + 1);
 
-				file.type = uploadFileTypes.fileTypeByExtension[ext];
+				fileType = uploadFileTypes.fileTypeByExtension[ext];
 			}
 
-			if (!file.type || uploadFileTypes.allowedFileTypes.indexOf(file.type) === -1) {
+			if (!fileType || uploadFileTypes.allowedFileTypes.indexOf(fileType) === -1) {
 				showError("The selected document type is not allowed.");
 
 				clearFileInput();
@@ -455,7 +456,11 @@ function LongroomFileUploadItem (config) {
 			}
 
 
-			uploadFile(file, onProgress).then((result) => {
+			uploadFile({
+				name: file.name,
+				type: fileType,
+				size: file.size
+			}, onProgress).then((result) => {
 				endProgress();
 
 				content.file = {
@@ -466,7 +471,7 @@ function LongroomFileUploadItem (config) {
 				uploadContainer.fileUploaded(id, file);
 
 				previewArea.innerHTML = `
-					<img src="${assetsPath}/images/file_extension_icons/${uploadFileTypes.fileTypesIcons[file.type]}.png" />
+					<img src="${assetsPath}/images/file_extension_icons/${uploadFileTypes.fileTypesIcons[fileType]}.png" />
 					<span class="lr-forms__file-upload--preview-info">
 						${file.name}<br/>
 						<a class="lr-forms__file-upload--delete">Delete</a>
