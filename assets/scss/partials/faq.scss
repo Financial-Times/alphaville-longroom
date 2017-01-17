@@ -1,46 +1,78 @@
 .lr-faq-page {
 	dl {
-		&:first-vhild {
-			border: none;
-		}
 		dt {
-			@include oTypographySerifDisplay(m);
+			@include oTypographySansData(l);
 			color: oColorsGetPaletteColor('grey-tint5');
+			font-size: 20px;
 			cursor: pointer;
-
-			a {
-				@include oTypographySerifDisplay(m);
-				color: oColorsGetPaletteColor('grey-tint5');
-			}
-
-			b {
-				font-weight: normal;
-				line-height: 30px;
-			}
-			i {
-				@include oIconsGetIcon('arrow-right', oColorsGetPaletteColor('grey-tint5'), 12);
-				float:right;
-				margin: 10px 10px 0 0; 
-			}
 			border-top: 1px solid #CEC6B9;
+
+			&:first-child {
+				border: none;
+			}
+
 			&.selected {
 				color: oColorsGetPaletteColor('teal-1');
 				i {
 					@include oIconsGetIcon('arrow-down', oColorsGetPaletteColor('teal-1'), 12);
 				}
 			}
+
+			a {
+				@include oTypographySansData(l);
+				color: oColorsGetPaletteColor('grey-tint5');
+				font-size: 20px;
+			}
+
+			b {
+				font-weight: normal;
+				line-height: 30px;
+			}
+
+			i {
+				@include oIconsGetIcon('arrow-right', oColorsGetPaletteColor('grey-tint5'), 12);
+				float:right;
+				margin: 10px 10px 0 0; 
+			}
+
 		}
 		dd {
 			display: none;
 			@include oTypographySerif(s);
+			font-size: 18px;
 			color: oColorsGetPaletteColor('grey-tint5');
+
+			a {
+				@include contentLinksBody();				
+			}
+
+			a.hasImg {
+				border: 0;
+			}
+
+			b {
+				@include oTypographySansDataBold(l);
+				font-size: 18px;
+			}
 
 			&.selected {
 				display: block;
 			}
+
 			div.content {
 				margin-top: 25px;
 				margin-right: 40px;
+				ol {
+					padding-left: 20px;
+					li {
+						padding-bottom: 10px;
+						ul {
+							padding-left: 15px;
+						}
+
+					}
+				}
+
 			}
 			div.collapse {
 				text-align: right;
