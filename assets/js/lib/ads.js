@@ -4,7 +4,9 @@ function checkInArticleAd () {
 	const inArticleAd1 = document.querySelector('.alphaville-in-article-ad1');
 	const inArticleAd2 = document.querySelector('.alphaville-in-article-ad2');
 
-	inArticleAd2.style.display = 'none';
+	if (inArticleAd2) {
+		inArticleAd2.style.display = 'none';
+	}
 
 	const linesNumber = document.querySelectorAll('.alphaville-card__standfirst > p');
 
