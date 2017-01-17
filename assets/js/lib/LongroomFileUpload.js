@@ -396,8 +396,12 @@ function LongroomFileUploadItem (config) {
 	};
 
 	const clearFileInput = function () {
-		fileInput.files = null;
-		fileInput.value = null;
+		try {
+			fileInput.files = null;
+			fileInput.value = null;
+		} catch (e) {
+			fileInput.parentNode.innerHTML = fileInput.parentNode.innerHTML;
+		}
 	};
 
 
