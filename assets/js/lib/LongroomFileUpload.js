@@ -400,7 +400,7 @@ function LongroomFileUploadItem (config) {
 			fileInput.files = null;
 			fileInput.value = null;
 		} catch (e) {
-			fileInput.parentNode.innerHTML = fileInput.parentNode.innerHTML;
+			console.error(e);
 		}
 	};
 
