@@ -13,3 +13,11 @@ exports.fileTypesIcons = {
 	"application/vnd.ms-excel": "xls",
 	"application/pdf": "pdf"
 };
+
+exports.fileTypeByExtension = {
+	"doc": "application/msword",
+	"docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+	"xls": "application/vnd.ms-excel",
+	"xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+	"pdf": "application/pdf"
+};
