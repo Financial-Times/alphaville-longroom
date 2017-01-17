@@ -469,9 +469,9 @@ function LongroomFileUploadItem (config) {
 
 				attachPreviewAreaEvents();
 			})
-			.catch(() => {
-				fileInput.files = null;
+			.catch((err) => {
 				showError('Failed to upload the document. Please try again later.');
+				console.log(err);
 
 				clearFileInput();
 				endProgress();
