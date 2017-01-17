@@ -24,7 +24,8 @@
 			<p>Make up a name for yourself below and then just click save.</p>
 				
 			<div class="o-forms-group">
-				<input type="text" class="o-forms-text" name="pseudonym" value="{{pseudonym}}" />
+				<label class="o-forms-label" for="pseudonym">Pseudonym</label>
+				<input type="text" class="o-forms-text" name="pseudonym" id="pseudonym" value="{{pseudonym}}" />
 				{{#validation}}<div class="o-forms-errortext">{{{pseudonym}}}</div>{{/validation}}
 			</div>
 
