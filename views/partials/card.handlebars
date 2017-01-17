@@ -7,7 +7,11 @@
 			</div>
 
 			<h3 class="alphaville-card__heading">
-				<a href="{{@root/basePath}}/content/{{id}}" data-trackable="heading">{{title}}</a>
+				<a href="{{@root/basePath}}/content/{{id}}" data-trackable="heading">{{title}}
+				{{#if files}}
+				<img class="lr-card__file-icon" src="{{@root/assetsBasePath}}/images/file_extension_icons/generic.png" align="left" alt="This post contains document(s)" title="This post contains document(s)">
+				{{/if}}
+				</a>
 			</h3>
 
 			<div class="alphaville-card__author">
