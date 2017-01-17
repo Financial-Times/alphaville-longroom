@@ -51,6 +51,7 @@ $o-card-is-silent: false;
 @import 'partials/content_form';
 @import 'partials/faq';
 @import 'partials/house_rules';
+@import 'partials/user';
 
 .lr-page-heading {
 	color: oColorsGetPaletteColor('grey-tint5');
