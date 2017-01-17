@@ -60,9 +60,12 @@ function execute (config) {
 					if ((!xhr.status || (xhr.status >= 200 && xhr.status < 400))) {
 						resolve(responseText);
 					} else {
+						const err = new Error("Failed response");
 						if (responseText) {
-							reject(new Error("Failed response."));
+							err.responseText = responseText;
 						}
+
+						reject(err);
 					}
 				}
 			};
