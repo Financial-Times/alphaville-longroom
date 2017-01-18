@@ -25,12 +25,14 @@
     "express-form": "^0.12.6",
     "gulp": "^3.9.1",
     "lodash": "^4.12.0",
+    "memory-cache": "^0.1.6",
     "moment-timezone": "^0.5.5",
     "multer": "^1.1.0",
     "node-fetch": "^1.5.2",
     "pg-promise": "^5.4.3",
     "request": "^2.74.0",
     "request-promise": "^4.1.1",
-    "sanitize-html": "^1.13.0"
+    "sanitize-html": "^1.13.0",
+    "striptags": "^2.2.0"
   }
 }

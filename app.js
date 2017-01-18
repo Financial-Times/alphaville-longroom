@@ -1,6 +1,9 @@
 const alphavilleExpress = require('alphaville-express');
 const flashMessageMiddleware = require('./lib/middlewares/flashMessage');
+const userMiddleware = require('./lib/middlewares/user');
+const overheardComponentMiddleware = require('./lib/middlewares/overheardComponentData');
 const fingerprint = require('./build_config/js/fingerprint');
+
 const _ = require('lodash');
 
 const env = process.env.ENVIRONMENT === 'prod' ? 'prod' : 'test';
@@ -31,6 +34,9 @@ app.use(function (req, res, next ) {
 });
 
 app.use(flashMessageMiddleware);
+
+app.use(userMiddleware);
+app.use(overheardComponentMiddleware);
 
 app.use('/', require('./routes/__gtg'));
 app.use('/longroom', require('./router'));
