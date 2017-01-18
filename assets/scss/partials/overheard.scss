@@ -4,6 +4,14 @@
 	a {
 		color: oColorsGetPaletteColor('grey-tint5');
 	}
+
+	&:first-of-type {
+		margin-top: 10px;
+	}
+
+	&:last-of-type {
+		margin-bottom: 10px;
+	}
 }
 
 .lr-overheard--pseudonym {
