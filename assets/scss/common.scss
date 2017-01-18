@@ -16,19 +16,6 @@ $o-card-is-silent: false;
 @import './create_form';
 @import 'o-comments/main';
 
-.clearfix:after {
-     visibility: hidden;
-     display: block;
-     font-size: 0;
-     content: " ";
-     clear: both;
-     height: 0;
-     }
-.clearfix { display: inline-block; }
-/* start commented backslash hack \*/
-* html .clearfix { height: 1%; }
-.clearfix { display: block; }
-/* close commented backslash hack */
 
 
 @mixin contentLinksBody() {
