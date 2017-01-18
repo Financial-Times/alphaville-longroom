@@ -18,6 +18,10 @@ const app = alphavilleExpress({
 	env: env
 });
 
+if (process.env.APP_URL && process.env.APP_URL[process.env.APP_URL.length - 1] === '/') {
+	process.env.APP_URL = process.env.APP_URL.substr(0, process.env.APP_URL.length - 1);
+}
+
 app.use(function (req, res, next ) {
 	const _render = res.render;
 	res.render = function( view, options, fn ) {
