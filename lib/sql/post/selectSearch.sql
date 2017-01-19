@@ -19,13 +19,16 @@ WHERE
     p.id IN (
         SELECT pi.id
         FROM posts pi
-            LEFT JOIN tags_to_posts ttpi ON ttpi.post_id = pi.id
-            JOIN tags ti ON ti.id = ttpi.tag_id
         WHERE 
             pi.published = ${published}
-            AND (
-                pi.title LIKE '%${query#}%'
-                OR ti.name LIKE '%${query#}%'
+            AND pi.id IN (
+                SELECT pii.id
+                FROM posts pii
+                    LEFT JOIN tags_to_posts ttpi ON ttpi.post_id = pii.id
+                    JOIN tags ti ON ti.id = ttpi.tag_id
+                WHERE
+                    pi.title LIKE '%${query#}%'
+                    OR ti.name LIKE '%${query#}%'
             )
         OFFSET ${offset}
         LIMIT ${limit}
