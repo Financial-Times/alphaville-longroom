@@ -27,7 +27,7 @@ WHERE
                     LEFT JOIN tags_to_posts ttpi ON ttpi.post_id = pii.id
                     JOIN tags ti ON ti.id = ttpi.tag_id
                 WHERE
-                    pi.title LIKE '%${query#}%'
+                    pii.title LIKE '%${query#}%'
                     OR ti.name LIKE '%${query#}%'
             )
         OFFSET ${offset}
