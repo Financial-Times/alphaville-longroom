@@ -26,12 +26,12 @@ function getSignedRequest (file) {
 	});
 }
 
-function uploadFile (file, onProgress) {
-	return getSignedRequest(file)
+function uploadFile (fileInfo, onProgress) {
+	return getSignedRequest(fileInfo)
 		.then(data => {
 			return httpRequest.put({
 				url: data.signedRequest,
-				body: file,
+				body: fileInfo.file,
 				dataType: 'json',
 				contentType: data.fileType,
 				withCredentials: false,
@@ -410,6 +410,7 @@ function LongroomFileUploadItem (config) {
 	} else {
 		fileSource.addEventListener('keyup', onTypeSourceInput);
 		fileSource.addEventListener('keydown', onTypeSourceInput);
+		fileSource.addEventListener('change', onTypeSourceInput);
 
 		fileInput.addEventListener('change', () => {
 			clearError();
@@ -459,7 +460,8 @@ function LongroomFileUploadItem (config) {
 			uploadFile({
 				name: file.name,
 				type: fileType,
-				size: file.size
+				size: file.size,
+				file: file
 			}, onProgress).then((result) => {
 				endProgress();
 
