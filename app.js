@@ -27,9 +27,15 @@ app.use(function (req, res, next ) {
 	res.render = function( view, options, fn ) {
 		options = options || {};
 
+		options.headerConfig = options.headerConfig || {};
+
 		_.merge(options, {
 			appUrl: process.env.APP_URL,
-			adZone: 'alphaville.long.room'
+			adZone: 'alphaville.long.room',
+			headerConfig: Object.assign(options.headerConfig, {
+				searchUrl: '/longroom/search',
+				searchTitle: 'Long Room'
+			})
 		});
 
 		_render.call(this, view, options, fn);

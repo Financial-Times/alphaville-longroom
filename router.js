@@ -17,5 +17,6 @@ router.use('/author', auth(), checkPseudonymMiddleware, require('./routes/author
 router.use('/faq', auth(), checkPseudonymMiddleware, require('./routes/faqRouter'));
 router.use('/house-rules', auth(), checkPseudonymMiddleware, require('./routes/houseRulesRouter'));
 router.use('/dashboard', auth(), checkPseudonymMiddleware, require('./routes/mypostsRouter'));
+router.use('/search', auth(), checkPseudonymMiddleware, require('./routes/searchRouter'));
 
 module.exports = router;

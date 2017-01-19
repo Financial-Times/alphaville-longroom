@@ -1,0 +1,56 @@
+{{#contentFor "head"}}
+	<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
+
+	<script>
+		(function () {
+			ctmLoadScript({
+				src: "{{assetsBasePath}}/build/main.js",
+				async: true
+			});
+		}());
+	</script>
+{{/contentFor}}
+
+{{#> lr_layout }}
+	<div class="alphaville-article-list lr-post-list" data-trackable="author-post-list">
+		<h1 class="lr-page-heading">
+			{{#if message}}
+				{{message}}
+			{{else}}
+				{{#if query}}
+					Search results: {{query}}</h1>
+				{{/if}}
+			{{/if}}
+		</h1>
+
+		{{#posts}}
+			<div class="alphaville-list-category o-grid-row">
+				<div data-o-grid-colspan="12 M3">
+					<div class="alphaville-list-time">
+						<div class="alphaville-list-time-label">{{label}}</div>
+						{{#date}}
+							<time class="o-date alphaville-list-time-date" data-o-component="o-date" data-o-date-format="date-only" datetime="{{.}}"></time>
+						{{/date}}
+					</div>
+				</div>
+				<div data-o-grid-colspan="12 M9">
+					<div class="alphaville-list-items">
+						{{#items}}
+							{{> card}}
+						{{/items}}
+					</div>
+				</div>
+			</div>
+		{{/posts}}
+	</div>
+
+	{{#if pagination}}
+		<div class="o-grid-row">
+			<div data-o-grid-colspan="12">
+				{{#pagination}}
+					{{> alphaville-ui/pagination/main}}
+				{{/pagination}}
+			</div>
+		</div>
+	{{/if}}
+{{/lr_layout}}
