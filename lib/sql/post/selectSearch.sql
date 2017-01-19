@@ -30,6 +30,7 @@ WHERE
                     pii.title LIKE '%${query#}%'
                     OR ti.name LIKE '%${query#}%'
             )
+        ORDER BY pi.published_at DESC
         OFFSET ${offset}
         LIMIT ${limit}
     )
