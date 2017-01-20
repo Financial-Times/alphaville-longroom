@@ -51,7 +51,8 @@ CREATE TABLE IF NOT EXISTS users (
     is_editor boolean DEFAULT false,
     location character varying(256),
     description text,
-    summary text
+    summary text,
+    has_pseudonym boolean DEFAULT false
 );
 
 CREATE TABLE IF NOT EXISTS user_details (
