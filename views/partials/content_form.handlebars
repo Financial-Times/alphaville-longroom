@@ -100,7 +100,13 @@
 	<small class="o-forms-additional-info">e.g. Markets, Retail</small>
 
 	<div class="lr-forms__tags--container">
-		<input type="text" class="o-forms-text lr-forms__tags--input" name="post-tags" id="post-tags" value="{{postTags}}" />
+		<input type="text" class="o-forms-text lr-forms__tags--input" name="post-tags" id="post-tags" value="" />
+		<ul class="lr-forms__tags--list">
+			{{#postTags}}
+				<li class="lr-forms__tags--tag"><span class="o-buttons">{{name}}</span></li>
+			{{/postTags}}
+		</ul>
+
 		<div class="o-forms-errortext"></div>
 	</div>
 </div>
