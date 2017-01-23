@@ -7,7 +7,7 @@ const Delegate = require('dom-delegate');
 
 
 const MIN_LENGTH = 2;
-const DISPLAY_ITEMS = 6;
+const DISPLAY_ITEMS = 15;
 
 function TagAutocomplete (config) {
 	const self = this;
