@@ -1,5 +1,6 @@
 const LongroomFileUpload = require('./LongroomFileUpload');
 const LongroomFormInput = require('./LongroomFormInput');
+const TagAutocomplete = require('./TagAutocomplete');
 const httpRequest = require('./httpRequest');
 
 function LongroomCreateForm (formEl, fileSizeLimit) {
@@ -16,8 +17,10 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 		required: true
 	});
 
-	const tagsInput = new LongroomFormInput({
+	const tagsInput = new TagAutocomplete({
 		input: formEl.querySelector('input[name="post-tags"]'),
+		list: formEl.querySelector('.lr-forms__tags--list'),
+		dataSourceUrl: '/longroom/suggestions/tags',
 		label: 'Topic tags',
 		labelPlural: true,
 		required: true
