@@ -11,7 +11,7 @@ WHERE
         WHERE 
             pi.published = ${published}
             AND (
-                pi.title LIKE '%${query#}%'
-                OR ti.name LIKE '%${query#}%'
+                pi.title ILIKE '%${query#}%'
+                OR ti.name ILIKE '%${query#}%'
             )
     )
