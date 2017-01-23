@@ -37,7 +37,7 @@ function TagAutocomplete (config) {
 		maxItems: DISPLAY_ITEMS,
 		filter: function (text, input) {
 			// eslint-disable-next-line
-			return Awesomplete.FILTER_CONTAINS(toAscii(text.label), toAscii(input));
+			return Awesomplete.FILTER_STARTSWITH(toAscii(text.label), toAscii(input));
 		},
 		item: function (text, input) {
 			// eslint-disable-next-line
