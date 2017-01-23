@@ -191,6 +191,11 @@ function TagAutocomplete (config) {
 			return true;
 		}
 
+		if (input.value) {
+			showError("There is an unterminated tag in the input field.");
+			return false;
+		}
+
 		if (!self.getValue()) {
 			if (label) {
 				showError(`${label} ${labelPlural ? 'are' : 'is'} required.`);
