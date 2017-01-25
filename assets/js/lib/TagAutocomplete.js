@@ -123,7 +123,7 @@ function TagAutocomplete (config) {
 	};
 
 	const handleType = function (evt) {
-		if (evt.key === 'Enter' || evt.key === ',') {
+		if (evt.key === 'Enter') {
 			evt.preventDefault();
 			return;
 		}
@@ -134,14 +134,14 @@ function TagAutocomplete (config) {
 			clearError();
 			searchTerm = latestTerm;
 
-			if (searchTerm.length >= MIN_LENGTH) {
+			if (searchTerm.trim().length >= MIN_LENGTH) {
 				getSuggestions(searchTerm);
 			}
 		}
 	};
 
 	const handleFocus = function () {
-		if (searchTerm.length >= MIN_LENGTH) {
+		if (searchTerm.trim().length >= MIN_LENGTH) {
 			awesomplete.open();
 		}
 	};
@@ -150,7 +150,12 @@ function TagAutocomplete (config) {
 
 	input.addEventListener('keyup', handleType);
 	input.addEventListener('keydown', (evt) => {
-		if (evt.key === 'Enter' || evt.key === ',') {
+		if (evt.key === ',') {
+			evt.preventDefault();
+			return;
+		}
+
+		if (evt.key === 'Enter') {
 			evt.preventDefault();
 
 			if (input.value.trim()) {
