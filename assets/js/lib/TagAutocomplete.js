@@ -179,6 +179,10 @@ function TagAutocomplete (config) {
 	this.getValue = function () {
 		const list = getTagList();
 
+		if (input.value.trim()) {
+			list.push(input.value.trim());
+		}
+
 		if (!list.length) {
 			return '';
 		}
@@ -189,11 +193,6 @@ function TagAutocomplete (config) {
 	this.validate = function () {
 		if (!required) {
 			return true;
-		}
-
-		if (input.value) {
-			showError("There is an unterminated tag in the input field.");
-			return false;
 		}
 
 		if (!self.getValue()) {
