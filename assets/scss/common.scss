@@ -41,6 +41,10 @@ $o-card-is-silent: false;
 @import 'partials/user';
 @import 'partials/overheard';
 
+.lr-main-content {
+	margin-top: 25px;
+}
+
 .lr-page-heading {
 	color: oColorsGetPaletteColor('grey-tint5');
 	margin:0 0 20px;
