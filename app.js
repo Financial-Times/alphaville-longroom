@@ -3,7 +3,7 @@ const flashMessageMiddleware = require('./lib/middlewares/flashMessage');
 const userMiddleware = require('./lib/middlewares/user');
 const overheardComponentMiddleware = require('./lib/middlewares/overheardComponentData');
 const fingerprint = require('./build_config/js/fingerprint');
-const ftwebservice = require('express-ftwebservice');
+const expressWebService = require('@financial-times/express-web-service');
 const path = require('path');
 const healthcheck = require('./lib/health/healthchecks');
 
@@ -21,14 +21,14 @@ const app = alphavilleExpress({
 	env: env
 });
 
-ftwebservice(app, {
+app.use(expressWebService({
 	manifestPath: path.join(__dirname, 'package.json'),
 	about: {
 		"schemaVersion": 1,
 		"name": "ftalphaville",
 		"purpose": "Frontend rendering application for FT Alphaville articles and Markets Live.",
 		"audience": "public",
-		"primaryUrl": "https://ftalphaville.ft.com",
+		"primaryUrl": "https://ftalphaville.ft.com/longroom",
 		"serviceTier": "silver"
 	},
 	goodToGoTest: function() {
@@ -53,7 +53,7 @@ ftwebservice(app, {
 			];
 		});
 	}
-});
+}));
 
 if (process.env.APP_URL && process.env.APP_URL[process.env.APP_URL.length - 1] === '/') {
 	process.env.APP_URL = process.env.APP_URL.substr(0, process.env.APP_URL.length - 1);
