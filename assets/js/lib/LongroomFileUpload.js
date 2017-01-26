@@ -411,6 +411,7 @@ function LongroomFileUploadItem (config) {
 		fileSource.addEventListener('keyup', onTypeSourceInput);
 		fileSource.addEventListener('keydown', onTypeSourceInput);
 		fileSource.addEventListener('change', onTypeSourceInput);
+		fileSource.addEventListener('paste', onTypeSourceInput);
 
 		fileInput.addEventListener('change', () => {
 			clearError();

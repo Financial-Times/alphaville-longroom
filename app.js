@@ -3,6 +3,9 @@ const flashMessageMiddleware = require('./lib/middlewares/flashMessage');
 const userMiddleware = require('./lib/middlewares/user');
 const overheardComponentMiddleware = require('./lib/middlewares/overheardComponentData');
 const fingerprint = require('./build_config/js/fingerprint');
+const ftwebservice = require('express-ftwebservice');
+const path = require('path');
+const healthcheck = require('./lib/health/healthchecks');
 
 const _ = require('lodash');
 
@@ -16,6 +19,40 @@ const app = alphavilleExpress({
 	navSelected: 'Long Room',
 	fingerprint: fingerprint,
 	env: env
+});
+
+ftwebservice(app, {
+	manifestPath: path.join(__dirname, 'package.json'),
+	about: {
+		"schemaVersion": 1,
+		"name": "ftalphaville",
+		"purpose": "Frontend rendering application for FT Alphaville articles and Markets Live.",
+		"audience": "public",
+		"primaryUrl": "https://ftalphaville.ft.com",
+		"serviceTier": "silver"
+	},
+	goodToGoTest: function() {
+		return true;
+	},
+	healthCheck: function() {
+		return healthcheck.getChecks().then(checks => {
+			return checks;
+		}).catch((err) => {
+			console.log(err);
+			return [
+				{
+					name: "Healthcheck",
+					ok: false,
+					severity: 2,
+					businessImpact: "Some areas of the application might be unavailable due to this issue.",
+					technicalSummary: "Healthcheck is not available.",
+					panicGuide: "Check the logs of the application, try to restart it from heroku.",
+					checkOutput: "Healthcheck generation failed.",
+					lastUpdated: new Date().toISOString()
+				}
+			];
+		});
+	}
 });
 
 if (process.env.APP_URL && process.env.APP_URL[process.env.APP_URL.length - 1] === '/') {

@@ -74,3 +74,9 @@ ALTER TABLE ONLY users
 
 ALTER TABLE ONLY user_details
     ADD CONSTRAINT user_details_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE;
+
+CREATE TABLE IF NOT EXISTS cleanup_status (
+    last_run TIMESTAMP
+);
+DELETE FROM cleanup_status;
+INSERT INTO cleanup_status (last_run) VALUES ('1970-01-01 00:00:00');

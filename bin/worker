@@ -12,6 +12,8 @@ function checkOrphanFiles () {
 				});
 			});
 		}
+
+		db.cleanupStatus.update(new Date());
 	});
 }
 
