@@ -20,6 +20,7 @@ function TagAutocomplete (config) {
 	const dataSourceUrl = config.dataSourceUrl;
 
 	let searchTerm = '';
+	let lastSuggestions = [];
 
 	let formGroup = domUtils.getParents(input, '.o-forms-group');
 	if (formGroup && formGroup.length) {
@@ -94,6 +95,7 @@ function TagAutocomplete (config) {
 
 	const setSuggestions = function (suggestions) {
 		awesomplete.list = suggestions;
+		lastSuggestions = suggestions;
 	};
 
 	const getSuggestions = function (value) {
@@ -144,7 +146,7 @@ function TagAutocomplete (config) {
 	};
 
 	const handleFocus = function () {
-		if (searchTerm.length >= MIN_LENGTH) {
+		if (searchTerm.length >= MIN_LENGTH && lastSuggestions.length) {
 			awesomplete.open();
 		}
 	};
