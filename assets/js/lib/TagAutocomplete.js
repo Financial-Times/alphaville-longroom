@@ -8,6 +8,8 @@ const Delegate = require('dom-delegate');
 
 const MIN_LENGTH = 2;
 const DISPLAY_ITEMS = 15;
+const MAX_LENGTH = 30;
+const MAX_TAGS = 3;
 
 function TagAutocomplete (config) {
 	const self = this;
@@ -68,6 +70,14 @@ function TagAutocomplete (config) {
 		}
 	};
 
+	const enableInput = function () {
+		input.removeAttribute('disabled');
+	};
+
+	const disableInput = function () {
+		input.setAttribute('disabled', 'disabled');
+	};
+
 	const hasTag = function (tagName) {
 		const listItems = listContainer.querySelectorAll('.lr-forms__tags--tag span');
 
@@ -92,6 +102,10 @@ function TagAutocomplete (config) {
 		return list;
 	};
 
+	if (getTagList().length >= MAX_TAGS) {
+		disableInput();
+	}
+
 
 	const setSuggestions = function (suggestions) {
 		awesomplete.list = suggestions;
@@ -113,14 +127,20 @@ function TagAutocomplete (config) {
 	};
 
 	const handleSelect = function (text) {
-		if (!hasTag(text)) {
+		if (text.length > MAX_LENGTH) {
+			showError(`A tag cannot exceed ${MAX_LENGTH} characters.`);
+		} else if (hasTag(text)) {
+			showError('The selected tag is already in the list.');
+		} else {
 			listContainer.appendChild(domUtils.toDOM(`<li class="lr-forms__tags--tag"><span class="o-buttons">${text}</span></li>`));
 			awesomplete.close();
 
 			input.value = '';
 			searchTerm = '';
-		} else {
-			showError('The selected tag is already in the list.');
+
+			if (getTagList().length >= MAX_TAGS) {
+				disableInput();
+			}
 		}
 	};
 
@@ -133,8 +153,13 @@ function TagAutocomplete (config) {
 		const latestTerm = input.value.trim();
 
 		if (searchTerm !== latestTerm || !latestTerm) {
-			clearError();
 			searchTerm = latestTerm;
+
+			if (searchTerm.length > MAX_LENGTH) {
+				showError(`A tag cannot exceed ${MAX_LENGTH} characters.`);
+			} else {
+				clearError();
+			}
 
 			if (searchTerm.length >= MIN_LENGTH) {
 				getSuggestions(searchTerm);
@@ -167,6 +192,8 @@ function TagAutocomplete (config) {
 				clearError();
 				handleSelect(input.value.trim());
 			}
+
+			return;
 		}
 	});
 	input.addEventListener('awesomplete-selectcomplete', (evt) => {
@@ -180,6 +207,11 @@ function TagAutocomplete (config) {
 	listDelegate.on('click', '.lr-forms__tags--tag', (evt) => {
 		if (evt.target) {
 			listContainer.removeChild(evt.target.parentNode);
+			clearError();
+
+			if (getTagList().length < MAX_TAGS) {
+				enableInput();
+			}
 		}
 
 		evt.preventDefault();
