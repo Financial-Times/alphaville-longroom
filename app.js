@@ -21,7 +21,7 @@ const app = alphavilleExpress({
 	env: env
 });
 
-app.use(expressWebService({
+app.use('/longroom', expressWebService({
 	manifestPath: path.join(__dirname, 'package.json'),
 	about: {
 		"schemaVersion": 1,
