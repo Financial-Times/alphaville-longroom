@@ -7,7 +7,7 @@ const Delegate = require('dom-delegate');
 
 
 const MIN_LENGTH = 2;
-const DISPLAY_ITEMS = 15;
+const DISPLAY_ITEMS = 999;
 const MAX_LENGTH = 30;
 const MAX_TAGS = 3;
 

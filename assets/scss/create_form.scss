@@ -115,6 +115,8 @@
 		border: 1px solid rgba(0,0,0,.3);
 		box-shadow: 0.05em 0.2em 0.6em rgba(0,0,0,.2);
 		text-shadow: none;
+		overflow: auto;
+		max-height: 120px;
 
 		[hidden],
 		:empty {
