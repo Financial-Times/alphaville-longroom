@@ -130,18 +130,21 @@ function TagAutocomplete (config) {
 
 		const latestTerm = input.value.trim();
 
-		if (searchTerm !== latestTerm) {
+		if (searchTerm !== latestTerm || !latestTerm) {
 			clearError();
 			searchTerm = latestTerm;
 
-			if (searchTerm.trim().length >= MIN_LENGTH) {
+			if (searchTerm.length >= MIN_LENGTH) {
 				getSuggestions(searchTerm);
+			} else {
+				setSuggestions([]);
+				awesomplete.close();
 			}
 		}
 	};
 
 	const handleFocus = function () {
-		if (searchTerm.trim().length >= MIN_LENGTH) {
+		if (searchTerm.length >= MIN_LENGTH) {
 			awesomplete.open();
 		}
 	};
