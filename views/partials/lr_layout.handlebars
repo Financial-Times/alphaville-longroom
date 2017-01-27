@@ -43,7 +43,9 @@
 
 			<div data-o-grid-colspan="12 L4">
 				<div class="lr-sidebar">
-					{{> overheard}}
+					{{#unless overheardHidden}}
+						{{> overheard}}
+					{{/unless}}
 					{{> alphaville-ui/ads/templates/dmpu_desktop}}
 				</div>
 			</div>
