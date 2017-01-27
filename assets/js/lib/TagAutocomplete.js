@@ -46,7 +46,9 @@ function TagAutocomplete (config) {
 			// eslint-disable-next-line
 			return Awesomplete.ITEM(toAscii(text.label), toAscii(input));
 		},
-		sort: new Function()
+		sort: function (text, input) {
+			return -1;
+		}
 	});
 
 
