@@ -49,8 +49,8 @@ function TagAutocomplete (config) {
 			return Awesomplete.ITEM(toAscii(text.label), toAscii(input));
 		},
 		sort: function (text, input) {
-			const countText = text.label.match(/\(([0-9]+)\)$/);
-			const countInput = input.label.match(/\(([0-9]+)\)$/);
+			const countText = parseInt(text.label.match(/\(([0-9]+)\)$/), 10);
+			const countInput = parseInt(input.label.match(/\(([0-9]+)\)$/), 10);
 
 			return countText < countInput ? 1 : (countText > countInput ? -1 : 0);
 		}
