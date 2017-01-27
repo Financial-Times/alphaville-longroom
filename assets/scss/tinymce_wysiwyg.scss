@@ -1,0 +1,32 @@
+$o-colors-is-silent: false;
+@import 'o-colors/main';
+
+.lr-align-left {
+	text-align: left;
+}
+
+.lr-align-right {
+	text-align: right;
+}
+
+.lr-align-center {
+	text-align: center;
+}
+
+.lr-align-justify {
+	text-align: justify;
+}
+
+.lr-text-underline {
+	text-decoration: underline;
+}
+
+.lr-text-strikethrough {
+	text-decoration: line-through;
+}
+
+blockquote {
+	border-left: 2px solid oColorsGetPaletteColor(grey-tint2);
+	margin-left: 0;
+	padding-left: 20px;
+}

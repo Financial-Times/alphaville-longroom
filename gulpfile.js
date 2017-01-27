@@ -16,6 +16,11 @@ alphavilleBuildTools(gulp, {
 			sass: './assets/scss/main.scss',
 			buildJs: 'main.js',
 			buildCss: 'main.css'
+		},
+		{
+			id: 'wysiwyg',
+			sass: './assets/scss/tinymce_wysiwyg.scss',
+			buildCss: 'tinymce_wysiwyg.css'
 		}
 	]
 });

@@ -2,6 +2,7 @@
 
 const domUtils = require('./domUtils');
 const randomString = require('./utils/randomString');
+const assetsPath = require('../assets_path');
 
 const pollForTinymce = function () {
 	return new Promise(resolve => {
@@ -52,7 +53,16 @@ function LongroomFormInput (config) {
 					'searchreplace visualblocks code',
 					'insertdatetime table contextmenu paste'
 				],
-				toolbar: 'undo redo | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link'
+				toolbar: 'undo redo | bold italic underline strikethrough | bullist numlist | link | blockquote',
+				formats: {
+					alignleft: {classes : 'lr-align-left'},
+					aligncenter: {classes : 'lr-align-center'},
+					alignright: {classes : 'lr-align-right'},
+					alignjustify: {classes : 'lr-align-full'},
+					underline: {inline : 'span', 'classes' : 'lr-text-underline', exact: true},
+					strikethrough: {inline : 'span', 'classes' : 'lr-text-strikethrough'},
+				},
+				content_css: `${assetsPath}/build/tinymce_wysiwyg.css`
 			});
 		});
 	}
