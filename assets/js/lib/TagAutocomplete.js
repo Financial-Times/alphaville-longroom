@@ -128,7 +128,7 @@ function TagAutocomplete (config) {
 
 	const handleSelect = function (text) {
 		if (text.length > MAX_LENGTH) {
-			showError(`A tag cannot exceed ${MAX_LENGTH} characters.`);
+			showError(`Tags cannot exceed ${MAX_LENGTH} characters.`);
 		} else if (hasTag(text)) {
 			showError('The selected tag is already in the list.');
 		} else {
@@ -156,7 +156,7 @@ function TagAutocomplete (config) {
 			searchTerm = latestTerm;
 
 			if (searchTerm.length > MAX_LENGTH) {
-				showError(`A tag cannot exceed ${MAX_LENGTH} characters.`);
+				showError(`Tags cannot exceed ${MAX_LENGTH} characters.`);
 			} else {
 				clearError();
 			}
