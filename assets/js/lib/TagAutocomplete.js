@@ -39,15 +39,18 @@ function TagAutocomplete (config) {
 	const awesomplete = new Awesomplete(input, {
 		maxItems: DISPLAY_ITEMS,
 		filter: function (text, input) {
+			console.log('filter', text, input);
 			// eslint-disable-next-line
 			return Awesomplete.FILTER_STARTSWITH(toAscii(text.label), toAscii(input));
 		},
 		item: function (text, input) {
+			console.log('item', text, input);
 			// eslint-disable-next-line
 			return Awesomplete.ITEM(toAscii(text.label), toAscii(input));
 		},
 		sort: function (text, input) {
-			return -1;
+			console.log('sort', text, input);
+			return 0;
 		}
 	});
 
@@ -112,6 +115,7 @@ function TagAutocomplete (config) {
 	const setSuggestions = function (suggestions) {
 		awesomplete.list = suggestions;
 		lastSuggestions = suggestions;
+		input.parentNode.querySelector('.awesomplete ul').scrollTop = 0;
 	};
 
 	const getSuggestions = function (value) {
@@ -172,6 +176,24 @@ function TagAutocomplete (config) {
 		}
 	};
 
+	const handleHighlight = function (evt) {
+		const suggestionListContainer = input.parentNode.querySelector('.awesomplete ul');
+		const highlighted = input.parentNode.querySelector('.awesomplete ul li[aria-selected=true]');
+		const allItems = input.parentNode.querySelectorAll('.awesomplete ul li');
+
+		if (highlighted) {
+			let index = 0;
+			for (let i = 0; i < allItems.length; i++) {
+				if (allItems[i] === highlighted) {
+					index = i;
+					break;
+				}
+			}
+
+			suggestionListContainer.scrollTop = (index - 1) * 14;
+		}
+	}
+
 	const handleFocus = function () {
 		if (searchTerm.length >= MIN_LENGTH && lastSuggestions.length) {
 			awesomplete.open();
@@ -204,6 +226,7 @@ function TagAutocomplete (config) {
 		handleSelect(evt.text.value);
 	});
 	input.addEventListener('focus', handleFocus);
+	input.addEventListener('awesomplete-highlight', handleHighlight);
 
 	const listDelegate = new Delegate(listContainer);
 	listDelegate.on('click', '.lr-forms__tags--tag', (evt) => {
@@ -260,8 +283,8 @@ function TagAutocomplete (config) {
 
 			let validation = null;
 			tags.forEach(tag => {
-				if (tag.length > MAX_TAG_LENGTH) {
-					validation = `Tags cannot exceed ${MAX_TAG_LENGTH} characters.`;
+				if (tag.length > MAX_LENGTH) {
+					validation = `Tags cannot exceed ${MAX_LENGTH} characters.`;
 				}
 			});
 
