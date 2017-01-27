@@ -244,6 +244,29 @@ function TagAutocomplete (config) {
 				showError("The field is required.");
 			}
 			return false;
+		} else {
+			const tags = getTagList();
+
+			if (input.value.trim()) {
+				tags.push(input.value.trim());
+			}
+
+			if (tags.length > MAX_TAGS) {
+				showError(`Maximum number of ${MAX_TAGS} tags can be selected.`);
+				return false;
+			}
+
+			let validation = null;
+			tags.forEach(tag => {
+				if (tag.length > MAX_TAG_LENGTH) {
+					validation = `Tags cannot exceed ${MAX_TAG_LENGTH} characters.`;
+				}
+			});
+
+			if (validation) {
+				showError(validation);
+				return false;
+			}
 		}
 
 		clearError();
