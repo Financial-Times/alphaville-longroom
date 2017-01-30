@@ -74,6 +74,7 @@ function LongroomFormInput (config) {
 				image_description: false,
 				image_size: false,
 				automatic_uploads: false,
+				relative_urls: false,
 				file_picker_callback: function(cb) {
 					const input = document.createElement('input');
 					input.setAttribute('type', 'file');
@@ -112,7 +113,7 @@ function LongroomFormInput (config) {
 							size: file.size,
 							file: file
 						}).then((data) => {
-							cb(data.url, { title: file.name });
+							cb(data.url);
 						}).catch(err => {
 							if (err && err.responseText && typeof err.responseText === 'object' && err.responseText.error) {
 								showError(err.responseText.error);
