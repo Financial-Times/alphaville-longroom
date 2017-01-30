@@ -39,18 +39,16 @@ function TagAutocomplete (config) {
 	const awesomplete = new Awesomplete(input, {
 		maxItems: DISPLAY_ITEMS,
 		filter: function (text, input) {
-			console.log('filter', text, input);
 			// eslint-disable-next-line
 			return Awesomplete.FILTER_STARTSWITH(toAscii(text.label), toAscii(input));
 		},
 		item: function (text, input) {
-			console.log('item', text, input);
 			// eslint-disable-next-line
 			return Awesomplete.ITEM(toAscii(text.label), toAscii(input));
 		},
-		sort: function (text, input) {
-			const countText = parseInt(text.label.match(/\(([0-9]+)\)$/), 10);
-			const countInput = parseInt(input.label.match(/\(([0-9]+)\)$/), 10);
+		sort: (text, input) => {
+			const countText = parseInt(text.label.match(/([0-9]+)\)$/), 10);
+			const countInput = parseInt(input.label.match(/([0-9]+)\)$/), 10);
 
 			return countText < countInput ? 1 : (countText > countInput ? -1 : 0);
 		}
