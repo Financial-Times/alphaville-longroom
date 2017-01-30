@@ -30,7 +30,8 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 		input: formEl.querySelector('textarea[name="post-summary"]'),
 		label: 'Summary',
 		required: postType === 'post' ? true : false,
-		wysiwyg: true
+		wysiwyg: true,
+		fileSizeLimit: fileSizeLimit
 	});
 
 	if (uploadContainer) {

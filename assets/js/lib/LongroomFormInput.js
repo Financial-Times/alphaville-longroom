@@ -3,6 +3,8 @@
 const domUtils = require('./domUtils');
 const randomString = require('./utils/randomString');
 const assetsPath = require('../assets_path');
+const fileUpload = require('./fileUpload');
+const uploadFileTypes = require('./upload_file_types');
 
 const pollForTinymce = function () {
 	return new Promise(resolve => {
@@ -25,6 +27,7 @@ function LongroomFormInput (config) {
 	const input = config.input;
 	const label = config.label;
 	const labelPlural = config.labelPlural;
+	const fileSizeLimit = config.fileSizeLimit;
 	const required = typeof config.required === 'boolean' ? config.required : true;
 
 	let formGroup = domUtils.getParents(input, '.o-forms-group');
@@ -49,11 +52,11 @@ function LongroomFormInput (config) {
 				height: 300,
 				menubar: false,
 				plugins: [
-					'advlist autolink lists link charmap print preview anchor',
+					'advlist autolink lists link image charmap print preview anchor',
 					'searchreplace visualblocks code',
-					'insertdatetime table contextmenu paste'
+					'insertdatetime table contextmenu'
 				],
-				toolbar: 'undo redo | bold italic underline strikethrough | bullist numlist | link | blockquote',
+				toolbar: 'undo redo | bold italic underline strikethrough | bullist numlist | link image | blockquote',
 				formats: {
 					alignleft: {classes : 'lr-align-left'},
 					aligncenter: {classes : 'lr-align-center'},
@@ -62,7 +65,66 @@ function LongroomFormInput (config) {
 					underline: {inline : 'span', 'classes' : 'lr-text-underline', exact: true},
 					strikethrough: {inline : 'span', 'classes' : 'lr-text-strikethrough'},
 				},
-				content_css: `${assetsPath}/build/tinymce_wysiwyg.css`
+				content_css: `${assetsPath}/build/tinymce_wysiwyg.css`,
+				images_upload_url: 'postAcceptor.php',
+				images_upload_base_path: '/some/basepath',
+				images_upload_credentials: true,
+				file_picker_types: 'image',
+				image_title: false,
+				image_description: false,
+				image_size: false,
+				automatic_uploads: false,
+				file_picker_callback: function(cb) {
+					const input = document.createElement('input');
+					input.setAttribute('type', 'file');
+					input.setAttribute('accept', 'image/*');
+
+					// Note: In modern browsers input[type="file"] is functional without
+					// even adding it to the DOM, but that might not be the case in some older
+					// or quirky browsers like IE, so you might want to add it to the DOM
+					// just in case, and visually hide it. And do not forget do remove it
+					// once you do not need it anymore.
+
+					input.onchange = function() {
+						const file = this.files[0];
+
+						let fileType = file.type;
+
+						if (!fileType) {
+							const ext = file.name.substr(file.name.lastIndexOf('.') + 1);
+
+							fileType = uploadFileTypes.fileTypeByExtension[ext];
+						}
+
+						if (!fileType || uploadFileTypes.allowedImageTypes.indexOf(fileType) === -1) {
+							showError("The selected image type is not allowed.");
+							return;
+						}
+
+						if (file.size > fileSizeLimit) {
+							showError("The selected image is too large.");
+							return;
+						}
+
+						fileUpload.uploadImage({
+							name: file.name,
+							type: fileType,
+							size: file.size,
+							file: file
+						}).then((data) => {
+							cb(data.url, { title: file.name });
+						}).catch(err => {
+							if (err && err.responseText && typeof err.responseText === 'object' && err.responseText.error) {
+								showError(err.responseText.error);
+							} else {
+								showError('Failed to upload the document. Please try again later.');
+								console.log(err);
+							}
+						});
+					};
+
+					input.click();
+				}
 			});
 		});
 	}

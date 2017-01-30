@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS files (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     user_id uuid NOT NULL,
     post_id integer,
-    is_attachment boolean DEFAULT false
+    is_embedded boolean DEFAULT false
 );
 CREATE INDEX files_post_id ON files (post_id);
 

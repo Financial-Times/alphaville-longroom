@@ -1,61 +1,8 @@
-const httpRequest = require('./httpRequest');
 const uploadFileTypes = require('./upload_file_types');
 const domUtils = require('./domUtils');
 const assetsPath = require('../assets_path');
+const fileUpload = require('./fileUpload');
 
-
-function getSignedRequest (file) {
-	return httpRequest.get({
-		url: '/longroom/files/sign',
-		dataType: 'json',
-		query: {
-			'file-name': file.name,
-			'file-type': file.type,
-			'file-size': file.size
-		}
-	}).then((data) => {
-		if (typeof data === 'string') {
-			data = JSON.parse(data);
-		}
-
-		if (data) {
-			return data;
-		} else {
-			throw new Error("Failed to fetch signed request.");
-		}
-	});
-}
-
-function uploadFile (fileInfo, onProgress) {
-	return getSignedRequest(fileInfo)
-		.then(data => {
-			return httpRequest.put({
-				url: data.signedRequest,
-				body: fileInfo.file,
-				dataType: 'json',
-				contentType: data.fileType,
-				withCredentials: false,
-				onProgress: onProgress
-			}).then(() => {
-				return {
-					url: data.url,
-					id: data.fileId,
-					savedName: data.savedFileName
-				};
-			});
-		}
-	);
-}
-
-function deleteFile (fileId) {
-	return httpRequest.post({
-		url: '/longroom/files/delete',
-		dataType: 'json',
-		body: {
-			'file-id': fileId
-		}
-	});
-}
 
 function LongroomFileUpload (config) {
 	const self = this;
@@ -337,7 +284,7 @@ function LongroomFileUploadItem (config) {
 
 			if (!existingFile) {
 				el.parentNode.removeChild(el);
-				deleteFile(content.file.id);
+				fileUpload.deleteFile(content.file.id);
 				uploadContainer.removeUploadForm(id);
 			} else {
 				el.parentNode.removeChild(el);
@@ -458,7 +405,7 @@ function LongroomFileUploadItem (config) {
 			}
 
 
-			uploadFile({
+			fileUpload.uploadFile({
 				name: file.name,
 				type: fileType,
 				size: file.size,

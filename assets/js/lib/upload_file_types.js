@@ -6,6 +6,14 @@ exports.allowedFileTypes = [
 	"application/pdf"
 ];
 
+exports.allowedImageTypes = [
+	"image/gif",
+	"image/png",
+	"image/jpeg",
+	"image/bmp",
+	"image/webp"
+];
+
 exports.fileTypesIcons = {
 	"application/msword": "doc",
 	"application/vnd.openxmlformats-officedocument.wordprocessingml.document": "doc",
@@ -19,5 +27,11 @@ exports.fileTypeByExtension = {
 	"docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
 	"xls": "application/vnd.ms-excel",
 	"xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-	"pdf": "application/pdf"
+	"pdf": "application/pdf",
+	"gif": "image/gif",
+	"png": "image/png",
+	"jpg": "image/jpeg",
+	"jpeg": "image/jpeg",
+	"bmp": "image/bmp",
+	"webp": "image/webp"
 };
