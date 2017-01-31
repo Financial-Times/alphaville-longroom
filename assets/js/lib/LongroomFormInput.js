@@ -72,7 +72,7 @@ function LongroomFormInput (config) {
 				file_picker_types: 'image',
 				image_title: false,
 				image_description: false,
-				image_size: false,
+				image_dimensions: false,
 				automatic_uploads: false,
 				relative_urls: false,
 				file_picker_callback: function(cb) {
@@ -98,12 +98,12 @@ function LongroomFormInput (config) {
 						}
 
 						if (!fileType || uploadFileTypes.allowedImageTypes.indexOf(fileType) === -1) {
-							showError("The selected image type is not allowed.");
+							tinymce.activeEditor.windowManager.alert("The selected image type is not allowed.");
 							return;
 						}
 
 						if (file.size > fileSizeLimit) {
-							showError("The selected image is too large.");
+							tinymce.activeEditor.windowManager.alert("The selected image is too large.");
 							return;
 						}
 
@@ -116,9 +116,9 @@ function LongroomFormInput (config) {
 							cb(data.url);
 						}).catch(err => {
 							if (err && err.responseText && typeof err.responseText === 'object' && err.responseText.error) {
-								showError(err.responseText.error);
+								tinymce.activeEditor.windowManager.alert(err.responseText.error);
 							} else {
-								showError('Failed to upload the document. Please try again later.');
+								tinymce.activeEditor.windowManager.alert('Failed to upload the document. Please try again later.');
 								console.log(err);
 							}
 						});
