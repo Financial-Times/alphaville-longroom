@@ -41,7 +41,69 @@ function LongroomFormInput (config) {
 		errorEl = formGroup.querySelector('.o-forms-errortext');
 	}
 
-	if (config.wysiwyg) {
+
+	const showError = function (errMsg) {
+		if (errorEl) {
+			errorEl.innerHTML = errMsg;
+		}
+
+		if (formGroup) {
+			formGroup.classList.add('o-forms--error');
+		}
+	};
+
+	const clearError = function () {
+		if (errorEl) {
+			errorEl.innerHTML = '';
+		}
+
+		if (formGroup) {
+			formGroup.classList.remove('o-forms--error');
+		}
+	};
+
+	const handleKeytype = function () {
+		clearError();
+	};
+
+	this.getValue = function () {
+		if (config.wysiwyg) {
+			return window.tinymce.get(input.id).getContent();
+		} else {
+			return input.value.trim();
+		}
+	};
+
+	this.validate = function () {
+		if (!required) {
+			return true;
+		}
+
+		if (!self.getValue()) {
+			if (label) {
+				showError(`${label} ${labelPlural ? 'are' : 'is'} required.`);
+			} else {
+				showError("The field is required.");
+			}
+			return false;
+		}
+
+		clearError();
+		return true;
+	};
+
+	this.handleValidation = function (validationMessage) {
+		showError(validationMessage);
+	};
+
+	this.showError = showError;
+	this.clearError = clearError;
+
+
+
+	if (!config.wysiwyg) {
+		input.addEventListener('keyup', handleKeytype);
+	} else {
 		if (!input.id) {
 			input.id = randomString();
 		}
@@ -64,6 +126,9 @@ function LongroomFormInput (config) {
 					alignjustify: {classes : 'lr-align-full'},
 					underline: {inline : 'span', 'classes' : 'lr-text-underline', exact: true},
 					strikethrough: {inline : 'span', 'classes' : 'lr-text-strikethrough'},
+				},
+				setup: function (ed) {
+					ed.on('keyup', handleKeytype);
 				},
 				content_css: `${assetsPath}/build/tinymce_wysiwyg.css`,
 				images_upload_url: 'postAcceptor.php',
@@ -129,60 +194,6 @@ function LongroomFormInput (config) {
 			});
 		});
 	}
-
-
-	const showError = function (errMsg) {
-		if (errorEl) {
-			errorEl.innerHTML = errMsg;
-		}
-
-		if (formGroup) {
-			formGroup.classList.add('o-forms--error');
-		}
-	};
-
-	const clearError = function () {
-		if (errorEl) {
-			errorEl.innerHTML = '';
-		}
-
-		if (formGroup) {
-			formGroup.classList.remove('o-forms--error');
-		}
-	};
-
-	this.getValue = function () {
-		if (config.wysiwyg) {
-			return window.tinymce.get(input.id).getContent();
-		} else {
-			return input.value.trim();
-		}
-	};
-
-	this.validate = function () {
-		if (!required) {
-			return true;
-		}
-
-		if (!self.getValue()) {
-			if (label) {
-				showError(`${label} ${labelPlural ? 'are' : 'is'} required.`);
-			} else {
-				showError("The field is required.");
-			}
-			return false;
-		}
-
-		clearError();
-		return true;
-	};
-
-	this.handleValidation = function (validationMessage) {
-		showError(validationMessage);
-	};
-
-	this.showError = showError;
-	this.clearError = clearError;
 }
 
 module.exports = LongroomFormInput;
