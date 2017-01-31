@@ -82,51 +82,6 @@ h2.lr-page-heading {
 
 
 
-
-.lr-post {
-	.alphaville-card__heading {
-		margin-bottom: 0;
-	}
-
-	.alphaville-card {
-		padding-left: 0;
-		margin-bottom: 20px;
-	}
-
-	.lr-card__file-icon {
-		max-width: 50px;
-	}
-
-	.lr-post--files {
-		padding: 10px 0;
-
-		span {
-			color: oColorsGetPaletteColor(grey-tint5);
-		}
-	}
-
-	.lr-post--file-source {
-		span {
-			font-weight: bold;
-		}
-	}
-
-	.lr-post-body {
-		padding-top: 10px;
-		word-break: break-word;
-
-		img {
-			max-width: 100%;
-		}
-
-		blockquote {
-			border-left: 2px solid oColorsGetPaletteColor(grey-tint2);
-			margin-left: 0;
-			padding-left: 20px;
-		}
-	}
-}
-
 .lr-action-container {
 	float: right;
 	display: none;

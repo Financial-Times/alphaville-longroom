@@ -1,6 +1,8 @@
 article.lr-post {
-
 	.alphaville-card {
+		padding-left: 0;
+		margin-bottom: 20px;
+
 		.alphaville-card__theme {
 			.alphaville-card__tag {
 				@include oTypographySansDataBold(m);
@@ -10,6 +12,7 @@ article.lr-post {
 
 		.alphaville-card__heading {
 			@include oTypographySerifDisplay(l);
+			margin-bottom: 0;
 		}	
 
 		.alphaville-card__footer {
@@ -38,6 +41,12 @@ article.lr-post {
 			}
 		}
 		.lr-post--files {
+			padding: 10px 0;
+
+			span {
+				color: oColorsGetPaletteColor(grey-tint5);
+			}
+
 			a {
 				display: inline-block;
 
@@ -47,11 +56,33 @@ article.lr-post {
 					font-size: 16px;
 					padding-left: 10px;
 					margin-top: 15px;
+
 					span {
 						@include oTypographySansDataBold(m);
 						font-size: 16px;
+						font-weight: bold;
 					}
 				}
+			}
+		}
+
+		.lr-card__file-icon {
+			max-width: 50px;
+		}
+
+		.lr-post-body {
+			padding-top: 10px;
+			word-break: break-word;
+
+			img {
+				max-width: 100%;
+				height: auto;
+			}
+
+			blockquote {
+				border-left: 2px solid oColorsGetPaletteColor(grey-tint2);
+				margin-left: 0;
+				padding-left: 20px;
 			}
 		}
 	}
