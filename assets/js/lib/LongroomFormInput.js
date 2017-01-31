@@ -142,8 +142,11 @@ function LongroomFormInput (config) {
 				relative_urls: false,
 				file_picker_callback: function(cb) {
 					const input = document.createElement('input');
+					input.style.display = 'none';
 					input.setAttribute('type', 'file');
 					input.setAttribute('accept', 'image/*');
+
+					document.body.appendChild(input);
 
 					// Note: In modern browsers input[type="file"] is functional without
 					// even adding it to the DOM, but that might not be the case in some older
@@ -153,6 +156,10 @@ function LongroomFormInput (config) {
 
 					input.onchange = function() {
 						const file = this.files[0];
+
+						try {
+							input.parentNode.removeChild(input);
+						} catch (e) {}
 
 						let fileType = file.type;
 
