@@ -10,8 +10,7 @@ exports.allowedImageTypes = [
 	"image/gif",
 	"image/png",
 	"image/jpeg",
-	"image/bmp",
-	"image/webp"
+	"image/bmp"
 ];
 
 exports.fileTypesIcons = {
@@ -32,6 +31,5 @@ exports.fileTypeByExtension = {
 	"png": "image/png",
 	"jpg": "image/jpeg",
 	"jpeg": "image/jpeg",
-	"bmp": "image/bmp",
-	"webp": "image/webp"
+	"bmp": "image/bmp"
 };
