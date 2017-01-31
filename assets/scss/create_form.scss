@@ -120,13 +120,6 @@
 
 		[hidden],
 		:empty {
-			opacity: 0;
-			transform: scale(0);
-			display: block;
-			transition-timing-function: ease;
-		}
-
-		[hidden] {
 			display: none;
 		}
 
