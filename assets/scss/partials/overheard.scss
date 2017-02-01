@@ -1,4 +1,5 @@
 .lr-overheard--item {
+	font-size: 18px;
 	margin: 20px 0;
 
 	a {
@@ -19,7 +20,10 @@
 }
 
 .lr-overheard--title {
-	font-size: 20px;
+	@include oTypographySerifDisplay(l);
+	font-size: 18px;
+	line-height: 18px;
+	font-weight: 600;
 }
 
 .lr-overheard--comment {
