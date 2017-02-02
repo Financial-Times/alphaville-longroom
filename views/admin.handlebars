@@ -1,0 +1,61 @@
+{{#contentFor "head"}}
+    <link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
+
+    <script>
+        (function () {
+            ctmLoadScript({
+                src: "{{assetsBasePath}}/build/main.js",
+                async: true
+            });
+        }());
+    </script>
+{{/contentFor}}
+
+<div class="o-grid-container">
+    <div class="o-grid-row">
+        <div data-o-grid-colspan="12">
+            {{#each users}}
+                <div class="alphaville-card-container--lr-applicant">
+                    <div class="alphaville-card alphaville-card--list" data-o-component="o-card" data-article-id="{{_id}}">
+                        <div class="alphaville-card__content">
+
+                            <h3 class="alphaville-card__heading">
+                                <a href="#" data-trackable="heading">{{first_name}} {{last_name}}
+                                </a>
+                            </h3>
+
+                            <div class="alphaville-card__lr-applicant">
+                                Email: <a href="#">{{email}}</a><br />
+                                Phone: {{phone}}<br />
+                                Location: {{location}}<br />
+                                Industry: {{industry}}<br />
+                                Position: {{position}}<br />
+                                Responsibility: {{responsibility}}<br />
+                                <div data-o-component="o-expander" class="o-expander o--if-js clearfix alphaville--read-more__expander"
+                                     data-o-expander-shrink-to="hidden"
+                                     data-o-expander-expanded-toggle-text="less"
+                                     data-o-expander-collapsed-toggle-text="more">
+                                    <button class="o-expander__toggle o--if-js alphaville--read-more__toggle"></button>
+                                    <div class="o-expander__content alphaville--read-more__content">
+                                        <ul>
+                                            <li>Description: {{description}}</li>
+                                            <li>Summary: {{summary}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="lr-action-container">
+                                <a href="/longroom/admin/approve/{{user_id}}" class="lr-action--edit lr-action--button o-buttons o-buttons--standout">Accept</a>
+                                <a href="/longroom/admin/reject/{{user_id}}" class="lr-action--delete lr-action--button">Reject</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            {{else}}
+                <div>No pending requests.</div>
+            {{/each}}
+        </div>
+    </div>
+</div>
