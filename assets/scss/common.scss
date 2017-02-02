@@ -41,6 +41,7 @@ $o-card-is-silent: false;
 @import 'partials/user';
 @import 'partials/overheard';
 @import 'partials/wysiwyg';
+@import 'partials/admin';
 
 .lr-main-content {
 	margin-top: 25px;
@@ -117,11 +118,11 @@ h2.lr-page-heading {
 }
 
 .lr-message-success {
-	color: oColorsGetPaletteColor('green');	
+	color: oColorsGetPaletteColor('green');
 }
 
 .lr-message-error {
-	color: oColorsGetPaletteColor('red');	
+	color: oColorsGetPaletteColor('red');
 }
 
 .alphaville-article-list .o-ads {
