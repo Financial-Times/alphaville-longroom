@@ -20,11 +20,11 @@
 						<div class="alphaville-card__content">
 							{{#if @root/editAndDelete}}
 								<div class="lr-action-container">
-									<a href="#" class="lr-action--delete lr-action--button" data-post-id="{{id}}">Delete</a>
+									<a href="#" class="lr-action--delete lr-action--button lr-content-delete" data-post-id="{{id}}">Delete</a>
 									<a href="/longroom/content/{{id}}/edit" class="lr-action--edit lr-action--button o-buttons o-buttons--standout">Edit</a>
 								</div>
 							{{/if}}
-							
+
 							<div class="alphaville-card__theme">
 								{{#tags}}
 									<a href="/longroom/topic/{{id}}" class="alphaville-card__tag" data-trackable="theme">{{name}}</a>&nbsp;
