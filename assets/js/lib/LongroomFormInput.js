@@ -131,13 +131,10 @@ function LongroomFormInput (config) {
 					ed.on('keyup', handleKeytype);
 				},
 				content_css: `${assetsPath}/build/tinymce_wysiwyg.css`,
-				images_upload_url: 'postAcceptor.php',
-				images_upload_base_path: '/some/basepath',
-				images_upload_credentials: true,
 				file_picker_types: 'image',
 				image_title: false,
 				image_description: false,
-				image_dimensions: false,
+				image_dimensions: true,
 				automatic_uploads: false,
 				relative_urls: false,
 				file_picker_callback: function(cb) {
@@ -153,6 +150,10 @@ function LongroomFormInput (config) {
 					// or quirky browsers like IE, so you might want to add it to the DOM
 					// just in case, and visually hide it. And do not forget do remove it
 					// once you do not need it anymore.
+
+					const activeWindow = tinymce.activeEditor.windowManager.getWindows()[0];
+					let activeWindowBody;
+					let progressEl;
 
 					input.onchange = function() {
 						const file = this.files[0];
@@ -179,12 +180,37 @@ function LongroomFormInput (config) {
 							return;
 						}
 
+						if (activeWindow) {
+							if (!activeWindowBody) {
+								activeWindowBody = activeWindow.$el[0].querySelector(`.${activeWindow.bodyClasses.prefix}${activeWindow.bodyClasses.cls[0]}`);
+
+								if (activeWindowBody) {
+									progressEl = activeWindowBody.querySelector('progress');
+
+									if (!progressEl) {
+										activeWindowBody.appendChild(domUtils.toDOM('<progress style="width: 100%; height: 10px;"></progress>'));
+										progressEl = activeWindowBody.querySelector('progress');
+									} else {
+										progressEl.style.display = 'block';
+									}
+								}
+							}
+						}
+
+						const onProgress = function (percentage) {
+							if (progressEl) {
+								progressEl.value = percentage;
+							}
+						};
+
 						fileUpload.uploadImage({
 							name: file.name,
 							type: fileType,
 							size: file.size,
 							file: file
-						}).then((data) => {
+						}, onProgress).then((data) => {
+							progressEl.style.display = 'none';
+
 							cb(data.url);
 						}).catch(err => {
 							if (err && err.responseText && typeof err.responseText === 'object' && err.responseText.error) {
