@@ -11,8 +11,6 @@ const _ = require('lodash');
 
 const env = process.env.ENVIRONMENT === 'prod' ? 'prod' : 'test';
 
-console.log(env);
-
 const app = alphavilleExpress({
 	directory: __dirname,
 	appBasePath: 'longroom',
