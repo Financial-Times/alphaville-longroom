@@ -7,10 +7,8 @@ exports.allowedFileTypes = [
 ];
 
 exports.allowedImageTypes = [
-	"image/gif",
 	"image/png",
-	"image/jpeg",
-	"image/bmp"
+	"image/jpeg"
 ];
 
 exports.fileTypesIcons = {
