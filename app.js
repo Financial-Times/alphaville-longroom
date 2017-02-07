@@ -87,7 +87,7 @@ app.use('/', require('./routes/__gtg'));
 app.use('/longroom', require('./router'));
 
 app.all('/', (req, res) => {
-	res.redirect('/longroom/home');
+	res.redirect('/longroom');
 });
 
 // catch 404 and forward to error handler

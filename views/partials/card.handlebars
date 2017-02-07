@@ -19,13 +19,13 @@
 			</div>
 
 			<div class="alphaville-card__footer">
-				{{> commentcount}}				
+				{{> commentcount}}
 				{{> timestamp}}
 			</div>
 
 			{{#if editAndDelete}}
 				<div class="lr-action-container">
-					<a href="#" class="lr-action--delete lr-action--button" data-post-id="{{id}}">Delete</a>
+					<a href="#" class="lr-action--delete lr-action--button lr-content-delete" data-post-id="{{id}}">Delete</a>
 					<a href="{{@root/basePath}}/content/{{id}}/edit" class="lr-action--edit lr-action--button o-buttons o-buttons--standout">Edit</a>
 				</div>
 			{{/if}}

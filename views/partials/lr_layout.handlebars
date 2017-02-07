@@ -18,6 +18,9 @@
 							<li><a href="/longroom/faq">FAQs</a></li>
 							<li><a href="/longroom/house-rules">House Rules</a></li>
 							<li class="lr-edit-my-posts"><a href="/longroom/dashboard">Dashboard</a></li>
+                            {{#if isAdmin }}
+                                <li class="lr-nav-admin"><a href="/longroom/admin">Admin</a></li>
+                            {{/if}}
 						</ul>
 					</div>
 				</div>
