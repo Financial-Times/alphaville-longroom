@@ -190,7 +190,7 @@ function TagAutocomplete (config) {
 				}
 			}
 
-			suggestionListContainer.scrollTop = (index - 1) * 14;
+			suggestionListContainer.scrollTop = (index - 2) * 23;
 		}
 	}
 
