@@ -118,7 +118,7 @@
 				<label class="o-forms-label o-expander__toggle o--if-js lr-label-with-info" for="post-summary">Discussion summary</label>
 				<button class="o-buttons o-overlay-trigger lr-forms__info" data-o-overlay-src="#lr-summary-help-overlay" data-o-overlay-id="lr-summary-help-overlay" data-o-overlay-compact="true" data-o-overlay-arrow-position="bottom" aria-pressed="false" aria-haspopup="true">?</button>
 			</div>
-			<div class="o-expander__content">
+			<div class="{{#unless postSummary}}o-expander__content{{/unless}}">
 				<textarea class="o-forms-textarea" name="post-summary" id="post-summary" >{{{postSummary}}}</textarea>
 				<div class="o-forms-errortext"></div>
 			</div>
