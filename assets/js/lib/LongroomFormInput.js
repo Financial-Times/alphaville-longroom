@@ -27,7 +27,7 @@ function LongroomFormInput (config) {
 	const input = config.input;
 	const label = config.label;
 	const labelPlural = config.labelPlural;
-	const fileSizeLimit = config.fileSizeLimit;
+	const imageSizeLimit = config.imageSizeLimit;
 	const required = typeof config.required === 'boolean' ? config.required : true;
 
 	let formGroup = domUtils.getParents(input, '.o-forms-group');
@@ -175,7 +175,7 @@ function LongroomFormInput (config) {
 							return;
 						}
 
-						if (file.size > fileSizeLimit) {
+						if (file.size > imageSizeLimit) {
 							tinymce.activeEditor.windowManager.alert("The selected image is too large.");
 							return;
 						}

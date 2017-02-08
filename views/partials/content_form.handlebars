@@ -18,7 +18,7 @@
 			<label class="o-forms-label lr-label-with-info">
 				Attach document
 			</label>
-			<button class="o-buttons o-overlay-trigger lr-forms__attach-doc-info" data-o-overlay-src="#lr-attach-help-overlay" data-o-overlay-id="lr_attach_help_overlay" data-o-overlay-compact="true" data-o-overlay-arrow-position="top" aria-pressed="false" aria-haspopup="true">?</button>
+			<button class="o-buttons o-overlay-trigger lr-forms__info" data-o-overlay-src="#lr-attach-help-overlay" data-o-overlay-id="lr_attach_help_overlay" data-o-overlay-compact="true" data-o-overlay-arrow-position="top" aria-pressed="false" aria-haspopup="true">?</button>
 			<script type="text/template" id="lr-attach-help-overlay">
 				<p>The formats we accept are Word, Excel and PDF<br/>
 					Size limit per document is 100Mb</p>
@@ -114,15 +114,27 @@
 <div class="o-forms-group">
 	{{#if isDocumentForm}}
 		<div data-o-component="o-expander" class="o-expander" data-o-expander-shrink-to="hidden" data-o-expander-expanded-toggle-text="Discussion summary" data-o-expander-collapsed-toggle-text="Discussion summary">
-			<label class="o-forms-label o-expander__toggle o--if-js" for="post-summary">Discussion summary</label>
+			<div>
+				<label class="o-forms-label o-expander__toggle o--if-js lr-label-with-info" for="post-summary">Discussion summary</label>
+				<button class="o-buttons o-overlay-trigger lr-forms__info" data-o-overlay-src="#lr-summary-help-overlay" data-o-overlay-id="lr-summary-help-overlay" data-o-overlay-compact="true" data-o-overlay-arrow-position="bottom" aria-pressed="false" aria-haspopup="true">?</button>
+			</div>
 			<div class="o-expander__content">
 				<textarea class="o-forms-textarea" name="post-summary" id="post-summary" >{{{postSummary}}}</textarea>
 				<div class="o-forms-errortext"></div>
 			</div>
 		</div>
 	{{else}}
-		<label class="o-forms-label o-expander__toggle o--if-js" for="post-summary">Discussion summary</label>
+		<div>
+			<label class="o-forms-label o-expander__toggle o--if-js lr-label-with-info" for="post-summary">Discussion summary</label>
+			<button class="o-buttons o-overlay-trigger lr-forms__info" data-o-overlay-src="#lr-summary-help-overlay" data-o-overlay-id="lr-summary-help-overlay" data-o-overlay-compact="true" data-o-overlay-arrow-position="bottom" aria-pressed="false" aria-haspopup="true">?</button>
+		</div>
+
 		<textarea class="o-forms-textarea" name="post-summary" id="post-summary" >{{{postSummary}}}</textarea>
 		<div class="o-forms-errortext"></div>
 	{{/if}}
+
+	<script type="text/template" id="lr-summary-help-overlay">
+		<p>jpg and png images under 5MB can be<br/>
+		added within the discussion summary</p>
+	</script>
 </div>

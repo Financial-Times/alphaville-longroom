@@ -3,7 +3,10 @@ const LongroomFormInput = require('./LongroomFormInput');
 const TagAutocomplete = require('./TagAutocomplete');
 const httpRequest = require('./httpRequest');
 
-function LongroomCreateForm (formEl, fileSizeLimit) {
+const fileSizeLimit = 100 * 1024 * 1024;
+const imageSizeLimit = 5 * 1024 * 1024;
+
+function LongroomCreateForm (formEl) {
 	const postType = formEl.getAttribute('data-lr-post-type');
 
 	const genericErrorMsgEl = formEl.querySelector('.lr-generic-message');
@@ -31,7 +34,7 @@ function LongroomCreateForm (formEl, fileSizeLimit) {
 		label: 'Summary',
 		required: postType === 'post' ? true : false,
 		wysiwyg: true,
-		fileSizeLimit: fileSizeLimit
+		imageSizeLimit: imageSizeLimit
 	});
 
 	if (uploadContainer) {
