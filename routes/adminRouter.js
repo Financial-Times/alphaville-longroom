@@ -6,5 +6,6 @@ router.all('/', isEditor);
 router.get('/', adminCtrl.index);
 router.get('/approve/:user_id', adminCtrl.approve);
 router.get('/reject/:user_id', adminCtrl.reject);
+router.get('/suspend/:user_id', adminCtrl.suspend);
 
 module.exports = router;
