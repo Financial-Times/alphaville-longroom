@@ -45,7 +45,7 @@
                         <div class="o-forms-group o-forms--error" data-o-grid-colspan="12">
                             <label class="o-forms-label o-forms-errortext" for="pseudonym">Pseudonym *</label>
                             <div class="o-forms__additional-info">The pseudonym will also be used for comments on ft.com</div>
-                            <input type="text" class="o-forms-text" name="pseudonym" value="{{form.pseudonym}}" />
+                            <input type="text" class="o-forms-text" name="pseudonym" value="{{pseudonym}}" />
                             {{#each errors.pseudonym}}
                                 <div class="o-forms-errortext">{{this}}</div>
                             {{/each}}
@@ -54,7 +54,7 @@
                         <div class="o-forms-group" data-o-grid-colspan="12">
                             <label class="o-forms-label" for="pseudonym">Pseudonym *</label>
                             <div class="o-forms__additional-info">The pseudonym will also be used for comments on ft.com</div>
-                            <input type="text" class="o-forms-text" name="pseudonym" value="{{user.pseudonym}}" />
+                            <input type="text" class="o-forms-text" name="pseudonym" value="{{pseudonym}}" />
                         </div>
                     {{/if}}
                 </div>
