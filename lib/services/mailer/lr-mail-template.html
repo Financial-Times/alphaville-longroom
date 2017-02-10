@@ -136,44 +136,46 @@
             position: relative;
             text-align: center;
             height: 80px;
-            line-height: 80px;
             background-color: #443c47;
+            border-bottom: 1px solid #a6a6a6;
         }
-        .av-brand:before {
-            content: '';
-            width: 100%;
+        .brand-line {
             height: 1px;
-            background: #a6a6a6;
+            z-index: 1;
+            width: 100%;
+            border: none;
             position: absolute;
-            left: 0;
             top: 50%;
+            margin: 0;
+            padding: 0;
+            background-color: #a6a6a6;
         }
         .av-logo {
             position: relative;
-        }
-        .av-logo:before {
-            content: '';
+            z-index: 2;
             background: url('https://ftalphaville.ft.com/assets/longroom/bower/7r9XKKERg1/alphaville-ui/header/AV_brand_logo.svg') no-repeat;
-            background-size: contain;
             height: 80px;
             width: 100px;
             float: left;
-            margin: 0 -100px -12px 0;
+            background-size: contain;
         }
         .av-logo-text {
             font-family: MetricWeb, sans-serif;
             font-size: 20px;
+            line-height: 80px;
+            z-index: 2;
             color: #ffffff;
             text-transform: uppercase;
             font-weight: 500;
             display: inline-block;
             background: #443c47;
-            position: relative;
+            position: absolute;
+            margin: 0 0 0 -100px;
             padding: 0 10px;
         }
         .mail-body {
-            font-family: FinancierDisplayWeb;
-            font-size: 16px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
             padding: 10px 10px 10px 10px;
         }
 
@@ -277,6 +279,7 @@
                             <tr>
                                 <td>
                                     <div class="av-brand">
+                                        <hr class="brand-line"/>
                                         <div class="av-logo"></div>
                                         <span class="av-logo-text">Alphaville</span>
                                     </div>
@@ -363,7 +366,7 @@
                                                                         </td>
                                                                     </tr>
                                                                     <tr>
-                                                                        <td align="left" style="font-family: Georgia, serif; font-size: 12px; line-height: 15px; color: #585857; text-align: center" valign="top">&copy; THE FINANCIAL TIMES LTD 2016 </td>
+                                                                        <td align="left" style="font-family: Georgia, serif; font-size: 12px; line-height: 15px; color: #585857; text-align: center" valign="top">&copy; THE FINANCIAL TIMES LTD <%= year %> </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td align="left" style="font-family: Georgia, serif; font-size: 12px; line-height:15px; color: #585857; padding-top: 5px; text-align: center;" valign="top"> This email was sent by a company owned by Financial Times Group Limited (FT Group), registered office at Number One Southwark Bridge, London SE1 9HL. Registered in England and Wales with company number 879531. </td>
