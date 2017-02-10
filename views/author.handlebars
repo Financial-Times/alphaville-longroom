@@ -13,11 +13,11 @@
 
 {{#> lr_layout }}
 	<div class="alphaville-article-list lr-post-list" data-trackable="author-post-list">
-        {{#if displaySuspendButton}}
-            <div class="lr-action-container">
-                <a href="/longroom/admin/suspend/{{userId}}" class="lr-action--suspend o-buttons lr-action--button">Suspend access</a>
-            </div>
-        {{/if}}
+		{{#if displaySuspendButton}}
+			<div class="lr-action-container">
+				<a href="/longroom/admin/suspend/{{userId}}" class="lr-action--suspend o-buttons lr-action--button" data-component="alphaville-confirm" data-alphaville-confirm-title="Suspend access" data-alphaville-confirm-message="Are you sure you want to suspend access?">Suspend access</a>
+			</div>
+		{{/if}}
 	<h1 class="lr-page-heading">{{userPseudonym}}</h1>
 	{{#if userSummary}}<p>{{userSummary}}</p>{{/if}}
 		{{#posts}}
