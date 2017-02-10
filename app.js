@@ -64,6 +64,10 @@ app.use(function (req, res, next ) {
 
 		options.headerConfig = options.headerConfig || {};
 
+		if (!options.title) {
+			options.title = 'Long Room | FT Alphaville';
+		}
+
 		_.merge(options, {
 			appUrl: process.env.APP_URL,
 			adZone: 'alphaville.long.room',
