@@ -5,24 +5,27 @@ document.addEventListener('o.DOMContentLoaded', () => {
 		const errorContainers = joinForm.querySelectorAll('.o-forms-errortext');
 
 		for (let i = 0; i < errorContainers.length; i++) {
-			const input = errorContainers[i].parentNode.querySelector('input');
+			const formGroup = errorContainers[i].parentNode;
+			const input = formGroup.querySelector('input');
 
 			if (input) {
 				(function (errorContainer) {
 					input.addEventListener('keyup', () => {
 						errorContainer.innerHTML = '';
+						formGroup.classList.remove('o-forms--error');
 					});
-				}(errorContainer[i]));
+				}(errorContainers[i]));
 			}
 
-			const select = errorContainers[i].parentNode.querySelector('select');
+			const select = formGroup.querySelector('select');
 
 			if (select) {
 				(function (errorContainer) {
 					select.addEventListener('change', () => {
 						errorContainer.innerHTML = '';
+						formGroup.classList.remove('o-forms--error');
 					});
-				}(errorContainer[i]));
+				}(errorContainers[i]));
 			}
 		}
 	}
