@@ -6,6 +6,7 @@ document.addEventListener('o.DOMContentLoaded', () => {
 
 		for (let i = 0; i < errorContainers.length; i++) {
 			const formGroup = errorContainers[i].parentNode;
+
 			const input = formGroup.querySelector('input');
 
 			if (input) {
@@ -16,6 +17,19 @@ document.addEventListener('o.DOMContentLoaded', () => {
 					});
 				}(errorContainers[i]));
 			}
+
+
+			const textarea = formGroup.querySelector('textarea');
+
+			if (textarea) {
+				(function (errorContainer) {
+					textarea.addEventListener('keyup', () => {
+						errorContainer.innerHTML = '';
+						formGroup.classList.remove('o-forms--error');
+					});
+				}(errorContainers[i]));
+			}
+
 
 			const select = formGroup.querySelector('select');
 
