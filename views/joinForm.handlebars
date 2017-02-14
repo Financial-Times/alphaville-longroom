@@ -43,8 +43,8 @@
                 <div class="o-grid-row">
                     {{#if errors.pseudonym}}
                         <div class="o-forms-group o-forms--error" data-o-grid-colspan="12">
-                            <label class="o-forms-label o-forms-errortext" for="pseudonym">Pseudonym *</label>
-                            <div class="o-forms__additional-info">The pseudonym will also be used for comments on ft.com</div>
+                            <label class="o-forms-label" for="pseudonym">Pseudonym *</label>
+                            <div class="o-forms-additional-info">This will also be used for comments and posts</div>
                             <input type="text" class="o-forms-text" name="pseudonym" value="{{pseudonym}}" />
                             {{#each errors.pseudonym}}
                                 <div class="o-forms-errortext">{{this}}</div>
@@ -53,7 +53,7 @@
                     {{else}}
                         <div class="o-forms-group" data-o-grid-colspan="12">
                             <label class="o-forms-label" for="pseudonym">Pseudonym *</label>
-                            <div class="o-forms__additional-info">The pseudonym will also be used for comments on ft.com</div>
+                            <div class="o-forms-additional-info">This will also be used for comments and posts</div>
                             <input type="text" class="o-forms-text" name="pseudonym" value="{{pseudonym}}" />
                         </div>
                     {{/if}}
@@ -79,7 +79,7 @@
                 <div class="o-grid-row">
                     {{#if errors.location}}
                         <div class="o-forms-group o-forms--error" data-o-grid-colspan="12">
-                            <label class="o-forms-label o-forms-errortext" for="location">Location *</label>
+                            <label class="o-forms-label" for="location">Location *</label>
                             <input type="text" class="o-forms-text" name="location" value="{{form.location}}" />
                             {{#each errors.location}}
                                 <div class="o-forms-errortext">{{this}}</div>
@@ -94,8 +94,8 @@
                 </div>
                 <div class="o-grid-row">
                     {{#if errors.description}}
-                        <div class="o-forms-group o-forms--error" data-o-grid-colspan="12">
-                            <label class="o-forms-label o-forms-errortext" for="description">About you *</label>
+                        <div class="o-forms-group" data-o-grid-colspan="12">
+                            <label class="o-forms-label" for="description">About you *</label>
                             <textarea class="o-forms-textarea" name="description">{{form.description}}</textarea>
                             {{#each errors.description}}
                                 <div class="o-forms-errortext">{{this}}</div>
@@ -110,9 +110,9 @@
                 </div>
                 <div class="o-grid-row">
                     {{#if errors.summary}}
-                        <div class="o-forms-group o-forms--error" data-o-grid-colspan="12">
-                            <label class="o-forms-label o-forms-errortext" for="summary">My biography</label>
-                            <div class="o-forms__additional-info">this information will be shared with other Long Room members alongside the posts you publish</div>
+                        <div class="o-forms-group" data-o-grid-colspan="12">
+                            <label class="o-forms-label" for="summary">My biography</label>
+                            <div class="o-forms-additional-info">This information will be shared with other Long Room members alongside the posts you publish</div>
                             <textarea class="o-forms-textarea" name="summary">{{form.summary}}</textarea>
                             {{#each errors.summary}}
                                 <div class="o-forms-errortext">{{this}}</div>
@@ -121,7 +121,7 @@
                     {{else}}
                         <div class="o-forms-group" data-o-grid-colspan="12">
                             <label class="o-forms-label" for="summary">My biography</label>
-                            <div class="o-forms__additional-info">this information will be shared with other Long Room members alongside the posts you publish</div>
+                            <div class="o-forms-additional-info">This information will be shared with other Long Room members alongside the posts you publish</div>
                             <textarea class="o-forms-textarea" name="summary">{{form.summary}}</textarea>
                         </div>
                     {{/if}}
