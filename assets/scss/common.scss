@@ -44,6 +44,21 @@ $o-card-is-silent: false;
 @import 'partials/wysiwyg';
 @import 'partials/admin';
 
+.lr-page-content {
+  h1.title {
+	  @include oTypographySerifDisplay(l);
+  }
+  p {
+    @include oTypographySerifDisplay(s);
+    font-size: 18px;
+  }
+  a {
+    color: #26747a;
+    border-bottom: 1px dotted #26747a;
+    text-decoration: none;
+  }
+}
+
 .lr-main-content {
 	margin-top: 25px;
 }
