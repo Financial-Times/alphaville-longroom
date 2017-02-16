@@ -1,7 +1,9 @@
 
 .lr-house_rules-page {
-	@include oTypographySerifDisplay(s);
+	font-family: Georgia, serif;
+	font-weight: 400;
 	font-size: 18px;
+	line-height: 24px;
 
 	h2 {
 		@include oTypographySansData(l);

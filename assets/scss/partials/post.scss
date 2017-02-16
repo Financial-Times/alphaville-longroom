@@ -31,8 +31,10 @@ article.lr-post {
 
 		.alphaville-card__standfirst {
 			&.lr-post-body {
-				@include oTypographySerifDisplay(m);
+				font-family: Georgia, serif;
+				font-weight: 400;
 				font-size: 18px;
+				line-height: 24px;
 				padding-top: 15px;
 
 				p {

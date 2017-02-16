@@ -49,8 +49,10 @@ $o-card-is-silent: false;
 		@include oTypographySerifDisplay(l);
 	}
 	p {
-		@include oTypographySerifDisplay(s);
+		font-family: Georgia, serif;
+		font-weight: 400;
 		font-size: 18px;
+		line-height: 24px;
 	}
 	a {
 		color: #26747a;
