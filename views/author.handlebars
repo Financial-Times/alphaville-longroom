@@ -24,9 +24,12 @@
 				<a href="/longroom/admin/reinstate/{{userId}}" class="lr-action--reinstate o-buttons lr-action--button" data-component="alphaville-confirm" data-alphaville-confirm-title="Reinstate access" data-alphaville-confirm-message="Are you sure you want to reinstate access?">Reinstate access</a>
 			</div>
 		{{/if}}
-	<h1 class="lr-page-heading">{{userPseudonym}}</h1>
-	{{#if userSummary}}<p>{{userSummary}}</p>{{/if}}
-		{{#posts}}
+
+		<h1 class="lr-page-heading">{{userPseudonym}}</h1>
+
+		{{#if userSummary}}<p>{{userSummary}}</p>{{/if}}
+
+		{{#each posts}}
 			<div class="alphaville-list-category o-grid-row">
 				<div data-o-grid-colspan="12 M3">
 					<div class="alphaville-list-time">
@@ -44,7 +47,9 @@
 					</div>
 				</div>
 			</div>
-		{{/posts}}
+		{{else}}
+			<p>No published posts found.</p>
+		{{/each}}
 	</div>
 
 	<div class="o-grid-row">
