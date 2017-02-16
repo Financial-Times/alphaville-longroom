@@ -11,13 +11,9 @@
     </script>
 {{/contentFor}}
 
-<div class="o-grid-container">
-    <div class="o-grid-row">
-        <div data-o-grid-colspan="8" class="lr-page-content">
-            <h1 class="title">{{ message }}</h1>
-            <p>We will get a decision to you as quickly as possible, but it might take a day or two.</p>
-            <p>We may also contact you for additional information to verify your eligibility.</p>
-            <p>If you have any questions, please email us at <a href="mailto:alphaville@ft.com">alphaville@ft.com</a>.</p>
-        </div>
-    </div>
-</div>
+{{#> lr_layout_non_member }}
+    <h1 class="title">{{ message }}</h1>
+    <p>We will get a decision to you as quickly as possible, but it might take a day or two.</p>
+    <p>We may also contact you for additional information to verify your eligibility.</p>
+    <p>If you have any questions, please email us at <a href="mailto:alphaville@ft.com">alphaville@ft.com</a>.</p>
+{{/lr_layout_non_member}}

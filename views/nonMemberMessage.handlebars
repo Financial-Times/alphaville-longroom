@@ -11,10 +11,6 @@
     </script>
 {{/contentFor}}
 
-<div class="o-grid-container">
-    <div class="o-grid-row">
-        <div data-o-grid-colspan="8">
-            <div class="lr-non-member-message">{{{ message }}}</div>
-        </div>
-    </div>
-</div>
+{{#> lr_layout_non_member }}
+    <div class="lr-non-member-message">{{{ message }}}</div>
+{{/lr_layout_non_member}}

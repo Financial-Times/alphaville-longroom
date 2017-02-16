@@ -1,0 +1,31 @@
+<div class="o-grid-container">
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12">
+			<div class="lr-banner"><img src="{{@root/assetsBasePath}}/images/banner/non-members.jpg" width="100%"></div>
+		</div>
+	</div>
+
+	{{#flashMessage}}
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12">
+			<div class="lr-message lr-message-{{type}}">
+				{{msg}}
+			</div>
+		</div>
+	</div>
+	{{/flashMessage}}
+
+	<div class="lr-main-content lr-non-member-content">
+		<div class="o-grid-row">
+			<div data-o-grid-colspan="12 L8">
+				{{> @partial-block }}
+			</div>
+
+			<div data-o-grid-colspan="12 L4">
+				<div class="lr-sidebar">
+					{{> alphaville-ui/ads/templates/dmpu_desktop}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

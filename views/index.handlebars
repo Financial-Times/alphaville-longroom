@@ -11,42 +11,27 @@
 	</script>
 {{/contentFor}}
 
-<div class="o-grid-container">
-	<div class="o-grid-row">
-		<div data-o-grid-colspan="12">
-			<div class="lr-banner">
-				<img src="{{@root/assetsBasePath}}/images/banner/non-members.jpg" width="100%">
-			</div>
-		</div>
-	</div>
-	<div class="o-grid-row">
-		<div data-o-grid-colspan="8" class="lr-page-content">
-			<h1 class="title">The {{ title }} <br/ >{{ subtitle }}</h1>
-			<p>
-				Welcome to FT Alphaville's exclusive comment and analysis arena, where finance professionals are invited to share their research and thoughts on financial markets.
-			</p>
-			<p>
-				So apply for membership, pull up a (virtual) chair and join the debate.
-			</p>
-			<p>
-				Taking its cue from the original Long Room Restaurant &amp; Bar in the City of London - close by the old Stock Exchange trading floor in Throgmorton Street and once a hub of financial chatter – the Long Room offers ideas and opinion from a broad range of analysts, financial bloggers and other self-appointed commentators on anything and everything that might be considered relevant to the financial world.
-			</p>
-			<p>
-				Membership is complimentary, but subject to status. Applicants are asked to complete a short FT registration process and then tell us (just a bit) about themselves.
-			</p>
-			<p>
-				Please note - the Long Room is aimed at professional market participants who understand the complexities of the financial instruments discussed, together with the attendant risks. The content is not suitable for retail clients.
-			</p>
-            <p>
-                Would like to become a member? Please apply below.
-            </p>
-			<p>
-				<a href="{{basePath}}/user/join" class="o-buttons o-buttons--standout o-buttons--big">Become a member</a>
-			</p>
-
-		</div>
-		<div data-o-grid-colspan="4" class="lr-home-create-col">
-
-		</div>
-	</div>
-</div>
+{{#> lr_layout_non_member }}
+	<h1 class="title">The {{ title }} <br/ >{{ subtitle }}</h1>
+	<p>
+		Welcome to FT Alphaville's exclusive comment and analysis arena, where finance professionals are invited to share their research and thoughts on financial markets.
+	</p>
+	<p>
+		So apply for membership, pull up a (virtual) chair and join the debate.
+	</p>
+	<p>
+		Taking its cue from the original Long Room Restaurant &amp; Bar in the City of London - close by the old Stock Exchange trading floor in Throgmorton Street and once a hub of financial chatter – the Long Room offers ideas and opinion from a broad range of analysts, financial bloggers and other self-appointed commentators on anything and everything that might be considered relevant to the financial world.
+	</p>
+	<p>
+		Membership is complimentary, but subject to status. Applicants are asked to complete a short FT registration process and then tell us (just a bit) about themselves.
+	</p>
+	<p>
+		Please note - the Long Room is aimed at professional market participants who understand the complexities of the financial instruments discussed, together with the attendant risks. The content is not suitable for retail clients.
+	</p>
+    <p>
+        Would like to become a member? Please apply below.
+    </p>
+	<p>
+		<a href="{{basePath}}/user/join" class="o-buttons o-buttons--standout o-buttons--big">Become a member</a>
+	</p>
+{{/lr_layout_non_member}}
