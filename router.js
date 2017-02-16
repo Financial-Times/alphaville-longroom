@@ -5,12 +5,12 @@ const router = new express.Router();
 const auth = require('alphaville-auth-middleware');
 const checkPseudonymMiddleware = require('./lib/middlewares/checkPseudonym');
 const fetchPseudonymMiddleware = require('./lib/middlewares/fetchPseudonym');
+const nonMemberPageApprovedUserRedirectMiddleware = require('./lib/middlewares/nonMemberPageApprovedUserRedirect');
 
-
-router.get('/',  auth(), require('./routes/index'));
+router.get('/', auth(), nonMemberPageApprovedUserRedirectMiddleware, require('./routes/index'));
 router.use('/home', auth(), checkPseudonymMiddleware, require('./routes/homeRouter'));
 router.use('/content', auth(), checkPseudonymMiddleware, require('./routes/contentRouter'));
-router.use('/user', auth(), require('./routes/userRouter'));
+router.use('/user', auth(), nonMemberPageApprovedUserRedirectMiddleware, require('./routes/userRouter'));
 router.use('/files', checkPseudonymMiddleware, require('./routes/fileRouter'));
 router.use('/suggestions', checkPseudonymMiddleware, require('./routes/suggestionRouter'));
 router.use('/topic', auth(), checkPseudonymMiddleware, require('./routes/tagsRouter'));
