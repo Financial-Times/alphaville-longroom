@@ -24,7 +24,7 @@ app.use('/longroom', expressWebService({
 	about: {
 		"schemaVersion": 1,
 		"name": "longroom",
-		"purpose": "Application for rendering and storing longroom posts and uploaded documents, created by members.",
+		"purpose": "Application for rendering and storing posts and uploaded documents created by members in the longroom section.",
 		"audience": "public",
 		"primaryUrl": "https://ftalphaville.ft.com/longroom",
 		"serviceTier": "silver"
