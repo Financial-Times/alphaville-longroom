@@ -24,7 +24,7 @@ app.use('/longroom', expressWebService({
 	about: {
 		"schemaVersion": 1,
 		"name": "longroom",
-		"purpose": "Application for rendering and storing posts and uploaded documents created by members in the longroom section.",
+		"purpose": "FT Alphaville's exclusive comment and analysis arena, where finance professionals are invited to share their research and thoughts on financial markets",
 		"audience": "public",
 		"primaryUrl": "https://ftalphaville.ft.com/longroom",
 		"serviceTier": "silver"
