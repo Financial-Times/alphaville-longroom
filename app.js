@@ -23,8 +23,8 @@ app.use('/longroom', expressWebService({
 	manifestPath: path.join(__dirname, 'package.json'),
 	about: {
 		"schemaVersion": 1,
-		"name": "ftalphaville",
-		"purpose": "Frontend rendering application for FT Alphaville articles and Markets Live.",
+		"name": "longroom",
+		"purpose": "Application for rendering and storing longroom posts and uploaded documents, created by members.",
 		"audience": "public",
 		"primaryUrl": "https://ftalphaville.ft.com/longroom",
 		"serviceTier": "silver"
