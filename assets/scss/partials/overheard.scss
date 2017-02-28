@@ -1,13 +1,12 @@
 .lr-overheard--item {
-	font-size: 16px;
-	margin: 20px 0;
+	font-family: MetricWeb, sans-serif;
+  	border-bottom: 1px solid rgba(0,0,0,0.2);
+	font-size: 12px;
+	line-height: 14px;
+	padding: 13px 0;
 
 	a {
 		color: oColorsGetPaletteColor('grey-tint5');
-	}
-
-	&:first-of-type {
-		margin-top: 10px;
 	}
 
 	&:last-of-type {
@@ -15,17 +14,15 @@
 	}
 }
 
-.lr-overheard--pseudonym {
+.lr-overheard--pseudonym, .lr-overheard--title {
 	font-weight: 600;
-}
-
-.lr-overheard--title {
-	@include oTypographySerifDisplay(l);
-	font-size: 16px;
-	line-height: 16px;
-	font-weight: 600;
+	font-size: 15px;
+	line-height: 18px;
 }
 
 .lr-overheard--comment {
+	font-family: FinancierTextWeb, serif;
 	padding-top: 5px;
+	font-size: 18px;
+	line-height: 24px;
 }
