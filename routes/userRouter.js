@@ -6,13 +6,11 @@ const userFormValidator = require('../lib/middlewares/userFromValidator');
 const nonMemberPageApprovedUserRedirectMiddleware = require('../lib/middlewares/nonMemberPageApprovedUserRedirect');
 
 router.route('/applied')
-	.use(nonMemberPageApprovedUserRedirectMiddleware)
-	.get(userCtrl.applied);
+	.get(nonMemberPageApprovedUserRedirectMiddleware, userCtrl.applied);
 
 router.route('/join')
-	.use(nonMemberPageApprovedUserRedirectMiddleware)
-	.get(userCtrl.get)
-	.post(userFormValidator(), userCtrl.join);
+	.get(nonMemberPageApprovedUserRedirectMiddleware, userCtrl.get)
+	.post(nonMemberPageApprovedUserRedirectMiddleware, userFormValidator(), userCtrl.join);
 
 router.route('/setpseudonym')
 	.get(userCtrl.getSetPseudonymForm)
