@@ -10,7 +10,7 @@ const nonMemberPageApprovedUserRedirectMiddleware = require('./lib/middlewares/n
 router.get('/', auth(), nonMemberPageApprovedUserRedirectMiddleware, require('./routes/index'));
 router.use('/home', auth(), checkPseudonymMiddleware, require('./routes/homeRouter'));
 router.use('/content', auth(), checkPseudonymMiddleware, require('./routes/contentRouter'));
-router.use('/user', auth(), nonMemberPageApprovedUserRedirectMiddleware, require('./routes/userRouter'));
+router.use('/user', auth(), require('./routes/userRouter'));
 router.use('/files', checkPseudonymMiddleware, require('./routes/fileRouter'));
 router.use('/suggestions', checkPseudonymMiddleware, require('./routes/suggestionRouter'));
 router.use('/topic', auth(), checkPseudonymMiddleware, require('./routes/tagsRouter'));
