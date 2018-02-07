@@ -11,7 +11,7 @@ router.get('/', auth(), nonMemberPageApprovedUserRedirectMiddleware, require('./
 router.use('/home', auth(), checkPseudonymMiddleware, require('./routes/homeRouter'));
 router.use('/content', auth(), checkPseudonymMiddleware, require('./routes/contentRouter'));
 router.use('/user', auth(), require('./routes/userRouter'));
-router.use('/files', checkPseudonymMiddleware, require('./routes/fileRouter'));
+router.use('/files', auth(), checkPseudonymMiddleware, require('./routes/fileRouter'));
 router.use('/suggestions', checkPseudonymMiddleware, require('./routes/suggestionRouter'));
 router.use('/topic', auth(), checkPseudonymMiddleware, require('./routes/tagsRouter'));
 router.use('/author', auth(), checkPseudonymMiddleware, require('./routes/authorRouter'));

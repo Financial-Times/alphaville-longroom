@@ -5,6 +5,7 @@ const overheardComponentMiddleware = require('./lib/middlewares/overheardCompone
 const fingerprint = require('./build_config/js/fingerprint');
 const expressWebService = require('@financial-times/express-web-service');
 const path = require('path');
+const bodyParser = require('body-parser');
 const healthcheck = require('./lib/health/healthchecks');
 
 const _ = require('lodash');
@@ -81,6 +82,8 @@ app.use(function (req, res, next ) {
 	};
 	next();
 });
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(flashMessageMiddleware);
 
