@@ -6,6 +6,7 @@ const auth = require('alphaville-auth-middleware');
 const checkPseudonymMiddleware = require('./lib/middlewares/checkPseudonym');
 const fetchPseudonymMiddleware = require('./lib/middlewares/fetchPseudonym');
 const nonMemberPageApprovedUserRedirectMiddleware = require('./lib/middlewares/nonMemberPageApprovedUserRedirect');
+const apiKey = require('./lib/middlewares/apiKey');
 
 router.get('/', auth(), nonMemberPageApprovedUserRedirectMiddleware, require('./routes/index'));
 router.use('/home', auth(), checkPseudonymMiddleware, require('./routes/homeRouter'));
@@ -20,5 +21,6 @@ router.use('/house-rules', auth(), checkPseudonymMiddleware, require('./routes/h
 router.use('/dashboard', auth(), checkPseudonymMiddleware, fetchPseudonymMiddleware, require('./routes/mypostsRouter'));
 router.use('/search', auth(), checkPseudonymMiddleware, require('./routes/searchRouter'));
 router.use('/admin', auth(), require('./routes/adminRouter'));
+router.use('/api', apiKey, require('./routes/apiRouter'));
 
 module.exports = router;

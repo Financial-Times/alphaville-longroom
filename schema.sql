@@ -80,3 +80,5 @@ CREATE TABLE IF NOT EXISTS cleanup_status (
 );
 DELETE FROM cleanup_status;
 INSERT INTO cleanup_status (last_run) VALUES ('1970-01-01 00:00:00');
+
+INSERT INTO users (user_id, status, added_at, eid, is_editor, location, description, summary, has_pseudonym) VALUES ('3f330864-1c0f-443e-a6b3-cf8a3b536a52', 'approved', NOW(), 12313131232, true, '', '', '', true);
