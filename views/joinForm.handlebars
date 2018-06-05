@@ -16,109 +16,109 @@
 	<h1>{{ h1 }}</h1>
 	<form action="{{basePath}}/user/join" method="POST" enctype="application/x-www-form-urlencoded" class="lr-join-form">
 		<div class="o-grid-row">
-			<div class="o-forms-group" data-o-grid-colspan="12">
-				<label class="o-forms-label" for="email">Email</label>
-				<input type="text" class="o-forms-text" name="email" value="{{user.email}}" disabled />
+			<div class="o-forms__group" data-o-grid-colspan="12">
+				<label class="o-forms__label" for="email">Email</label>
+				<input type="text" class="o-forms__text" name="email" value="{{user.email}}" disabled />
 			</div>
 		</div>
 		<div class="o-grid-row">
-			<div class="o-forms-group" data-o-grid-colspan="12 L6">
-				<label class="o-forms-label" for="firstName">First Name</label>
-				<input type="text" class="o-forms-text" name="firstName" value="{{user.firstName}}" disabled />
+			<div class="o-forms__group" data-o-grid-colspan="12 L6">
+				<label class="o-forms__label" for="firstName">First Name</label>
+				<input type="text" class="o-forms__text" name="firstName" value="{{user.firstName}}" disabled />
 			</div>
-			<div class="o-forms-group" data-o-grid-colspan="12 L6">
-				<label class="o-forms-label" for="lastName">Last Name</label>
-				<input type="text" class="o-forms-text" name="lastName" value="{{user.lastName}}" disabled />
+			<div class="o-forms__group" data-o-grid-colspan="12 L6">
+				<label class="o-forms__label" for="lastName">Last Name</label>
+				<input type="text" class="o-forms__text" name="lastName" value="{{user.lastName}}" disabled />
 			</div>
 		</div>
 		<div class="o-grid-row">
 			{{#if errors.pseudonym}}
-				<div class="o-forms-group o-forms--error" data-o-grid-colspan="12">
-					<label class="o-forms-label" for="pseudonym">Pseudonym *</label>
-					<div class="o-forms-additional-info">This will also be used for comments and posts</div>
-					<input type="text" class="o-forms-text" name="pseudonym" value="{{pseudonym}}" />
+				<div class="o-forms__group o-forms--error" data-o-grid-colspan="12">
+					<label class="o-forms__label" for="pseudonym">Pseudonym *</label>
+					<div class="o-forms__additional-info">This will also be used for comments and posts</div>
+					<input type="text" class="o-forms__text" name="pseudonym" value="{{pseudonym}}" />
 					{{#each errors.pseudonym}}
 						<div class="o-forms-errortext">{{this}}</div>
 					{{/each}}
 				</div>
 			{{else}}
-				<div class="o-forms-group" data-o-grid-colspan="12">
-					<label class="o-forms-label" for="pseudonym">Pseudonym *</label>
-					<div class="o-forms-additional-info">This will also be used for comments and posts</div>
-					<input type="text" class="o-forms-text" name="pseudonym" value="{{pseudonym}}" />
+				<div class="o-forms__group" data-o-grid-colspan="12">
+					<label class="o-forms__label" for="pseudonym">Pseudonym *</label>
+					<div class="o-forms__additional-info">This will also be used for comments and posts</div>
+					<input type="text" class="o-forms__text" name="pseudonym" value="{{pseudonym}}" />
 				</div>
 			{{/if}}
 		</div>
 		<div class="o-grid-row">
-			<div class="o-forms-group" data-o-grid-colspan="12">
-				<label class="o-forms-label" for="jobTitle">Job Title</label>
-				<input type="text" class="o-forms-text" name="jobTitle" value="{{user.demographics.position.description}}" disabled />
+			<div class="o-forms__group" data-o-grid-colspan="12">
+				<label class="o-forms__label" for="jobTitle">Job Title</label>
+				<input type="text" class="o-forms__text" name="jobTitle" value="{{user.demographics.position.description}}" disabled />
 			</div>
 		</div>
 		<div class="o-grid-row">
-			<div class="o-forms-group" data-o-grid-colspan="12">
-				<label class="o-forms-label" for="industry">Industry</label>
-				<input type="text" class="o-forms-text" name="industry" value="{{user.demographics.industry.description}}" disabled />
+			<div class="o-forms__group" data-o-grid-colspan="12">
+				<label class="o-forms__label" for="industry">Industry</label>
+				<input type="text" class="o-forms__text" name="industry" value="{{user.demographics.industry.description}}" disabled />
 			</div>
 		</div>
 		<div class="o-grid-row">
-			<div class="o-forms-group" data-o-grid-colspan="12">
-				<label class="o-forms-label" for="phone">Daytime Phone Number</label>
-				<input type="text" class="o-forms-text" name="phone" value="{{user.primaryTelephone}}" disabled />
+			<div class="o-forms__group" data-o-grid-colspan="12">
+				<label class="o-forms__label" for="phone">Daytime Phone Number</label>
+				<input type="text" class="o-forms__text" name="phone" value="{{user.primaryTelephone}}" disabled />
 			</div>
 		</div>
 		<div class="o-grid-row">
 			{{#if errors.location}}
-				<div class="o-forms-group o-forms--error" data-o-grid-colspan="12">
-					<label class="o-forms-label" for="location">Location *</label>
-					<input type="text" class="o-forms-text" name="location" value="{{form.location}}" />
+				<div class="o-forms__group o-forms--error" data-o-grid-colspan="12">
+					<label class="o-forms__label" for="location">Location *</label>
+					<input type="text" class="o-forms__text" name="location" value="{{form.location}}" />
 					{{#each errors.location}}
 						<div class="o-forms-errortext">{{this}}</div>
 					{{/each}}
 				</div>
 			{{else}}
-				<div class="o-forms-group" data-o-grid-colspan="12">
-					<label class="o-forms-label" for="location">Location *</label>
-					<input type="text" class="o-forms-text" name="location" value="{{form.location}}" />
+				<div class="o-forms__group" data-o-grid-colspan="12">
+					<label class="o-forms__label" for="location">Location *</label>
+					<input type="text" class="o-forms__text" name="location" value="{{form.location}}" />
 				</div>
 			{{/if}}
 		</div>
 		<div class="o-grid-row">
 			{{#if errors.description}}
-				<div class="o-forms-group" data-o-grid-colspan="12">
-					<label class="o-forms-label" for="description">About you *</label>
-					<textarea class="o-forms-textarea" name="description">{{form.description}}</textarea>
+				<div class="o-forms__group" data-o-grid-colspan="12">
+					<label class="o-forms__label" for="description">About you *</label>
+					<textarea class="o-forms__textarea" name="description">{{form.description}}</textarea>
 					{{#each errors.description}}
 						<div class="o-forms-errortext">{{this}}</div>
 					{{/each}}
 				</div>
 			{{else}}
-				<div class="o-forms-group" data-o-grid-colspan="12">
-					<label class="o-forms-label" for="description">About you *</label>
-					<textarea class="o-forms-textarea" name="description">{{form.description}}</textarea>
+				<div class="o-forms__group" data-o-grid-colspan="12">
+					<label class="o-forms__label" for="description">About you *</label>
+					<textarea class="o-forms__textarea" name="description">{{form.description}}</textarea>
 				</div>
 			{{/if}}
 		</div>
 		<div class="o-grid-row">
 			{{#if errors.summary}}
-				<div class="o-forms-group" data-o-grid-colspan="12">
-					<label class="o-forms-label" for="summary">My biography</label>
-					<div class="o-forms-additional-info">This information will be shared with other Long Room members alongside the posts you publish</div>
-					<textarea class="o-forms-textarea" name="summary">{{form.summary}}</textarea>
+				<div class="o-forms__group" data-o-grid-colspan="12">
+					<label class="o-forms__label" for="summary">My biography</label>
+					<div class="o-forms__additional-info">This information will be shared with other Long Room members alongside the posts you publish</div>
+					<textarea class="o-forms__textarea" name="summary">{{form.summary}}</textarea>
 					{{#each errors.summary}}
 						<div class="o-forms-errortext">{{this}}</div>
 					{{/each}}
 				</div>
 			{{else}}
-				<div class="o-forms-group" data-o-grid-colspan="12">
-					<label class="o-forms-label" for="summary">My biography</label>
-					<div class="o-forms-additional-info">This information will be shared with other Long Room members alongside the posts you publish</div>
-					<textarea class="o-forms-textarea" name="summary">{{form.summary}}</textarea>
+				<div class="o-forms__group" data-o-grid-colspan="12">
+					<label class="o-forms__label" for="summary">My biography</label>
+					<div class="o-forms__additional-info">This information will be shared with other Long Room members alongside the posts you publish</div>
+					<textarea class="o-forms__textarea" name="summary">{{form.summary}}</textarea>
 				</div>
 			{{/if}}
 		</div>
 		<div class="o-grid-row">
-			<div class="o-forms-group" data-o-grid-colspan="12">
+			<div class="o-forms__group" data-o-grid-colspan="12">
 				<button class="o-buttons o-buttons--big o-buttons--standout" name="join">Join Long Room</button>
 			</div>
 		</div>

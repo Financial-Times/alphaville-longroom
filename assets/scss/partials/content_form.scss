@@ -1,12 +1,12 @@
 .lr-content-form {
 
-	.o-forms-group {
-		.o-forms-label {
+	.o-forms__group {
+		.o-forms__label {
 			@include oTypographySansBold($scale: -1);
 			font-size: 18px;
 			color: oColorsGetPaletteColor('black-80');
 		}
-		.o-forms-additional-info {
+		.o-forms__additional-info {
 			@include oTypographySans($scale: -1);
 			font-size: 16px;
 			color: oColorsGetPaletteColor('black-80');

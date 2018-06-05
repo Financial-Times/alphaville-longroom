@@ -14,7 +14,7 @@
 		}
 	}
 
-	.o-forms-group {
+	.o-forms__group {
 		padding: 0;
 		margin-bottom: 10px;
 	}
@@ -35,7 +35,7 @@
 	}
 
 	.lr-user-summary {
-		.o-forms-textarea {
+		.o-forms__textarea {
 			@include oTypographySans($scale: -1);
 			color: oColorsGetPaletteColor('black-80');
 			height: 70px;
