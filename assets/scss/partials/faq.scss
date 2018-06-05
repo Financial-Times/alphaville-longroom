@@ -1,8 +1,8 @@
 .lr-faq-page {
 	dl {
 		dt {
-			@include oTypographySansData(l);
-			color: oColorsGetPaletteColor('grey-tint5');
+			@include oTypographySans($scale: 2);
+			color: oColorsGetPaletteColor('black-80');
 			font-size: 20px;
 			cursor: pointer;
 			border-top: 1px solid #CEC6B9;
@@ -12,15 +12,15 @@
 			}
 
 			&.selected {
-				color: oColorsGetPaletteColor('teal-1');
+				color: oColorsGetPaletteColor('teal-40');
 				i {
-					@include oIconsGetIcon('arrow-down', oColorsGetPaletteColor('teal-1'), 12);
+					@include oIconsGetIcon('arrow-down', oColorsGetPaletteColor('teal-40'), 12);
 				}
 			}
 
 			a {
-				@include oTypographySansData(l);
-				color: oColorsGetPaletteColor('grey-tint5');
+				@include oTypographySans($scale: 2);
+				color: oColorsGetPaletteColor('black-80');
 				font-size: 20px;
 			}
 
@@ -30,9 +30,9 @@
 			}
 
 			i {
-				@include oIconsGetIcon('arrow-right', oColorsGetPaletteColor('grey-tint5'), 12);
+				@include oIconsGetIcon('arrow-right', oColorsGetPaletteColor('black-80'), 12);
 				float:right;
-				margin: 10px 10px 0 0; 
+				margin: 10px 10px 0 0;
 			}
 
 		}
@@ -42,10 +42,10 @@
 			font-weight: 400;
 			font-size: 18px;
 			line-height: 24px;
-			color: oColorsGetPaletteColor('grey-tint5');
+			color: oColorsGetPaletteColor('black-80');
 
 			a {
-				@include contentLinksBody();				
+				@include contentLinksBody();
 			}
 
 			a.hasImg {
@@ -53,7 +53,7 @@
 			}
 
 			b {
-				@include oTypographySansDataBold(l);
+				@include oTypographySansBold($scale: 2);
 				font-size: 18px;
 			}
 
@@ -82,14 +82,14 @@
 				cursor: pointer;
 
 				span {
-					@include oTypographySansDataBold(s);
-					color: oColorsGetPaletteColor('teal-1');
+					@include oTypographySansBold($scale: -2);
+					color: oColorsGetPaletteColor('teal-40');
 					font-size: 13px;
 					display: inline-block;
 					margin-right: 10px;
-				}	
+				}
 				i {
-					@include oIconsGetIcon('arrow-up', oColorsGetPaletteColor('teal-1'), 12);
+					@include oIconsGetIcon('arrow-up', oColorsGetPaletteColor('teal-40'), 12);
 					vertical-align: middle;
 				}
 			}

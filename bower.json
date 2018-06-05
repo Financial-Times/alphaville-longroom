@@ -18,23 +18,18 @@
     "tests"
   ],
   "dependencies": {
-    "alphaville-ui": "Financial-Times/alphaville-ui#^1.11.1",
-    "dom-delegate": "ftdomdelegate#^2.0.3",
-    "o-dom":"o-dom#^2.0.2",
+    "alphaville-ui": "Financial-Times/alphaville-ui#2.0.0",
+    "dom-delegate": "ftdomdelegate#^2.0.0",
+    "o-dom": "o-dom#^2.0.0",
     "hogan": "twitter/hogan.js#^3.0.2",
-    "o-link-list": "^1.0.0",
-    "o-autoinit": "^1.2.0",
-    "o-forms": "^2.0.0",
+    "o-link-list": "^2.0.0",
+    "o-autoinit": "^1.3.0",
+    "o-forms": "^5.0.0",
     "o-expander": "^4.0.0",
     "awesomplete": "^1.1.1",
-    "o-card": "^2.2.3",
+    "o-card": "^3.0.0",
     "tinymce": "^4.5.1",
-    "o-comments": "^3.4.7",
-    "o-comment-count": "^0.3.1"
-  },
-  "resolutions": {
-    "o-buttons": "^4.0.1",
-    "o-viewport": "^3.0.0",
-    "fticons": "v1.4.0"
+    "o-comments": "^4.0.0",
+    "o-comment-count": "^0.3.8"
   }
 }

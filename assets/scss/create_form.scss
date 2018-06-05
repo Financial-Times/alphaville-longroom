@@ -5,7 +5,7 @@
 
 .lr-forms__action-link {
 	font-weight: bold;
-	color: oColorsGetPaletteColor('grey-tint5');
+	color: oColorsGetPaletteColor('black-80');
 	font-size:16px;
 }
 
@@ -154,7 +154,7 @@
 .lr-generic-message {
 	margin: 10px 0 0 10px;
 	font-weight: bold;
-	color: oColorsGetPaletteColor('red');
+	color: oColorsGetPaletteColor('crimson');
 }
 
 .lr-label-with-info {
@@ -170,7 +170,7 @@
 }
 
 .lr-link--cancel {
-	color: oColorsGetPaletteColor('teal-1');
+	color: oColorsGetPaletteColor('teal-40');
 	font-size: 18px;
 	margin-right: 10px;
 	font-weight: bold;

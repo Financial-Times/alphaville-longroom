@@ -52,7 +52,7 @@ $o-card-is-silent: false;
 	margin-top: 0;
 
 	h1.title {
-		@include oTypographySerifDisplay(l);
+		@include oTypographyDisplay($scale: 3);
 	}
 
 	p {
@@ -74,18 +74,18 @@ $o-card-is-silent: false;
 }
 
 .lr-page-heading {
-	color: oColorsGetPaletteColor('grey-tint5');
+	color: oColorsGetPaletteColor('black-80');
 	margin:0 0 20px;
 	padding:0;
 
 }
 
 h1.lr-page-heading {
-	@include oTypographySansData(xl);
+	@include oTypographySans($scale: 4);
 }
 
 h2.lr-page-heading {
-	@include oTypographySansData(l);
+	@include oTypographySans($scale: 2);
 }
 
 
@@ -94,14 +94,14 @@ h2.lr-page-heading {
 }
 
 .lr-icon--upload {
-	@include oIconsGetIcon('upload', oColorsGetPaletteColor('teal-1'), 23, $iconset-version: 1);
+	@include oIconsGetIcon('upload', oColorsGetPaletteColor('teal-40'), 23, $iconset-version: 1);
 	margin: -5px;
 	position: relative;
 	top: 1px;
 }
 
 .lr-icon--written-text {
-	@include oIconsGetIcon('written-text', oColorsGetPaletteColor('teal-1'), 23, $iconset-version: 1);
+	@include oIconsGetIcon('written-text', oColorsGetPaletteColor('teal-40'), 23, $iconset-version: 1);
 	margin: -5px;
 	position: relative;
 	top: 1px;
@@ -118,7 +118,7 @@ h2.lr-page-heading {
 	};
 
 	.lr-action--delete {
-		color: oColorsGetPaletteColor('teal-1');
+		color: oColorsGetPaletteColor('teal-40');
 		font-weight: bold;
 	}
 
@@ -140,16 +140,16 @@ h2.lr-page-heading {
 .lr-message {
 	padding: 10px;
 	margin-top: 10px;
-	background-color: oColorsGetPaletteColor('warm-2');
-	color: oColorsGetPaletteColor('green');
+	background-color: oColorsGetPaletteColor('black-5');
+	color: oColorsGetPaletteColor('jade');
 }
 
 .lr-message-success {
-	color: oColorsGetPaletteColor('green');
+	color: oColorsGetPaletteColor('jade');
 }
 
 .lr-message-error {
-	color: oColorsGetPaletteColor('red');
+	color: oColorsGetPaletteColor('crimson');
 }
 
 .alphaville-article-list .o-ads {

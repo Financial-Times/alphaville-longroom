@@ -1,7 +1,7 @@
 <div class="lr-generic-message"></div>
 
 <div class="o-forms-group">
-	<label class="o-forms-label" for="post-title">Title</label>
+	<label class="o-forms__label" for="post-title">Title</label>
 	<small class="o-forms-additional-info">this will be the headline of your publication, e.g. Haitong on B&amp;M</small>
 	<input type="text" class="o-forms-text" name="post-title" id="post-title" value="{{postTitle}}" />
 	<div class="o-forms-errortext"></div>
@@ -11,11 +11,11 @@
 <div class="o-forms-group lr-forms__file-upload--labels">
 	<div class="o-grid-row">
 		<div data-o-grid-colspan="6">
-			<label class="o-forms-label">Document source</label>
+			<label class="o-forms__label">Document source</label>
 			<small class="o-forms-additional-info">e.g. Haitong Research, Barclays</small>
 		</div>
 		<div data-o-grid-colspan="6">
-			<label class="o-forms-label lr-label-with-info">
+			<label class="o-forms__label lr-label-with-info">
 				Attach document
 			</label>
 			<button class="o-buttons o-overlay-trigger lr-forms__info" data-o-overlay-src="#lr-attach-help-overlay" data-o-overlay-id="lr_attach_help_overlay" data-o-overlay-compact="true" data-o-overlay-arrow-position="top" aria-pressed="false" aria-haspopup="true">?</button>
@@ -91,12 +91,12 @@
 
 <div class="o-forms-group">
 	<div class="lr-forms__action-link" data-maximum-files="5">
-		<button type="button" class="o-buttons o-buttons--standout" disabled>+</button>&nbsp; Attach another document
+		<button type="button" class="o-buttons o-buttons--primary" disabled>+</button>&nbsp; Attach another document
 	</div>
 </div>
 
 <div class="o-forms-group">
-	<label class="o-forms-label" for="post-tags">Topic tags</label>
+	<label class="o-forms__label" for="post-tags">Topic tags</label>
 	<small class="o-forms-additional-info">e.g. Markets, Retail</small>
 
 	<div class="lr-forms__tags--container">
@@ -115,7 +115,7 @@
 	{{#if isDocumentForm}}
 		<div data-o-component="o-expander" class="o-expander" data-o-expander-shrink-to="hidden" data-o-expander-expanded-toggle-text="Discussion summary" data-o-expander-collapsed-toggle-text="Discussion summary">
 			<div>
-				<label class="o-forms-label o-expander__toggle o--if-js lr-label-with-info" for="post-summary">Discussion summary</label>
+				<label class="o-forms__label o-expander__toggle o--if-js lr-label-with-info" for="post-summary">Discussion summary</label>
 				<button class="o-buttons o-overlay-trigger lr-forms__info" data-o-overlay-src="#lr-summary-help-overlay" data-o-overlay-id="lr-summary-help-overlay" data-o-overlay-compact="true" data-o-overlay-arrow-position="bottom" aria-pressed="false" aria-haspopup="true">?</button>
 			</div>
 			<div class="{{#unless postSummary}}o-expander__content{{/unless}}">
@@ -125,7 +125,7 @@
 		</div>
 	{{else}}
 		<div>
-			<label class="o-forms-label o-expander__toggle o--if-js lr-label-with-info" for="post-summary">Discussion summary</label>
+			<label class="o-forms__label o-expander__toggle o--if-js lr-label-with-info" for="post-summary">Discussion summary</label>
 			<button class="o-buttons o-overlay-trigger lr-forms__info" data-o-overlay-src="#lr-summary-help-overlay" data-o-overlay-id="lr-summary-help-overlay" data-o-overlay-compact="true" data-o-overlay-arrow-position="bottom" aria-pressed="false" aria-haspopup="true">?</button>
 		</div>
 

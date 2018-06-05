@@ -5,8 +5,8 @@
 
 	.lr-navbar--title {
 		display: none;
-		@include oTypographySansData(l);
-		color: oColorsGetPaletteColor('cold-2');
+		@include oTypographySans($scale: 2);
+		color: oColorsGetPaletteColor('black-80');
 		font-size: 18px;
 		padding-top: 1px;
 
@@ -25,7 +25,7 @@
 			}
 		}
 		a {
-			color: oColorsGetPaletteColor('cold-2');
+			color: oColorsGetPaletteColor('black-80');
 		}
 	}
 
@@ -34,14 +34,14 @@
 
 		@include oGridRespondTo(XL) {
 			.o-buttons {
-				@include oButtonsSize(big);	
+				@include oButtonsSize(big);
 			}
 		}
 
 		.lr-cta--active {
 			$activeColor: #174549;
 
-			background-color: oColorsGetPaletteColor('teal-2');
+			background-color: oColorsGetPaletteColor('teal-80');
 			color: $activeColor;
 			border-color: $activeColor;
 
@@ -85,8 +85,8 @@
 				}
 
 				a {
-					@include oTypographySansDataBold(m);
-					color: oColorsGetPaletteColor('grey-tint5');
+					@include oTypographySansBold($scale: -1);
+					color: oColorsGetPaletteColor('black-80');
 
 					@include oGridRespondTo(XL) {
 						font-size: 18px;

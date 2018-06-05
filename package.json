@@ -7,15 +7,15 @@
     "start": "node ./bin/www"
   },
   "engines": {
-    "node": "^6"
+    "node": "^8"
   },
   "dependencies": {
     "@financial-times/express-web-service": "^3.3.1",
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#1.4.0",
-    "alphaville-build-tools": "Financial-Times/alphaville-build-tools#1.0.0",
+    "alphaville-build-tools": "Financial-Times/alphaville-build-tools#2.0.0",
     "alphaville-express": "Financial-Times/alphaville-express#1.1.1",
-    "alphaville-header-config": "Financial-Times/alphaville-header-config#1.1.0",
-    "alphaville-team-members": "Financial-Times/alphaville-team-members#0.3.2",
+    "alphaville-header-config": "Financial-Times/alphaville-header-config#1.2.0",
+    "alphaville-team-members": "Financial-Times/alphaville-team-members#1.0.0",
     "async": "^2.0.0-rc.4",
     "aws-sdk": "^2.3.10",
     "bluebird": "^3.3.5",

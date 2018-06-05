@@ -2,14 +2,14 @@
 
 	.o-forms-group {
 		.o-forms-label {
-			@include oTypographySansDataBold(m);
+			@include oTypographySansBold($scale: -1);
 			font-size: 18px;
-			color: oColorsGetPaletteColor('grey-tint5');
+			color: oColorsGetPaletteColor('black-80');
 		}
 		.o-forms-additional-info {
-			@include oTypographySansData(m);
+			@include oTypographySans($scale: -1);
 			font-size: 16px;
-			color: oColorsGetPaletteColor('grey-tint5');
+			color: oColorsGetPaletteColor('black-80');
 
 		}
 
