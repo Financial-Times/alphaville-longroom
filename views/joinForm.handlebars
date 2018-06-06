@@ -38,7 +38,7 @@
 					<div class="o-forms__additional-info">This will also be used for comments and posts</div>
 					<input type="text" class="o-forms__text" name="pseudonym" value="{{pseudonym}}" />
 					{{#each errors.pseudonym}}
-						<div class="o-forms-errortext">{{this}}</div>
+						<div class="o-forms__errortext">{{this}}</div>
 					{{/each}}
 				</div>
 			{{else}}
@@ -73,7 +73,7 @@
 					<label class="o-forms__label" for="location">Location *</label>
 					<input type="text" class="o-forms__text" name="location" value="{{form.location}}" />
 					{{#each errors.location}}
-						<div class="o-forms-errortext">{{this}}</div>
+						<div class="o-forms__errortext">{{this}}</div>
 					{{/each}}
 				</div>
 			{{else}}
@@ -89,7 +89,7 @@
 					<label class="o-forms__label" for="description">About you *</label>
 					<textarea class="o-forms__textarea" name="description">{{form.description}}</textarea>
 					{{#each errors.description}}
-						<div class="o-forms-errortext">{{this}}</div>
+						<div class="o-forms__errortext">{{this}}</div>
 					{{/each}}
 				</div>
 			{{else}}
@@ -106,7 +106,7 @@
 					<div class="o-forms__additional-info">This information will be shared with other Long Room members alongside the posts you publish</div>
 					<textarea class="o-forms__textarea" name="summary">{{form.summary}}</textarea>
 					{{#each errors.summary}}
-						<div class="o-forms-errortext">{{this}}</div>
+						<div class="o-forms__errortext">{{this}}</div>
 					{{/each}}
 				</div>
 			{{else}}
@@ -119,7 +119,7 @@
 		</div>
 		<div class="o-grid-row">
 			<div class="o-forms__group" data-o-grid-colspan="12">
-				<button class="o-buttons o-buttons--big o-buttons--standout" name="join">Join Long Room</button>
+				<button class="o-buttons o-buttons--big o-buttons--primary" name="join">Join Long Room</button>
 			</div>
 		</div>
 	</form>
