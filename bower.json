@@ -30,6 +30,7 @@
     "o-card": "^3.0.0",
     "tinymce": "^4.5.1",
     "o-comments": "^4.0.0",
-    "o-comment-count": "^0.3.8"
+    "o-comment-count": "^0.3.8",
+    "o-tooltip": "^3.1.2"
   }
 }

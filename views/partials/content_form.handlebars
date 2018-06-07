@@ -4,7 +4,7 @@
 	<label class="o-forms__label" for="post-title">Title</label>
 	<small class="o-forms__additional-info">this will be the headline of your publication, e.g. Haitong on B&amp;M</small>
 	<input type="text" class="o-forms__text" name="post-title" id="post-title" value="{{postTitle}}" />
-	<div class="o-forms-errortext"></div>
+	<div class="o-forms__errortext"></div>
 </div>
 
 
@@ -18,11 +18,17 @@
 			<label class="o-forms__label lr-label-with-info">
 				Attach document
 			</label>
-			<button class="o-buttons o-overlay-trigger lr-forms__info" data-o-overlay-src="#lr-attach-help-overlay" data-o-overlay-id="lr_attach_help_overlay" data-o-overlay-compact="true" data-o-overlay-arrow-position="top" aria-pressed="false" aria-haspopup="true">?</button>
-			<script type="text/template" id="lr-attach-help-overlay">
-				<p>The formats we accept are Word, Excel and PDF<br/>
-					Size limit per document is 100Mb</p>
-			</script>
+			<button class="o-buttons lr-forms__info" id="lr-attach-help-tooltip">?</button>
+			<div data-o-component="o-tooltip"
+			     data-o-tooltip-position="below"
+			     data-o-tooltip-target="lr-attach-help-tooltip"
+			     data-o-tooltip-toggle-on-click="true"
+			     class="lr-tooltip">
+				<div class="o-tooltip-content">
+					<p>The formats we accept are Word, Excel and PDF<br/>
+						Size limit per document is 100Mb</p>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -44,7 +50,7 @@
 							<a class="lr-forms__file-upload--delete">Delete</a>
 						</span>
 					</div>
-					<div data-o-grid-colspan="12" class="lr-forms__file-upload--error o-forms-errortext"></div>
+					<div data-o-grid-colspan="12" class="lr-forms__file-upload--error o-forms__errortext"></div>
 				</div>
 			</div>
 		{{/postFiles}}
@@ -63,7 +69,7 @@
 			</div>
 			<div class="o-grid-row">
 				<div data-o-grid-colspan="12" class="lr-forms__file-upload--preview"></div>
-				<div data-o-grid-colspan="12" class="lr-forms__file-upload--error o-forms-errortext"></div>
+				<div data-o-grid-colspan="12" class="lr-forms__file-upload--error o-forms__errortext"></div>
 			</div>
 		</div>
 	{{/if}}
@@ -83,7 +89,7 @@
 			</div>
 			<div class="o-grid-row">
 				<div data-o-grid-colspan="12" class="lr-forms__file-upload--preview"></div>
-				<div data-o-grid-colspan="12" class="lr-forms__file-upload--error o-forms-errortext"></div>
+				<div data-o-grid-colspan="12" class="lr-forms__file-upload--error o-forms__errortext"></div>
 			</div>
 		</div>
 	</script>
@@ -107,7 +113,7 @@
 			{{/postTags}}
 		</ul>
 
-		<div class="o-forms-errortext"></div>
+		<div class="o-forms__errortext"></div>
 	</div>
 </div>
 
@@ -116,25 +122,31 @@
 		<div data-o-component="o-expander" class="o-expander" data-o-expander-shrink-to="hidden" data-o-expander-expanded-toggle-text="Discussion summary" data-o-expander-collapsed-toggle-text="Discussion summary">
 			<div>
 				<label class="o-forms__label o-expander__toggle o--if-js lr-label-with-info" for="post-summary">Discussion summary</label>
-				<button class="o-buttons o-overlay-trigger lr-forms__info" data-o-overlay-src="#lr-summary-help-overlay" data-o-overlay-id="lr-summary-help-overlay" data-o-overlay-compact="true" data-o-overlay-arrow-position="bottom" aria-pressed="false" aria-haspopup="true">?</button>
+				<button class="o-buttons lr-forms__info" id="lr-summary-help-tooltip">?</button>
 			</div>
 			<div class="{{#unless postSummary}}o-expander__content{{/unless}}">
 				<textarea class="o-forms__textarea" name="post-summary" id="post-summary" >{{{postSummary}}}</textarea>
-				<div class="o-forms-errortext"></div>
+				<div class="o-forms__errortext"></div>
 			</div>
 		</div>
 	{{else}}
 		<div>
 			<label class="o-forms__label o-expander__toggle o--if-js lr-label-with-info" for="post-summary">Discussion summary</label>
-			<button class="o-buttons o-overlay-trigger lr-forms__info" data-o-overlay-src="#lr-summary-help-overlay" data-o-overlay-id="lr-summary-help-overlay" data-o-overlay-compact="true" data-o-overlay-arrow-position="bottom" aria-pressed="false" aria-haspopup="true">?</button>
+			<button class="o-buttons lr-forms__info" id="lr-summary-help-tooltip">?</button>
 		</div>
 
 		<textarea class="o-forms__textarea" name="post-summary" id="post-summary" >{{{postSummary}}}</textarea>
-		<div class="o-forms-errortext"></div>
+		<div class="o-forms__errortext"></div>
 	{{/if}}
 
-	<script type="text/template" id="lr-summary-help-overlay">
-		<p>JPG and PNG images under 5Mb can be<br/>
-		added within the discussion summary</p>
-	</script>
+	<div data-o-component="o-tooltip"
+	     data-o-tooltip-position="below"
+	     data-o-tooltip-target="lr-summary-help-tooltip"
+	     data-o-tooltip-toggle-on-click="true"
+	     class="lr-tooltip">
+		<div class="o-tooltip-content">
+			<p>JPG and PNG images under 5Mb can be<br/>
+				added within the discussion summary</p>
+		</div>
+	</div>
 </div>
