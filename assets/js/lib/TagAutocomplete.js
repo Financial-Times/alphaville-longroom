@@ -24,7 +24,7 @@ function TagAutocomplete (config) {
 	let searchTerm = '';
 	let lastSuggestions = [];
 
-	let formGroup = domUtils.getParents(input, '.o-forms-group');
+	let formGroup = domUtils.getParents(input, '.o-forms');
 	if (formGroup && formGroup.length) {
 		formGroup = formGroup[0];
 	}
@@ -32,7 +32,7 @@ function TagAutocomplete (config) {
 	let errorEl;
 
 	if (formGroup) {
-		errorEl = formGroup.querySelector('.o-forms-errortext');
+		errorEl = formGroup.querySelector('.o-forms__errortext');
 	}
 
 

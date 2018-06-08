@@ -1,6 +1,6 @@
 <div class="lr-generic-message"></div>
 
-<div class="o-forms__group">
+<div class="o-forms">
 	<label class="o-forms__label" for="post-title">Title</label>
 	<small class="o-forms__additional-info">this will be the headline of your publication, e.g. Haitong on B&amp;M</small>
 	<input type="text" class="o-forms__text" name="post-title" id="post-title" value="{{postTitle}}" />
@@ -8,7 +8,7 @@
 </div>
 
 
-<div class="o-forms__group lr-forms__file-upload--labels">
+<div class="o-forms lr-forms__file-upload--labels">
 	<div class="o-grid-row">
 		<div data-o-grid-colspan="6">
 			<label class="o-forms__label">Document source</label>
@@ -36,7 +36,7 @@
 <div class="lr-forms__file-upload--container">
 	{{#if postFiles}}
 		{{#postFiles}}
-			<div class="lr-forms__file-upload--group o-forms__group" data-file-id="{{id}}">
+			<div class="lr-forms__file-upload--group o-forms" data-file-id="{{id}}">
 				<div class="o-grid-row">
 					<div data-o-grid-colspan="12">
 						<input type="text" class="o-forms__text lr-forms__file-upload--source" name="post-file-source1" value="{{source}}" />
@@ -55,7 +55,7 @@
 			</div>
 		{{/postFiles}}
 	{{else}}
-		<div class="lr-forms__file-upload--group o-forms__group">
+		<div class="lr-forms__file-upload--group o-forms">
 			<div class="o-grid-row">
 				<div data-o-grid-colspan="6">
 					<input type="text" class="o-forms__text lr-forms__file-upload--source" name="post-file-source1" value="" />
@@ -75,7 +75,7 @@
 	{{/if}}
 
 	<script type="text/template" class="lr-forms__file-upload--group--template">
-		<div class="lr-forms__file-upload--group o-forms__group">
+		<div class="lr-forms__file-upload--group o-forms">
 			<div class="o-grid-row">
 				<div data-o-grid-colspan="6">
 					<input type="text" class="o-forms__text lr-forms__file-upload--source" name="post-file-source1" value="" />
@@ -95,13 +95,13 @@
 	</script>
 </div>
 
-<div class="o-forms__group">
+<div class="o-forms">
 	<div class="lr-forms__action-link" data-maximum-files="5">
 		<button type="button" class="o-buttons o-buttons--primary" disabled>+</button>&nbsp; Attach another document
 	</div>
 </div>
 
-<div class="o-forms__group">
+<div class="o-forms">
 	<label class="o-forms__label" for="post-tags">Topic tags</label>
 	<small class="o-forms__additional-info">e.g. Markets, Retail</small>
 
@@ -117,7 +117,7 @@
 	</div>
 </div>
 
-<div class="o-forms__group">
+<div class="o-forms">
 	{{#if isDocumentForm}}
 		<div data-o-component="o-expander" class="o-expander" data-o-expander-shrink-to="hidden" data-o-expander-expanded-toggle-text="Discussion summary" data-o-expander-collapsed-toggle-text="Discussion summary">
 			<div>
