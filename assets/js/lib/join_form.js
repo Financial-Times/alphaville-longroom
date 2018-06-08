@@ -2,7 +2,7 @@ document.addEventListener('o.DOMContentLoaded', () => {
 	const joinForm = document.querySelector('.lr-join-form');
 
 	if (joinForm) {
-		const errorContainers = joinForm.querySelectorAll('.o-forms-errortext');
+		const errorContainers = joinForm.querySelectorAll('.o-forms__errortext');
 
 		for (let i = 0; i < errorContainers.length; i++) {
 			const formGroup = errorContainers[i].parentNode;

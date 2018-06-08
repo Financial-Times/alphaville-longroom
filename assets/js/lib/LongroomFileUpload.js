@@ -272,7 +272,7 @@ function LongroomFileUploadItem (config) {
 	const previewArea = el.querySelector('.lr-forms__file-upload--preview');
 	const fileUploadError = el.querySelector('.lr-forms__file-upload--error');
 
-	let formGroup = domUtils.getParents(el, '.o-forms-group');
+	let formGroup = domUtils.getParents(el, '.o-forms');
 	if (formGroup && formGroup.length) {
 		formGroup = formGroup[0];
 	}
