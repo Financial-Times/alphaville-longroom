@@ -68,8 +68,9 @@
 	margin-bottom: 5px;
 }
 
-
-
+.lr-forms__file-upload--error {
+	color: oColorsGetPaletteColor('crimson');
+}
 
 
 .lr-forms__tags--tag {
