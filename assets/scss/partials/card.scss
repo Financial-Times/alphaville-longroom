@@ -1,4 +1,6 @@
-
+.alphaville-card *, .alphaville-card *:before, .alphaville-card *:after {
+	clear: both;
+}
 .alphaville-article-list {
 	.alphaville-list-time {
 		margin-top: 15px;
