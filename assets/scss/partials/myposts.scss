@@ -8,20 +8,20 @@
 	.alphaville-card-container {
 		padding-top: 0px;
 		margin-bottom: 15px;
-		
+
 		.alphaville-card {
 			padding-top: 0px;
 		}
 	}
 
-	.o-forms-group {
+	.o-forms__group {
 		padding: 0;
 		margin-bottom: 10px;
 	}
 
 	.lr-form-label {
-		@include oTypographySansDataBold(m);
-		color: oColorsGetPaletteColor('grey-tint5');
+		@include oTypographySansBold($scale: -1);
+		color: oColorsGetPaletteColor('black-80');
 		text-align: left;
 
 		@include oGridRespondTo(M) {
@@ -30,20 +30,20 @@
 
 	}
 	.lr-form-value {
-		@include oTypographySansDataBold(m);
-		color: oColorsGetPaletteColor('grey-tint5');
+		@include oTypographySansBold($scale: -1);
+		color: oColorsGetPaletteColor('black-80');
 	}
 
 	.lr-user-summary {
-		.o-forms-textarea {
-			@include oTypographySansData(m);
-			color: oColorsGetPaletteColor('grey-tint5');
+		.o-forms__textarea {
+			@include oTypographySans($scale: -1);
+			color: oColorsGetPaletteColor('black-80');
 			height: 70px;
 		}
 	}
 
 	.lr-myposts-action {
-		
+
 		.lr-myposts-action--Save {
 			border-bottom: 1px solid #cec6b9;
 			text-align: right;

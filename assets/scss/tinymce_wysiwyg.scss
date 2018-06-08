@@ -26,7 +26,7 @@ $o-colors-is-silent: false;
 }
 
 blockquote {
-	border-left: 2px solid oColorsGetPaletteColor(grey-tint2);
+	border-left: 2px solid oColorsGetPaletteColor('black-40');
 	margin-left: 0;
 	padding-left: 20px;
 }

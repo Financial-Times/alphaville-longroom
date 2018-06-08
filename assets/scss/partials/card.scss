@@ -4,7 +4,7 @@
 		margin-top: 15px;
 	}
 	.alphaville-card-container {
-		padding: 5px 0 5px; 
+		padding: 5px 0 5px;
 
 		.alphaville-card__content {
 
@@ -17,8 +17,8 @@
 			.alphaville-card__heading {
 				margin-bottom: 5px;
 				a {
-					@include oTypographySerifDisplay(l);
-					color: oColorsGetPaletteColor('grey-tint5');
+					@include oTypographyDisplay($scale: 3);
+					color: oColorsGetPaletteColor('black-80');
 				}
 				img.lr-card__file-icon {
 					max-width: 20px;
@@ -28,13 +28,13 @@
 			}
 
 			.alphaville-card__author {
-				@include oTypographySansData(m);
-				color: oColorsGetPaletteColor('grey-tint5');
+				@include oTypographySans($scale: -1);
+				color: oColorsGetPaletteColor('black-80');
 				a {
-					@include oTypographySansDataBold(m);
-					color: oColorsGetPaletteColor('grey-tint5');
+					@include oTypographySansBold($scale: -1);
+					color: oColorsGetPaletteColor('black-80');
 				}
 			}
 		}
-	}	
+	}
 }

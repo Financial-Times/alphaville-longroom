@@ -1,3 +1,10 @@
+.longroom-create-post {
+	.o-forms__text {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
 .lr-forms__small-label {
 	font-size: 14px;
 	font-weight: normal;
@@ -5,7 +12,7 @@
 
 .lr-forms__action-link {
 	font-weight: bold;
-	color: oColorsGetPaletteColor('grey-tint5');
+	color: oColorsGetPaletteColor('black-80');
 	font-size:16px;
 }
 
@@ -23,6 +30,7 @@
 }
 
 .lr-forms__file-upload {
+	margin-top: 12px;
 	cursor: pointer;
 }
 
@@ -71,7 +79,7 @@
 		padding-left: 5px;
 		font-size: 12px;
 		vertical-align: bottom;
-		color: oColorsGetPaletteColor('red-tint1');
+		color: oColorsGetPaletteColor('crimson');
 	}
 }
 
@@ -154,7 +162,7 @@
 .lr-generic-message {
 	margin: 10px 0 0 10px;
 	font-weight: bold;
-	color: oColorsGetPaletteColor('red');
+	color: oColorsGetPaletteColor('crimson');
 }
 
 .lr-label-with-info {
@@ -170,7 +178,7 @@
 }
 
 .lr-link--cancel {
-	color: oColorsGetPaletteColor('teal-1');
+	color: oColorsGetPaletteColor('teal-40');
 	font-size: 18px;
 	margin-right: 10px;
 	font-weight: bold;

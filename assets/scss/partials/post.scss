@@ -5,27 +5,27 @@ article.lr-post {
 
 		.alphaville-card__theme {
 			.alphaville-card__tag {
-				@include oTypographySansDataBold(m);
+				@include oTypographySansBold($scale: -1);
 				display: inline-block;
 			}
 		}
 
 		.alphaville-card__heading {
-			@include oTypographySerifDisplay(l);
+			@include oTypographyDisplay($scale: 3);
 			margin-bottom: 0;
-		}	
+		}
 
 		.alphaville-card__footer {
 
 		}
 
 		.alphaville-card__author {
-			@include oTypographySansData(m);	
-			color: oColorsGetPaletteColor('grey-tint5');
+			@include oTypographySans($scale: -1);
+			color: oColorsGetPaletteColor('black-80');
 
 			a {
-				@include oTypographySansDataBold(m);	
-				color: oColorsGetPaletteColor('grey-tint5');
+				@include oTypographySansBold($scale: -1);
+				color: oColorsGetPaletteColor('black-80');
 			}
 		}
 
@@ -46,21 +46,21 @@ article.lr-post {
 			padding: 10px 0;
 
 			span {
-				color: oColorsGetPaletteColor(grey-tint5);
+				color: oColorsGetPaletteColor('black-80');
 			}
 
 			a {
 				display: inline-block;
 
 				span.lr-post--file-source {
-					@include oTypographySerifDisplay(xs);
+					@include oTypographyDisplay($scale: -2);
 					display: inline-block;
 					font-size: 16px;
 					padding-left: 10px;
 					margin-top: 15px;
 
 					span {
-						@include oTypographySansDataBold(m);
+						@include oTypographySansBold($scale: -1);
 						font-size: 16px;
 						font-weight: bold;
 					}
@@ -82,7 +82,7 @@ article.lr-post {
 			}
 
 			blockquote {
-				border-left: 2px solid oColorsGetPaletteColor(grey-tint2);
+				border-left: 2px solid oColorsGetPaletteColor('black-40');
 				margin-left: 0;
 				padding-left: 20px;
 			}
