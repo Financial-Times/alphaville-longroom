@@ -65,14 +65,10 @@ $o-card-is-silent: false;
 		line-height: 24px;
 	}
 
-	a {
+	a:not(.o-buttons) {
 		color: #26747a;
 		border-bottom: 1px dotted #26747a;
 		text-decoration: none;
-	}
-
-	a.o-buttons--standout {
-		color: #ffffff;
 	}
 }
 
