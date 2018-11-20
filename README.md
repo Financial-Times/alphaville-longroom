@@ -62,3 +62,17 @@ Run the following:
 ```
 heroku local
 ```
+
+### Article access
+
+In order you to be able to access articles without getting the barrier, you will need 2 things:
+
+Set up a URL in the hosts file that points local.ft.com to the localhost
+Add SKIP_AUTH=true environment variable (this is needed because running the app locally there's no fastly service in front of the app to set the Decision header from the Access service).
+
+### Joining/license allocation
+
+If you have to work on the joining/license allocation area, the app will need to have access to the `FTSession_s` in order to access the User API service. There are 2 ways you could achieve this:
+
+1. run the app locally on https
+2. Manually copy the value of `FTSession_s` into a cookie with the same name, but available on `http` as well.
