@@ -27,6 +27,13 @@ https://www.postgresql.org/download/
 Create a database called longroom.
 Import `schema.sql`.
 
+### Install PostgreSQL (optional)
+You can skip this step if you are not working on the database itself and you can just use the database from the TEST environment.
+However, if you need to work on the database locally, you should have one installed on your machine as well.
+
+Follow the official documentation on how to download and install postgreSQL locally: https://www.postgresql.org/download/
+The easiest way is to import a dump from the TEST database.
+
 ## Install
 Run the following:
 
