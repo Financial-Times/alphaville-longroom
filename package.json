@@ -12,7 +12,7 @@
   "dependencies": {
     "@financial-times/express-web-service": "^3.3.1",
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#1.4.0",
-    "alphaville-build-tools": "Financial-Times/alphaville-build-tools#2.1.0",
+    "alphaville-build-tools": "Financial-Times/alphaville-build-tools#3.0.0",
     "alphaville-express": "Financial-Times/alphaville-express#1.1.1",
     "alphaville-header-config": "Financial-Times/alphaville-header-config#1.2.0",
     "alphaville-team-members": "Financial-Times/alphaville-team-members#1.0.0",
@@ -26,7 +26,7 @@
     "entities": "^1.1.1",
     "express-form": "^0.12.6",
     "file-type": "^7.5.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.0",
     "lodash": "^4.12.0",
     "memory-cache": "^0.1.6",
     "moment-timezone": "^0.5.5",
