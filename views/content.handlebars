@@ -1,6 +1,11 @@
 {{#contentFor "head"}}
 	<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
-
+{{#commentsTalkReplacement}}
+	<script>
+		// Temporary addition until the comments are replaced
+		window.commentsTalkReplacement = true;
+	</script>
+{{/commentsTalkReplacement}}
 	<script>
 		(function () {
 			ctmLoadScript({
