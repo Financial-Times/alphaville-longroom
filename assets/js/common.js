@@ -1,7 +1,12 @@
 require('./assets');
 require('alphaville-ui');
 require('o-expander');
-require('o-comments');
+if (window.commentsTalkReplacement) {
+	// Temporary addition until the comments are replaced
+	require('o-comments-beta');
+} else {
+	require('o-comments');
+}
 require('o-comment-count');
 require('./lib/deleteButton');
 require('./lib/ads');
