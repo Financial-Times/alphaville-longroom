@@ -1,7 +1,7 @@
 require('./assets');
 require('alphaville-ui');
 require('o-expander');
-if (window.commentsTalkReplacement) {
+if (window.commentsTalkReplacement || window.commentsUseCoralTalk) {
 	// Temporary addition until the comments are replaced
 	require('o-comments-beta');
 } else {
