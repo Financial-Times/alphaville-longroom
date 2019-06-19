@@ -1,5 +1,6 @@
 {{#contentFor "head"}}
 	<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
+	<link rel="canonical" href="{{canonicalUrl}}" />
 {{#commentsTalkReplacement}}
 	<script>
 		// Temporary addition until the comments are replaced
@@ -97,7 +98,7 @@
 
 
 			<a name="comments"></a>
-			<div data-o-component="o-comments" data-o-comments-config-title="{{article.title}}" data-o-comments-config-url="{{article.webUrl}}" data-o-comments-config-articleId="longroom{{article.id}}"></div>
+			<div id="comments" data-o-component="o-comments" data-o-comments-config-title="{{article.title}}" data-o-comments-config-url="{{article.webUrl}}" data-o-comments-config-articleId="longroom{{article.id}}"></div>
 		</div>
 	</div>
 {{/lr_layout}}
