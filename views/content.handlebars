@@ -1,17 +1,6 @@
 {{#contentFor "head"}}
 	<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
 	<link rel="canonical" href="{{canonicalUrl}}" />
-{{#commentsTalkReplacement}}
-	<script>
-		// Temporary addition until the comments are replaced
-		window.commentsTalkReplacement = true;
-	</script>
-{{/commentsTalkReplacement}}
-{{#useCoralTalk}}
-	<script>
-		window.commentsUseCoralTalk = true;
-	</script>
-{{/useCoralTalk}}
 	<script>
 		(function () {
 			ctmLoadScript({
