@@ -22,7 +22,7 @@
     "body-parser": "^1.18.2",
     "bower": "^1.7.7",
     "crypto": "0.0.3",
-    "debug": "~2.2.0",
+    "debug": "^2.6.9",
     "entities": "^1.1.1",
     "express-form": "^0.12.6",
     "file-type": "^7.5.0",
