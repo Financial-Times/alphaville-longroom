@@ -18,7 +18,7 @@
     "tests"
   ],
   "dependencies": {
-    "alphaville-ui": "Financial-Times/alphaville-ui#2.1.6",
+    "alphaville-ui": "Financial-Times/alphaville-ui#2.2.3",
     "dom-delegate": "ftdomdelegate#^2.0.0",
     "o-dom": "o-dom#^2.0.0",
     "hogan": "twitter/hogan.js#^3.0.2",
@@ -29,9 +29,8 @@
     "awesomplete": "^1.1.1",
     "o-card": "^3.0.0",
     "tinymce": "^4.5.1",
-    "o-comments": "^4.0.0",
+    "o-comments": "^5.1.1",
 		"o-comments-beta": "https://github.com/Financial-Times/o-comments.git#v6.0.0-beta.12",
-		"o-comment-count": "^0.3.8",
     "o-tooltip": "^3.1.2"
   }
 }

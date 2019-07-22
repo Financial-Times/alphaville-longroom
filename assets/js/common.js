@@ -7,6 +7,5 @@ if (window.commentsTalkReplacement || window.commentsUseCoralTalk) {
 } else {
 	require('o-comments');
 }
-require('o-comment-count');
 require('./lib/deleteButton');
 require('./lib/ads');
