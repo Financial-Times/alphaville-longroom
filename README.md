@@ -70,6 +70,10 @@ Run the following:
 heroku local
 ```
 
+## Deployment
+
+Alphaville Longroom does not have a CI deployment set up. Once you have tested everything, go to heroku and deploy from the deployment tab for `av2-longroom-test` and then `av2-longroom-prod`.
+
 ### Article access
 
 In order you to be able to access articles without getting the barrier, you will need 2 things:
