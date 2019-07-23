@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "postinstall": "gulp",
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "prepare": "npx snyk protect || npx snyk protect -d || true"
   },
   "engines": {
     "node": "^8"
@@ -37,5 +38,8 @@
     "request-promise": "^4.1.1",
     "sanitize-html": "^1.13.0",
     "striptags": "^2.2.0"
+  },
+  "devDependencies": {
+    "snyk": "^1.167.0"
   }
 }
