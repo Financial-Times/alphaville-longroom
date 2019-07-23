@@ -1,9 +1,22 @@
 #!/usr/bin/env node
 
+ /**
+ * Snyk runtime monitoring.
+ *
+ * Determines whether a vulnerable dependency is indeed being used at runtime in a way that can be exploited.
+ *
+ * @see https://snyk.io/docs/runtime-protection/
+ */
+if (process.env.SNYK_PROJECT_ID) {
+	require('@snyk/nodejs-runtime-agent')({
+		projectId: process.env.SNYK_PROJECT_ID
+	});
+}
+
+
 /**
  * Module dependencies.
  */
-
 var app = require('../app');
 var debug = require('debug')('alphaville-longroom:server');
 var http = require('http');
