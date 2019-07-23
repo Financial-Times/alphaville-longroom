@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@financial-times/express-web-service": "^3.3.1",
+    "@snyk/nodejs-runtime-agent": "^1.46.0",
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#1.4.0",
     "alphaville-build-tools": "Financial-Times/alphaville-build-tools#3.0.0",
     "alphaville-express": "Financial-Times/alphaville-express#1.1.1",
