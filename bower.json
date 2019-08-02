@@ -1,36 +1,36 @@
 {
-  "name": "alphaville-longroom",
-  "description": "",
-  "main": "",
-  "authors": [
-    "Roland Vachter <roland.vachter@ft.com>"
-  ],
-  "homepage": "https://github.com/Financial-Times/alphaville-longroom",
-  "moduleType": [
-    "globals"
-  ],
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "alphaville-ui": "Financial-Times/alphaville-ui#2.2.3",
-    "dom-delegate": "ftdomdelegate#^2.0.0",
-    "o-dom": "o-dom#^2.0.0",
-    "hogan": "twitter/hogan.js#^3.0.2",
-    "o-link-list": "^2.0.0",
-    "o-autoinit": "^1.3.0",
-    "o-forms": "^5.0.0",
-    "o-expander": "^4.0.0",
-    "awesomplete": "^1.1.1",
-    "o-card": "^3.0.0",
-    "tinymce": "^4.5.1",
-    "o-comments": "^5.1.1",
+	"name": "alphaville-longroom",
+	"description": "",
+	"main": "",
+	"authors": [
+		"Roland Vachter <roland.vachter@ft.com>"
+	],
+	"homepage": "https://github.com/Financial-Times/alphaville-longroom",
+	"moduleType": [
+		"globals"
+	],
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"alphaville-ui": "Financial-Times/alphaville-ui#ADSDEV-23_implement-permutive-on-alphaville",
+		"dom-delegate": "ftdomdelegate#^2.0.0",
+		"o-dom": "o-dom#^2.0.0",
+		"hogan": "twitter/hogan.js#^3.0.2",
+		"o-link-list": "^2.0.0",
+		"o-autoinit": "^1.3.0",
+		"o-forms": "^5.0.0",
+		"o-expander": "^4.0.0",
+		"awesomplete": "^1.1.1",
+		"o-card": "^3.0.0",
+		"tinymce": "^4.5.1",
+		"o-comments": "^5.1.1",
 		"o-comments-beta": "https://github.com/Financial-Times/o-comments.git#v6.0.0-beta.12",
-    "o-tooltip": "^3.1.2"
-  }
+		"o-tooltip": "^3.1.2"
+	}
 }
