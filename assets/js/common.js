@@ -8,4 +8,5 @@ if (window.commentsTalkReplacement || window.commentsUseCoralTalk) {
 	require('o-comments');
 }
 require('./lib/deleteButton');
+require('./lib/permutive');
 require('./lib/ads');
