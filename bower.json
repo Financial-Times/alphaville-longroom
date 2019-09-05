@@ -30,7 +30,7 @@
 		"o-card": "^3.0.0",
 		"tinymce": "^4.5.1",
 		"o-comments": "^5.1.1",
-		"o-comments-beta": "https://github.com/Financial-Times/o-comments.git#v6.0.0-beta.12",
+		"o-comments-beta": "https://github.com/Financial-Times/o-comments.git#v6.0.0-beta.26",
 		"o-tooltip": "^3.1.2"
 	}
 }
