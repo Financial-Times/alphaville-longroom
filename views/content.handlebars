@@ -1,12 +1,6 @@
 {{#contentFor "head"}}
 	<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
 	<link rel="canonical" href="{{canonicalUrl}}" />
-{{#commentsTalkReplacement}}
-	<script>
-		// Temporary addition until the comments are replaced
-		window.commentsTalkReplacement = true;
-	</script>
-{{/commentsTalkReplacement}}
 {{#useCoralTalk}}
 	<script>
 		window.commentsUseCoralTalk = true;
@@ -96,9 +90,24 @@
 
 			{{> alphaville-ui/share/main alphavilleUiShareData}}
 
-
-			<a name="comments"></a>
-			<div id="comments" data-o-component="o-comments" data-o-comments-config-title="{{article.title}}" data-o-comments-config-url="{{article.webUrl}}" data-o-comments-config-articleId="longroom{{article.id}}"></div>
+			{{#if useCoralTalk}}
+				<a name="comments"></a>
+				<div class="o-comments"
+					id="comments"
+					data-o-component="o-comments"
+					data-o-comments-article-id="{{article.id}}"
+					data-o-comments-story-url="{{article.webUrl}}"
+					data-o-comments-source-app="alphaville-longroom-commentsUseCoralTalk">
+				</div>
+			{{else}}
+				<a name="comments"></a>
+				<div id="comments"
+					data-o-component="o-comments"
+					data-o-comments-config-title="{{article.title}}"
+					data-o-comments-config-url="{{article.webUrl}}"
+					data-o-comments-config-articleId="longroom{{article.id}}">
+				</div>
+			{{/if}}
 		</div>
 	</div>
 {{/lr_layout}}
