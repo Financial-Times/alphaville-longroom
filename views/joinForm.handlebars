@@ -34,7 +34,7 @@
 		<div class="o-grid-row">
 			{{#if errors.pseudonym}}
 				<div class="o-forms o-forms--error" data-o-grid-colspan="12">
-					<label class="o-forms__label" for="pseudonym">Pseudonym *</label>
+					<label class="o-forms__label" for="pseudonym">Display name *</label>
 					<div class="o-forms__additional-info">This will also be used for comments and posts</div>
 					<input type="text" class="o-forms__text" name="pseudonym" value="{{pseudonym}}" />
 					{{#each errors.pseudonym}}
@@ -43,7 +43,7 @@
 				</div>
 			{{else}}
 				<div class="o-forms" data-o-grid-colspan="12">
-					<label class="o-forms__label" for="pseudonym">Pseudonym *</label>
+					<label class="o-forms__label" for="pseudonym">Display name *</label>
 					<div class="o-forms__additional-info">This will also be used for comments and posts</div>
 					<input type="text" class="o-forms__text" name="pseudonym" value="{{pseudonym}}" />
 				</div>
