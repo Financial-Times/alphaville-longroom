@@ -15,14 +15,14 @@
 	<div class="o-grid-row">
 		<div data-o-grid-colspan="12 M11 XL10 XLoffset2" class="lr-form lr-pseudonym-form">
 
-		<h1 class="lr-page-heading">Set a pseudonym</h1>
+		<h1 class="lr-page-heading">Set a display name</h1>
 
 			<form action="{{basePath}}/user/setpseudonym?redirect={{redirect}}" method="POST">
-				<p>As a Long Room member, you need a public pseudonym -- and you don't seem to have one.</p>
+				<p>As a Long Room member, you need a public display name -- and you don't seem to have one.</p>
 				<p>Make up a name for yourself below and then just click save.</p>
 
 				<div class="o-forms">
-					<label class="o-forms__label" for="pseudonym">Pseudonym</label>
+					<label class="o-forms__label" for="pseudonym">Display name</label>
 					<input type="text" class="o-forms__text" name="pseudonym" id="pseudonym" value="{{pseudonym}}" />
 					{{#validation}}<div class="o-forms__errortext">{{{pseudonym}}}</div>{{/validation}}
 				</div>
