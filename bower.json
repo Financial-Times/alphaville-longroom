@@ -18,7 +18,7 @@
 		"tests"
 	],
 	"dependencies": {
-		"alphaville-ui": "Financial-Times/alphaville-ui#^2.5.0",
+		"alphaville-ui": "git@github.com:Financial-Times/alphaville-ui.git#ADSDEV-226_Alphaville_Pageview_event_not_passed_to_Permutive",
 		"dom-delegate": "ftdomdelegate#^2.0.0",
 		"o-dom": "o-dom#^2.0.0",
 		"hogan": "twitter/hogan.js#^3.0.2",
