@@ -1,11 +1,6 @@
 {{#contentFor "head"}}
 	<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
 	<link rel="canonical" href="{{canonicalUrl}}" />
-{{#useCoralTalk}}
-	<script>
-		window.commentsUseCoralTalk = true;
-	</script>
-{{/useCoralTalk}}
 	<script>
 		(function () {
 			ctmLoadScript({
@@ -91,6 +86,9 @@
 			{{> alphaville-ui/share/main alphavilleUiShareData}}
 
 			{{#if useCoralTalk}}
+				<script>
+					window.commentsUseCoralTalk = true;
+				</script>
 				<a name="comments"></a>
 				<div class="o-comments"
 					id="comments"
