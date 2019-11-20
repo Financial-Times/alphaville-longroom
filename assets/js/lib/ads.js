@@ -1,4 +1,4 @@
-import { oAds } from 'alphaville-ui';
+const oAds = require('alphaville-ui')['o-ads'];
 
 function checkInArticleAd () {
 	const inArticleAd1 = document.querySelector('.alphaville-in-article-ad1');
