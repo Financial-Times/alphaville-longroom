@@ -164,3 +164,10 @@ h2.lr-page-heading {
 	font-size: 18px;
 	min-height: 200px;
 }
+
+.comments__maintenance-mode-message {
+	@include oTypographySans(0);
+
+	margin-top: 32px;
+	margin-bottom: 32px;
+}
