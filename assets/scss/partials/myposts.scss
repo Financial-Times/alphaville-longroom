@@ -20,7 +20,10 @@
 	}
 
 	.lr-form-label {
-		@include oTypographySansBold($scale: -1);
+		@include oTypographySans(
+			$weight: 'semibold',
+			$scale: -1
+		);
 		color: oColorsByName('black-80');
 		text-align: left;
 

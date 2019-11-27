@@ -53,7 +53,10 @@
 			}
 
 			b {
-				@include oTypographySansBold($scale: 2);
+				@include oTypographySans(
+					$weight: 'semibold',
+					$scale: 2
+				);
 				font-size: 18px;
 			}
 
@@ -82,7 +85,10 @@
 				cursor: pointer;
 
 				span {
-					@include oTypographySansBold($scale: -2);
+					@include oTypographySans(
+						$weight: 'semibold',
+						$scale: -2
+					);
 					color: oColorsByName('teal-40');
 					font-size: 13px;
 					display: inline-block;

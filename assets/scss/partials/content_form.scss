@@ -2,7 +2,10 @@
 
 	.o-forms__group {
 		.o-forms__label {
-			@include oTypographySansBold($scale: -1);
+			@include oTypographySans(
+				$weight: 'semibold',
+				$scale: -1
+			);
 			font-size: 18px;
 			color: oColorsByName('black-80');
 		}

@@ -5,7 +5,10 @@ article.lr-post {
 
 		.alphaville-card__theme {
 			.alphaville-card__tag {
-				@include oTypographySansBold($scale: -1);
+				@include oTypographySans(
+					$weight: 'semibold',
+					$scale: -1
+				);
 				display: inline-block;
 			}
 		}
@@ -24,7 +27,10 @@ article.lr-post {
 			color: oColorsByName('black-80');
 
 			a {
-				@include oTypographySansBold($scale: -1);
+				@include oTypographySans(
+					$weight: 'semibold',
+					$scale: -1
+				);
 				color: oColorsByName('black-80');
 			}
 		}
@@ -60,7 +66,10 @@ article.lr-post {
 					margin-top: 15px;
 
 					span {
-						@include oTypographySansBold($scale: -1);
+						@include oTypographySans(
+							$weight: 'semibold',
+							$scale: -1
+						);
 						font-size: 16px;
 						font-weight: bold;
 					}
