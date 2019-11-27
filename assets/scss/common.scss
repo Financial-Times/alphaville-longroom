@@ -81,7 +81,7 @@ h2.lr-page-heading {
 }
 
 .lr-icon--upload {
-	@include oIconsGetIcon(
+	@include oIconsContent(
 		$icon-name: 'upload',
 		$color: oColorsByName('teal-40'),
 		$size: 23
@@ -92,7 +92,7 @@ h2.lr-page-heading {
 }
 
 .lr-icon--written-text {
-	@include oIconsGetIcon(
+	@include oIconsContent(
 		$icon-name: 'written-text',
 		$color: oColorsByName('teal-40'),
 		$size: 23,
