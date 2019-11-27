@@ -26,7 +26,7 @@
 		"o-forms": "^8.0.0",
 		"awesomplete": "^1.1.1",
 		"tinymce": "^4.5.1",
-		"o-comments": "^5.1.3",
-		"o-comments-beta": "https://github.com/Financial-Times/o-comments.git#v6.0.0-beta.52",
+		"o-comments": "https://github.com/Financial-Times/o-comments.git#major-cascade-breaking-v5",
+		"o-comments-beta": "https://github.com/Financial-Times/o-comments.git#v7.0.0"
 	}
 }
