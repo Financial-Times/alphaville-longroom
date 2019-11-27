@@ -6,7 +6,7 @@
 	.lr-navbar--title {
 		display: none;
 		@include oTypographySans($scale: 2);
-		color: oColorsGetPaletteColor('black-80');
+		color: oColorsByName('black-80');
 		font-size: 18px;
 		padding-top: 1px;
 
@@ -25,7 +25,7 @@
 			}
 		}
 		a {
-			color: oColorsGetPaletteColor('black-80');
+			color: oColorsByName('black-80');
 		}
 	}
 
@@ -41,7 +41,7 @@
 		.lr-cta--active {
 			$activeColor: #174549;
 
-			background-color: oColorsGetPaletteColor('teal-80');
+			background-color: oColorsByName('teal-80');
 			color: $activeColor;
 			border-color: $activeColor;
 
@@ -86,7 +86,7 @@
 
 				a {
 					@include oTypographySansBold($scale: -1);
-					color: oColorsGetPaletteColor('black-80');
+					color: oColorsByName('black-80');
 
 					@include oGridRespondTo(XL) {
 						font-size: 18px;

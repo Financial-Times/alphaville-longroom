@@ -10,12 +10,12 @@ $o-forms-is-silent: false;
 
 
 @mixin contentLinksBody() {
-	@include oColorsFor(link, text);
-	border-bottom: 1px dotted oColorsGetColorFor(link, text);
+	color: oColorsByUsecase(link, text);
+	border-bottom: 1px dotted oColorsByUsecase(link, text);
 	text-decoration: none;
 	&:hover,
 	&:focus {
-		color: oColorsGetColorFor(link-hover, text);
+		color: oColorsByUsecase(link-hover, text);
 		border-bottom-color: transparent;
 	}
 }
@@ -61,7 +61,7 @@ $o-forms-is-silent: false;
 }
 
 .lr-page-heading {
-	color: oColorsGetPaletteColor('black-80');
+	color: oColorsByName('black-80');
 	margin:0 0 20px;
 	padding:0;
 
@@ -81,14 +81,22 @@ h2.lr-page-heading {
 }
 
 .lr-icon--upload {
-	@include oIconsGetIcon('upload', oColorsGetPaletteColor('teal-40'), 23, $iconset-version: 1);
+	@include oIconsGetIcon(
+		$icon-name: 'upload',
+		$color: oColorsByName('teal-40'),
+		$size: 23
+	);
 	margin: -5px;
 	position: relative;
 	top: 1px;
 }
 
 .lr-icon--written-text {
-	@include oIconsGetIcon('written-text', oColorsGetPaletteColor('teal-40'), 23, $iconset-version: 1);
+	@include oIconsGetIcon(
+		$icon-name: 'written-text',
+		$color: oColorsByName('teal-40'),
+		$size: 23,
+	);
 	margin: -5px;
 	position: relative;
 	top: 1px;
@@ -105,7 +113,7 @@ h2.lr-page-heading {
 	};
 
 	.lr-action--delete {
-		color: oColorsGetPaletteColor('teal-40');
+		color: oColorsByName('teal-40');
 		font-weight: bold;
 	}
 
@@ -127,16 +135,16 @@ h2.lr-page-heading {
 .lr-message {
 	padding: 10px;
 	margin-top: 10px;
-	background-color: oColorsGetPaletteColor('black-5');
-	color: oColorsGetPaletteColor('jade');
+	background-color: oColorsByName('black-5');
+	color: oColorsByName('jade');
 }
 
 .lr-message-success {
-	color: oColorsGetPaletteColor('jade');
+	color: oColorsByName('jade');
 }
 
 .lr-message-error {
-	color: oColorsGetPaletteColor('crimson');
+	color: oColorsByName('crimson');
 }
 
 .alphaville-article-list .o-ads {

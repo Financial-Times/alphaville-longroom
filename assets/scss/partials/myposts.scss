@@ -21,7 +21,7 @@
 
 	.lr-form-label {
 		@include oTypographySansBold($scale: -1);
-		color: oColorsGetPaletteColor('black-80');
+		color: oColorsByName('black-80');
 		text-align: left;
 
 		@include oGridRespondTo(M) {
@@ -30,14 +30,17 @@
 
 	}
 	.lr-form-value {
-		@include oTypographySansBold($scale: -1);
-		color: oColorsGetPaletteColor('black-80');
+		@include oTypographySans(
+			$weight: 'semibold',
+			$scale: -1
+		);
+		color: oColorsByName('black-80');
 	}
 
 	.lr-user-summary {
 		.o-forms__textarea {
 			@include oTypographySans($scale: -1);
-			color: oColorsGetPaletteColor('black-80');
+			color: oColorsByName('black-80');
 			height: 70px;
 		}
 	}

@@ -21,11 +21,11 @@ article.lr-post {
 
 		.alphaville-card__author {
 			@include oTypographySans($scale: -1);
-			color: oColorsGetPaletteColor('black-80');
+			color: oColorsByName('black-80');
 
 			a {
 				@include oTypographySansBold($scale: -1);
-				color: oColorsGetPaletteColor('black-80');
+				color: oColorsByName('black-80');
 			}
 		}
 
@@ -46,7 +46,7 @@ article.lr-post {
 			padding: 10px 0;
 
 			span {
-				color: oColorsGetPaletteColor('black-80');
+				color: oColorsByName('black-80');
 			}
 
 			a {
@@ -82,7 +82,7 @@ article.lr-post {
 			}
 
 			blockquote {
-				border-left: 2px solid oColorsGetPaletteColor('black-40');
+				border-left: 2px solid oColorsByName('black-40');
 				margin-left: 0;
 				padding-left: 20px;
 			}

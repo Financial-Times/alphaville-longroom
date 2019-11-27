@@ -6,7 +6,7 @@
 	padding: 13px 0;
 
 	a {
-		color: oColorsGetPaletteColor('black-80');
+		color: oColorsByName('black-80');
 	}
 
 	&:last-of-type {
