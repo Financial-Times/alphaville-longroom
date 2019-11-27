@@ -34,7 +34,11 @@
 
 		@include oGridRespondTo(XL) {
 			.o-buttons {
-				@include oButtonsSize(big);
+				@include oButtonsContent($opts: (
+					'type': 'secondary',
+					'theme': (color: 'teal'),
+					'size': 'big'
+				));
 			}
 		}
 
