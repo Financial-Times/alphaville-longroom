@@ -3,9 +3,6 @@
 $o-forms-is-silent: false;
 @import 'o-forms/main';
 
-$o-card-is-silent: false;
-@import 'o-card/main';
-
 @import 'alphaville-ui/main';
 @import './create_form';
 @import 'o-comments/main';
