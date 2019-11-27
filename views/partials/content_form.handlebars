@@ -18,17 +18,18 @@
 			<label class="o-forms__label lr-label-with-info">
 				Attach document
 			</label>
-			<button class="o-buttons lr-forms__info" id="lr-attach-help-tooltip">?</button>
-			<div data-o-component="o-tooltip"
-			     data-o-tooltip-position="below"
-			     data-o-tooltip-target="lr-attach-help-tooltip"
-			     data-o-tooltip-toggle-on-click="true"
-			     class="lr-tooltip">
-				<div class="o-tooltip-content">
-					<p>The formats we accept are Word, Excel and PDF<br/>
-						Size limit per document is 100Mb</p>
-				</div>
-			</div>
+			<small class="o-forms-title__prompt">e.g. Haitong Research, Barclays</small>
+		</div>
+
+		<div data-o-grid-colspan="6" class="o-forms-field lf-forms__upload-heading">
+			<label class="o-forms-title lr-label-with-info">
+				<span class="o-forms-title__main">
+					Attach document
+				</span>
+			</label>
+			<span class="o-forms-title__prompt">
+				Word, Excel and PDF formats - Max 100Mb per document
+			</span>
 		</div>
 	</div>
 </div>
@@ -117,36 +118,13 @@
 	</div>
 </div>
 
-<div class="o-forms">
-	{{#if isDocumentForm}}
-		<div data-o-component="o-expander" class="o-expander" data-o-expander-shrink-to="hidden" data-o-expander-expanded-toggle-text="Discussion summary" data-o-expander-collapsed-toggle-text="Discussion summary">
-			<div>
-				<label class="o-forms__label o-expander__toggle o--if-js lr-label-with-info" for="post-summary">Discussion summary</label>
-				<button class="o-buttons lr-forms__info" id="lr-summary-help-tooltip">?</button>
-			</div>
-			<div class="{{#unless postSummary}}o-expander__content{{/unless}}">
-				<textarea class="o-forms__textarea" name="post-summary" id="post-summary" >{{{postSummary}}}</textarea>
-				<div class="o-forms__errortext"></div>
-			</div>
-		</div>
-	{{else}}
-		<div>
-			<label class="o-forms__label o-expander__toggle o--if-js lr-label-with-info" for="post-summary">Discussion summary</label>
-			<button class="o-buttons lr-forms__info" id="lr-summary-help-tooltip">?</button>
-		</div>
-
-		<textarea class="o-forms__textarea" name="post-summary" id="post-summary" >{{{postSummary}}}</textarea>
-		<div class="o-forms__errortext"></div>
-	{{/if}}
-
-	<div data-o-component="o-tooltip"
-	     data-o-tooltip-position="below"
-	     data-o-tooltip-target="lr-summary-help-tooltip"
-	     data-o-tooltip-toggle-on-click="true"
-	     class="lr-tooltip">
-		<div class="o-tooltip-content">
-			<p>JPG and PNG images under 5Mb can be<br/>
-				added within the discussion summary</p>
-		</div>
+<div>
+	<div class="o-forms-field {{#if isDocumentForm}}o-forms-field--optional{{/if}}">
+		<label class="o-forms-title" for="post-summary">
+			<span class="o-forms-title__main">
+				Discussion summary
+			</span>
+		</label>
+		<span class="o-forms-title__prompt">JPG and PNG images under 5Mb can be added within the discussion summary</span>
 	</div>
 </div>
