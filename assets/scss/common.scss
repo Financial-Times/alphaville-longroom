@@ -1,13 +1,8 @@
 @import './assets';
 
-$o-forms-is-silent: false;
-@import 'o-forms/main';
-
 @import 'alphaville-ui/main';
 @import './create_form';
 @import 'o-comments/main';
-
-
 
 @mixin contentLinksBody() {
 	color: oColorsByUsecase(link, text);
@@ -30,7 +25,6 @@ $o-forms-is-silent: false;
 @import 'partials/faq';
 @import 'partials/house_rules';
 @import 'partials/user';
-@import 'partials/join_form';
 @import 'partials/overheard';
 @import 'partials/wysiwyg';
 @import 'partials/admin';

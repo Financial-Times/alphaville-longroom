@@ -59,9 +59,9 @@
 							<span class="o-forms-title__main">Display name *</span>
 							<span class="o-forms-title__prompt">This will also be used for comments and posts</span>
 						</span>
-						
+
 						<span class="o-forms-input o-forms-input--text o-forms-input--invalid">
-							<input type="text" name="pseudonym" value="{{pseudonym}}" />
+							<input required type="text" name="pseudonym" value="{{pseudonym}}" />
 							{{#each errors.pseudonym}}
 								<div class="o-forms-input__error">{{this}}</div>
 							{{/each}}
@@ -75,9 +75,9 @@
 							<span class="o-forms-title__main">Display name *</span>
 							<span class="o-forms-title__prompt">This will also be used for comments and posts</span>
 						</span>
-						
+
 						<span class="o-forms-input o-forms-input--text">
-							<input type="text" name="pseudonym" value="{{pseudonym}}" />
+							<input required type="text" name="pseudonym" value="{{pseudonym}}" />
 						</span>
 					</label>
 				</div>
@@ -125,9 +125,9 @@
 						<span class="o-forms-title">
 							<span class="o-forms-title__main">Location *</span>
 						</span>
-						
+
 						<span class="o-forms-input o-forms-input--text o-forms-input--invalid">
-							<input type="text" name="location" value="{{form.location}}" />
+							<input required type="text" name="location" value="{{form.location}}" />
 							{{#each errors.location}}
 								<div class="o-forms-input__error">{{this}}</div>
 							{{/each}}
@@ -140,9 +140,9 @@
 						<span class="o-forms-title">
 							<span class="o-forms-title__main">Location *</span>
 						</span>
-						
+
 						<span class="o-forms-input o-forms-input--text">
-							<input type="text" name="location" value="{{form.location}}" />
+							<input required type="text" name="location" value="{{form.location}}" />
 						</span>
 					</label>
 				</div>
@@ -153,9 +153,9 @@
 						<span class="o-forms-title">
 							<span class="o-forms-title__main">About you *</span>
 						</span>
-						
+
 						<span class="o-forms-input o-forms-input--text o-forms-input--invalid">
-							<textarea type="text" name="description">{{form.description}}</textarea>
+							<textarea required type="text" name="description">{{form.description}}</textarea>
 							{{#each errors.description}}
 								<div class="o-forms-input__error">{{this}}</div>
 							{{/each}}
@@ -182,7 +182,7 @@
 							<span class="o-forms-title__main">My biography *</span>
 						</span>
 						<span class="o-forms-input o-forms-input--textarea o-forms-input--invalid">
-							<textarea type="text" name="summary">{{form.summary}}</textarea>
+							<textarea required type="text" name="summary">{{form.summary}}</textarea>
 							{{#each errors.summary}}
 								<div class="o-forms-input__error">{{this}}</div>
 							{{/each}}
@@ -195,9 +195,9 @@
 						<span class="o-forms-title">
 							<span class="o-forms-title__main">My biography *</span>
 						</span>
-						
+
 						<span class="o-forms-input o-forms-input--textarea">
-							<textarea type="text" name="summary">{{form.summary}}</textarea>
+							<textarea required type="text" name="summary">{{form.summary}}</textarea>
 						</span>
 					</label>
 				</div>
