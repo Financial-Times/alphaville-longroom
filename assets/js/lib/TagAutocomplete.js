@@ -3,7 +3,7 @@ const Awesomplete = require('awesomplete');
 const toAscii = require('./utils/to-ascii');
 
 const domUtils = require('./domUtils');
-const Delegate = require('dom-delegate');
+const Delegate = require('ftdomdelegate');
 
 
 const MIN_LENGTH = 2;

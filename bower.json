@@ -18,8 +18,8 @@
 		"tests"
 	],
 	"dependencies": {
-		"alphaville-ui": "Financial-Times/alphaville-ui#725cb37",
-		"dom-delegate": "ftdomdelegate#^4.0.0",
+		"alphaville-ui": "Financial-Times/alphaville-ui#f9eb29d",
+		"ftdomdelegate": "^4.0.0",
 		"o-dom": "o-dom#^2.0.0",
 		"hogan": "twitter/hogan.js#^3.0.2",
 		"o-autoinit": "^2.0.0",
