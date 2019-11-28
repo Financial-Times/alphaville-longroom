@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "gulp",
+    "postinstall": "gulp obt-build",
     "start": "node ./bin/www",
     "prepare": "npx snyk protect || npx snyk protect -d || true"
   },
