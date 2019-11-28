@@ -3,6 +3,9 @@
 @import 'alphaville-ui/main';
 @import './create_form';
 @import 'o-comments/main';
+@import 'o-normalise/main';
+
+@include oNormalise();
 
 @mixin contentLinksBody() {
 	color: oColorsByUsecase(link, text);

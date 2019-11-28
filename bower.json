@@ -25,6 +25,7 @@
 		"o-autoinit": "^2.0.0",
 		"o-forms": "^8.0.0",
 		"awesomplete": "^1.1.1",
+		"o-normalise": "^2.0.0",
 		"tinymce": "^4.5.1",
 		"o-comments": "https://github.com/Financial-Times/o-comments.git#major-cascade-breaking-v5",
 		"o-comments-beta": "https://github.com/Financial-Times/o-comments.git#v7.0.0"
