@@ -1,4 +1,4 @@
-const Delegate = require('dom-delegate');
+import Delegate from 'ftdomdelegate';
 const ConfirmOverlay = require('alphaville-ui').ConfirmOverlay;
 
 document.addEventListener('o.DOMContentLoaded', () => {

@@ -1,33 +1,19 @@
 @import './assets';
 
-$o-link-list-is-silent: false;
-@import 'o-link-list/main';
-
-$o-tooltip-is-silent : false;
-@import 'o-tooltip/main';
-
-$o-expander-is-silent: false;
-@import 'o-expander/main';
-
-$o-forms-is-silent: false;
-@import 'o-forms/main';
-
-$o-card-is-silent: false;
-@import 'o-card/main';
-
 @import 'alphaville-ui/main';
 @import './create_form';
 @import 'o-comments/main';
+@import 'o-normalise/main';
 
-
+@include oNormalise();
 
 @mixin contentLinksBody() {
-	@include oColorsFor(link, text);
-	border-bottom: 1px dotted oColorsGetColorFor(link, text);
+	color: oColorsByUsecase(link, text);
+	border-bottom: 1px dotted oColorsByUsecase(link, text);
 	text-decoration: none;
 	&:hover,
 	&:focus {
-		color: oColorsGetColorFor(link-hover, text);
+		color: oColorsByUsecase(link-hover, text);
 		border-bottom-color: transparent;
 	}
 }
@@ -42,7 +28,6 @@ $o-card-is-silent: false;
 @import 'partials/faq';
 @import 'partials/house_rules';
 @import 'partials/user';
-@import 'partials/join_form';
 @import 'partials/overheard';
 @import 'partials/wysiwyg';
 @import 'partials/admin';
@@ -73,7 +58,7 @@ $o-card-is-silent: false;
 }
 
 .lr-page-heading {
-	color: oColorsGetPaletteColor('black-80');
+	color: oColorsByName('black-80');
 	margin:0 0 20px;
 	padding:0;
 
@@ -93,14 +78,22 @@ h2.lr-page-heading {
 }
 
 .lr-icon--upload {
-	@include oIconsGetIcon('upload', oColorsGetPaletteColor('teal-40'), 23, $iconset-version: 1);
+	@include oIconsContent(
+		$icon-name: 'upload',
+		$color: oColorsByName('teal-40'),
+		$size: 23
+	);
 	margin: -5px;
 	position: relative;
 	top: 1px;
 }
 
 .lr-icon--written-text {
-	@include oIconsGetIcon('written-text', oColorsGetPaletteColor('teal-40'), 23, $iconset-version: 1);
+	@include oIconsContent(
+		$icon-name: 'written-text',
+		$color: oColorsByName('teal-40'),
+		$size: 23,
+	);
 	margin: -5px;
 	position: relative;
 	top: 1px;
@@ -117,14 +110,13 @@ h2.lr-page-heading {
 	};
 
 	.lr-action--delete {
-		color: oColorsGetPaletteColor('teal-40');
+		color: oColorsByName('teal-40');
 		font-weight: bold;
 	}
 
 	.lr-action--button {
 		display: inline-block;
-		padding-left: 15px;
-		padding-right: 15px;
+		padding: 6px 15px;
 	}
 
 }
@@ -139,16 +131,16 @@ h2.lr-page-heading {
 .lr-message {
 	padding: 10px;
 	margin-top: 10px;
-	background-color: oColorsGetPaletteColor('black-5');
-	color: oColorsGetPaletteColor('jade');
+	background-color: oColorsByName('black-5');
+	color: oColorsByName('jade');
 }
 
 .lr-message-success {
-	color: oColorsGetPaletteColor('jade');
+	color: oColorsByName('jade');
 }
 
 .lr-message-error {
-	color: oColorsGetPaletteColor('crimson');
+	color: oColorsByName('crimson');
 }
 
 .alphaville-article-list .o-ads {

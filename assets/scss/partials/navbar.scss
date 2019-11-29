@@ -6,7 +6,7 @@
 	.lr-navbar--title {
 		display: none;
 		@include oTypographySans($scale: 2);
-		color: oColorsGetPaletteColor('black-80');
+		color: oColorsByName('black-80');
 		font-size: 18px;
 		padding-top: 1px;
 
@@ -25,7 +25,7 @@
 			}
 		}
 		a {
-			color: oColorsGetPaletteColor('black-80');
+			color: oColorsByName('black-80');
 		}
 	}
 
@@ -34,23 +34,35 @@
 
 		@include oGridRespondTo(XL) {
 			.o-buttons {
-				@include oButtonsSize(big);
+				@include oButtonsContent($opts: (
+					'type': 'secondary',
+					'theme': (color: 'teal'),
+					'size': 'big'
+				));
 			}
 		}
 
 		.lr-cta--active {
 			$activeColor: #174549;
 
-			background-color: oColorsGetPaletteColor('teal-80');
+			background-color: oColorsByName('teal-80');
 			color: $activeColor;
 			border-color: $activeColor;
 
 			.lr-icon--upload {
-				@include oIconsGetIcon('upload', $activeColor, 23, $iconset-version: 1);
+				@include oIconsContent(
+					$icon-name: 'upload',
+					$color: $activeColor,
+					$size: 23,
+				);
 			}
 
 			.lr-icon--written-text {
-				@include oIconsGetIcon('written-text', $activeColor, 23, $iconset-version: 1);
+				@include oIconsContent(
+					 $icon-name: 'written-text',
+					 $color: $activeColor,
+					 $size: 23,
+				);
 			}
 		}
 	}
@@ -85,8 +97,11 @@
 				}
 
 				a {
-					@include oTypographySansBold($scale: -1);
-					color: oColorsGetPaletteColor('black-80');
+					@include oTypographySans(
+						$weight: 'semibold',
+						$scale: -1
+					);
+					color: oColorsByName('black-80');
 
 					@include oGridRespondTo(XL) {
 						font-size: 18px;

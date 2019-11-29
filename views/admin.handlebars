@@ -14,7 +14,7 @@
 {{#> lr_layout }}
     {{#each users}}
         <div class="alphaville-card-container--lr-applicant">
-            <div class="alphaville-card alphaville-card--list" data-o-component="o-card" data-article-id="{{_id}}">
+            <div class="alphaville-card alphaville-card--list" data-article-id="{{_id}}">
                 <div class="alphaville-card__content">
 
                     <h3 class="alphaville-card__heading">
@@ -30,18 +30,8 @@
                         Industry: {{industry}}<br />
                         Position: {{position}}<br />
                         Responsibility: {{responsibility}}<br />
-                        <div data-o-component="o-expander" class="o-expander o--if-js clearfix alphaville--read-more__expander"
-                             data-o-expander-shrink-to="hidden"
-                             data-o-expander-expanded-toggle-text="less"
-                             data-o-expander-collapsed-toggle-text="more">
-                            <button class="o-expander__toggle o--if-js alphaville--read-more__toggle"></button>
-                            <div class="o-expander__content alphaville--read-more__content">
-                                <ul>
-                                    <li>Description: {{description}}</li>
-                                    <li>Biography: {{summary}}</li>
-                                </ul>
-                            </div>
-                        </div>
+                        Description: {{description}}<br />
+                        Biography: {{summary}}<br />
                     </div>
 
                     <div class="lr-action-container">

@@ -20,7 +20,7 @@
 				margin-bottom: 5px;
 				a {
 					@include oTypographyDisplay($scale: 3);
-					color: oColorsGetPaletteColor('black-80');
+					color: oColorsByName('black-80');
 				}
 				img.lr-card__file-icon {
 					max-width: 20px;
@@ -31,10 +31,13 @@
 
 			.alphaville-card__author {
 				@include oTypographySans($scale: -1);
-				color: oColorsGetPaletteColor('black-80');
+				color: oColorsByName('black-80');
 				a {
-					@include oTypographySansBold($scale: -1);
-					color: oColorsGetPaletteColor('black-80');
+					@include oTypographySans(
+						$weight: 'semibold',
+						$scale: -1
+					);
+					color: oColorsByName('black-80');
 				}
 			}
 		}

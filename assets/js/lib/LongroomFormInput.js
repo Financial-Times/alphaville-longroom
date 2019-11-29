@@ -111,7 +111,7 @@ function LongroomFormInput (config) {
 		pollForTinymce().then(() => {
 			tinymce.init({
 				selector: `#${input.id}`,
-				height: 300,
+				height: 200,
 				menubar: false,
 				plugins: [
 					'advlist autolink lists link image charmap print preview anchor',
