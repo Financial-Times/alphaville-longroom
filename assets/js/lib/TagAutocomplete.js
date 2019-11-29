@@ -1,9 +1,9 @@
 /*global fetch*/
+import Delegate from 'ftdomdelegate';
 const Awesomplete = require('awesomplete');
 const toAscii = require('./utils/to-ascii');
 
 const domUtils = require('./domUtils');
-const Delegate = require('ftdomdelegate');
 
 
 const MIN_LENGTH = 2;

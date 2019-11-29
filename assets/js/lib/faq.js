@@ -1,6 +1,6 @@
 'use strict';
 
-const Delegate = require('ftdomdelegate');
+import Delegate from 'ftdomdelegate';
 const dom = require('o-dom');
 
 var selectedIndex = null;
