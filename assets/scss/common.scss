@@ -5,6 +5,9 @@
 @import 'o-comments/main';
 @import 'o-normalise/main';
 
+$o-comments-is-silent: false;
+@import 'o-comments-beta/main';
+
 @include oNormalise();
 
 @mixin contentLinksBody() {

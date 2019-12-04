@@ -28,6 +28,6 @@
 		"o-normalise": "^2.0.0",
 		"tinymce": "^4.5.1",
 		"o-comments": "https://github.com/Financial-Times/o-comments.git#major-cascade-breaking-v5",
-		"o-comments-beta": "https://github.com/Financial-Times/o-comments.git#v7.0.0"
+		"o-comments-beta": "https://github.com/Financial-Times/o-comments.git#v7.1.4"
 	}
 }
