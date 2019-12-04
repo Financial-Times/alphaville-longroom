@@ -104,13 +104,19 @@
                         data-o-comments-article-url="https://ftalphaville.ft.com/longroom/content/{{article.id}}">
                     </div>
                 {{else}}
-                    <a name="comments"></a>
-                    <div id="comments"
-                        data-o-component="o-comments"
-                        data-o-comments-config-title="{{article.title}}"
-                        data-o-comments-config-url="{{article.webUrl}}"
-                        data-o-comments-config-articleId="longroom{{article.id}}">
-                    </div>
+                    {{#if commentsMigrationMessage}}
+                        <div class="comments__maintenance-mode-message">
+                            We are migrating reader comments to our new system. It will be back soon.
+                        </div>
+                    {{else}}
+                        <a name="comments"></a>
+                        <div id="comments"
+                            data-o-component="o-comments"
+                            data-o-comments-config-title="{{article.title}}"
+                            data-o-comments-config-url="{{article.webUrl}}"
+                            data-o-comments-config-articleId="longroom{{article.id}}">
+                        </div>
+                    {{/if}}
                 {{/if}}
             {{/if}}
 		</div>
