@@ -90,23 +90,29 @@
 
 			{{> alphaville-ui/share/main alphavilleUiShareData}}
 
-			{{#if useCoralTalk}}
-				<a name="comments"></a>
-				<div class="o-comments"
-					id="comments"
-					data-o-component="o-comments"
-					data-o-comments-article-id="{{article.id}}"
-					data-o-comments-article-url="https://ftalphaville.ft.com/longroom/content/{{article.id}}">
-				</div>
-			{{else}}
-				<a name="comments"></a>
-				<div id="comments"
-					data-o-component="o-comments"
-					data-o-comments-config-title="{{article.title}}"
-					data-o-comments-config-url="{{article.webUrl}}"
-					data-o-comments-config-articleId="longroom{{article.id}}">
-				</div>
-			{{/if}}
+            {{#if commentsMaintenanceMode}}
+                <div class="comments__maintenance-mode-message">
+                    There is a problem with reader comments. Our team is working on it. Please try again soon.
+                </div>
+            {{else}}
+                {{#if useCoralTalk}}
+                    <a name="comments"></a>
+                    <div class="o-comments"
+                        id="comments"
+                        data-o-component="o-comments"
+                        data-o-comments-article-id="{{article.id}}"
+                        data-o-comments-article-url="https://ftalphaville.ft.com/longroom/content/{{article.id}}">
+                    </div>
+                {{else}}
+                    <a name="comments"></a>
+                    <div id="comments"
+                        data-o-component="o-comments"
+                        data-o-comments-config-title="{{article.title}}"
+                        data-o-comments-config-url="{{article.webUrl}}"
+                        data-o-comments-config-articleId="longroom{{article.id}}">
+                    </div>
+                {{/if}}
+            {{/if}}
 		</div>
 	</div>
 {{/lr_layout}}
