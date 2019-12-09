@@ -57,7 +57,9 @@
 					<label class="o-forms-field" for="pseudonym">
 						<span class="o-forms-title">
 							<span class="o-forms-title__main">Display name *</span>
-							<span class="o-forms-title__prompt">This will also be used for comments and posts</span>
+							<span class="o-forms-title__prompt">
+								This will be used for comments and posts. If you change your display name on FT.com or the app, it will be reflected in Longroom.
+							</span>
 						</span>
 
 						<span class="o-forms-input o-forms-input--text o-forms-input--invalid">
@@ -73,11 +75,18 @@
 					<label class="o-forms-field" for="pseudonym">
 						<span class="o-forms-title">
 							<span class="o-forms-title__main">Display name *</span>
-							<span class="o-forms-title__prompt">This will also be used for comments and posts</span>
+							<span class="o-forms-title__prompt">
+								This will be used for comments and posts. If you change your display name on FT.com or the app, it will be reflected in Longroom.
+							</span>
 						</span>
 
 						<span class="o-forms-input o-forms-input--text">
-							<input required type="text" name="pseudonym" value="{{pseudonym}}" />
+							{{#if pseudonym}}
+								<input type="text" name="pseudonym" value="{{pseudonym}}" disabled />
+								<input type="hidden" name="pseudonym" value="{{pseudonym}}" />
+							{{else}}
+								<input required type="text" name="pseudonym" value="{{pseudonym}}" />
+							{{/if}}
 						</span>
 					</label>
 				</div>
