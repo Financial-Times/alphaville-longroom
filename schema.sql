@@ -66,11 +66,19 @@ CREATE TABLE IF NOT EXISTS user_details (
     responsibility character varying(256)
 );
 
+CREATE TABLE IF NOT EXISTS display_names (
+    user_id uuid NOT NULL,
+    display_name character varying(256)
+);
+
 ALTER TABLE ONLY user_details
     ADD CONSTRAINT user_details_pkey PRIMARY KEY (user_id);
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (user_id);
+
+ALTER TABLE ONLY display_names
+    ADD CONSTRAINT display_names_pkey PRIMARY KEY (user_id);
 
 ALTER TABLE ONLY user_details
     ADD CONSTRAINT user_details_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE;
