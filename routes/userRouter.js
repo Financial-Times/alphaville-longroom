@@ -12,8 +12,4 @@ router.route('/join')
 	.get(nonMemberPageApprovedUserRedirectMiddleware, userCtrl.get)
 	.post(nonMemberPageApprovedUserRedirectMiddleware, userFormValidator(), userCtrl.join);
 
-router.route('/setpseudonym')
-	.get(userCtrl.getSetPseudonymForm)
-	.post(userCtrl.setPseudonym);
-
 module.exports = router;
