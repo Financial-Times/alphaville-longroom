@@ -1,11 +1,7 @@
 {{#contentFor "head"}}
 	<link rel="stylesheet" href="{{assetsBasePath}}/build/main.css" />
 	<link rel="canonical" href="{{canonicalUrl}}" />
-{{#useCoralTalk}}
-	<script>
-		window.commentsUseCoralTalk = true;
-	</script>
-{{/useCoralTalk}}
+
 	<script>
 		(function () {
 			ctmLoadScript({
@@ -104,20 +100,10 @@
                         data-o-comments-article-url="https://ftalphaville.ft.com/longroom/content/{{article.id}}">
                     </div>
                 {{else}}
-                    {{#if commentsMigrationMessage}}
-                        <div class="comments__maintenance-mode-message">
-                            <p>Commenting on this article is temporarily unavailable while we migrate to our new comments system.</p>
-                            <p>Note that this only affects articles published before 28th October 2019.</p>
-                        </div>
-                    {{else}}
-                        <a name="comments"></a>
-                        <div id="comments"
-                            data-o-component="o-comments"
-                            data-o-comments-config-title="{{article.title}}"
-                            data-o-comments-config-url="{{article.webUrl}}"
-                            data-o-comments-config-articleId="longroom{{article.id}}">
-                        </div>
-                    {{/if}}
+					<div class="comments__maintenance-mode-message">
+						<p>Commenting on this article is temporarily unavailable while we migrate to our new comments system.</p>
+						<p>Note that this only affects articles published before 28th October 2019.</p>
+					</div>
                 {{/if}}
             {{/if}}
 		</div>
