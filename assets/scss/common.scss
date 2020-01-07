@@ -2,11 +2,10 @@
 
 @import 'alphaville-ui/main';
 @import './create_form';
-@import 'o-comments/main';
 @import 'o-normalise/main';
 
 $o-comments-is-silent: false;
-@import 'o-comments-beta/main';
+@import 'o-comments/main';
 
 @include oNormalise();
 
