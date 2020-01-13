@@ -97,7 +97,11 @@
                         id="comments"
                         data-o-component="o-comments"
                         data-o-comments-article-id="{{article.id}}"
-                        data-o-comments-article-url="https://ftalphaville.ft.com/longroom/content/{{article.id}}">
+                        data-o-comments-article-url="https://ftalphaville.ft.com/longroom/content/{{article.id}}"
+                        {{#if temporaryCommentsPseudonym}}
+                         data-o-comments-display-name="{{temporaryCommentsPseudonym}}"
+                        {{/if}}
+                    >
                     </div>
                 {{else}}
 					<div class="comments__maintenance-mode-message">
