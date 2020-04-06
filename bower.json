@@ -18,7 +18,7 @@
 		"tests"
 	],
 	"dependencies": {
-		"alphaville-ui": "^4.0.0",
+		"alphaville-ui": "^5.0.0",
 		"ftdomdelegate": "^4.0.0",
 		"o-dom": "o-dom#^2.0.0",
 		"hogan": "twitter/hogan.js#^3.0.2",
