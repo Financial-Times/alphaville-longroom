@@ -14,7 +14,7 @@ nPermutive.loadPermutiveScript(PERMUTIVE_CREDENTIALS.publicId);
 
 // Wait for oAds to complete initialisation, in order to access the targeting meta
 // and Then identify the user and track PageView
-oAds.utils.on('initialised', () => {
+document.body.addEventListener('oAds.initialised', () => {
 	const targeting = oAds.targeting.get();
 
 	nPermutive.identifyUser(targeting);
