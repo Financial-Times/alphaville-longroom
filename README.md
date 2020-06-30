@@ -87,3 +87,7 @@ If you have to work on the joining/license allocation area, the app will need to
 
 1. run the app locally on https
 2. Manually copy the value of `FTSession_s` into a cookie with the same name, but available on `http` as well.
+
+### Rotating Keys
+
+Documentation specific to this app is [here](https://docs.google.com/document/d/1bILX3O37XmhKOtpWvox9BeZ6RW4-aOn9VzmNqc16BcQ/edit#heading=h.y5t7y6rwe8sa).
