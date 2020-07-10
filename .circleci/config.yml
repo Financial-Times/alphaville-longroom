@@ -1,13 +1,22 @@
 references:
+
   container_config_node12: &container_config_node12
-      working_directory: ~/project/build
-      docker:
-        - image: circleci/node:12-browsers
+    working_directory: ~/project/build
+    docker:
+      - image: circleci/node:12-browsers
+
+  container_config_lambda_node12: &container_config_lambda_node12
+    working_directory: ~/project/build
+    docker:
+      - image: lambci/lambda:build-nodejs12.x
+
   workspace_root: &workspace_root
     ~/project
+
   attach_workspace: &attach_workspace
     attach_workspace:
       at: *workspace_root
+
   npm_cache_keys: &npm_cache_keys
     keys:
         - v11-dependency-npm-{{ checksum "package.json" }}-
@@ -42,15 +51,36 @@ references:
         - /^v?\d+\.\d+\.\d+(?:-beta\.\d+)?$/
     branches:
       ignore: /.*/
+
 version: 2
+
 jobs:
+
   build:
     <<: *container_config_node12
     steps:
       - checkout
       - run:
-          name: Install dependencies
-          command: npm install
+          name: Checkout next-ci-shared-helpers
+          command: git clone --depth 1 git@github.com:Financial-Times/next-ci-shared-helpers.git .circleci/shared-helpers
+      - *restore_npm_cache
+      - run:
+          name: Install project dependencies
+          command: make install
+      - run:
+          name: shared-helper / npm-update
+          command: .circleci/shared-helpers/helper-npm-update
+      - run:
+          name: shared-helper / npm-install-peer-deps
+          command: .circleci/shared-helpers/helper-npm-install-peer-deps
+      - run:
+          name: Run the project gulp build task
+          command: make build
+      - run:
+          name: shared-helper / generate-build-state-artifacts
+          command: .circleci/shared-helpers/helper-generate-build-state-artifacts
+          when: always
+      - *cache_npm_cache
       - store_artifacts:
           path: build-state
           destination: build-state
@@ -58,8 +88,63 @@ jobs:
           root: *workspace_root
           paths:
             - build
+  provision:
+    <<: *container_config_node12
+    steps:
+      - *attach_workspace
+      - run:
+          name: shared-helper / setup-heroku-cli
+          command: .circleci/shared-helpers/helper-setup-heroku-cli
+          # TODO: Move this out into next circleci app preset env variables in Vault
+          environment:
+            HEROKU_LOGIN: next.developers@ft.com
+      - run:
+          name: Create and test Heroku review app
+          command: make test-review-app
+      - store_artifacts:
+          path: test/screenshots
+          destination: screenshots
+
+  deploy:
+    <<: *container_config_node12
+    steps:
+      - *attach_workspace
+      - run:
+          name: shared-helper / helper-setup-heroku-cli
+          command: .circleci/shared-helpers/helper-setup-heroku-cli
+          # TODO: Move this out into next circleci app preset env variables in Vault
+          environment:
+            HEROKU_LOGIN: next.developers@ft.com
+      - run:
+          name: shared-helper / helper-install-puppeteer-deps
+          command: bash .circleci/shared-helpers/helper-install-puppeteer-deps
+      - run: node_modules/.bin/snyk monitor --org=customer-products --project-name=Financial-Times/next-article
+      - run:
+          name: Deploy to production
+          command: make deploy
+
 workflows:
+
   version: 2
-  build:
+
+  build-provision:
     jobs:
-      - build
+      - build:
+          filters:
+            <<: *filters_ignore_master
+      - provision:
+          requires:
+            - build
+
+  build-test-deploy:
+    jobs:
+      - build:
+          filters:
+            <<: *filters_only_master
+      - deploy:
+          requires:
+            - build
+notify:
+  webhooks:
+    - url: https://ft-next-webhooks.herokuapp.com/circleci2-workflow
+
