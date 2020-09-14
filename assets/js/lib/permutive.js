@@ -1,22 +1,21 @@
-const nPermutive = require('n-permutive');
+const nPermutive = require('n-permutive').default;
 
-const PERMUTIVE_CREDENTIALS = {
-	publicId: 'e1c3fd73-dd41-4abd-b80b-4278d52bf7aa',
-	publicApikey: 'b2b3b748-e1f6-4bd5-b2f2-26debc8075a3',
-}
-
-const getAppName = targeting => targeting && targeting.auuid
+const getPageViewType = pageView => pageView && pageView.article
 	? 'article'
-	: 'homepage';
+	: 'homepage'
 
-nPermutive.setup(PERMUTIVE_CREDENTIALS);
-nPermutive.loadPermutiveScript(PERMUTIVE_CREDENTIALS.publicId);
+nPermutive.setup();
+nPermutive.loadPermutiveScript();
 
 // Wait for oAds to complete initialisation, in order to access the targeting meta
 // and Then identify the user and track PageView
 document.body.addEventListener('oAds.initialised', () => {
-	const targeting = oAds.targeting.get();
+	const [user, article] = oAds.api.data;
+	const pageView = nPermutive.fromAdsApiV1ToPageView({ user, article });
 
-	nPermutive.identifyUser(targeting);
-	nPermutive.trackPageView(targeting, getAppName(targeting), oAds.config('behavioralMeta'));
+	nPermutive.identifyUser({
+		uuid: user && user.guid
+	});
+	pageView && pageView.page && (pageView.page.type = getPageViewType());
+	nPermutive.trackPageView(pageView);
 })
