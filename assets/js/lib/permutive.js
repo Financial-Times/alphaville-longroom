@@ -14,7 +14,7 @@ document.body.addEventListener('oAds.initialised', () => {
 	const pageView = nPermutive.fromAdsApiV1ToPageView({ user, article });
 
 	nPermutive.identifyUser({
-		uuid: user && user.guid
+		uuid: user && user.uuid
 	});
 	pageView && pageView.page && (pageView.page.type = getPageViewType());
 	nPermutive.trackPageView(pageView);
