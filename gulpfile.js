@@ -1,13 +1,13 @@
 "use strict";
 
 const gulp = require('gulp');
-const env = process.env.ENVIRONMENT || 'test';
-
 const del = require("del");
 const exec = require("child_process").exec;
 const fork = require("child_process").fork;
 const fs = require("fs");
 const path = require("path");
+
+const env = process.env.ENVIRONMENT || 'test';
 
 function ensureDirectoryExistence(filePath) {
 	const dirname = path.dirname(filePath);

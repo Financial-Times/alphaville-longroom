@@ -21,33 +21,36 @@ Install gulp globally:
 npm install -g gulp
 ```
 
-Install postgreSQL locally
-https://www.postgresql.org/download/
-
-Create a database called longroom.
-Import `schema.sql`.
-
 ### Install PostgreSQL (optional)
+
 You can skip this step if you are not working on the database itself and you can just use the database from the TEST environment.
 However, if you need to work on the database locally, you should have one installed on your machine as well.
 
 Follow the official documentation on how to download and install postgreSQL locally: https://www.postgresql.org/download/
 The easiest way is to import a dump from the TEST database.
 
-## Install
+Install postgreSQL locally
+https://www.postgresql.org/download/
+
+Create a database called longroom.
+Import `schema.sql`.
+
 Run the following:
+
+Define the local database URL 
+
+```
+DATABASE_URL="postgres://postgres@database:5432/longroom"
+```
+
+### Run locally
 
 You'll need to create environment variable
 
 The fastest way to do this is to run the following assuming your are logged in into heroku
 
 ```
-heroku config -s  >> .env --app av2-longroom-test
-```
-Define the local database URL 
-
-```
-DATABASE_URL="postgres://postgres@database:5432/longroom"
+heroku config -s  >> .env --app av2-longroom-prod
 ```
 
 Now run the initial npm install on the app
