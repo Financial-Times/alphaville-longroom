@@ -1,4 +1,4 @@
-const alphavilleExpress = require('alphaville-express');
+const alphavilleExpress = require('./lib/alphaville-express');
 const flashMessageMiddleware = require('./lib/middlewares/flashMessage');
 const userMiddleware = require('./lib/middlewares/user');
 const overheardComponentMiddleware = require('./lib/middlewares/overheardComponentData');
