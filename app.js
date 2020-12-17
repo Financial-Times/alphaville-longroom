@@ -90,6 +90,7 @@ app.use(flashMessageMiddleware);
 app.use(userMiddleware);
 app.use(overheardComponentMiddleware);
 
+app.use('/', require('./routes/__access_metadata'));
 app.use('/', require('./routes/__gtg'));
 app.use('/longroom', require('./router'));
 
