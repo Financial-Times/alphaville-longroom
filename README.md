@@ -23,7 +23,8 @@ npm install -g gulp
 
 ### Install PostgreSQL (optional)
 
-You can skip this step if you are not working on the database itself and you can just use the database from the TEST environment.
+**Skip this step if you are not working on the database itself - you can just use the database from the TEST environment.**
+
 However, if you need to work on the database locally, you should have one installed on your machine as well.
 
 Follow the official documentation on how to download and install postgreSQL locally: https://www.postgresql.org/download/
@@ -45,21 +46,20 @@ DATABASE_URL="postgres://postgres@database:5432/longroom"
 
 ### Run locally
 
-You'll need to create environment variable
-
-The fastest way to do this is to run the following assuming your are logged in into heroku
+Create environment variables by copying them from the Heroku app by running the following command (you will need to be logged into Heroku):
 
 ```
 heroku config -s  >> .env --app av2-longroom-prod
 ```
-
-Now run the initial npm install on the app
+now install and run with
 
 ```
-npm install
+make run-dev
 ```
 
-This will not just install npm modules, but automatically run bower install and gulp build as well.
+(Under the hood `make run-dev` uses `Heroku local` which installs npm modules, as well as bower install and gulp build.)
+
+Visit `http://local.ft.com:5001/longroom` to see the app running locally. Note, you will need to be on `http`. 
 
 The build integrates origami build tools, so before this please make sure you have all the prerequisites needed for it: https://github.com/Financial-Times/origami-build-tools#usage
 
