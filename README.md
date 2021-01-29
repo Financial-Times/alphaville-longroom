@@ -20,12 +20,45 @@ Install gulp globally:
 ```
 npm install -g gulp
 ```
+### Run locally
 
-### Install PostgreSQL (optional)
+Create environment variables by copying them from the Heroku app by running the following command (you will need to be logged into Heroku):
+
+```
+heroku config -s  >> .env --app av2-longroom-prod
+```
+
+Now install and run with
+
+```
+make run-dev
+```
+
+Under the hood `make run-dev`:
+- Uses `Heroku local` which installs npm modules, as well as bower install and gulp build.
+- Adds a `SKIP_AUTH=true` environment variable which allows you to view content without hitting the barrier. This is needed because when running the app locally there's no Fastly service in front of the app to set the Decision header from the Access service.
+
+View the app:
+`http://local.ft.com:5001/longroom`
+
+Note, you will need to be on `http`.
+
+### Additional quirks of working locally: Joining/license allocation
+
+If you have to work on the joining/license allocation area, including the join form, the app will need to have access to the `FTSession_s` in order to access the User API service. Because the app runs locally over `http` you will need to manually copy the value of `FTSession_s` into a cookie with the same name, but available on `http`, or even [manually set the cookie value directly in the code here](https://github.com/Financial-Times/alphaville-longroom/blob/master/lib/controllers/user.js#L28).
+
+See below `Admin` section if you are working on the join form and want to test repeadlty with the same user.
+
+### Additional quirks of working locally: Admin
+
+The Admin page allows the Alphaville team to accept and reject join requests. If you are testing this functionality it's useful to be able to reject requests so that you can submit multiple join requests with the same user. To access this page locally you need to [comment out the line of code that checks whether a user is admin](https://github.com/Financial-Times/alphaville-longroom/blob/master/routes/adminRouter.js#L5).
+
+**Take Note:** When you visit the admin page locally you will see production user requests to Alphaville and have the power to accept and reject them (which you should leave to the Alphaville Editorial team). Please navigate with care.
+
+### Working locally on the database
+If you want to work locally on the databse you will need to install PostgreSQL.
 
 **Skip this step if you are not working on the database itself - you can just use the database from the TEST environment.**
-
-However, if you need to work on the database locally, you should have one installed on your machine as well.
 
 Follow the official documentation on how to download and install postgreSQL locally: https://www.postgresql.org/download/
 The easiest way is to import a dump from the TEST database.
@@ -44,52 +77,10 @@ Define the local database URL
 DATABASE_URL="postgres://postgres@database:5432/longroom"
 ```
 
-### Run locally
-
-Create environment variables by copying them from the Heroku app by running the following command (you will need to be logged into Heroku):
-
-```
-heroku config -s  >> .env --app av2-longroom-prod
-```
-now install and run with
-
-```
-make run-dev
-```
-
-(Under the hood `make run-dev` uses `Heroku local` which installs npm modules, as well as bower install and gulp build.)
-
-Visit `http://local.ft.com:5001/longroom` to see the app running locally. Note, you will need to be on `http`. 
-
-The build integrates origami build tools, so before this please make sure you have all the prerequisites needed for it: https://github.com/Financial-Times/origami-build-tools#usage
-
-
-
-## Start the app
-
-Run the following:
-
-```
-heroku local
-```
 
 ## Deployment
 
-Alphaville Longroom does not have a CI deployment set up. Once you have tested everything, go to heroku and deploy from the deployment tab for `av2-longroom-test` and then `av2-longroom-prod`.
-
-### Article access
-
-In order you to be able to access articles without getting the barrier, you will need 2 things:
-
-Set up a URL in the hosts file that points local.ft.com to the localhost
-Add SKIP_AUTH=true environment variable (this is needed because running the app locally there's no fastly service in front of the app to set the Decision header from the Access service).
-
-### Joining/license allocation
-
-If you have to work on the joining/license allocation area, the app will need to have access to the `FTSession_s` in order to access the User API service. There are 2 ways you could achieve this:
-
-1. run the app locally on https
-2. Manually copy the value of `FTSession_s` into a cookie with the same name, but available on `http` as well.
+Alphaville Longroom does not have a CI deployment set up. Once you have tested everything, go to heroku and deploy from the github in the deployment tab for `av2-longroom-test` and then, if the test app looks ok, promote to on the Heroku pipeline dashboard `av2-longroom-prod`.
 
 ### Rotating Keys
 
