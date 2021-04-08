@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.13.5
+version: v1.19.0
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -20,6 +20,8 @@ patch:
         patched: '2019-07-22T16:28:11.053Z'
     - alphaville-build-tools > origami-build-tools > karma > socket.io > engine.io > debug:
         patched: '2019-07-22T16:28:11.053Z'
+    - origami-build-tools > karma > socket.io > socket.io-adapter > socket.io-parser > debug:
+        patched: '2021-03-16T09:08:10.239Z'
   'npm:lodash:20180130':
     - alphaville-build-tools > origami-build-tools > karma > lodash:
         patched: '2019-07-22T16:28:11.053Z'
@@ -40,3 +42,5 @@ patch:
         patched: '2019-07-22T16:28:11.053Z'
     - alphaville-build-tools > origami-build-tools > karma > socket.io > socket.io-client > socket.io-parser > debug > ms:
         patched: '2019-07-22T16:28:11.053Z'
+    - origami-build-tools > karma > socket.io > socket.io-adapter > socket.io-parser > debug > ms:
+        patched: '2021-03-16T09:08:10.239Z'
