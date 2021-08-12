@@ -45,13 +45,13 @@ Note, you will need to be on `http`.
 
 ### Additional quirks of working locally: Joining/license allocation
 
-If you have to work on the joining/license allocation area, including the join form, the app will need to have access to the `FTSession_s` in order to access the User API service. Because the app runs locally over `http` you will need to manually copy the value of `FTSession_s` into a cookie with the same name, but available on `http`, or even [manually set the cookie value directly in the code here](https://github.com/Financial-Times/alphaville-longroom/blob/master/lib/controllers/user.js#L28).
+If you have to work on the joining/license allocation area, including the join form, the app will need to have access to the `FTSession_s` in order to access the User API service. Because the app runs locally over `http` you will need to manually copy the value of `FTSession_s` into a cookie with the same name, but available on `http`, or even [manually set the cookie value directly in the code here](https://github.com/Financial-Times/alphaville-longroom/blob/main/lib/controllers/user.js#L28).
 
 See below `Admin` section if you are working on the join form and want to test repeadlty with the same user.
 
 ### Additional quirks of working locally: Admin
 
-The Admin page allows the Alphaville team to accept and reject join requests. If you are testing this functionality it's useful to be able to reject requests so that you can submit multiple join requests with the same user. To access this page locally you need to [comment out the line of code that checks whether a user is admin](https://github.com/Financial-Times/alphaville-longroom/blob/master/routes/adminRouter.js#L5).
+The Admin page allows the Alphaville team to accept and reject join requests. If you are testing this functionality it's useful to be able to reject requests so that you can submit multiple join requests with the same user. To access this page locally you need to [comment out the line of code that checks whether a user is admin](https://github.com/Financial-Times/alphaville-longroom/blob/main/routes/adminRouter.js#L5).
 
 **Take Note:** When you visit the admin page locally you will see production user requests to Alphaville and have the power to accept and reject them (which you should leave to the Alphaville Editorial team). Please navigate with care.
 
