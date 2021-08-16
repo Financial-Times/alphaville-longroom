@@ -40,7 +40,7 @@
     "node-fetch": "^1.7.3",
     "origami-build-tools": "^7.0.0",
     "path": "^0.12.7",
-    "pg-promise": "^5.4.3",
+    "pg-promise": "^10.11.0",
     "request": "^2.74.0",
     "request-promise": "^4.1.1",
     "sanitize-html": "^1.13.0",
