@@ -13,6 +13,10 @@
   "dependencies": {
     "@financial-times/ads-permutive": "^0.3.0",
     "@financial-times/express-web-service": "^3.3.1",
+    "@financial-times/o-autoinit": "^3.1.1",
+    "@financial-times/o-comments": "^8.3.2",
+    "@financial-times/o-forms": "^9.2.3",
+    "@financial-times/o-normalise": "^3.2.2",
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#1.5.1",
     "async": "^2.0.0-rc.4",
     "aws-sdk": "^2.3.10",

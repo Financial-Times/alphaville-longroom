@@ -22,11 +22,7 @@
 		"ftdomdelegate": "^4.0.0",
 		"o-dom": "o-dom#^2.0.0",
 		"hogan": "twitter/hogan.js#^3.0.2",
-		"o-autoinit": "^2.0.0",
-		"o-forms": "^8.0.0",
 		"awesomplete": "^1.1.1",
-		"o-normalise": "^2.0.0",
 		"tinymce": "^4.5.1",
-		"o-comments": "^7.3.0"
 	}
 }
