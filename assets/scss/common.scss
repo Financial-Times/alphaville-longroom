@@ -2,7 +2,7 @@
 
 @import 'alphaville-ui/main';
 @import './create_form';
-@import '@financial-times/o-normalise/main';
+@import './node_modules/@financial-times/o-normalise/main';
 
 $o-comments-is-silent: false;
 @import 'o-comments/main';
