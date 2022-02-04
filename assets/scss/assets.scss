@@ -3,7 +3,6 @@
 
 // $o-assets-global-path: $assets-domain + '/assets/longroom/bower/' + $fingerprint + '/';
 $o-assets-global-path: $assets-domain + '/assets/longroom/' + $fingerprint + '/';
-// @import 'o-assets/main';
-@import './node_modules/@financial-times/o-assets/main';
+@import '@financial-times/o-assets/main';
 
 $assets-global-path: $assets-domain + '/assets/longroom/' + $fingerprint + '/';
