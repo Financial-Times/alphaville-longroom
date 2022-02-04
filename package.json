@@ -5,7 +5,7 @@
   "scripts": {
     "postinstall": "gulp",
     "start": "node --max-http-header-size=80000 ./bin/www",
-		"prepare": "npx snyk protect || npx snyk protect -d || true"
+    "prepare": "npx snyk protect || npx snyk protect -d || true"
   },
   "engines": {
     "node": "12"
