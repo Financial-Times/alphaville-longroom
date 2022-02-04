@@ -5,14 +5,12 @@
   "scripts": {
     "postinstall": "gulp",
     "start": "node --max-http-header-size=80000 ./bin/www",
-    "prepare": "npx snyk protect || npx snyk protect -d || true"
+		"prepare": "npx snyk protect || npx snyk protect -d || true"
   },
   "engines": {
     "node": "12"
   },
-  "dependencies": {
-    "@financial-times/ads-permutive": "^0.3.0",
-    "@financial-times/express-web-service": "^3.3.1",
+  "peerDependencies": {
     "@financial-times/o-ads": "^19.0.1",
     "@financial-times/o-assets": "^3.4.9",
     "@financial-times/o-autoinit": "^3.1.1",
@@ -20,9 +18,13 @@
     "@financial-times/o-date": "^5.2.1",
     "@financial-times/o-forms": "^9.2.3",
     "@financial-times/o-grid": "^6.0.1",
-    "@financial-times/o-normalise": "^3.2.2",
+    "@financial-times/o-normalise": "^3.2.2"
+  },
+  "dependencies": {
+    "@financial-times/ads-permutive": "^0.3.0",
+    "@financial-times/express-web-service": "^3.3.1",
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#1.5.1",
-    "alphaville-ui": "Financial-Times/alphaville-ui#v5.2.1",
+    "alphaville-ui": "Financial-Times/alphaville-ui#peer-dependencies",
     "async": "^2.0.0-rc.4",
     "aws-sdk": "^2.3.10",
     "bluebird": "^3.3.5",
@@ -56,9 +58,8 @@
     "striptags": "^2.2.0"
   },
   "devDependencies": {
-    "@financial-times/math": "1.0.0",
-    "@financial-times/o-colors": "6.2.1",
-    "alphaville-build-tools": "Financial-Times/alphaville-build-tools#3.0.0",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.49.7",
     "snyk": "^1.167.0"
   }
 }
