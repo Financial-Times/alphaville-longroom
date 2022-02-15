@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "postinstall": "gulp",
-    "start": "node --max-http-header-size=80000 ./bin/www",
-		"prepare": "npx snyk protect || npx snyk protect -d || true"
+    "start": "node -r dotenv/config --max-http-header-size=80000 ./bin/www",
+    "prepare": "npx snyk protect || npx snyk protect -d || true"
   },
   "engines": {
     "node": "12"
@@ -21,7 +21,7 @@
     "@financial-times/o-normalise": "^3.2.2"
   },
   "dependencies": {
-    "@financial-times/ads-permutive": "^0.3.0",
+    "@financial-times/ads-permutive": "^3.0.0",
     "@financial-times/express-web-service": "^3.3.1",
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#1.5.1",
     "alphaville-ui": "Financial-Times/alphaville-ui#peer-dependencies",
@@ -58,8 +58,13 @@
     "striptags": "^2.2.0"
   },
   "devDependencies": {
+    "dotenv": "^16.0.0",
     "gulp-sass": "^5.1.0",
     "sass": "^1.49.7",
     "snyk": "^1.167.0"
+  },
+  "volta": {
+    "node": "12.22.10",
+    "npm": "8.5.0"
   }
 }
