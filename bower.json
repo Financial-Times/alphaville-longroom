@@ -27,6 +27,7 @@
 		"awesomplete": "^1.1.1",
 		"o-normalise": "^2.0.0",
 		"tinymce": "^4.5.1",
-		"o-comments": "^7.3.0"
+		"o-comments": "^7.3.0",
+		"o-message": "^4.0.0"
 	}
 }
