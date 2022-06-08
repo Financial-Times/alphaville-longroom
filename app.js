@@ -1,5 +1,4 @@
 const alphavilleExpress = require('./lib/alphaville-express');
-const flagsMiddleware = require('./lib/middlewares/flags');
 const canShowdecommNotficationBannerMiddleware = require('./lib/middlewares/decommNotficationBanner');
 const flashMessageMiddleware = require('./lib/middlewares/flashMessage');
 const userMiddleware = require('./lib/middlewares/user');
@@ -88,7 +87,6 @@ app.use(function (req, res, next ) {
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(flashMessageMiddleware);
-app.use(flagsMiddleware);
 app.use(canShowdecommNotficationBannerMiddleware);
 
 app.use(userMiddleware);
