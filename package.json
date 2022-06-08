@@ -11,7 +11,6 @@
     "node": "12",
     "npm": "7.x || 8.x"
   },
-  "peerDependencies": {},
   "dependencies": {
     "@financial-times/ads-permutive": "^0.3.0",
     "@financial-times/express-web-service": "^3.3.1",
