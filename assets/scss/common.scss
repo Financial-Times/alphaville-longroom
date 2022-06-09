@@ -34,6 +34,9 @@ $o-comments-is-silent: false;
 @import 'partials/wysiwyg';
 @import 'partials/admin';
 
+@import 'o-message/main';
+@include oMessage();
+
 .lr-main-content {
 	margin-top: 25px;
 }
