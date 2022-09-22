@@ -46,7 +46,7 @@
     "request": "^2.74.0",
     "request-promise": "^4.1.1",
     "sanitize-html": "^1.13.0",
-    "striptags": "^2.2.0"
+    "striptags": "^3.2.0"
   },
   "devDependencies": {
     "alphaville-build-tools": "Financial-Times/alphaville-build-tools#3.0.0",
