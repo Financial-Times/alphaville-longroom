@@ -12,7 +12,7 @@
     "npm": "7.x || 8.x"
   },
   "dependencies": {
-    "@financial-times/ads-permutive": "^0.3.0",
+    "@financial-times/ads-permutive": "^0.5.2",
     "@financial-times/express-web-service": "^3.3.1",
     "alphaville-auth-middleware": "Financial-Times/alphaville-auth-middleware#1.5.1",
     "async": "^2.0.0-rc.4",
